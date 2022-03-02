@@ -47,15 +47,14 @@
 
 <header class="header">
 
-    <a href="./index.php" class="logo">IMETS&reg;</a>
+    <a href="./index.php" class="logo">IMETS<sup>&reg;</sup></a>
 
     <nav class="navbar">
         <a href="#home">Trang chủ</a>
-        <a href="#about">Về chúng tôi</a>
         <a href="#services">Dịch vụ</a>
         <a href="#doctors">Bác sĩ</a>
         <a href="#booking">Đặt lịch</a>
-        <a href="#blogs">blogs</a>
+        <a href="#blogs">Blogs</a>
         <a href="./index.php?logout=logoutclient">Đăng xuất</a>
     </nav>
 

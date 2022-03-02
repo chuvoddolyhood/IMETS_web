@@ -1,0 +1,169 @@
+.home{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap:1.5rem;
+    padding-top: 10rem ;
+    padding-bottom: 10rem ;
+}
+
+.home .image{
+    flex:1 1 45rem;
+}
+
+lottie-player{
+    width: 93%;
+}
+
+.home .content{
+    flex:1 1 45rem;
+}
+
+.home .content h3{
+    font-size: 4.5rem;
+    color:var(--blacktext);
+    line-height: 1.8;
+    /* text-shadow: var(--text-shadow); */
+}
+
+.home .content p{
+    font-size: 1.7rem;
+    color:var(--blacktext);
+    line-height: 1.8;
+    padding: 1rem 0;
+}
+
+/* Button */
+.buttonLogin {
+    display: inline-block;
+    border-radius: 0;
+    border-style: solid;
+    background-color: var(--blue);
+    color: white;
+    text-align: center;
+    padding: 10px;
+    width: 15rem;
+    transition: all 0.5s;
+    cursor: pointer;
+    border: none;
+}
+  
+.buttonLogin span{
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+  
+.buttonLogin span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+  
+.buttonLogin:hover span {
+   padding-right: 25px;
+}
+  
+.buttonLogin:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+/* THE END of Button */
+
+
+/* Icon service */
+.icons-container{
+    display: grid;
+    gap:2rem;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+}
+
+.counter-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin: 30px 50px;
+  }
+  
+.counter {
+    font-size: 60px;
+    margin-top: 10px;
+    color: var(--blue);
+    font-weight: 500;
+}
+
+.counter-container span{
+    font-size: 20px;
+    color: var(--blacktext);
+}
+
+.counter-container i{
+    font-size: 70px;
+    color: var(--blue);
+}
+
+
+/* section service*/
+.container-card{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.container-card .card{
+    background: white;
+    width: 220px;
+    /* height: 400px; */
+    margin: 10px;
+    border-radius: 15px;
+}
+
+.container-card .card .card-image{
+    /* background: aqua; */
+    width: 220px;
+    height: 150px;
+    margin-bottom: 15px;
+    background-size: cover;
+    border-radius: 15px 15px 0 0;
+}
+
+.card-1{
+    background-image: url('./../photo/img1.jpg');
+}
+
+.card-2{
+    background-image: url('./../photo/img2.jpg');
+}
+
+.card-3{
+    background-image: url('./../photo/img3.jpg');
+}
+
+.container-card .card p{
+    padding: 10px;
+}
+
+.container-card .card a{
+    background-color: var(--blacktext);
+    color: white;
+    padding: 15px 20px;
+    display: block;
+    text-align: center;
+    margin: 20px 20px;
+    text-decoration: none;
+}
+
+.card:hover{
+    background-color: var(--blacktext);
+    color: white;
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: all 0.5s ease-in-out;
+}
