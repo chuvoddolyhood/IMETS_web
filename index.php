@@ -8,6 +8,7 @@
     <link rel="shortcut icon" type="image/png" href="./admin/photo/logo.jpg" />
     <!-- font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
 
     <!-- custom css file link  -->
     <link rel="stylesheet" href="./modules_client/style/index.css">
@@ -19,15 +20,15 @@
 </head>
 <body>
     <?php
-        // session_start();
-        // // session_destroy();
-        // if(!isset($_SESSION['login'])){
-        //     include './modules_client/header_login.php';
-        // } else {
-        //     include './modules_client/header_loggedin.php';
-        // }
+        session_start();
+        // session_destroy();
+        if(!isset($_SESSION['login'])){
+            include './modules_client/header/header_login.php';
+        } else {
+            include './modules_client/header/header_loggedin.php';
+        }
         // include './modules_client/main.php';
-		include './modules_client/footer.php';
+		// include './modules_client/footer.php';
 	?>
 </body>
 </html>
