@@ -146,7 +146,60 @@ Lorem Ipsum Dolor, Sit Amet Consectetur Adipisicing Elit. Natus Vero Ipsam Labor
                     </div>
                 </div>
             </div>
-            
+        </div>
+    </div>
+</section>
+
+
+<!-- blogs section starts  -->
+
+<section class="blogs" id="blogs">
+    <div class = "product-collection">
+        <div class = "container-collection">
+            <div class = "product-collection-wrapper">
+                <!-- product col left -->
+                <div class = "product-col-left flex">
+                    <div class = "product-col-content">
+                        <h2 class = "sm-title">Đại dịch COVID</h2>
+                        <h2 class = "md-title">HẬU COVID VÀ NHỮNG ĐIỀU CẦN BIẾT</h2>
+                        <p class = "text-light">Tình trạng bệnh lý xuất hiện ở những người trong tiền sử nhiễm SARS-COVID2, thường xuất hiện trong vòng 3 tháng sau khi khởi phát covid 19 với triệu chứng có tác động đến cơ thể và kéo dài ít nhất 2 tháng.</p>
+                        <button type = "button" class = "btn-dark">Xem ngay</button>
+                    </div>
+                </div>
+
+                <!-- product col right -->
+                <div class = "product-col-right">
+                    <div class = "product-col-r-top flex">
+                        <div class = "product-col-content">
+                            <h2 class = "sm-title">Thực phẩm hằng ngày</h2>
+                            <h2 class = "md-title">BỔ SUNG THỰC PHẨM ORGANIC GIÚP TĂNG CƯỜNG SỨC KHỎE</h2>
+                            <p class = "text-light">Các sản phẩm hữu cơ chứa hàm lượng cao chất chống oxy hóa, vitamin cùng dưỡng chất tự nhiên tốt cho sức khỏe. Sản phẩm organic đang được ưa chuộng như một giải pháp cân bằng giữa chất và lượng trong bữa ăn hàng ngày của gia đình.</p>
+                            <button type = "button" class = "btn-dark">Xem ngay</button>
+                        </div>
+                    </div>
+
+                    <div class = "product-col-r-bottom">
+                        <!-- left -->
+                        <div class = "flex">
+                            <div class = "product-col-content">
+                                <h2 class = "sm-title">Thực phẩm chức năng</h2>
+                                <h2 class = "md-title">6 LỢI ÍCH SỨC KHỎE CỦA VITAMIN A DỰA TRÊN BẰNG CHỨNG KHOA HỌC</h2>
+                                <p class = "text-light">Lợi ích này của vitamin A thể hiện ở các rào cản chất nhầy trong mắt, phổi, ruột và bộ phận sinh dục của bạn giúp bẫy vi khuẩn và các tác nhân truyền nhiễm khác ...</p>
+                                <button type = "button" class = "btn-dark">Xem ngay</button>
+                            </div>
+                        </div>
+                        <!-- right -->
+                        <div class = "flex">
+                            <div class = "product-col-content">
+                                <h2 class = "sm-title">FQAs </h2>
+                                <h2 class = "md-title">CÓ NÊN TẦM SOÁT UNG THƯ SỚM HAY KHÔNG?</h2>
+                                <p class = "text-light">Ung thư là một căn bệnh nguy hiểm, thậm chí có thể dẫn đến tử vong. Căn bệnh này đang có chiều hướng gia tăng cả về số lượng, đối tượng và độ tuổi. Tuy nhiên, nhiều người vẫn thắc mắc có nên tầm soát ung thư hay không. Bài viết dưới đây sẽ cho bạn câu trả lời tốt nhất.</p>
+                                <button type = "button" class = "btn-dark">Xem ngay</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>

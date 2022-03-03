@@ -16,12 +16,12 @@
         </div> -->
 
         <div class="box">
-            <h3>our services</h3>
-            <a href="#"> <i class="fas fa-chevron-right"></i> dental care </a>
-            <a href="#"> <i class="fas fa-chevron-right"></i> message therapy </a>
-            <a href="#"> <i class="fas fa-chevron-right"></i> cardioloty </a>
-            <a href="#"> <i class="fas fa-chevron-right"></i> diagnosis </a>
-            <a href="#"> <i class="fas fa-chevron-right"></i> ambulance service </a>
+            <h3>Dịch vụ</h3>
+            <a href="#"> <i class="fas fa-chevron-right"></i> Khám ngoại trú </a>
+            <a href="#"> <i class="fas fa-chevron-right"></i> Nhận bệnh nội trú </a>
+            <a href="#"> <i class="fas fa-chevron-right"></i> Xét nghiệm y học </a>
+            <a href="#"> <i class="fas fa-chevron-right"></i> Chuẩn đoán y khoa </a>
+            <a href="#"> <i class="fas fa-chevron-right"></i> Cấp cứu </a>
         </div>
 
         <div class="box">
