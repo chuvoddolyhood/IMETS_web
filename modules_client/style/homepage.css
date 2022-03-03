@@ -174,3 +174,140 @@ lottie-player{
     transition: all 0.5s ease-in-out;
 }
 
+
+
+/* Section doctor */
+
+.doctors{
+    height: 100vh;
+    
+}
+
+.doctors .container-slider{
+    display: flex;
+    justify-content: center;
+}
+
+.doctors .card-slider .image-slider{
+    height: 140px;
+    width: 140px;
+    border-radius: 50%;
+    padding: 3px;
+    background: #69ABCE;
+}
+
+.doctors .card-slider .image-slider img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid var(--white);
+}
+
+.card-slider{
+    border-radius: 20px;
+    background: #f3f3f3;
+    position: relative;
+    margin: 20px 0;
+    width: 300px;
+}
+
+.card-slider::before{
+    content: "";
+    position: absolute;
+    height: 40%;
+    width: 100%;
+    background-color: #69ABCE;
+    border-radius: 20px 20px 0 0;
+}
+
+.card-slider .card-content-slider{
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+}
+
+.card-slider .media-icons-slider{
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card-slider .media-icons-slider i{
+    color: var(--white);
+    margin-top: 10px;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.card-slider .media-icons-slider i:hover{
+    opacity: 1;
+}
+
+.card-slider .name-profession-slider{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.card-slider .name-profession-slider .name{
+    font-size: 20px;
+    font-weight: 600;
+
+}
+
+.card-slider .name-profession-slider .profession{
+    font-size: 15px;
+    font-weight: 500;
+    
+}
+
+.card-slider .rating-slider{
+    display: flex;
+    align-items: center;
+    margin-top: 18px;
+}
+
+.card-slider .rating-slider i{
+    font-size: 18px;
+    margin: 0 7px;
+    color: #69ABCE;
+}
+
+.card-slider .button-slider{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.card-slider .button-slider button{
+    background: #69ABCE;
+    outline: none;
+    border: none;
+    color: var(--white);
+    padding: 8px 22px;
+    border-radius: 20px;
+    font-size: 14px;
+    transition: all 0.5s ease;
+    cursor: pointer;
+}
+
+.button-slider button:hover{
+    background: #30759b;
+    color: #f3f3f3;
+}
+
+.swiper{
+    width: 950px;
+}
+/* The end of Section doctor */

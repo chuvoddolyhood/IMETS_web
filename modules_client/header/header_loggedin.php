@@ -55,6 +55,7 @@
         <a href="#doctors">Bác sĩ</a>
         <a href="#booking">Đặt lịch</a>
         <a href="#blogs">Blogs</a>
+        <a href="#footer">Liên hệ</a>
         <a href="./index.php?logout=logoutclient">Đăng xuất</a>
     </nav>
 

@@ -111,3 +111,42 @@ Lorem Ipsum Dolor, Sit Amet Consectetur Adipisicing Elit. Natus Vero Ipsam Labor
 </section>
 
 <!-- services section ends -->
+
+<!-- doctors section starts  -->
+
+<section class="doctors" id="doctors">
+    <h1>Các bác sĩ được yêu thích nhất</h1>
+    <a href="">Xem thêm</a>
+    <div class="container-slider ">
+        <div class="content-slider ">
+            <div class="card-slider ">
+                <div class="card-content-slider">
+                    <div class="image-slider">
+                        <img src="./modules_client/main/img1.jpg">
+                    </div>
+                    <div class="media-icons-slider">
+                        <i class="fab fa-facebook"></i>
+                        <i class="fab fa-instagram"></i>
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <div class="name-profession-slider">
+                        <span class="name">Name</span>
+                        <span class="profession">Profession</span>
+                    </div>
+                    <div class="rating-slider">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+                    <div class="button-slider">
+                        <button class="aboutme">About me</button>
+                        <button class="contact">Contact</button>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>

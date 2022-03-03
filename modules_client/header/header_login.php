@@ -23,6 +23,7 @@
         <a href="#doctors">Bác sĩ</a>
         <a href="#booking">Đặt lịch</a>
         <a href="#blogs">Blogs</a>
+        <a href="#footer">Liên hệ</a>
         <a href="./modules_client/login-signin/loginForm.php" name="login_btn">Đăng nhập</a>
     </nav>
 
