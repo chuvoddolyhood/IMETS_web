@@ -111,6 +111,12 @@ lottie-player{
 
 
 /* section service*/
+.services h1{
+    font-size: 30px;
+    text-align: center;
+    padding: 5vh 0;
+}
+
 .container-card{
     display: flex;
     justify-content: center;
@@ -161,9 +167,10 @@ lottie-player{
 }
 
 .card:hover{
-    background-color: var(--blacktext);
+    background-color: #69ABCE;
     color: white;
     cursor: pointer;
     transform: scale(1.05);
     transition: all 0.5s ease-in-out;
 }
+
