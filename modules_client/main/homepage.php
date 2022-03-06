@@ -116,7 +116,7 @@ Lorem Ipsum Dolor, Sit Amet Consectetur Adipisicing Elit. Natus Vero Ipsam Labor
 
 <section class="doctors" id="doctors">
     <h1>Các bác sĩ được yêu thích nhất</h1>
-    <a href="">Xem thêm</a>
+    <a href="./index.php?page_layout=doctors">Xem thêm</a>
     <div class="container-slider ">
         <div class="content-slider ">
             <div class="card-slider ">
@@ -143,6 +143,7 @@ Lorem Ipsum Dolor, Sit Amet Consectetur Adipisicing Elit. Natus Vero Ipsam Labor
                     <div class="button-slider">
                         <button class="aboutme">About me</button>
                         <button class="contact">Contact</button>
+                        <a href="tel:0939635755">Call us at 0939635755</a>
                     </div>
                 </div>
             </div>
