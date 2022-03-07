@@ -5,16 +5,17 @@
         $username = $_POST['username'];
         $password = md5($_POST['password']);
 
-
-        $sql = "SELECT password FROM nhanvien WHERE UserName='$username'";
+        $sql = "SELECT password FROM staff WHERE UserName='$username'";
         $query = mysqli_query($conn, $sql);
         $rows = mysqli_fetch_array($query);
 
         if($rows['password'] == $password){
             $_SESSION['login_staff']=$username;
             header('location: index.php');
+			// echo $_SESSION['login_staff'];
         } else {
             header('location: login.php');
+			// echo 'no';
         }   
         
     }
@@ -25,7 +26,7 @@
 <head>
 	<title>Staff Page</title>
 	<link rel="shortcut icon" type="image/png" href="./../modules_client/photo/logo.jfif" />
-	<link rel="stylesheet" type="text/css" href="./modules_staff/style/login.css">
+	<link rel="stylesheet" type="text/css" href="./modules_staff/style/login_staff.css">
 	<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
 	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">

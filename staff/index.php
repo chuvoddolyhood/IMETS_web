@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>Staff Page</title>
-	<link rel="stylesheet" href="./style/index.css" />
+	<link rel="stylesheet" href="./modules_staff/style/index_staff.css" />
 	<link rel="shortcut icon" type="image/png" href="./../modules_client/photo/logo.jfif" />
     <link
       rel="stylesheet"
@@ -21,20 +21,22 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" /> -->
 </head>
 <body id="body">
-<?php
-	session_start();
-	//session_destroy();
-	if(!isset($_SESSION['login_staff'])){
-		header('location:login.php');
-	}
-?>
-<div class="container">
 	<?php
-		include './modules_admin/config.php';
-        include './modules_admin/navigation.php';
-		include './modules_admin/content.php';
-		include './modules_admin/sidebar.php';
+		session_start();
+		//session_destroy();
+		if(!isset($_SESSION['login_staff'])){
+			header('location:login.php');
+		}
 	?>
-</div>
+	<div class="container">
+		<?php
+			include './../config.php';
+			include './modules_staff/navigation.php';
+			include './modules_staff/content.php';
+			include './modules_staff/sidebar.php';
+		?>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="./modules_staff/style/script.js"></script>
 </body>
 </html>
