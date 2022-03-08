@@ -6,7 +6,7 @@
         $password = md5($_POST['password']);
 
 
-        $sql = "SELECT password FROM nhanvien WHERE UserName='$username'";
+        $sql = "SELECT password FROM staff WHERE UserName='$username'";
         $query = mysqli_query($conn, $sql);
         $rows = mysqli_fetch_array($query);
 
