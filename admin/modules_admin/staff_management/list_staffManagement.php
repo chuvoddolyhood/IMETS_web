@@ -20,7 +20,6 @@
                         <th>Chức vụ</th>
                         <th>Xem chi tiết</th>
                         <th>Sửa</th>
-                        <th>Xóa</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -37,7 +36,7 @@
                             while($rows = mysqli_fetch_array($query)){ ?>
                             <tr>
                                 <td><?php echo $rows["ID_Staff"] ?></td>
-                                <td><img src="./../img/staff/staff_<?php echo $rows["ID_Staff"] ?>/<?php echo $rows["imgName"] ?>" alt="<?php echo $rows["TenHinh"] ?>" style="width: 30%"></td>
+                                <td><img src="./../img/staff/staff_<?php echo $rows["ID_Staff"] ?>/<?php echo $rows["imgName"] ?>" style="width: 30%"></td>
                                 <td><?php echo $rows["Name"] ?></td>
                                 <td><?php echo $rows["DOB"] ?></td>
                                 <td><?php echo $rows["Sex"] ?></td>
@@ -62,10 +61,6 @@
                                         Sửa
                                     </a>
                                 </td>
-                                <td>
-                                    <a onclick="return confirm_Del('<?php echo $rows['HoTenNV'] ?>')" 
-                                     href="./modules_admin/staff_management/delete.php?MSNV=<?php echo $rows["MSNV"] ?>" class="btn_delete">Xóa</a>
-                                </td>
                             </tr>
                         <?php } ?>
                     </tr>
@@ -88,17 +83,21 @@
     <h2>Thêm nhân viên</h2>
     <form action="./modules_admin/staff_management/add.php" enctype="multipart/form-data" method="POST"> 
       <div class="modal-body">
-          <div class="mb-3">
+          <div>
               <label class="form-label">Họ tên</label>
               <input type="text" class="form-control" name="HoTenNV" require>
           </div>
-          <div class="form-group">
-              <label for="">Chức vụ</label>
+          <div>
+              <label class="form-label">DOB</label>
+              <input type="date" class="form-control" name="HoTenNV" require>
+          </div>
+          <div>
+              <label for="">Giới tính</label>
               <select class="form-control" name="ChucVu">
                   <option selected>Chọn chức vụ</option>
-                  <option value = "Quản lý" >Quản Lý</option>
-                  <option value = "Nhân viên bán hàng" >Nhân viên bán hàng</option>
-                  <option value = "Nhân viên giao hàng" >Nhân viên giao hàng</option>
+                  <option value = "Quản lý" >Nam</option>
+                  <option value = "Nhân viên bán hàng" >Nữ</option>
+                  <option value = "Nhân viên giao hàng" >Khác</option>
               </select>
           </div>
           <div class="mb-3">
