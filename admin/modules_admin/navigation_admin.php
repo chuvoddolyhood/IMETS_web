@@ -16,8 +16,8 @@
             <i class="far fa-bell" aria-hidden="true"></i>
         </a>
         <a href="#">
-            <img width="30" src="./modules_staff/photo/avatar.svg" alt="" />
-            <!-- <i class="fa fa-user-circle-o" aria-hidden="true"></i> -->
+            <!-- <img width="30" src="./modules_staff/photo/avatar.svg" alt="" /> -->
+            <i class="fa fa-user-secret" aria-hidden="true"></i>
         </a>
     </div>
 </nav>

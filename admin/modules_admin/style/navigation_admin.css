@@ -11,6 +11,7 @@
   
 .nav_icon {
     display: none;
+    cursor: pointer;
 }
   
 .nav_icon > i {
@@ -50,6 +51,10 @@
     background: #ffffff;
     box-shadow: 2px 2px 5px #d9d9d9, -2px -2px 5px #ffffff;
     padding: 7px;
+}
+
+#sidebarIcon{
+    cursor: pointer;
 }
 
 @media only screen and (max-width: 978px) {

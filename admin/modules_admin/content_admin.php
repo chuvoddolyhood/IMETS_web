@@ -1,97 +1,51 @@
-<main>
-    <div class="main__container">
-        <!-- MAIN TITLE STARTS HERE -->
+<?php
+    if(isset($_GET['page_layout'])){
+        switch ($_GET['page_layout']) {
+            case 'dashboard':
+                include './modules_admin/dashboard_admin/dashboard_admin.php';
+                break;
 
-        <div class="main__title">
-            <div class="main__greeting">
-                <h1>Hello @name</h1>
-                <p>Welcome to your staff dashboard</p>
-            </div>
-        </div>
+            case 'staff_management':
+                include './modules_admin/staff_management/list_staffManagement.php';
+                break;
 
-        <!-- MAIN TITLE ENDS HERE -->
+            case 'staff_detail':
+                include './modules_admin/staff_management/detail_staffManagement.php';
+                break;
 
-        <!-- MAIN CARDS STARTS HERE -->
-        <div class="main__cards">
-            <div class="card">
-                <i class="fa fa-user-o fa-2x text-lightblue" aria-hidden="true"></i>
-                <div class="card_inner">
-                    <p class="text-primary-p">Number of Subscribers</p>
-                    <span class="font-bold text-title">578</span>
-                </div>
-            </div>
+            // case 'modifyStaff': //Chinh sua thong tin nhan vien
+            //     include './modules_admin/staff_management/modify.php';
+            //     break;
 
-            <div class="card">
-                <i class="fa fa-calendar fa-2x text-red" aria-hidden="true"></i>
-                <div class="card_inner">
-                    <p class="text-primary-p">Times of Watching</p>
-                    <span class="font-bold text-title">2467</span>
-                </div>
-            </div>
+            // case 'client_management':
+            //     include './modules_admin/client_management/list.php';
+            //     break;
 
-            <div class="card">
-                <i class="fa fa-video-camera fa-2x text-yellow" aria-hidden="true"></i>
-                <div class="card_inner">
-                    <p class="text-primary-p">Number of Videos</p>
-                    <span class="font-bold text-title">340</span>
-                </div>
-            </div>
+            // case 'viewHistory':
+            //     include './modules_admin/client_management/view.php';
+            //     break;
 
-            <div class="card">
-                <i class="fa fa-thumbs-up fa-2x text-green" aria-hidden="true"></i>
-                <div class="card_inner">
-                    <p class="text-primary-p">Number of Likes</p>
-                    <span class="font-bold text-title">645</span>
-                </div>
-            </div>
-        </div>
-        <!-- MAIN CARDS ENDS HERE -->
+            // case 'product_management':
+            //     include './modules_admin/product_management/list.php';
+            //     break;
+            
+            // case 'modifyOfProduct': //chinh sua thong tin hang hoa
+            //     include './modules_admin/product_management/modify.php';
+            //     break;
 
-        <!-- CHARTS STARTS HERE -->
-        <div class="charts">
-            <div class="charts__left">
-              <div class="charts__left__title">
-                <div>
-                    <h1>Daily Reports</h1>
-                    <p>Cupertino, California, USA</p>
-                </div>
-                <i class="fa fa-usd" aria-hidden="true"></i>
-              </div>
-              <div id="apex1"></div>
-            </div>
-
-            <div class="charts__right">
-              <div class="charts__right__title">
-                <div>
-                    <h1>Stats Reports</h1>
-                    <p>Cupertino, California, USA</p>
-                </div>
-                <i class="fa fa-usd" aria-hidden="true"></i>
-              </div>
-
-              <div class="charts__right__cards">
-                <div class="card1">
-                    <h1>Income</h1>
-                    <p>$75,300</p>
-                </div>
-
-                <div class="card2">
-                    <h1>Sales</h1>
-                    <p>$124,200</p>
-                </div>
-
-                <div class="card3">
-                    <h1>Users</h1>
-                    <p>3900</p>
-                </div>
-
-                <div class="card4">
-                    <h1>Orders</h1>
-                    <p>1881</p>
-                </div>
-              </div>
-            </div>
-        </div>
-        <!-- CHARTS ENDS HERE -->
-    </div>
-</main>
+            // case 'quantityOfProduct': //Nhap them so luong hang hoa
+            //     include './modules_admin/product_management/quantity.php';
+            //     break; 
+                    
+            // case 'order_management':
+            //     include './modules_admin/order_management/list.php';
+            //     break;
+                 
+            // case 'order_detail':
+            //     include './modules_admin/order_management/viewDetail.php';
+            //     break; 
+            }
+    }else {
+        include './modules_admin/dashboard_admin/dashboard_admin.php';
+    }
+?>

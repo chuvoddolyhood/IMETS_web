@@ -36,7 +36,7 @@
 
 <body>
     <div class="login-form">
-        <h1>Admin</h1>
+        <h1>Admin Control Panel</h1>
         <div class="container">
             <div class="main">
                 <div class="content">

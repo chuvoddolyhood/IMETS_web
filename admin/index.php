@@ -37,7 +37,5 @@
 			include './modules_admin/sidebar_admin.php';
 		?>
 	</div>
-	<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-    <script src="./modules_admin/style/script.js"></script>
 </body>
 </html>
