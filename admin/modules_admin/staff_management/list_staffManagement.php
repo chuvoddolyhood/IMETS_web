@@ -36,7 +36,7 @@
                             while($rows = mysqli_fetch_array($query)){ ?>
                             <tr>
                                 <td><?php echo $rows["ID_Staff"] ?></td>
-                                <td><img src="./../img/staff/staff_<?php echo $rows["ID_Staff"] ?>/<?php echo $rows["imgName"] ?>" style="width: 30%"></td>
+                                <td><img src="./../img/staff/<?php echo $rows["imgName"] ?>" style="width: 30%"></td>
                                 <td><?php echo $rows["Name"] ?></td>
                                 <td><?php echo $rows["DOB"] ?></td>
                                 <td><?php echo $rows["Sex"] ?></td>
@@ -81,34 +81,79 @@
 <div class="modal-bg-add">
   <div class="modal-add">
     <h2>Thêm nhân viên</h2>
-    <form action="./modules_admin/staff_management/add.php" enctype="multipart/form-data" method="POST"> 
-      <div class="modal-body">
-          <div>
-              <label class="form-label">Họ tên</label>
-              <input type="text" class="form-control" name="HoTenNV" require>
-          </div>
-          <div>
-              <label class="form-label">DOB</label>
-              <input type="date" class="form-control" name="HoTenNV" require>
-          </div>
-          <div>
-              <label for="">Giới tính</label>
-              <select class="form-control" name="ChucVu">
-                  <option selected>Chọn chức vụ</option>
-                  <option value = "Quản lý" >Nam</option>
-                  <option value = "Nhân viên bán hàng" >Nữ</option>
-                  <option value = "Nhân viên giao hàng" >Khác</option>
-              </select>
-          </div>
-          <div class="mb-3">
-              <label class="form-label">Địa chỉ</label>
-              <input type="text" class="form-control" name="DiaChi" require>
-          </div>
-          <div class="mb-3">
-              <label class="form-label">Số điện thoại</label>
-              <input type="text" class="form-control" name="SoDienThoai" require>
-          </div>
-      </div>
+    <form action="./modules_admin/staff_management/add_staff.php" enctype="multipart/form-data" method="POST"> 
+        <div class="modal-body">
+            <div>
+                <label class="form-label">Họ tên</label>
+                <input type="text" class="form-control" name="Name" require>
+            </div>
+            <div>
+                <label class="form-label">DOB</label>
+                <input type="date" class="form-control" name="DOB" require>
+            </div>
+            <div>
+                <label for="">Giới tính</label>
+                <select class="form-control" name="Sex">
+                    <option selected>Giới tính</option>
+                    <option value = "Nam" >Nam</option>
+                    <option value = "Nữ" >Nữ</option>
+                    <option value = "Khác" >Khác</option>
+                </select>
+            </div>
+            <div>
+                <label class="form-label">Địa chỉ</label>
+                <input type="text" class="form-control" name="Address" require>
+            </div>
+            <div>
+                <label class="form-label">CMND</label>
+                <input type="text" class="form-control" name="CMND" require>
+            </div>
+            <div>
+                <label class="form-label">Số điện thoại</label>
+                <input type="text" class="form-control" name="PhoneNumber" require>
+            </div>
+            <div>
+                <label for="">Vị trí công việc</label>
+                <select class="form-control" name="Position">
+                    <option selected>Chọn vị trí</option>
+                    <option value = "Bác sĩ" >Bác sĩ</option>
+                    <option value = "Điều dưỡng" >Điều dưỡng</option>
+                    <option value = "Dược sĩ" >Dược sĩ</option>
+                </select>
+            </div>
+            <div>
+                <label for="">Khoa/phòng</label>
+                <select class="form-control" name="ID_Dept">
+                    <option selected>Chọn Khoa</option>
+                    <option value = "1" >Khoa Nội tổng hợp</option>
+                    <option value = "2" >Khoa Cấp cứu</option>
+                    <option value = "3" >Khoa Nhi</option>
+                    <option value = "4" >Khoa Mắt</option>
+                    <option value = "5" >Khoa Sản</option>
+                    <option value = "6" >Khoa Da liễu</option>
+                    <option value = "7" >Khoa Thần kinh</option>
+                    <option value = "8" >Khoa Tim mạch</option>
+                    <option value = "9" >Khoa Dược</option>
+                    <option value = "9" >Khoa Nhiễm</option>
+                </select>
+            </div>
+            <div>
+                <label class="form-label">Ngày bắt đầu</label>
+                <input type="date" class="form-control" name="DateStartWork" require>
+            </div>
+            <div>
+                <label class="form-label">Tên đăng nhập</label>
+                <input type="text" class="form-control" name="Username" require>
+            </div>
+            <div>
+                <label class="form-label">Mật khẩu</label>
+                <input type="text" class="form-control" name="Password" require>
+            </div>
+            <div class="form-group">
+                <label for="">Ảnh</label><br />
+                <input type="file" name="fileupload[]" multiple="multiple" required>
+            </div>
+        </div>
       <div class="modal-footer">
           <button type="button" class="modal-close-add-btn">Đóng</button>
           <button type="submit" class="btn btn-primary" name="btn_submit">Thêm</button>

@@ -54,15 +54,15 @@
 			<p>Tỉ lệ đánh giá: <?php echo $rows["VoteRate"]; ?></p>
 		</div>
 		<div class="column">
-			<img id=featured src="./../img/staff/staff_<?php echo $rows["ID_Staff"] ?>/<?php echo $rows["imgName"] ?>">
+			<img id=featured src="./../img/staff/<?php echo $rows["imgName"] ?>">
 			
 			<div id="slide-wrapper" >
 				<img id="slideLeft" class="arrow" src="./../img/images/arrow-left.png" style="padding-right: 2%;">
 				
 				<div id="slider">
-					<img class="thumbnail active" src="./../img/staff/staff_<?php echo $rows["ID_Staff"] ?>/<?php echo $rows["imgName"] ?>">
+					<img class="thumbnail active" src="./../img/staff/<?php echo $rows["imgName"] ?>">
 					<?php while($rows = mysqli_fetch_array($query)){ ?>
-						<img class="thumbnail" src="./../img/staff/staff_<?php echo $rows["ID_Staff"] ?>/<?php echo $rows["imgName"] ?>">
+						<img class="thumbnail" src="./../img/staff/<?php echo $rows["imgName"] ?>">
                     <?php } ?>
 				</div>
 				<img id="slideRight" class="arrow" src="./../img/images/arrow-right.png" style="padding-left: 2%;">
