@@ -18,7 +18,7 @@
 			<a href="">Xem chi tiết</a>
 		</div>
 		<div class="tool">
-			<a href="./index.php?page_layout=modifyStaff&id= <?php echo $rows["MSNV"] ?>" 
+			<a href="./index.php?page_layout=modifyStaff&id= <?php echo $rows["ID_Staff"] ?>" 
                     style="background-color: rgb(255, 187, 0);color: white;padding: 8px 15px;text-align: center;text-decoration: none;display: inline-block;border-radius: 5px;">Sửa</a>
 			<a onclick="return confirm_Del('<?php echo $rows['Name'] ?>')" 
                 href="./modules_admin/staff_management/delete_staff.php?id=<?php echo $ID_Staff ?>" class="btn_delete">Xóa</a>

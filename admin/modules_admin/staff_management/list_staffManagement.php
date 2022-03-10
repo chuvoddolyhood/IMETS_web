@@ -19,7 +19,6 @@
                         <th>Số điện thoại</th>
                         <th>Chức vụ</th>
                         <th>Xem chi tiết</th>
-                        <th>Sửa</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -46,19 +45,10 @@
                                 <td><?php echo $rows["Position"] ?></td>
                                 <?php $count_nhanvien++ ?>
                                 <td>
-                                        <a 
-                                        href="./index.php?page_layout=staff_detail&id= <?php echo $rows['ID_Staff'] ?>"
-                                        style="background-color: green;color: white;padding: 8px 15px;text-align: center;text-decoration: none;display: inline-block;border-radius: 5px;">
-                                            Xem
-                                        </a>
-                                    </td>
-                                <td>
-                                        <!-- <button type="button" class="btn_modify">Sửa</button> -->
-
-                                        <!-- <button type="button" class="btn btn-warning modifybtn">Sửa</button> -->
-                                    <a href="./index.php?page_layout=modifyStaff&id= <?php echo $rows["MSNV"] ?>" 
-                                        style="background-color: rgb(255, 187, 0);color: white;padding: 8px 15px;text-align: center;text-decoration: none;display: inline-block;border-radius: 5px;">
-                                        Sửa
+                                    <a 
+                                    href="./index.php?page_layout=staff_detail&id= <?php echo $rows['ID_Staff'] ?>"
+                                    style="background-color: green;color: white;padding: 8px 15px;text-align: center;text-decoration: none;display: inline-block;border-radius: 5px;">
+                                        Xem
                                     </a>
                                 </td>
                             </tr>
@@ -134,7 +124,7 @@
                     <option value = "7" >Khoa Thần kinh</option>
                     <option value = "8" >Khoa Tim mạch</option>
                     <option value = "9" >Khoa Dược</option>
-                    <option value = "9" >Khoa Nhiễm</option>
+                    <option value = "10" >Khoa Nhiễm</option>
                 </select>
             </div>
             <div>
@@ -181,79 +171,3 @@
     modalBg_add.classList.remove('bg-active-add');
   });
 </script>
-
-<!-- ############################# Modal Sửa nhân viên ######################################## -->
-
-<div class="modal-bg-modify">
-  <div class="modal-modify">
-    <h2>Chỉnh sửa thông tin nhân viên</h2>
-    <form action="./staff_management/staff.php?page_staff=modify" method="POST"> 
-        <div class="modal-body">
-            <input type="hidden" name="MSNV_modify" id="MSNV_modify">
-            <div class="mb-3">
-                <label class="form-label">Họ tên</label>
-                <input type="text" class="form-control" name="HoTenNV_modify" id="HoTenNV_modify" require>
-            </div>
-            <div class="form-group">
-                <label for="">Chức vụ</label>
-                <select class="form-control" name="ChucVu_modify" id="ChucVu_modify">
-                    <option selected>Chọn chức vụ</option>
-                    <option value = "Quản lý">Quản Lý</option>
-                    <option value = "Nhân viên bán hàng">Nhân viên bán hàng</option>
-                    <option value = "Nhân viên giao hàng">Nhân viên giao hàng</option>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Địa chỉ</label>
-                <input type="text" class="form-control" name="DiaChi_modify" id="DiaChi_modify" require>
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Số điện thoại</label>
-                <input type="text" class="form-control" name="SoDienThoai_modify" id="SoDienThoai_modify" require>
-            </div>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-            <button type="submit" class="btn btn-primary" name="btn_modify">Xác nhận</button>
-        </div>
-    </form>       
-    <span class="modal-close-modify">X</spsan>
-  </div>
-</div>
-
-<script type="text/javascript">
-  var modalBtn_modify = document.querySelector('.btn_modify'); //sua ten
-  var modalBg_modify = document.querySelector('.modal-bg-modify');
-  var modalClose_modify = document.querySelector('.modal-close-modify');
-
-  modalBtn_modify.addEventListener('click', function(){
-    modalBg_modify.classList.add('bg-active-modify');
-  });
-  
-  modalClose_modify.addEventListener('click', function(){
-    modalBg_modify.classList.remove('bg-active-modify');
-  });
-</script>
-
-<!-- CHỈNH SỬA THÔNG TIN NHÂN VIÊN -->
-<!-- <script>
-    $(document).ready(function(){
-        $('.modifybtn').on('click', function(){
-
-            $('#modify_product_Modal').modal('show');
-
-            $tr = $(this).closest('tr');
-            var data = $tr.children("td").map(function(){
-                return $(this).text();
-            }).get();
-
-            console.log(data);
-
-            $('#MSNV_modify').val(data[0]);
-            $('#HoTenNV_modify').val(data[1]);
-            $('#ChucVu_modify').val(data[2]);
-            $('#DiaChi_modify').val(data[3]);
-            $('#SoDienThoai_modify').val(data[4]);
-        });
-    });
-</script> -->
