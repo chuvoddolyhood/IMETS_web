@@ -126,7 +126,7 @@ lottie-player{
 .container-card .card{
     background: white;
     width: 220px;
-    /* height: 400px; */
+    height: 400px;
     margin: 10px;
     border-radius: 15px;
 }
@@ -150,6 +150,10 @@ lottie-player{
 
 .card-3{
     background-image: url('./../photo/img3.jpg');
+}
+
+.container-card .card h2{
+    padding: 10px;
 }
 
 .container-card .card p{

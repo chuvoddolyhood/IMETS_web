@@ -6,7 +6,7 @@
         <h3>Chào mừng đến với IMETS</h3>
         <p>Hệ thống khám và chữa bệnh thông minh IMETS tiên phong trong quá trình thúc đẩy sự tiến bộ của lĩnh vực y tế với ba trụ cột là Bệnh viện thông minh, Chăm sóc sức khoẻ dự phòng thông minh, Quản trị hệ thống thông minh...</p>
         <!-- <a href="#" class="btn"> contact us <span class="fas fa-chevron-right"></span> </a> -->
-        <button class="buttonLogin" onclick="document.location='#'" style="vertical-align:middle"><span>Về chúng tôi</span></button>
+        <button class="buttonLogin" onclick="document.location='#about'" style="vertical-align:middle"><span>Về chúng tôi</span></button>
     </div>
 
     <div class="image">
@@ -20,7 +20,7 @@
 
 <!-- icons section starts  -->
 
-<section class="icons-container">
+<section class="icons-container" id="about">
 
 <div class="counter-container">
     <i class="fas fa-user-md"></i>
@@ -143,7 +143,6 @@ Lorem Ipsum Dolor, Sit Amet Consectetur Adipisicing Elit. Natus Vero Ipsam Labor
                     <div class="button-slider">
                         <button class="aboutme">About me</button>
                         <button class="contact">Contact</button>
-                        <a href="tel:0939635755">Call us at 0939635755</a>
                     </div>
                 </div>
             </div>

@@ -26,7 +26,7 @@
 
         <div class="box">
             <h3>Liên hệ</h3>
-            <a href="#"> <i class="fas fa-phone"></i> (+84) 939 635 755 </a>
+            <a href="tel:0939635755"> <i class="fas fa-phone"></i> (+84) 939 635 755 </a>
             <!-- <a href="#"> <i class="fas fa-phone"></i> +111-222-3333 </a> -->
             <a href="#"> <i class="fas fa-envelope"></i> nghiab1805895</a>
             <a href="#"> <i class="fas fa-envelope"></i> trannhannghia@gmail.com </a>

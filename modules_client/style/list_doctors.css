@@ -1,0 +1,47 @@
+.doctorList h1{
+    margin: 15vh 0 5vh;
+    font-size: 35px;
+    text-align: center;
+}
+
+.doctorList .container-card .card{
+    box-shadow: 1px 2px 5px  #888888;
+    width: 250px;
+    height: 420px;
+}
+
+.doctorList .card .card-image img{
+    width: 250px;
+    height: 170px;
+    margin-bottom: 15px;
+    object-fit: cover;
+    border-radius: 15px 15px 0 0;
+}
+
+.doctorList .card h2{
+    font-size: 2.0rem;
+}
+
+.doctorList .card h3{
+    padding-left: 10px;
+    font-size: 1.5rem;
+}
+
+.doctorList .container-card .card .rating-slider{
+    display: flex;
+    align-items: center;
+    margin: 18px 0 25px;
+    padding-left: 10px;
+}
+
+.doctorList .container-card .card .rating-slider i{
+    font-size: 15px;
+    margin-right: 0.5rem;
+    color: #69ABCE;
+}
+
+.doctorList .container-card .card a{
+    margin: 10px 10px 0;
+    font-size: 1.2rem;
+    padding: 10px 0;
+}

@@ -50,9 +50,9 @@
     <a href="./index.php" class="logo">IMETS<sup>&reg;</sup></a>
 
     <nav class="navbar">
-        <a href="#home">Trang chủ</a>
+        <a href="./index.php">Trang chủ</a>
         <a href="#services">Dịch vụ</a>
-        <a href="#doctors">Bác sĩ</a>
+        <a href="./index.php?page_layout=doctors">Bác sĩ</a>
         <a href="#booking">Đặt lịch</a>
         <a href="#blogs">Blogs</a>
         <a href="#footer">Liên hệ</a>
