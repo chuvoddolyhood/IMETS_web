@@ -20,8 +20,8 @@
 		<div class="tool">
 			<a href="./index.php?page_layout=modifyStaff&id= <?php echo $rows["MSNV"] ?>" 
                     style="background-color: rgb(255, 187, 0);color: white;padding: 8px 15px;text-align: center;text-decoration: none;display: inline-block;border-radius: 5px;">Sửa</a>
-			<a onclick="return confirm_Del('<?php echo $rows['HoTenNV'] ?>')" 
-                href="./modules_admin/staff_management/delete.php?MSNV=<?php echo $rows["MSNV"] ?>" class="btn_delete">Xóa</a>
+			<a onclick="return confirm_Del('<?php echo $rows['Name'] ?>')" 
+                href="./modules_admin/staff_management/delete_staff.php?id=<?php echo $ID_Staff ?>" class="btn_delete">Xóa</a>
 		</div>
 	</div>
 
@@ -106,6 +106,9 @@
 			document.getElementById('slider').scrollLeft += 180
 		})
 
+		function confirm_Del(name){
+        	return confirm("Bạn có chắc muốn xóa mặt hàng "+ name + "?");
+    	}
 
 	</script>
 </main>
