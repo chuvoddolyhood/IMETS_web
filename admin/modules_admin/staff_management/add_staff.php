@@ -11,7 +11,7 @@
         $ID_Dept = $_POST['ID_Dept'];
         $DateStartWork = $_POST['DateStartWork'];
         $Username = $_POST['Username'];
-        $Password = $_POST['Password'];
+        $Password = md5($_POST['Password']);
 
         // echo $Name;
         // echo $DOB;

@@ -22,7 +22,7 @@
     <div class="sidebar__menu">
         <div class="sidebar__link active_menu_link">
             <i class="fa fa-home"></i>
-            <a href="#">Dashboard</a>
+            <a href="./index.php">Dashboard</a>
         </div>
         <h2>Quản lý bệnh viện</h2>
         <div class="sidebar__link">

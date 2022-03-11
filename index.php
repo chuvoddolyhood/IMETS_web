@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IMETS</title>
-    <link rel="shortcut icon" type="image/png" href="./admin/photo/logo.jpg" />
+    <link rel="shortcut icon" type="image/png" href="./img/images/logo.jfif" />
     <!-- font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <!-- <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script> -->
@@ -29,7 +29,7 @@
     <?php
         session_start();
         // session_destroy();
-        if(!isset($_SESSION['login'])){
+        if(!isset($_SESSION['login_client'])){
             include './modules_client/header/header_login.php';
         } else {
             include './modules_client/header/header_loggedin.php';

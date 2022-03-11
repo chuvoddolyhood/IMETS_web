@@ -12,7 +12,7 @@
         $rows_get_password = mysqli_fetch_array($query_get_password);
 
         if($rows_get_password['password'] == md5($password_client_login)){
-            $_SESSION['login']=$username_client_login;
+            $_SESSION['login_client']=$username_client_login;
             header('location: ./../../index.php');
         } else {
             echo '<script>alert("Sai tài khoản hay mật khẩu")</script>';

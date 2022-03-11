@@ -201,31 +201,10 @@ lottie-player{
 
 
 /* Section doctor */
-
-.doctors{
-    height: 100vh;
-    
-}
-
-.doctors .container-slider{
-    display: flex;
-    justify-content: center;
-}
-
-.doctors .card-slider .image-slider{
-    height: 140px;
-    width: 140px;
-    border-radius: 50%;
-    padding: 3px;
-    background: #69ABCE;
-}
-
-.doctors .card-slider .image-slider img{
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 3px solid var(--white);
+.doctorList h2{
+    font-size: 30px;
+    text-align: center;
+    padding: 5vh 0;
 }
 
 .card-slider{

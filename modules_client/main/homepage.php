@@ -123,7 +123,7 @@
 <!-- doctors section starts  -->
 
 <section class="doctorList" id="doctors">
-    <h2>Các bác sĩ được yêu thích nhất</h2>
+    <h2>Các bác sĩ được yêu mến nhất </h2>
     <?php 
     include './config.php';
     $sql = "SELECT *
