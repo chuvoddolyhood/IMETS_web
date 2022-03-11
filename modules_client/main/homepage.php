@@ -55,55 +55,63 @@
 <section class="services" id="services">
 
     <h1 class="heading"> Dịch vụ của chúng tôi </h1>
-    <p>Lorem Ipsum Dolor Sit Amet Consectetur, Adipisicing Elit. Iure Ducimus, Quod Ex Cupiditate Ullam In Assumenda Maiores Et Culpa Odit Tempora Ipsam Qui, Quisquam Quis Facere Iste Fuga, Minus Nesciunt.
-
-Lorem Ipsum Dolor, Sit Amet Consectetur Adipisicing Elit. Natus Vero Ipsam Laborum Porro Voluptates Voluptatibus A Nihil Temporibus Deserunt Vel?</p>
+    
     <div class="container-card">
         <div class="card">
             <div class="card-image card-1"></div>
             <h2>Nhận bệnh nội trú</h2>
             <p>Lorem Ipsum Dolor Sit Amet Consectetur, Adipisicing Elit. Iure Ducimus, Quod Ex Cupiditate Ullam In Assumenda Maiores Et Culpa Odit Tempora Ipsam Qui, Quisquam Quis Facere Iste Fuga, Minus Nesciunt.</p>
-            <a href="">Read more</a>
+            <a href="">Xem thêm</a>
         </div>
 
         <div class="card">
             <div class="card-image card-2"></div>
             <h2>Liên hệ cấp cứu 24/7</h2>
             <p>Lorem Ipsum Dolor Sit Amet Consectetur, Adipisicing Elit. Iure Ducimus, Quod Ex Cupiditate Ullam In Assumenda Maiores Et Culpa Odit Tempora Ipsam Qui, Quisquam Quis Facere Iste Fuga, Minus Nesciunt.</p>
-            <a href="">Read more</a>
+            <a href="">Xem thêm</a>
         </div>
 
         <div class="card">
             <div class="card-image card-3"></div>
             <h2>Kiểm tra sức khỏe định kỳ</h2>
             <p>Lorem Ipsum Dolor Sit Amet Consectetur, Adipisicing Elit. Iure Ducimus, Quod Ex Cupiditate Ullam In Assumenda Maiores Et Culpa Odit Tempora Ipsam Qui, Quisquam Quis Facere Iste Fuga, Minus Nesciunt.</p>
-            <a href="">Read more</a>
+            <a href="">Xem thêm</a>
         </div>
 
         <div class="card">
-            <div class="card-image card-3"></div>
-            <h2>Kiểm tra sức khỏe định kỳ</h2>
+            <div class="card-image card-4"></div>
+            <h2>Khám theo yêu cầu</h2>
             <p>Lorem Ipsum Dolor Sit Amet Consectetur, Adipisicing Elit. Iure Ducimus, Quod Ex Cupiditate Ullam In Assumenda Maiores Et Culpa Odit Tempora Ipsam Qui, Quisquam Quis Facere Iste Fuga, Minus Nesciunt.</p>
-            <a href="">Read more</a>
+            <a href="">Xem thêm</a>
         </div>
 
         <div class="card">
-            <div class="card-image card-3"></div>
-            <h2>Kiểm tra sức khỏe định kỳ</h2>
+            <div class="card-image card-5"></div>
+            <h2>Khám bằng Bảo hiểm y tế</h2>
             <p>Lorem Ipsum Dolor Sit Amet Consectetur, Adipisicing Elit. Iure Ducimus, Quod Ex Cupiditate Ullam In Assumenda Maiores Et Culpa Odit Tempora Ipsam Qui, Quisquam Quis Facere Iste Fuga, Minus Nesciunt.</p>
-            <a href="">Read more</a>
+            <a href="">Xem thêm</a>
         </div>
         <div class="card">
-            <div class="card-image card-3"></div>
-            <h2>Kiểm tra sức khỏe định kỳ</h2>
-            <p>Lorem Ipsum Dolor Sit Amet Consectetur, Adipisicing Elit. Iure Ducimus, Quod Ex Cupiditate Ullam In Assumenda Maiores Et Culpa Odit Tempora Ipsam Qui, Quisquam Quis Facere Iste Fuga, Minus Nesciunt.</p>
-            <a href="">Read more</a>
+            <div class="card-image card-6"></div>
+            <h2>Dịch vụ hỗ trợ chăm sóc</h2>
+            <p>Áp dụng đối với người bệnh không tự chăm sóc tối thiểu và theo yêu cầu của gia đình.</p>
+            <a href="">Xem thêm</a>
         </div>
         <div class="card">
-            <div class="card-image card-3"></div>
-            <h2>Kiểm tra sức khỏe định kỳ</h2>
-            <p>Lorem Ipsum Dolor Sit Amet Consectetur, Adipisicing Elit. Iure Ducimus, Quod Ex Cupiditate Ullam In Assumenda Maiores Et Culpa Odit Tempora Ipsam Qui, Quisquam Quis Facere Iste Fuga, Minus Nesciunt.</p>
-            <a href="">Read more</a>
+            <div class="card-image card-7"></div>
+            <h2>Khám theo phương pháp kỹ thuật cao</h2>
+            <p>Chụp cộng hưởng từ. Siêu âm doppler xuyên sọ. Kích thích từ xuyên sọ điều trị các rối loạn tâm thần. Điện não video. Định lượng Ethanol và Methanol trong máu..</p>
+            <a href="">Xem thêm</a>
+        </div>
+        <div class="card">
+            <div class="card-image card-8"></div>
+            <h2>Các dịch vụ khác</h2>
+            <p>Hỗ trợ cai rượu, cai ma túy.
+
+- Điểu trị theo yêu cầu: Tất cả các người bệnh có nhu cầu (Bao gồm cả các người bệnh được chẩn đoán là Tâm thần phân liệt và Động kinh).
+
+- Giám định khả năng lao động: Liên hệ trực tiếp tại khoa Khám bệnh.</p>
+            <a href="">Xem thêm</a>
         </div>
     </div>
     
@@ -114,39 +122,57 @@ Lorem Ipsum Dolor, Sit Amet Consectetur Adipisicing Elit. Natus Vero Ipsam Labor
 
 <!-- doctors section starts  -->
 
-<section class="doctors" id="doctors">
-    <h1>Các bác sĩ được yêu thích nhất</h1>
-    <a href="./index.php?page_layout=doctors">Xem thêm</a>
-    <div class="container-slider ">
-        <div class="content-slider ">
-            <div class="card-slider ">
-                <div class="card-content-slider">
-                    <div class="image-slider">
-                        <img src="./modules_client/main/img1.jpg">
-                    </div>
-                    <div class="media-icons-slider">
-                        <i class="fab fa-facebook"></i>
-                        <i class="fab fa-instagram"></i>
-                        <i class="fab fa-github"></i>
-                    </div>
-                    <div class="name-profession-slider">
-                        <span class="name">Name</span>
-                        <span class="profession">Profession</span>
-                    </div>
-                    <div class="rating-slider">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="far fa-star"></i>
-                    </div>
-                    <div class="button-slider">
-                        <button class="aboutme">About me</button>
-                        <button class="contact">Contact</button>
-                    </div>
-                </div>
+<section class="doctorList" id="doctors">
+    <h2>Các bác sĩ được yêu thích nhất</h2>
+    <?php 
+    include './config.php';
+    $sql = "SELECT *
+        FROM staff  JOIN dept ON dept.ID_Dept=staff.ID_Dept
+        JOIN img_staff ON staff.ID_Staff=img_staff.ID_Staff
+        WHERE staff.VoteRate>4
+        GROUP BY staff.ID_Staff
+        ORDER BY staff.VoteRate DESC";
+    $query = mysqli_query($conn, $sql);
+?>
+
+    <div class="container-card">
+        <?php
+            while($rows = mysqli_fetch_array($query)){
+        ?>
+        <div class="card">
+            <div class="card-image"> 
+                <img src="./img/staff/<?php echo $rows["imgName"] ?>">
             </div>
+            <h2><?php echo $rows["Name"] ?></h2>
+            <h3><?php echo $rows["Position"] ?></h3>
+            <h3><?php echo $rows["Name_Dept"] ?></h3>
+            <!-- <h3><?php echo $rows["VoteRate"] ?></h3> -->
+            
+            <div class="rating-slider">
+                <?php
+                    $numberOfStar = round($rows["VoteRate"]);
+                    // echo 'full:'.$numberOfStar;
+                    $fullStart=0;
+                    while($fullStart < $numberOfStar){
+                        $fullStart++;
+                    ?>
+                        <i class="fas fa-star"></i>
+                <?php } 
+                    $numberOfStar_empty = 5-round($rows["VoteRate"]);
+                    // echo 'empty:'.$numberOfStar_empty;
+                    $i=0;
+                    while($i < $numberOfStar_empty){
+                        $i++;
+                ?>
+                    <i class="far fa-star"></i>
+                <?php } ?>
+            </div>
+            <a href="">Xem thông tin</a>
+            <a href="">Đặt lịch</a>
         </div>
+        <?php
+            }
+        ?>
     </div>
 </section>
 

@@ -51,10 +51,8 @@
 
     <nav class="navbar">
         <a href="./index.php">Trang chủ</a>
-        <a href="#services">Dịch vụ</a>
         <a href="./index.php?page_layout=doctors">Bác sĩ</a>
         <a href="#booking">Đặt lịch</a>
-        <a href="#blogs">Blogs</a>
         <a href="#footer">Liên hệ</a>
         <a href="./index.php?logout=logoutclient">Đăng xuất</a>
     </nav>

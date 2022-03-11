@@ -152,6 +152,26 @@ lottie-player{
     background-image: url('./../photo/img3.jpg');
 }
 
+.card-4{
+    background-image: url('./../photo/img4.jpg');
+}
+
+.card-5{
+    background-image: url('./../photo/img5.jpg');
+}
+
+.card-6{
+    background-image: url('./../photo/img6.jpg');
+}
+
+.card-7{
+    background-image: url('./../photo/img7.jpg');
+}
+
+.card-8{
+    background-image: url('./../photo/img8.jpg');
+}
+
 .container-card .card h2{
     padding: 10px;
 }
@@ -161,7 +181,7 @@ lottie-player{
 }
 
 .container-card .card a{
-    background-color: var(--blacktext);
+    background-color: #69ABCE;
     color: white;
     padding: 15px 20px;
     display: block;
@@ -171,7 +191,7 @@ lottie-player{
 }
 
 .card:hover{
-    background-color: #69ABCE;
+    background-color: #234050;
     color: white;
     cursor: pointer;
     transform: scale(1.05);

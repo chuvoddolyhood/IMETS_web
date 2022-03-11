@@ -28,6 +28,7 @@
                             $sql = "SELECT *
                                 FROM staff  JOIN dept ON dept.ID_Dept=staff.ID_Dept
                                 JOIN img_staff ON staff.ID_Staff=img_staff.ID_Staff
+                                WHERE staff.Position != 'Admin'
                                 GROUP BY staff.ID_Staff
                                 ORDER BY staff.ID_Staff ASC";
                             $count_nhanvien=0;

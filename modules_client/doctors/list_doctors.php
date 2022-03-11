@@ -3,6 +3,7 @@
     $sql = "SELECT *
         FROM staff  JOIN dept ON dept.ID_Dept=staff.ID_Dept
         JOIN img_staff ON staff.ID_Staff=img_staff.ID_Staff
+        WHERE staff.Position != 'Admin'
         GROUP BY staff.ID_Staff
         ORDER BY staff.ID_Staff ASC";
     $query = mysqli_query($conn, $sql);
@@ -22,17 +23,26 @@
             <h2><?php echo $rows["Name"] ?></h2>
             <h3><?php echo $rows["Position"] ?></h3>
             <h3><?php echo $rows["Name_Dept"] ?></h3>
-            <h3><?php echo $rows["VoteRate"] ?></h3>
-            <?php 
-                // if($rows["VoteRate"])
-                // echo $rows["VoteRate"];
-            ?>
+            <!-- <h3><?php echo $rows["VoteRate"] ?></h3> -->
+            
             <div class="rating-slider">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="far fa-star"></i>
+                <?php
+                    $numberOfStar = round($rows["VoteRate"]);
+                    // echo 'full:'.$numberOfStar;
+                    $fullStart=0;
+                    while($fullStart < $numberOfStar){
+                        $fullStart++;
+                    ?>
+                        <i class="fas fa-star"></i>
+                <?php } 
+                    $numberOfStar_empty = 5-round($rows["VoteRate"]);
+                    // echo 'empty:'.$numberOfStar_empty;
+                    $i=0;
+                    while($i < $numberOfStar_empty){
+                        $i++;
+                ?>
+                    <i class="far fa-star"></i>
+                <?php } ?>
             </div>
             <a href="">Xem thông tin</a>
             <a href="">Đặt lịch</a>
