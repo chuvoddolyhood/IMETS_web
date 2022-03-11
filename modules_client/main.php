@@ -5,8 +5,8 @@
             case 'doctors': //danh sách bac si
                 include './modules_client/doctors/list_doctors.php';
                 break;
-            case 'detail': //chi tiết từng hàng hóa
-                include './modules_client/product/detail_product.php';
+            case 'detail_doctors': //chi tiết từng hàng hóa
+                include './modules_client/doctors/detail_doctors.php';
                 break;
             case 'search': //Tìm kiếm sản phẩm
                 include './modules_client/product/search.php';
