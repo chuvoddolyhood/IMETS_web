@@ -174,6 +174,8 @@
 		</div>
 	</div>
 
+	<a href=""><i class="fa fa-stethoscope"></i></a>
+
     <script type="text/javascript">
 		let thumbnails = document.getElementsByClassName('thumbnail_detail')
 
