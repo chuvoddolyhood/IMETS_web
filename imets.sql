@@ -2,10 +2,10 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th3 11, 2022 lúc 01:36 PM
--- Phiên bản máy phục vụ: 10.4.21-MariaDB
--- Phiên bản PHP: 7.3.31
+-- Host: 127.0.0.1
+-- Generation Time: Mar 19, 2022 at 03:06 PM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 7.3.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `imets`
+-- Database: `imets`
 --
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `dept`
+-- Table structure for table `dept`
 --
 
 CREATE TABLE `dept` (
@@ -33,7 +33,7 @@ CREATE TABLE `dept` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `dept`
+-- Dumping data for table `dept`
 --
 
 INSERT INTO `dept` (`ID_Dept`, `Name_Dept`) VALUES
@@ -52,7 +52,7 @@ INSERT INTO `dept` (`ID_Dept`, `Name_Dept`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `img_staff`
+-- Table structure for table `img_staff`
 --
 
 CREATE TABLE `img_staff` (
@@ -62,7 +62,7 @@ CREATE TABLE `img_staff` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `img_staff`
+-- Dumping data for table `img_staff`
 --
 
 INSERT INTO `img_staff` (`ID_ImgStaff`, `ID_Staff`, `imgName`) VALUES
@@ -85,7 +85,7 @@ INSERT INTO `img_staff` (`ID_ImgStaff`, `ID_Staff`, `imgName`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `patient`
+-- Table structure for table `patient`
 --
 
 CREATE TABLE `patient` (
@@ -102,7 +102,7 @@ CREATE TABLE `patient` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `patient`
+-- Dumping data for table `patient`
 --
 
 INSERT INTO `patient` (`ID_Patient`, `Name`, `DOB`, `Sex`, `Address`, `CMND`, `PhoneNumber`, `ID_BHYT`, `UserName`, `Password`) VALUES
@@ -112,7 +112,54 @@ INSERT INTO `patient` (`ID_Patient`, `Name`, `DOB`, `Sex`, `Address`, `CMND`, `P
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `staff`
+-- Table structure for table `room`
+--
+
+CREATE TABLE `room` (
+  `ID_Room` int(11) NOT NULL,
+  `Name_Room` varchar(100) NOT NULL,
+  `ID_Dept` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `room`
+--
+
+INSERT INTO `room` (`ID_Room`, `Name_Room`, `ID_Dept`) VALUES
+(11, 'Phòng 11', 1),
+(12, 'Phòng 12', 1),
+(21, 'Phòng 21', 2),
+(22, 'Phòng 22', 2),
+(31, 'Phòng 31', 3),
+(32, 'Phòng 32', 3),
+(71, 'Phòng 71', 7),
+(72, 'Phòng 72', 7);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `schedule`
+--
+
+CREATE TABLE `schedule` (
+  `DateWorking` date NOT NULL,
+  `Session` varchar(50) NOT NULL,
+  `ID_Staff` int(11) NOT NULL,
+  `ID_Room` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `schedule`
+--
+
+INSERT INTO `schedule` (`DateWorking`, `Session`, `ID_Staff`, `ID_Room`) VALUES
+('2022-03-19', 'Sáng', 4, 71),
+('2022-03-19', 'Chiều', 4, 72);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `staff`
 --
 
 CREATE TABLE `staff` (
@@ -132,7 +179,7 @@ CREATE TABLE `staff` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `staff`
+-- Dumping data for table `staff`
 --
 
 INSERT INTO `staff` (`ID_Staff`, `Name`, `DOB`, `Sex`, `Address`, `CMND`, `PhoneNumber`, `Position`, `ID_Dept`, `DateStartWork`, `VoteRate`, `UserName`, `Password`) VALUES
@@ -143,75 +190,102 @@ INSERT INTO `staff` (`ID_Staff`, `Name`, `DOB`, `Sex`, `Address`, `CMND`, `Phone
 (8, 'Yoo Yeon-seok', '1984-04-11', 'Nam', 'Cần Thơ', '09220000555', '09897887665', 'Bác sĩ', 3, '2003-10-22', 2.1, 'yoo', 'a95b429d7a93263081a83b9bf7c9f7e3');
 
 --
--- Chỉ mục cho các bảng đã đổ
+-- Indexes for dumped tables
 --
 
 --
--- Chỉ mục cho bảng `dept`
+-- Indexes for table `dept`
 --
 ALTER TABLE `dept`
   ADD PRIMARY KEY (`ID_Dept`);
 
 --
--- Chỉ mục cho bảng `img_staff`
+-- Indexes for table `img_staff`
 --
 ALTER TABLE `img_staff`
   ADD PRIMARY KEY (`ID_ImgStaff`),
   ADD KEY `img_staff_ibfk_1` (`ID_Staff`);
 
 --
--- Chỉ mục cho bảng `patient`
+-- Indexes for table `patient`
 --
 ALTER TABLE `patient`
   ADD PRIMARY KEY (`ID_Patient`);
 
 --
--- Chỉ mục cho bảng `staff`
+-- Indexes for table `room`
+--
+ALTER TABLE `room`
+  ADD PRIMARY KEY (`ID_Room`),
+  ADD KEY `ID_Dept` (`ID_Dept`);
+
+--
+-- Indexes for table `schedule`
+--
+ALTER TABLE `schedule`
+  ADD KEY `ID_Room` (`ID_Room`),
+  ADD KEY `ID_Staff` (`ID_Staff`);
+
+--
+-- Indexes for table `staff`
 --
 ALTER TABLE `staff`
   ADD PRIMARY KEY (`ID_Staff`),
   ADD KEY `ID_Dept` (`ID_Dept`);
 
 --
--- AUTO_INCREMENT cho các bảng đã đổ
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT cho bảng `dept`
+-- AUTO_INCREMENT for table `dept`
 --
 ALTER TABLE `dept`
   MODIFY `ID_Dept` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT cho bảng `img_staff`
+-- AUTO_INCREMENT for table `img_staff`
 --
 ALTER TABLE `img_staff`
   MODIFY `ID_ImgStaff` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
--- AUTO_INCREMENT cho bảng `patient`
+-- AUTO_INCREMENT for table `patient`
 --
 ALTER TABLE `patient`
   MODIFY `ID_Patient` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT cho bảng `staff`
+-- AUTO_INCREMENT for table `staff`
 --
 ALTER TABLE `staff`
   MODIFY `ID_Staff` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- Các ràng buộc cho các bảng đã đổ
+-- Constraints for dumped tables
 --
 
 --
--- Các ràng buộc cho bảng `img_staff`
+-- Constraints for table `img_staff`
 --
 ALTER TABLE `img_staff`
   ADD CONSTRAINT `img_staff_ibfk_1` FOREIGN KEY (`ID_Staff`) REFERENCES `staff` (`ID_Staff`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Các ràng buộc cho bảng `staff`
+-- Constraints for table `room`
+--
+ALTER TABLE `room`
+  ADD CONSTRAINT `room_ibfk_1` FOREIGN KEY (`ID_Dept`) REFERENCES `dept` (`ID_Dept`);
+
+--
+-- Constraints for table `schedule`
+--
+ALTER TABLE `schedule`
+  ADD CONSTRAINT `schedule_ibfk_1` FOREIGN KEY (`ID_Room`) REFERENCES `room` (`ID_Room`),
+  ADD CONSTRAINT `schedule_ibfk_2` FOREIGN KEY (`ID_Staff`) REFERENCES `staff` (`ID_Staff`);
+
+--
+-- Constraints for table `staff`
 --
 ALTER TABLE `staff`
   ADD CONSTRAINT `staff_ibfk_1` FOREIGN KEY (`ID_Dept`) REFERENCES `dept` (`ID_Dept`);
