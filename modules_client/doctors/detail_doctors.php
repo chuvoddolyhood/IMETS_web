@@ -112,14 +112,48 @@
                     <td><?php echo $rows_get_schedule['Session']; ?></td>
                     <td><?php echo $rows_get_schedule['Name_Room']; ?></td>
                     <td><?php echo $rows_get_schedule['Name_Dept']; ?></td>
-                    <td><a href="" onclick="return confirm_Booking()">Đặt</a></td>
+                    <td><a href="./modules_client/doctors/appointment.php?
+						date=<?php echo date('d/m/Y', strtotime($rows_get_schedule['DateWorking'])); ?>&
+						session=<?php echo $rows_get_schedule['Session']; ?>&
+						room=<?php echo $rows_get_schedule['Name_Room']; ?>&
+						dept=<?php echo $rows_get_schedule['Name_Dept']; ?>"
+					onclick="return confirm_Booking()">Đặt</a></td>
                 </tr>
                 <?php } ?>
             </tbody>
         </table>
     </div>
 
-	<iframe allow="microphone;" width="350" height="430" src="https://console.dialogflow.com/api-client/demo/embedded/b2bf0f49-fe97-4245-92d8-70f39718bc37"></iframe>
+	<div class="doctorList">
+		<?php
+			$sql_get_schedule = "SELECT st.Name,s.DateWorking,s.Session,r.Name_Room,d.Name_Dept
+			FROM schedule s JOIN staff st ON s.ID_Staff=st.ID_Staff
+				JOIN room r ON r.ID_Room=s.ID_Room
+				JOIN dept d ON d.ID_Dept=r.ID_Dept
+			WHERE st.ID_Staff=$ID_Staff";
+			$query_get_schedule = mysqli_query($conn, $sql_get_schedule);
+		?>
+
+		<div class="container-card">
+
+			<?php
+			while($rows_get_schedule = mysqli_fetch_array($query_get_schedule)){
+			?>
+
+				<div class="card">
+					<div class="card-image">
+						<img src="#">
+					</div>
+					<h2><?php echo date('d/m/Y', strtotime($rows_get_schedule['DateWorking'])); ?></h2>
+					<h3><?php echo $rows_get_schedule['Session']; ?></h3>
+					<h3><?php echo $rows_get_schedule['Name_Room']; ?></h3>
+					<h3><?php echo $rows_get_schedule['Name_Dept']; ?></h3>
+					<a href="">Đặt lịch</a>
+				</div>
+			<?php } ?>
+		</div>
+	</div>
+
 	
 	<div class="doctorList">
 		<?php
@@ -174,9 +208,32 @@
 		</div>
 	</div>
 
-	<a href=""><i class="fa fa-stethoscope"></i></a>
 
+	<div id="chatbot">
+		<div id="chatbot-icon">
+			<i class="fas fa-star chatbot-icon"></i>
+		</div>
+		
+		<div id="chatbot-box">
+			<iframe allow="microphone;" width="350" height="430" src="https://console.dialogflow.com/api-client/demo/embedded/b2bf0f49-fe97-4245-92d8-70f39718bc37"></iframe>
+		</div>
+		
+	</div>
+
+	<!-- ======================Điều chỉnh CSS list_doctor.php====================== -->
     <script type="text/javascript">
+		const chatbot = document.getElementById('chatbot');
+		const chatbot_icon = document.getElementById('chatbot-icon');
+		const chatbot_box = document.getElementById('chatbot-box');
+
+		if(chatbot_icon){
+			chatbot_icon.addEventListener('click', ()=>{
+				chatbot_box.classList.add('chatbot_active');
+				chatbot_icon.classList.add('chatbot_unactive');
+			})
+		}
+
+
 		let thumbnails = document.getElementsByClassName('thumbnail_detail')
 
 		let activeImages = document.getElementsByClassName('active')
