@@ -9,6 +9,10 @@
     $query = mysqli_query($conn, $sql);
 	$rows = mysqli_fetch_array($query);
 	$dept_name = $rows["Name_Dept"];
+
+	if(!isset($_SESSION['login_client'])){
+        header('location: ./modules_client/login-signin/loginForm.php');
+    }
 ?>
 
 <section class="doctorDetail">
@@ -85,44 +89,6 @@
 			<span>Đến bệnh viện vào đúng thời gian và địa điểm</span>
 		</p>
 	</div>
-    <div style="overflow-x: auto;">
-        <table>
-            <thead>
-                <?php
-                    $sql_get_schedule = "SELECT st.Name,s.DateWorking,s.Session,r.Name_Room,d.Name_Dept
-                            FROM schedule s JOIN staff st ON s.ID_Staff=st.ID_Staff
-                                JOIN room r ON r.ID_Room=s.ID_Room
-                                JOIN dept d ON d.ID_Dept=r.ID_Dept
-                            WHERE st.ID_Staff=$ID_Staff";
-                    $query_get_schedule = mysqli_query($conn, $sql_get_schedule);
-                    // $rows_get_schedule = mysqli_fetch_array($query_get_schedule);
-                ?>
-                <tr>
-                    <th>Ngày</th>
-                    <th>Buổi</th>
-                    <th>Phòng</th>
-                    <th>Khoa</th>
-                    <th>Đặt lịch</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php while($rows_get_schedule = mysqli_fetch_array($query_get_schedule)){ ?>
-                <tr>
-                    <td><?php echo date('d/m/Y', strtotime($rows_get_schedule['DateWorking'])); ?></td>
-                    <td><?php echo $rows_get_schedule['Session']; ?></td>
-                    <td><?php echo $rows_get_schedule['Name_Room']; ?></td>
-                    <td><?php echo $rows_get_schedule['Name_Dept']; ?></td>
-                    <td><a href="./modules_client/doctors/appointment.php?
-						date=<?php echo date('d/m/Y', strtotime($rows_get_schedule['DateWorking'])); ?>&
-						session=<?php echo $rows_get_schedule['Session']; ?>&
-						room=<?php echo $rows_get_schedule['Name_Room']; ?>&
-						dept=<?php echo $rows_get_schedule['Name_Dept']; ?>"
-					onclick="return confirm_Booking()">Đặt</a></td>
-                </tr>
-                <?php } ?>
-            </tbody>
-        </table>
-    </div>
 
 	<div class="doctorList">
 		<?php
@@ -148,7 +114,15 @@
 					<h3><?php echo $rows_get_schedule['Session']; ?></h3>
 					<h3><?php echo $rows_get_schedule['Name_Room']; ?></h3>
 					<h3><?php echo $rows_get_schedule['Name_Dept']; ?></h3>
-					<a href="">Đặt lịch</a>
+					<a href="./modules_client/doctors/appointment.php?
+						id_Patient=<?php echo $_SESSION['login_client']; ?>&
+						id_Staff=<?php echo $ID_Staff; ?>&
+						date=<?php echo date('d/m/Y', strtotime($rows_get_schedule['DateWorking'])); ?>&
+						session=<?php echo $rows_get_schedule['Session']; ?>&
+						room=<?php echo $rows_get_schedule['Name_Room']; ?>&
+						dept=<?php echo $rows_get_schedule['Name_Dept']; ?>" 
+						onclick="return confirm_Booking()">
+						Đặt lịch</a>
 				</div>
 			<?php } ?>
 		</div>
