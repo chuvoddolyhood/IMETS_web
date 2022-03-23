@@ -26,30 +26,26 @@
         </div>
         <h2>Quản lý bệnh viện</h2>
         <div class="sidebar__link">
-            <i class="fa fa-user-secret" aria-hidden="true"></i>
+            <i class="fas fa-address-card" aria-hidden="true"></i>
             <a href="./index.php?page_layout=staff_management">Quản lý thông tin nhân viên</a>
         </div>
         <div class="sidebar__link">
-            <i class="fa fa-building-o"></i>
+            <i class="fas fa-user-md"></i>
             <a href="#">Điều phối bác sĩ</a>
         </div>
         <div class="sidebar__link">
-            <i class="fa fa-wrench"></i>
+            <i class="fas fa-hospital"></i>
             <a href="#">Quản lý phòng làm việc</a>
         </div>
         <h2>Quản lý bệnh</h2>
         <div class="sidebar__link">
-            <i class="fa fa-question"></i>
+            <i class="fas fa-address-book"></i>
             <a href="#">Quản lý thông tin bệnh nhân</a>
         </div>
         <h2>Thống kê</h2>
         <div class="sidebar__link">
-            <i class="fa fa-money"></i>
-            <a href="#">Số liệu kinh doanh</a>
-        </div>
-        <div class="sidebar__logout">
-            <i class="fa fa-power-off"></i>
-            <a href="./index.php?logout=logoutadmin">Log out</a>
+            <i class="fas fa-chart-pie"></i>
+            <a href="./index.php?page_layout=statistics_management">Số liệu kinh doanh</a>
         </div>
     </div>
 </div>

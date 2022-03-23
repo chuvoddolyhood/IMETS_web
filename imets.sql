@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 20, 2022 at 10:22 AM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 7.3.31
+-- Generation Time: Mar 23, 2022 at 03:16 PM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 7.4.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -31,12 +31,32 @@ CREATE TABLE `appointment` (
   `ID_Appointment` int(11) NOT NULL,
   `ID_Staff` int(11) NOT NULL,
   `ID_Patient` int(11) NOT NULL,
-  `Date_Booking` date NOT NULL,
-  `Date_Checkup` date NOT NULL,
-  `Date_ReCheckup` date NOT NULL,
-  `ID_PaymentMethod` int(11) NOT NULL,
-  `StatusAppointment` varchar(100) NOT NULL
+  `Date_Booking` datetime NOT NULL,
+  `Date_Checkup` datetime NOT NULL,
+  `Date_ReCheckup` date DEFAULT NULL,
+  `ID_PaymentMethod` int(11) DEFAULT NULL,
+  `StatusAppointment` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `appointment`
+--
+
+INSERT INTO `appointment` (`ID_Appointment`, `ID_Staff`, `ID_Patient`, `Date_Booking`, `Date_Checkup`, `Date_ReCheckup`, `ID_PaymentMethod`, `StatusAppointment`) VALUES
+(1, 4, 2, '2022-12-12 00:00:00', '2022-03-19 13:04:35', NULL, NULL, NULL),
+(2, 4, 2, '2022-12-12 00:00:00', '2022-03-19 14:01:35', NULL, NULL, NULL),
+(3, 4, 2, '2022-03-21 10:25:20', '2022-03-19 15:01:35', NULL, NULL, NULL),
+(4, 4, 2, '2022-03-21 10:36:28', '2022-03-19 15:10:53', NULL, NULL, NULL),
+(5, 4, 2, '2022-03-21 15:07:23', '2022-03-19 15:59:59', NULL, NULL, NULL),
+(6, 4, 2, '2022-03-21 15:07:23', '2022-03-19 16:10:59', NULL, NULL, NULL),
+(7, 4, 2, '2022-03-21 15:07:23', '2022-03-19 16:27:59', NULL, NULL, NULL),
+(8, 4, 2, '2022-03-21 15:07:23', '2022-03-19 16:33:59', NULL, NULL, NULL),
+(9, 4, 2, '2022-03-21 19:39:49', '0000-00-00 00:00:00', NULL, NULL, NULL),
+(11, 4, 2, '2022-03-21 19:42:46', '2022-03-21 18:30:00', NULL, NULL, NULL),
+(12, 4, 2, '2022-03-21 20:16:04', '0000-00-00 00:00:00', NULL, NULL, NULL),
+(13, 4, 2, '2022-03-21 20:16:31', '0000-00-00 00:00:00', NULL, NULL, NULL),
+(14, 4, 2, '2022-03-21 20:16:35', '2022-03-21 19:00:00', NULL, NULL, NULL),
+(15, 4, 2, '2022-03-21 20:16:57', '2022-03-21 19:30:00', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -98,7 +118,7 @@ INSERT INTO `img_staff` (`ID_ImgStaff`, `ID_Staff`, `imgName`) VALUES
 (22, 8, 'ahn_3.jpg'),
 (23, 8, 'ahn_2.jpg'),
 (24, 8, 'ahn_1.jpg'),
-(25, 9, 'img_3.jpg');
+(25, 9, 'img3.jpg');
 
 -- --------------------------------------------------------
 
@@ -172,7 +192,8 @@ INSERT INTO `room` (`ID_Room`, `Name_Room`, `ID_Dept`) VALUES
 
 CREATE TABLE `schedule` (
   `DateWorking` date NOT NULL,
-  `Session` varchar(50) NOT NULL,
+  `TimeStart` time NOT NULL,
+  `Session` varchar(15) NOT NULL,
   `ID_Staff` int(11) NOT NULL,
   `ID_Room` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -181,9 +202,14 @@ CREATE TABLE `schedule` (
 -- Dumping data for table `schedule`
 --
 
-INSERT INTO `schedule` (`DateWorking`, `Session`, `ID_Staff`, `ID_Room`) VALUES
-('2022-03-19', 'Sáng', 4, 71),
-('2022-03-19', 'Chiều', 4, 72);
+INSERT INTO `schedule` (`DateWorking`, `TimeStart`, `Session`, `ID_Staff`, `ID_Room`) VALUES
+('2022-03-21', '07:00:00', 'Sáng', 4, 71),
+('2022-03-21', '18:30:00', 'Ngoài giờ', 4, 71),
+('2022-03-21', '19:00:00', 'Ngoài giờ', 4, 71),
+('2022-03-21', '19:30:00', 'Ngoài giờ', 4, 71),
+('2022-03-21', '20:00:00', 'Ngoài giờ', 4, 71),
+('2022-03-21', '20:30:00', 'Ngoài giờ', 4, 71),
+('2022-03-21', '13:00:00', 'Chiều', 4, 72);
 
 -- --------------------------------------------------------
 
@@ -227,6 +253,7 @@ INSERT INTO `staff` (`ID_Staff`, `Name`, `DOB`, `Sex`, `Address`, `CMND`, `Phone
 -- Indexes for table `appointment`
 --
 ALTER TABLE `appointment`
+  ADD PRIMARY KEY (`ID_Appointment`),
   ADD KEY `ID_Patient` (`ID_Patient`),
   ADD KEY `ID_PaymentMethod` (`ID_PaymentMethod`),
   ADD KEY `ID_Staff` (`ID_Staff`);
@@ -267,6 +294,7 @@ ALTER TABLE `room`
 -- Indexes for table `schedule`
 --
 ALTER TABLE `schedule`
+  ADD PRIMARY KEY (`DateWorking`,`TimeStart`,`Session`,`ID_Staff`),
   ADD KEY `ID_Room` (`ID_Room`),
   ADD KEY `ID_Staff` (`ID_Staff`);
 
@@ -280,6 +308,12 @@ ALTER TABLE `staff`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `appointment`
+--
+ALTER TABLE `appointment`
+  MODIFY `ID_Appointment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `dept`

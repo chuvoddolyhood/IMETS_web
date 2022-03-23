@@ -17,6 +17,10 @@
                 include './modules_admin/staff_management/modify_staff.php';
                 break;
 
+            case 'statistics_management':
+                include './modules_admin/statistics_management/statistics.php';
+                break;
+
             // case 'client_management':
             //     include './modules_admin/client_management/list.php';
             //     break;
