@@ -50,7 +50,7 @@
 
 /* ================================= Detail doctor ================================= */
 .doctorDetail{
-    margin: 15vh 0;
+    padding: 15vh 0;
 }
 
 #content-wrapper{
@@ -233,3 +233,21 @@
     }
 }
 
+/* ======================= Appontment ======================= */
+.doctorList table, th, td {
+    border: 0.5px solid;
+    width: 10vw;
+}
+
+.doctorList table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.doctorList tr {
+    height: 5vh;
+}
+
+.doctorList table{
+    background-color: rgb(255, 255, 255);
+}

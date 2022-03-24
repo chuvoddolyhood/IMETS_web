@@ -92,10 +92,9 @@
 
 	<div class="doctorList">
 		<?php
-			$sql_get_schedule = "SELECT st.Name,s.DateWorking,s.Session,r.Name_Room,d.Name_Dept
+			$sql_get_schedule = "SELECT DISTINCT st.Name,s.DateWorking,d.Name_Dept
 			FROM schedule s JOIN staff st ON s.ID_Staff=st.ID_Staff
-				JOIN room r ON r.ID_Room=s.ID_Room
-				JOIN dept d ON d.ID_Dept=r.ID_Dept
+				JOIN dept d ON d.ID_Dept=st.ID_Dept
 			WHERE st.ID_Staff=$ID_Staff";
 			$query_get_schedule = mysqli_query($conn, $sql_get_schedule);
 		?>
@@ -110,17 +109,9 @@
 					<div class="card-image">
 						<img src="#">
 					</div>
-					<h2><?php echo date('d/m/Y', strtotime($rows_get_schedule['DateWorking'])); ?></h2>
-					<h3><?php echo $rows_get_schedule['Session']; ?></h3>
-					<h3><?php echo $rows_get_schedule['Name_Room']; ?></h3>
+					<h2><?php echo date('d-m-Y', strtotime($rows_get_schedule['DateWorking'])); ?></h2>
 					<h3><?php echo $rows_get_schedule['Name_Dept']; ?></h3>
-					<a href="./modules_client/doctors/appointment.php?
-						id_Patient=<?php echo $_SESSION['login_client']; ?>&
-						id_Staff=<?php echo $ID_Staff; ?>&
-						date=<?php echo date('d/m/Y', strtotime($rows_get_schedule['DateWorking'])); ?>&
-						session=<?php echo $rows_get_schedule['Session']; ?>&
-						room=<?php echo $rows_get_schedule['Name_Room']; ?>&
-						dept=<?php echo $rows_get_schedule['Name_Dept']; ?>" 
+					<a href="./index.php?page_layout=clipboard"
 						onclick="return confirm_Booking()">
 						Đặt lịch</a>
 				</div>

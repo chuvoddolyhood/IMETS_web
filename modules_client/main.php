@@ -5,24 +5,18 @@
             case 'doctors': //danh sách bac si
                 include './modules_client/doctors/list_doctors.php';
                 break;
-            case 'detail_doctors': //chi tiết từng hàng hóa
+            case 'detail_doctors': 
                 include './modules_client/doctors/detail_doctors.php';
                 break;
-            case 'search': //Tìm kiếm sản phẩm
-                include './modules_client/product/search.php';
-                break;  
-            case 'profile': //Xem thông tin cơ bản của khách hàng
+            case 'clipboard':
+                include './modules_client/doctors/clipboard.php';
+                break;
+            case 'profile':
                 include './modules_client/profile/profile.php';
                 break;
-            case 'order': //Xem đơn mua hàng và lịch sử mua
-                include './modules_client/order/order.php';
-                break;
-            case 'cart': //Xem đơn mua hàng và lịch sử mua
-                include './modules_client/cart/cart.php';
-                break;    
+            
         }
     }else {
         include './modules_client/main/homepage.php';
-        // include './modules_client/main/product_list.php';
     }
 ?>
