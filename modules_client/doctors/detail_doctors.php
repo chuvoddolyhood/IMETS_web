@@ -111,7 +111,8 @@
 					</div>
 					<h2><?php echo date('d-m-Y', strtotime($rows_get_schedule['DateWorking'])); ?></h2>
 					<h3><?php echo $rows_get_schedule['Name_Dept']; ?></h3>
-					<a href="./index.php?page_layout=clipboard"
+					<a href="./index.php?page_layout=clipboard&
+						ID_Staff=<?php echo $ID_Staff ?>&date=<?php echo $rows_get_schedule['DateWorking'] ?>"
 						onclick="return confirm_Booking()">
 						Đặt lịch</a>
 				</div>
