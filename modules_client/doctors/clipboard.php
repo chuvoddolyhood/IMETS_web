@@ -162,8 +162,10 @@
         ajax.onreadystatechange = function(){
             if(this.readyState == 4 && this.status == 200){
                 var response = this.responseText;
-                alert(response);
-                // window.location.href='./index.php?page_layout=cart';
+                // alert(response);
+                if(response=='true'){
+                    window.location.href='./index.php?page_layout=booking';
+                }
             }
         }
     }

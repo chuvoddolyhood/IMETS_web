@@ -32,6 +32,11 @@
     $sql_add_appointment = "INSERT INTO appointment(`ID_Staff`, `ID_Patient`, `Date_Booking`, `Date_Checkup`) 
         VALUES ($ID_Staff,$ID_Patient,'$today','$ID_Schedule')";
 	$query_add_appointment = mysqli_query($conn, $sql_add_appointment);
-    echo 'thanh cong';
 
+    if($query_add_appointment){
+        echo 'true';
+    } else {
+        echo 'false';
+    }
+    
 ?>

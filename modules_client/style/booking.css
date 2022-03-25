@@ -1,0 +1,52 @@
+.container-appointment{
+    justify-content: center;
+    align-items: center;
+    /* width: 90vw; */
+    margin-top: 7rem;
+}
+
+.content-appointment{
+    background-color: #ffffff;
+    padding: 3vh;
+    box-shadow: 15px 0 35px rgba(0, 0, 0, 0.1),
+    0 -15px 35px rgba(0, 0, 0, 0.1),
+    0 15px 35px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+}
+
+.content-appointment h1{
+    text-align: center;
+    margin-bottom: 3vh;
+}
+
+.content-appointment table{
+    background-color: #efefef;
+    width: 100%;
+    padding: 3vh;
+    /* border-radius: 20px; */
+}
+
+.content-appointment .image{
+    width: 10vw;
+    padding-left: 2vw;
+}
+
+.content-appointment tr td img{
+    width: 60%;
+}
+
+
+.colspan_titleProduct{
+    width: 50%;
+}
+
+.content-appointment table td{
+    text-align: center;
+    padding: 1vh;
+}
+
+.btn_delete_product{
+    color: red;
+    cursor: pointer;
+    text-decoration: none;
+}

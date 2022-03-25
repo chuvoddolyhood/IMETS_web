@@ -107,7 +107,7 @@
 
 				<div class="card">
 					<div class="card-image">
-						<img src="#">
+						<img src="./img/images/img1.jpg">
 					</div>
 					<h2><?php echo date('d-m-Y', strtotime($rows_get_schedule['DateWorking'])); ?></h2>
 					<h3><?php echo $rows_get_schedule['Name_Dept']; ?></h3>

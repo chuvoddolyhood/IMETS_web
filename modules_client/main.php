@@ -11,6 +11,9 @@
             case 'clipboard':
                 include './modules_client/doctors/clipboard.php';
                 break;
+            case 'booking':
+                include './modules_client/booking/booking.php';
+                break;
             case 'profile':
                 include './modules_client/profile/profile.php';
                 break;
