@@ -50,3 +50,45 @@
     cursor: pointer;
     text-decoration: none;
 }
+
+
+/* .modal-booking-bg{
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s;
+    z-index: 100;
+  }
+  
+  .bg-booking-active{
+    visibility: visible;
+    opacity: 1;
+  }
+  
+  .modal-booking{
+    position: relative;
+    background-color: white;
+    width: 90%;
+    height: 30%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .modal-booking-close{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-weight: bold;
+    cursor: pointer;
+  } */
+

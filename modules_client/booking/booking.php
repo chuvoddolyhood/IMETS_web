@@ -14,7 +14,8 @@
             JOIN room r ON r.ID_Room=sh.ID_Room
             JOIN dept d ON d.ID_Dept=s.ID_Dept
             -- JOIN paymentmethod ON appointment.ID_PaymentMethod=paymentmethod.ID_PaymentMethod
-        WHERE p.UserName='$username'";
+        WHERE p.UserName='$username'
+        ORDER BY ID_Appointment DESC";
     $query_appointment = mysqli_query($conn, $sql_appointment);
     $rows_appointment = mysqli_fetch_array($query_appointment);
 ?>
@@ -37,7 +38,7 @@
                         <th>Phương thức thanh toán</th>
                         <th>Số tiền</th>
                         <th>Trạng thái</th>
-                        <th>Xem chi tiết</th>
+                        <th>Xem toa thuốc</th>
                     </tr>
                     <?php
                         $STT = 0;
@@ -56,7 +57,7 @@
                         <td> # </td>
                         <td> # </td>
                         <td>
-                            <a class="btn_delete_product" href="./modules_client/cart/delete_product.php?MSHH=<?php echo $row_order['MSHH']?>&username=<?php echo $username ?>"> Xem thêm</a>
+                            <a class="button_edit_product" href="#">Xem</a>
                         </td>
                     </tr>
                     <?php } ?>

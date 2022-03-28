@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 25, 2022 at 02:59 PM
+-- Generation Time: Mar 28, 2022 at 03:04 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -34,6 +34,7 @@ CREATE TABLE `appointment` (
   `Date_Booking` datetime NOT NULL,
   `Date_Checkup` int(11) NOT NULL,
   `Date_ReCheckup` date DEFAULT NULL,
+  `ID_Prescription` int(11) DEFAULT NULL,
   `ID_PaymentMethod` int(11) DEFAULT NULL,
   `StatusAppointment` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -42,24 +43,16 @@ CREATE TABLE `appointment` (
 -- Dumping data for table `appointment`
 --
 
-INSERT INTO `appointment` (`ID_Appointment`, `ID_Staff`, `ID_Patient`, `Date_Booking`, `Date_Checkup`, `Date_ReCheckup`, `ID_PaymentMethod`, `StatusAppointment`) VALUES
-(1, 4, 2, '2022-12-12 00:00:00', 1, NULL, NULL, NULL),
-(2, 4, 2, '2022-12-12 00:00:00', 2, NULL, NULL, NULL),
-(3, 4, 2, '2022-03-21 10:25:20', 3, NULL, NULL, NULL),
-(4, 4, 2, '2022-03-21 10:36:28', 4, NULL, NULL, NULL),
-(5, 4, 2, '2022-03-21 15:07:23', 1, NULL, NULL, NULL),
-(6, 4, 2, '2022-03-21 15:07:23', 3, NULL, NULL, NULL),
-(7, 4, 2, '2022-03-21 15:07:23', 4, NULL, NULL, NULL),
-(8, 4, 2, '2022-03-21 15:07:23', 5, NULL, NULL, NULL),
-(9, 4, 2, '2022-03-21 19:39:49', 2, NULL, NULL, NULL),
-(11, 4, 2, '2022-03-21 19:42:46', 1, NULL, NULL, NULL),
-(12, 4, 2, '2022-03-21 20:16:04', 2, NULL, NULL, NULL),
-(13, 4, 2, '2022-03-21 20:16:31', 3, NULL, NULL, NULL),
-(14, 4, 2, '2022-03-21 20:16:35', 4, NULL, NULL, NULL),
-(15, 4, 2, '2022-03-21 20:16:57', 5, NULL, NULL, NULL),
-(16, 4, 2, '2022-03-25 20:51:45', 5, NULL, NULL, NULL),
-(17, 4, 2, '2022-03-25 20:52:21', 6, NULL, NULL, NULL),
-(18, 4, 2, '2022-03-25 20:57:57', 7, NULL, NULL, NULL);
+INSERT INTO `appointment` (`ID_Appointment`, `ID_Staff`, `ID_Patient`, `Date_Booking`, `Date_Checkup`, `Date_ReCheckup`, `ID_Prescription`, `ID_PaymentMethod`, `StatusAppointment`) VALUES
+(16, 4, 2, '2022-03-25 20:51:45', 5, NULL, NULL, NULL, NULL),
+(17, 4, 2, '2022-03-25 20:52:21', 6, NULL, NULL, NULL, NULL),
+(18, 4, 2, '2022-03-25 20:57:57', 7, NULL, NULL, NULL, NULL),
+(19, 4, 2, '2022-03-25 23:08:16', 3, NULL, NULL, NULL, NULL),
+(20, 4, 2, '2022-03-25 23:08:31', 4, NULL, NULL, NULL, NULL),
+(21, 4, 2, '2022-03-25 23:10:39', 5, NULL, NULL, NULL, NULL),
+(22, 4, 2, '2022-03-26 09:30:46', 7, NULL, NULL, NULL, NULL),
+(23, 4, 2, '2022-03-26 09:47:42', 3, NULL, NULL, NULL, NULL),
+(24, 4, 2, '2022-03-26 10:34:50', 3, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -88,6 +81,47 @@ INSERT INTO `dept` (`ID_Dept`, `Name_Dept`) VALUES
 (8, 'Khoa Tim mạch'),
 (9, 'Khoa Dược'),
 (10, 'Khoa Nhiễm');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `diagnose`
+--
+
+CREATE TABLE `diagnose` (
+  `ID_Diagnose` int(11) NOT NULL,
+  `ID_Disease` int(11) NOT NULL,
+  `ID_Appointment` int(11) NOT NULL,
+  `ContentDiagnose` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `disease`
+--
+
+CREATE TABLE `disease` (
+  `ID_Disease` int(11) NOT NULL,
+  `TitleDisease` varchar(100) NOT NULL,
+  `ContentDisease` varchar(100) NOT NULL,
+  `Symptom` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `evaluation`
+--
+
+CREATE TABLE `evaluation` (
+  `ID_Evaluation` int(11) NOT NULL,
+  `PatientStart` float NOT NULL,
+  `DoctorStar` float NOT NULL,
+  `PatientComment` text NOT NULL,
+  `DoctorComment` text NOT NULL,
+  `ID_Appointment` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -126,6 +160,38 @@ INSERT INTO `img_staff` (`ID_ImgStaff`, `ID_Staff`, `imgName`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `medical`
+--
+
+CREATE TABLE `medical` (
+  `ID_Medicine` int(11) NOT NULL,
+  `TitleMedicine` varchar(100) NOT NULL,
+  `Ingredients` varchar(100) NOT NULL,
+  `MedicineContent` varchar(100) NOT NULL,
+  `PrescriptionDrug` varchar(100) NOT NULL,
+  `ContraindicationsDrug` varchar(100) NOT NULL,
+  `Production` varchar(100) NOT NULL,
+  `UnitPrice` int(11) NOT NULL,
+  `Type` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `medicinesfortreatment`
+--
+
+CREATE TABLE `medicinesfortreatment` (
+  `ID_Prescription` int(11) NOT NULL,
+  `ID_Medicine` int(11) NOT NULL,
+  `Amount` int(11) NOT NULL,
+  `TotalMoney` int(11) NOT NULL,
+  `DescriptionTreatment` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `patient`
 --
 
@@ -159,6 +225,21 @@ INSERT INTO `patient` (`ID_Patient`, `Name`, `DOB`, `Sex`, `Address`, `CMND`, `P
 CREATE TABLE `paymentmethod` (
   `ID_PaymentMethod` int(11) NOT NULL,
   `Title_PaymentMethod` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `presciption`
+--
+
+CREATE TABLE `presciption` (
+  `ID_Prescription` int(11) NOT NULL,
+  `Description` text NOT NULL,
+  `TotalAmount` int(11) NOT NULL,
+  `assuranceHealth` float NOT NULL,
+  `PatientPays` int(11) NOT NULL,
+  `expDate` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -261,7 +342,8 @@ ALTER TABLE `appointment`
   ADD KEY `ID_Patient` (`ID_Patient`),
   ADD KEY `ID_PaymentMethod` (`ID_PaymentMethod`),
   ADD KEY `ID_Staff` (`ID_Staff`),
-  ADD KEY `Date_Checkup` (`Date_Checkup`);
+  ADD KEY `Date_Checkup` (`Date_Checkup`),
+  ADD KEY `ID_Prescription` (`ID_Prescription`);
 
 --
 -- Indexes for table `dept`
@@ -270,11 +352,45 @@ ALTER TABLE `dept`
   ADD PRIMARY KEY (`ID_Dept`);
 
 --
+-- Indexes for table `diagnose`
+--
+ALTER TABLE `diagnose`
+  ADD PRIMARY KEY (`ID_Diagnose`),
+  ADD KEY `ID_Appointment` (`ID_Appointment`),
+  ADD KEY `ID_Disease` (`ID_Disease`);
+
+--
+-- Indexes for table `disease`
+--
+ALTER TABLE `disease`
+  ADD PRIMARY KEY (`ID_Disease`);
+
+--
+-- Indexes for table `evaluation`
+--
+ALTER TABLE `evaluation`
+  ADD PRIMARY KEY (`ID_Evaluation`),
+  ADD KEY `ID_Appointment` (`ID_Appointment`);
+
+--
 -- Indexes for table `img_staff`
 --
 ALTER TABLE `img_staff`
   ADD PRIMARY KEY (`ID_ImgStaff`),
   ADD KEY `img_staff_ibfk_1` (`ID_Staff`);
+
+--
+-- Indexes for table `medical`
+--
+ALTER TABLE `medical`
+  ADD PRIMARY KEY (`ID_Medicine`);
+
+--
+-- Indexes for table `medicinesfortreatment`
+--
+ALTER TABLE `medicinesfortreatment`
+  ADD KEY `ID_Medicine` (`ID_Medicine`),
+  ADD KEY `ID_Prescription` (`ID_Prescription`);
 
 --
 -- Indexes for table `patient`
@@ -287,6 +403,12 @@ ALTER TABLE `patient`
 --
 ALTER TABLE `paymentmethod`
   ADD PRIMARY KEY (`ID_PaymentMethod`);
+
+--
+-- Indexes for table `presciption`
+--
+ALTER TABLE `presciption`
+  ADD PRIMARY KEY (`ID_Prescription`);
 
 --
 -- Indexes for table `room`
@@ -318,7 +440,7 @@ ALTER TABLE `staff`
 -- AUTO_INCREMENT for table `appointment`
 --
 ALTER TABLE `appointment`
-  MODIFY `ID_Appointment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `ID_Appointment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `dept`
@@ -327,10 +449,34 @@ ALTER TABLE `dept`
   MODIFY `ID_Dept` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
+-- AUTO_INCREMENT for table `diagnose`
+--
+ALTER TABLE `diagnose`
+  MODIFY `ID_Diagnose` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `disease`
+--
+ALTER TABLE `disease`
+  MODIFY `ID_Disease` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `evaluation`
+--
+ALTER TABLE `evaluation`
+  MODIFY `ID_Evaluation` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `img_staff`
 --
 ALTER TABLE `img_staff`
   MODIFY `ID_ImgStaff` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
+--
+-- AUTO_INCREMENT for table `medical`
+--
+ALTER TABLE `medical`
+  MODIFY `ID_Medicine` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `patient`
@@ -343,6 +489,12 @@ ALTER TABLE `patient`
 --
 ALTER TABLE `paymentmethod`
   MODIFY `ID_PaymentMethod` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `presciption`
+--
+ALTER TABLE `presciption`
+  MODIFY `ID_Prescription` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `schedule`
@@ -367,13 +519,34 @@ ALTER TABLE `appointment`
   ADD CONSTRAINT `appointment_ibfk_1` FOREIGN KEY (`ID_Patient`) REFERENCES `patient` (`ID_Patient`),
   ADD CONSTRAINT `appointment_ibfk_2` FOREIGN KEY (`ID_PaymentMethod`) REFERENCES `paymentmethod` (`ID_PaymentMethod`),
   ADD CONSTRAINT `appointment_ibfk_3` FOREIGN KEY (`ID_Staff`) REFERENCES `staff` (`ID_Staff`),
-  ADD CONSTRAINT `appointment_ibfk_4` FOREIGN KEY (`Date_Checkup`) REFERENCES `schedule` (`ID_schedule`);
+  ADD CONSTRAINT `appointment_ibfk_4` FOREIGN KEY (`Date_Checkup`) REFERENCES `schedule` (`ID_schedule`),
+  ADD CONSTRAINT `appointment_ibfk_5` FOREIGN KEY (`ID_Prescription`) REFERENCES `presciption` (`ID_Prescription`);
+
+--
+-- Constraints for table `diagnose`
+--
+ALTER TABLE `diagnose`
+  ADD CONSTRAINT `diagnose_ibfk_1` FOREIGN KEY (`ID_Appointment`) REFERENCES `appointment` (`ID_Appointment`),
+  ADD CONSTRAINT `diagnose_ibfk_2` FOREIGN KEY (`ID_Disease`) REFERENCES `disease` (`ID_Disease`);
+
+--
+-- Constraints for table `evaluation`
+--
+ALTER TABLE `evaluation`
+  ADD CONSTRAINT `evaluation_ibfk_1` FOREIGN KEY (`ID_Appointment`) REFERENCES `appointment` (`ID_Appointment`);
 
 --
 -- Constraints for table `img_staff`
 --
 ALTER TABLE `img_staff`
   ADD CONSTRAINT `img_staff_ibfk_1` FOREIGN KEY (`ID_Staff`) REFERENCES `staff` (`ID_Staff`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `medicinesfortreatment`
+--
+ALTER TABLE `medicinesfortreatment`
+  ADD CONSTRAINT `medicinesfortreatment_ibfk_1` FOREIGN KEY (`ID_Medicine`) REFERENCES `medical` (`ID_Medicine`),
+  ADD CONSTRAINT `medicinesfortreatment_ibfk_2` FOREIGN KEY (`ID_Prescription`) REFERENCES `presciption` (`ID_Prescription`);
 
 --
 -- Constraints for table `room`

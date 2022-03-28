@@ -33,8 +33,8 @@
 		<?php
 			include './../config.php';
 			include './modules_staff/navigation.php';
-			include './modules_staff/content.php';
-			include './modules_staff/sidebar.php';
+			// include './modules_staff/content.php';
+			// include './modules_staff/sidebar.php';
 		?>
 	</div>
 	<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
