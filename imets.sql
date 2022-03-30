@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 30, 2022 at 11:09 AM
+-- Generation Time: Mar 30, 2022 at 05:33 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -44,15 +44,7 @@ CREATE TABLE `appointment` (
 --
 
 INSERT INTO `appointment` (`ID_Appointment`, `ID_Staff`, `ID_Patient`, `Date_Booking`, `Date_Checkup`, `Date_ReCheckup`, `ID_Prescription`, `ID_PaymentMethod`, `StatusAppointment`) VALUES
-(16, 4, 2, '2022-03-25 20:51:45', 5, NULL, NULL, NULL, NULL),
-(17, 4, 2, '2022-03-25 20:52:21', 6, NULL, NULL, NULL, NULL),
-(18, 4, 2, '2022-03-25 20:57:57', 7, NULL, NULL, NULL, NULL),
-(19, 4, 2, '2022-03-25 23:08:16', 3, NULL, NULL, NULL, NULL),
-(20, 4, 2, '2022-03-25 23:08:31', 4, NULL, NULL, NULL, NULL),
-(21, 4, 2, '2022-03-25 23:10:39', 5, NULL, NULL, NULL, NULL),
-(22, 4, 2, '2022-03-26 09:30:46', 7, NULL, NULL, NULL, NULL),
-(23, 4, 2, '2022-03-26 09:47:42', 3, NULL, NULL, NULL, NULL),
-(24, 4, 2, '2022-03-26 10:34:50', 3, NULL, NULL, NULL, NULL);
+(16, 4, 2, '2022-03-25 20:51:45', 38, NULL, NULL, NULL, 'Chờ khám');
 
 -- --------------------------------------------------------
 
