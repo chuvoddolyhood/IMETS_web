@@ -1,0 +1,171 @@
+@import "./../schedule/css/AdminLTE.min.css";
+@import "./../schedule/css/sweetalert.css";
+@import "./../schedule/css/fullcalendarxx.min.css";
+/* @import "./../schedule/css/bootstrap.min.css"; */
+/* @import "./../schedule/css/fullcalendar.css"; */
+
+#calendar {
+    max-width: 1300px;
+}
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
+
+.tooltip{
+    width:auto;
+    height:20%;
+    color:black;
+    background:#E5E5E5;
+    position:absolute;
+    z-index:10001;
+    border-radius:5px;
+    top: -300%;
+    left:50%;
+    padding:5px 10px;
+    margin-left:-60px;
+    bottom: 150%;
+    font-size: 15px;
+}
+
+.colors{
+    font-size: 14px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    background: white;
+    /*border-style: solid;
+    border-width: 3px;
+    border-color: #C6CFD6;
+    border-radius:20px; */
+    height:500px;
+    width: 15%;
+    margin: 0px 0px;
+    padding: 0px 0px;
+    margin-left: 1vw;
+}
+
+.colors-div{
+    font-size: 14px;
+    background: white;
+    /*border-style: solid;
+    border-width: 3px;
+    border-color: #C6CFD6;
+    border-radius:20px; */
+    padding: 5px;
+    /* margin-left: 2vw; */
+}
+
+.colors-header{
+    margin: 0 auto;
+    background-color:#379441;
+    width: 115%;
+    height: 9%;
+    padding: 10px;
+    border-style: solid;
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
+    border-color: transparent;
+    margin-left: -15px;
+}
+
+.color-scheme-text{
+    font-size: 14px;
+}
+
+.color-text{
+    font-size: 10px;
+}
+
+
+.fade{
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s;
+    z-index: 100;
+}
+
+.modal-active{
+    visibility: visible;
+    opacity: 1;
+}
+
+/* modal */
+.modal-bg-work{
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s;
+    z-index: 100;
+}
+  
+.bg-work-active{
+    visibility: visible;
+    opacity: 1;
+}
+  
+.modal{
+    position: relative;
+    background-color: white;
+    width: 50%;
+    height: 70%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+  
+.modal-close-work{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+
+.modal-bg-work-modify{
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s;
+    z-index: 100;
+}
+  
+.bg-work-modify-active{
+    visibility: visible;
+    opacity: 1;
+}
+  
+.modal-close-work-modify{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}

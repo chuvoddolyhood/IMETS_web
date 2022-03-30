@@ -3,7 +3,7 @@
 <head>
 	<title>Staff Page</title>
 	<link rel="stylesheet" href="./modules_staff/style/index_staff.css" />
-	<link rel="shortcut icon" type="image/png" href="./../modules_client/photo/logo.jfif" />
+	<link rel="shortcut icon" type="image/png" href="./../img/images/logo.jfif" />
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
@@ -33,8 +33,8 @@
 		<?php
 			include './../config.php';
 			include './modules_staff/navigation.php';
-			// include './modules_staff/content.php';
-			// include './modules_staff/sidebar.php';
+			include './modules_staff/content.php';
+			include './modules_staff/sidebar.php';
 		?>
 	</div>
 	<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>

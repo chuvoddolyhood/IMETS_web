@@ -12,7 +12,7 @@
     <div class="navbar__left">
         <!-- <a href="#">Subscribers</a>
         <a href="#">Video Management</a> -->
-        <a class="active_link" href="#">Admin</a>
+        <a class="active_link" href="#">Staff</a>
     </div>
     <div class="navbar__right">
         <a href="#">

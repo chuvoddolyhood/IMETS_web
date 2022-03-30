@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 28, 2022 at 03:04 PM
+-- Generation Time: Mar 30, 2022 at 11:09 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -276,25 +276,44 @@ INSERT INTO `room` (`ID_Room`, `Name_Room`, `ID_Dept`) VALUES
 
 CREATE TABLE `schedule` (
   `ID_schedule` int(11) NOT NULL,
-  `DateWorking` date NOT NULL,
-  `TimeStart` time NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `DateWorking` date DEFAULT NULL,
+  `TimeStart` time DEFAULT NULL,
   `Session` varchar(15) NOT NULL,
   `ID_Staff` int(11) NOT NULL,
-  `ID_Room` int(11) NOT NULL
+  `ID_Room` int(11) NOT NULL,
+  `t_stamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `start` datetime DEFAULT NULL,
+  `end` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `schedule`
 --
 
-INSERT INTO `schedule` (`ID_schedule`, `DateWorking`, `TimeStart`, `Session`, `ID_Staff`, `ID_Room`) VALUES
-(1, '2022-03-21', '07:00:00', 'Sáng', 4, 71),
-(2, '2022-03-21', '13:00:00', 'Chiều', 4, 72),
-(3, '2022-03-21', '18:30:00', 'Ngoài giờ', 4, 71),
-(4, '2022-03-21', '19:00:00', 'Ngoài giờ', 4, 71),
-(5, '2022-03-21', '19:30:00', 'Ngoài giờ', 4, 71),
-(6, '2022-03-21', '20:00:00', 'Ngoài giờ', 4, 71),
-(7, '2022-03-21', '20:30:00', 'Ngoài giờ', 4, 71);
+INSERT INTO `schedule` (`ID_schedule`, `title`, `DateWorking`, `TimeStart`, `Session`, `ID_Staff`, `ID_Room`, `t_stamp`, `start`, `end`) VALUES
+(38, 'Khám ngoại', NULL, NULL, 'Sáng', 4, 71, '2022-03-30 09:07:16', '2022-03-30 07:30:00', '2022-03-30 08:00:00'),
+(39, 'Khám ngoại', NULL, NULL, 'Sáng', 4, 71, '2022-03-30 09:07:16', '2022-03-30 08:00:00', '2022-03-30 08:30:00'),
+(40, 'Khám ngoại', NULL, NULL, 'Sáng', 4, 71, '2022-03-30 09:07:16', '2022-03-30 08:30:00', '2022-03-30 09:00:00'),
+(41, 'Khám ngoại', NULL, NULL, 'Sáng', 4, 71, '2022-03-30 09:07:16', '2022-03-30 09:00:00', '2022-03-30 09:30:00'),
+(42, 'Khám ngoại', NULL, NULL, 'Sáng', 4, 71, '2022-03-30 09:07:16', '2022-03-30 09:30:00', '2022-03-30 10:00:00'),
+(43, 'Khám ngoại', NULL, NULL, 'Sáng', 4, 71, '2022-03-30 09:07:16', '2022-03-30 10:00:00', '2022-03-30 10:30:00'),
+(44, 'Khám ngoại', NULL, NULL, 'Sáng', 4, 71, '2022-03-30 09:07:16', '2022-03-30 10:30:00', '2022-03-30 11:00:00'),
+(45, 'Khám ngoại', NULL, NULL, 'Sáng', 4, 71, '2022-03-30 09:07:16', '2022-03-30 11:00:00', '2022-03-30 11:30:00'),
+(46, 'Khám ngoại', NULL, NULL, 'Chiều', 4, 72, '2022-03-30 09:07:30', '2022-03-30 13:00:00', '2022-03-30 17:00:00'),
+(47, 'Khám ngoại', NULL, NULL, 'Chiều', 4, 72, '2022-03-30 09:07:30', '2022-03-30 13:30:00', '2022-03-30 17:30:00'),
+(48, 'Khám ngoại', NULL, NULL, 'Chiều', 4, 72, '2022-03-30 09:07:30', '2022-03-30 14:00:00', '2022-03-30 18:00:00'),
+(49, 'Khám ngoại', NULL, NULL, 'Chiều', 4, 72, '2022-03-30 09:07:30', '2022-03-30 14:30:00', '2022-03-30 18:30:00'),
+(50, 'Khám ngoại', NULL, NULL, 'Chiều', 4, 72, '2022-03-30 09:07:30', '2022-03-30 15:00:00', '2022-03-30 19:00:00'),
+(51, 'Khám ngoại', NULL, NULL, 'Chiều', 4, 72, '2022-03-30 09:07:30', '2022-03-30 15:30:00', '2022-03-30 19:30:00'),
+(52, 'Khám ngoại', NULL, NULL, 'Chiều', 4, 72, '2022-03-30 09:07:30', '2022-03-30 16:00:00', '2022-03-30 20:00:00'),
+(53, 'Khám ngoại', NULL, NULL, 'Chiều', 4, 72, '2022-03-30 09:07:30', '2022-03-30 16:30:00', '2022-03-30 20:30:00'),
+(54, 'Khám ngoại', NULL, NULL, 'Ngoài giờ', 4, 72, '2022-03-30 09:07:42', '2022-03-30 18:30:00', '2022-03-30 21:30:00'),
+(55, 'Khám ngoại', NULL, NULL, 'Ngoài giờ', 4, 72, '2022-03-30 09:07:42', '2022-03-30 19:00:00', '2022-03-30 22:00:00'),
+(56, 'Khám ngoại', NULL, NULL, 'Ngoài giờ', 4, 72, '2022-03-30 09:07:42', '2022-03-30 19:30:00', '2022-03-30 22:30:00'),
+(57, 'Khám ngoại', NULL, NULL, 'Ngoài giờ', 4, 72, '2022-03-30 09:07:42', '2022-03-30 20:00:00', '2022-03-30 23:00:00'),
+(58, 'Khám ngoại', NULL, NULL, 'Ngoài giờ', 4, 72, '2022-03-30 09:07:42', '2022-03-30 20:30:00', '2022-03-30 23:30:00'),
+(59, 'Khám ngoại', NULL, NULL, 'Ngoài giờ', 4, 72, '2022-03-30 09:07:42', '2022-03-30 21:00:00', '2022-03-31 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -500,7 +519,7 @@ ALTER TABLE `presciption`
 -- AUTO_INCREMENT for table `schedule`
 --
 ALTER TABLE `schedule`
-  MODIFY `ID_schedule` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `ID_schedule` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- AUTO_INCREMENT for table `staff`
