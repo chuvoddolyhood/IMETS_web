@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 30, 2022 at 05:33 PM
+-- Generation Time: Apr 03, 2022 at 06:40 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -33,6 +33,7 @@ CREATE TABLE `appointment` (
   `ID_Patient` int(11) NOT NULL,
   `Date_Booking` datetime NOT NULL,
   `Date_Checkup` int(11) NOT NULL,
+  `Date_HospitalDischarge` date DEFAULT NULL,
   `Date_ReCheckup` date DEFAULT NULL,
   `ID_Prescription` int(11) DEFAULT NULL,
   `ID_PaymentMethod` int(11) DEFAULT NULL,
@@ -43,8 +44,8 @@ CREATE TABLE `appointment` (
 -- Dumping data for table `appointment`
 --
 
-INSERT INTO `appointment` (`ID_Appointment`, `ID_Staff`, `ID_Patient`, `Date_Booking`, `Date_Checkup`, `Date_ReCheckup`, `ID_Prescription`, `ID_PaymentMethod`, `StatusAppointment`) VALUES
-(16, 4, 2, '2022-03-25 20:51:45', 38, NULL, NULL, NULL, 'Chờ khám');
+INSERT INTO `appointment` (`ID_Appointment`, `ID_Staff`, `ID_Patient`, `Date_Booking`, `Date_Checkup`, `Date_HospitalDischarge`, `Date_ReCheckup`, `ID_Prescription`, `ID_PaymentMethod`, `StatusAppointment`) VALUES
+(16, 4, 2, '2022-03-25 20:51:45', 38, NULL, '0000-00-00', NULL, NULL, 'Nhận bệnh');
 
 -- --------------------------------------------------------
 
@@ -83,9 +84,15 @@ INSERT INTO `dept` (`ID_Dept`, `Name_Dept`) VALUES
 CREATE TABLE `diagnose` (
   `ID_Diagnose` int(11) NOT NULL,
   `ID_Disease` int(11) NOT NULL,
-  `ID_Appointment` int(11) NOT NULL,
-  `ContentDiagnose` varchar(100) NOT NULL
+  `ID_MedicalRecord` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `diagnose`
+--
+
+INSERT INTO `diagnose` (`ID_Diagnose`, `ID_Disease`, `ID_MedicalRecord`) VALUES
+(8, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -96,9 +103,17 @@ CREATE TABLE `diagnose` (
 CREATE TABLE `disease` (
   `ID_Disease` int(11) NOT NULL,
   `TitleDisease` varchar(100) NOT NULL,
-  `ContentDisease` varchar(100) NOT NULL,
-  `Symptom` varchar(100) NOT NULL
+  `ContentDisease` text NOT NULL,
+  `Symptom` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `disease`
+--
+
+INSERT INTO `disease` (`ID_Disease`, `TitleDisease`, `ContentDisease`, `Symptom`) VALUES
+(1, 'Viêm họng cấp', 'Viêm họng cấp là hiện tượng viêm của tổ chức niêm mạc nằm ở phần sau của cổ họng. Triệu chứng thường gặp là đau họng. Ngoài ra viêm họng còn gây ra các triệu chứng như ngứa họng hoặc nuốt vướng, nuốt đau.', 'Nuốt rất đau\r\nSưng các hạch vùng cổ\r\nThấy các mảng màu trắng ở trong họng khi soi qua gương hoặc đèn pin.\r\nAmydan 2 bên sung đỏ.\r\nĐau đầu, đau bụng\r\nNôn, buồn nôn.\r\nNổi ban.\r\n'),
+(2, 'Bệnh trào ngược dạ dày - thực quản', 'Bệnh trào ngược dạ dày – thực quản (GERD) là hiện tượng xảy ra khi dịch tiêu hoá của dạ dày thường xuyên bị chảy ngược vào thực quản (là một ống dẫn đưa thức ăn từ miệng vào dạ dày). Vì dịch này có tính axit nên có thể gây kích ứng và làm viêm niêm mạc thực quản của bạn.', 'Ợ hơi: xảy ra thường xuyên và ngay cả khi đói hoặc không ăn gì.\r\nỢ nóng: nóng rát từ dạ dày hay vùng ngực dưới, lan hướng lên cổ, có khi lan tới cả hạ họng, mang tai. Cùng với đó là vị chua ở trong miệng.\r\nỢ chua: thức ăn hoặc chất lỏng chua từ dạ dày bị đẩy lên cuống họng thường sau khi ăn, có thể tồi tệ hơn vào ban đêm.\r\nNôn và buồn nôn: xuất hiện khi ăn quá no, nằm ngay khi ăn, không kê đầu cao khi ngủ.\r\nCảm giác nóng trong ngực, tức ngực\r\nNhiều nước bọt, khó nuốt, cảm giác vướng vùng họng');
 
 -- --------------------------------------------------------
 
@@ -157,15 +172,93 @@ INSERT INTO `img_staff` (`ID_ImgStaff`, `ID_Staff`, `imgName`) VALUES
 
 CREATE TABLE `medical` (
   `ID_Medicine` int(11) NOT NULL,
-  `TitleMedicine` varchar(100) NOT NULL,
-  `Ingredients` varchar(100) NOT NULL,
-  `MedicineContent` varchar(100) NOT NULL,
-  `PrescriptionDrug` varchar(100) NOT NULL,
-  `ContraindicationsDrug` varchar(100) NOT NULL,
+  `TitleMedicine` varchar(255) NOT NULL,
+  `Ingredients` varchar(255) NOT NULL,
+  `MedicineContent` text NOT NULL,
+  `PrescriptionDrug` text NOT NULL,
+  `ContraindicationsDrug` text NOT NULL,
   `Production` varchar(100) NOT NULL,
   `UnitPrice` int(11) NOT NULL,
   `Type` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `medical`
+--
+
+INSERT INTO `medical` (`ID_Medicine`, `TitleMedicine`, `Ingredients`, `MedicineContent`, `PrescriptionDrug`, `ContraindicationsDrug`, `Production`, `UnitPrice`, `Type`) VALUES
+(1, 'Natri Clorid', 'Natri Clorid 0.9%', 'NaCl 0,9% được sử dụng để điều trị hoặc ngăn ngừa tình trạng mất muối bởi tình trạng mất nước do tiê', 'Nhỏ mắt người lớn', 'Chống chỉ định', 'Việt Nam', 1320, 'Lọ'),
+(2, 'PARACETAMOL 650MG', 'PARACETAMOL 650MG', 'Hạ nhiệt, giảm đau. Không gây lệ thuộc thuốc, không gây kích ứng đường tiêu hóa.', 'Paracetamol được dùng làm thuốc giảm đau và hạ sốt từ nhẹ đến vừa. \n\nĐiều trị các chứng đau do ngu', 'Quá mẫn cảm với thuốc.\nNgười bệnh suy gan hoặc thận nặng.\nThiếu hụt glucose-6-phosphat dehydrogena', 'Việt Nam', 147, 'Viên');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `medicalrecord`
+--
+
+CREATE TABLE `medicalrecord` (
+  `ID_MedicalRecord` int(11) NOT NULL,
+  `ID_Appointment` int(11) NOT NULL,
+  `ReasonCheckup` varchar(50) DEFAULT NULL,
+  `BodyCheck` varchar(50) DEFAULT NULL,
+  `BodyPartsCheck` varchar(50) DEFAULT NULL,
+  `PulseRate` int(11) DEFAULT NULL,
+  `Temp` float DEFAULT NULL,
+  `BloodPressure` int(11) DEFAULT NULL,
+  `Breathing` int(11) DEFAULT NULL,
+  `Height` float DEFAULT NULL,
+  `Weight` float DEFAULT NULL,
+  `Result` varchar(255) DEFAULT NULL,
+  `TreatmentDirection` varchar(255) DEFAULT NULL,
+  `Advice` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `medicalrecord`
+--
+
+INSERT INTO `medicalrecord` (`ID_MedicalRecord`, `ID_Appointment`, `ReasonCheckup`, `BodyCheck`, `BodyPartsCheck`, `PulseRate`, `Temp`, `BloodPressure`, `Breathing`, `Height`, `Weight`, `Result`, `TreatmentDirection`, `Advice`) VALUES
+(2, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(76, 16, 'đau họng', 'Bình thường', 'Bình thường', 1, 1, 1, 1, 1, 1, '', '', ''),
+(77, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(78, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(79, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(80, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(81, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(82, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(84, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(85, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(86, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(87, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(88, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(89, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(90, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(91, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(92, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(93, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(94, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(95, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(96, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(97, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(98, 16, 'đau họng', 'Bình thường', 'Bình thường', 0, 0, 0, 0, 0, 0, '', '', ''),
+(99, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(100, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(101, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(102, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(103, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(104, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(105, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(106, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(107, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(108, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(109, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(110, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(111, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(112, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(113, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(114, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(115, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(116, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -205,7 +298,7 @@ CREATE TABLE `patient` (
 --
 
 INSERT INTO `patient` (`ID_Patient`, `Name`, `DOB`, `Sex`, `Address`, `CMND`, `PhoneNumber`, `ID_BHYT`, `UserName`, `Password`) VALUES
-(1, 'nghia', '2012-12-12', 'nam', '40', 'xxx', '123', '1234', 'tran', '345453'),
+(1, 'nghia', '2012-12-12', 'nam', '40', 'xxx', '123', '9222590774', 'tran', '345453'),
 (2, 'Trần Nhân Nghĩa', '2000-01-24', 'Nam', NULL, NULL, '0939635755', NULL, 'trannhannghia@gmail.com', '593992d613b77c065055acd511edab67');
 
 -- --------------------------------------------------------
@@ -305,7 +398,15 @@ INSERT INTO `schedule` (`ID_schedule`, `title`, `DateWorking`, `TimeStart`, `Ses
 (56, 'Khám ngoại', NULL, NULL, 'Ngoài giờ', 4, 72, '2022-03-30 09:07:42', '2022-03-30 19:30:00', '2022-03-30 22:30:00'),
 (57, 'Khám ngoại', NULL, NULL, 'Ngoài giờ', 4, 72, '2022-03-30 09:07:42', '2022-03-30 20:00:00', '2022-03-30 23:00:00'),
 (58, 'Khám ngoại', NULL, NULL, 'Ngoài giờ', 4, 72, '2022-03-30 09:07:42', '2022-03-30 20:30:00', '2022-03-30 23:30:00'),
-(59, 'Khám ngoại', NULL, NULL, 'Ngoài giờ', 4, 72, '2022-03-30 09:07:42', '2022-03-30 21:00:00', '2022-03-31 00:00:00');
+(59, 'Khám ngoại', NULL, NULL, 'Ngoài giờ', 4, 72, '2022-03-30 09:07:42', '2022-03-30 21:00:00', '2022-03-31 00:00:00'),
+(60, 'Khám ngoại', NULL, NULL, 'Chiều', 4, 72, '2022-04-03 08:40:38', '2022-04-03 13:00:00', '2022-04-03 17:00:00'),
+(61, 'Khám ngoại', NULL, NULL, 'Chiều', 4, 72, '2022-04-03 08:40:38', '2022-04-03 13:30:00', '2022-04-03 17:30:00'),
+(62, 'Khám ngoại', NULL, NULL, 'Chiều', 4, 72, '2022-04-03 08:40:38', '2022-04-03 14:00:00', '2022-04-03 18:00:00'),
+(63, 'Khám ngoại', NULL, NULL, 'Chiều', 4, 72, '2022-04-03 08:40:38', '2022-04-03 14:30:00', '2022-04-03 18:30:00'),
+(64, 'Khám ngoại', NULL, NULL, 'Chiều', 4, 72, '2022-04-03 08:40:38', '2022-04-03 15:00:00', '2022-04-03 19:00:00'),
+(65, 'Khám ngoại', NULL, NULL, 'Chiều', 4, 72, '2022-04-03 08:40:38', '2022-04-03 15:30:00', '2022-04-03 19:30:00'),
+(66, 'Khám ngoại', NULL, NULL, 'Chiều', 4, 72, '2022-04-03 08:40:38', '2022-04-03 16:00:00', '2022-04-03 20:00:00'),
+(67, 'Khám ngoại', NULL, NULL, 'Chiều', 4, 72, '2022-04-03 08:40:38', '2022-04-03 16:30:00', '2022-04-03 20:30:00');
 
 -- --------------------------------------------------------
 
@@ -367,8 +468,8 @@ ALTER TABLE `dept`
 --
 ALTER TABLE `diagnose`
   ADD PRIMARY KEY (`ID_Diagnose`),
-  ADD KEY `ID_Appointment` (`ID_Appointment`),
-  ADD KEY `ID_Disease` (`ID_Disease`);
+  ADD KEY `ID_Disease` (`ID_Disease`),
+  ADD KEY `ID_MedicalRecord` (`ID_MedicalRecord`);
 
 --
 -- Indexes for table `disease`
@@ -395,6 +496,13 @@ ALTER TABLE `img_staff`
 --
 ALTER TABLE `medical`
   ADD PRIMARY KEY (`ID_Medicine`);
+
+--
+-- Indexes for table `medicalrecord`
+--
+ALTER TABLE `medicalrecord`
+  ADD PRIMARY KEY (`ID_MedicalRecord`),
+  ADD KEY `ID_Appointment` (`ID_Appointment`);
 
 --
 -- Indexes for table `medicinesfortreatment`
@@ -463,13 +571,13 @@ ALTER TABLE `dept`
 -- AUTO_INCREMENT for table `diagnose`
 --
 ALTER TABLE `diagnose`
-  MODIFY `ID_Diagnose` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_Diagnose` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `disease`
 --
 ALTER TABLE `disease`
-  MODIFY `ID_Disease` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_Disease` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `evaluation`
@@ -487,7 +595,13 @@ ALTER TABLE `img_staff`
 -- AUTO_INCREMENT for table `medical`
 --
 ALTER TABLE `medical`
-  MODIFY `ID_Medicine` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_Medicine` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `medicalrecord`
+--
+ALTER TABLE `medicalrecord`
+  MODIFY `ID_MedicalRecord` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=117;
 
 --
 -- AUTO_INCREMENT for table `patient`
@@ -511,7 +625,7 @@ ALTER TABLE `presciption`
 -- AUTO_INCREMENT for table `schedule`
 --
 ALTER TABLE `schedule`
-  MODIFY `ID_schedule` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `ID_schedule` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
 -- AUTO_INCREMENT for table `staff`
@@ -537,8 +651,8 @@ ALTER TABLE `appointment`
 -- Constraints for table `diagnose`
 --
 ALTER TABLE `diagnose`
-  ADD CONSTRAINT `diagnose_ibfk_1` FOREIGN KEY (`ID_Appointment`) REFERENCES `appointment` (`ID_Appointment`),
-  ADD CONSTRAINT `diagnose_ibfk_2` FOREIGN KEY (`ID_Disease`) REFERENCES `disease` (`ID_Disease`);
+  ADD CONSTRAINT `diagnose_ibfk_2` FOREIGN KEY (`ID_Disease`) REFERENCES `disease` (`ID_Disease`),
+  ADD CONSTRAINT `diagnose_ibfk_3` FOREIGN KEY (`ID_MedicalRecord`) REFERENCES `medicalrecord` (`ID_MedicalRecord`);
 
 --
 -- Constraints for table `evaluation`
@@ -551,6 +665,12 @@ ALTER TABLE `evaluation`
 --
 ALTER TABLE `img_staff`
   ADD CONSTRAINT `img_staff_ibfk_1` FOREIGN KEY (`ID_Staff`) REFERENCES `staff` (`ID_Staff`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `medicalrecord`
+--
+ALTER TABLE `medicalrecord`
+  ADD CONSTRAINT `medicalrecord_ibfk_1` FOREIGN KEY (`ID_Appointment`) REFERENCES `appointment` (`ID_Appointment`);
 
 --
 -- Constraints for table `medicinesfortreatment`

@@ -126,3 +126,36 @@
     overflow-x:hidden;
     overflow-y:auto;
 }
+
+
+#search{
+    width: 400px;
+    padding: 10px;
+    display:block;
+    border-radius:3px;
+    border:1px solid silver;
+    margin:0 auto;
+}
+#back_result{
+    /* width: 400px;
+    padding: 10px;
+    border:1px solid silver; */
+    margin:0 auto;
+    display:none;
+}
+#pic{
+    vertical-align:middle;
+}
+#user{
+    /* position: absolute; */
+    margin:0 auto;
+    background-color:red;
+    width: 400px;
+    padding: 10px;
+    border:1px solid silver;
+    /* left: calc(50% - 212px); */
+    z-index: 100;
+}
+#user a{
+    text-decoration:none;
+}

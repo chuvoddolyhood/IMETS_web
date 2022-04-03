@@ -1,5 +1,17 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <?php
     include './../config.php';
+
+    $ID_Appointment = $_GET['ID_Appointment'];
+
+    //Update status for appointment
+    $sql_set_status = "UPDATE `appointment` SET `StatusAppointment`='Nhận bệnh' WHERE `ID_Appointment`=$ID_Appointment";
+    $query_set_status = mysqli_query($conn, $sql_set_status);
+
+    //Create medical record follow its appointment
+    $sql_create_medicalRecord = "INSERT INTO `medicalrecord`(ID_Appointment) VALUES ($ID_Appointment)";
+    $query_create_medicalRecord = mysqli_query($conn, $sql_create_medicalRecord);
+
     $sql = "SELECT * FROM appointment 
             JOIN patient ON appointment.ID_Patient=patient.ID_Patient 
             JOIN schedule ON schedule.ID_schedule=appointment.Date_Checkup";
@@ -54,6 +66,156 @@
                 </div>
             </div>
             <div class="checkup-container">
+                <div class="checkup-table">
+                    <div class="abc">
+                        <h3>Khám bệnh</h3>
+                        <div class="pre-checkup">
+                            <div class="precheckup-container">
+                                <input type="hidden" id="ID_Appointment" name="ID_Appointment" value="<?php echo $ID_Appointment ?>">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Lý do khám</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="reasoncheckup" id="reasoncheckup" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Toàn thân</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="bodycheck" class="form-control" id="bodycheck" >
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Các bộ phận</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="bodypartscheck" class="form-control" id="bodypartscheck" >
+                                    </div>
+                                </div>
+                                    <!-- <div class="form-group">
+                                        <label class="col-sm-2 control-label">Kết quả cận lâm sàng</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" name="cls" class="form-control" id="cls" >
+                                        </div>
+                                    </div> -->
+                            </div>
+
+                            <div class="precheckup-container">
+                                <h5>Sinh hiệu</h5>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Mạch</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="pulserate" class="form-control" id="pulserate" > lần/phút
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Nhiệt độ</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="temp" class="form-control" id="temp" >°C
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Huyết áp</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="bloodpressure" class="form-control" id="bloodpressure" >mmHg
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Nhịp thở</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="breathing" class="form-control" id="breathing" >lần/phút
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Chiều cao</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="height" class="form-control" id="height" >m
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Cân nặng</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="weight" class="form-control" id="weight" >Kg
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            
+                            
+                        <div class="result-checkup">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Chẩn đoán bệnh</label>
+                                <input type="text" name="search" id="search" placeholder="Tên bệnh">
+                                <div id="back_result"></div>
+                                <div class="detail-prescription-table">
+                                    <div class="card-body">
+                                        <table class="table">
+                                            <thead class="thead-dark">
+                                                <tr>
+                                                    <th>STT</th>
+                                                    <th>Mã bệnh</th>
+                                                    <th>Tên bệnh</th>
+                                                    <th>Xóa</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <?php
+                                                        include './../config.php';
+                                                        $sql = "SELECT ID_Diagnose,disease.ID_Disease, disease.TitleDisease
+                                                            FROM diagnose JOIN disease ON diagnose.ID_Disease=disease.ID_Disease
+                                                            ORDER BY ID_Diagnose ASC";
+                                                        $query = mysqli_query($conn, $sql);
+                                                        $count=0;
+                                                        while($rows = mysqli_fetch_array($query)){ ?>
+                                                    <tr>
+                                                        <td><?php echo ++$count ?></td>
+                                                        <td><?php echo $rows["ID_Disease"] ?></td>
+                                                        <td><?php echo $rows["TitleDisease"] ?></td>
+                                                        <td>
+                                                            <a  onclick="return confirm_Del('<?php echo $rows['TitleDisease'] ?>')"
+                                                                href="./modules_staff/checkup/diagnose_delete_disease.php?ID_Diagnose=<?php echo $rows["ID_Diagnose"] ?>&"
+                                                                style="background-color: red;color: white;padding: 5px 10px;text-align: center;text-decoration: none;display: inline-block;border-radius: 5px;">
+                                                                    xóa
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    <?php } ?>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Kết luận</label>
+                                <div class="col-sm-10">
+                                    <textarea name="result" id="result" cols="20" rows="5" maxlength="500"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Hướng điều trị</label>
+                                <div class="col-sm-10">
+                                    <textarea name="dicection" id="dicection" cols="20" rows="5" maxlength="500"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Lời dặn</label>
+                                <div class="col-sm-10">
+                                    <textarea name="advice" id="advice" cols="20" rows="5" maxlength="500"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Tái khám</label>
+                                <div class="col-sm-10">
+                                    <input type="date" name="dateRecheckup" class="form-control" id="dateRecheckup" >
+                                </div>
+                            </div>
+                        </div>
+                        <button onclick="add_diagnose()"> Lưu
+                            <span><i class="fas fa-plus"></i></span>
+                        </button>
+                    </div>
+                </div>
+
                 <div class="prescription">
                     <div class="prescription-head">
                         <h1>Đơn thuốc</h1>
@@ -137,111 +299,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="checkup-table">
-                    <div class="abc">
-                        <h3>Khám bệnh</h3>
-                        <form action="">
-                            <div class="pre-checkup">
-                                <div class="precheckup-container">
-                                    <div class="form-group">
-                                        <label class="col-sm-2 control-label">Lý do khám</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="dateworking" class="form-control" id="start" >
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-2 control-label">Toàn thân</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="dateworking" class="form-control" id="start" >
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-2 control-label">Các bộ phận</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="dateworking" class="form-control" id="start" >
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-2 control-label">Kết quả cận lâm sàng</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="dateworking" class="form-control" id="start" >
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-2 control-label">Chẩn đoán bệnh</label>
-                                        <div class="col-sm-10">
-                                            <textarea name="diagnose" id="" cols="20" rows="10" maxlength="500"></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="precheckup-container">
-                                    <h5>Sinh hiệu</h5>
-                                    <div class="form-group">
-                                        <label class="col-sm-2 control-label">Mạch</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="dateworking" class="form-control" id="start" > lần/phút
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-2 control-label">Nhiệt độ</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="dateworking" class="form-control" id="start" >°C
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-2 control-label">Huyết áp</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="dateworking" class="form-control" id="start" >mmHg
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-2 control-label">Nhịp thở</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="dateworking" class="form-control" id="start" >lần/phút
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-2 control-label">Cân nặng</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="dateworking" class="form-control" id="start" >Kg
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            
-                            <div class="result-checkup">
-                                <div class="form-group">
-                                    <label class="col-sm-2 control-label">Kết luận</label>
-                                    <div class="col-sm-10">
-                                        <textarea name="diagnose" id="" cols="20" rows="5" maxlength="500"></textarea>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-2 control-label">Hướng điều trị</label>
-                                    <div class="col-sm-10">
-                                        <textarea name="diagnose" id="" cols="20" rows="5" maxlength="500"></textarea>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-2 control-label">Lời dặn</label>
-                                    <div class="col-sm-10">
-                                        <textarea name="diagnose" id="" cols="20" rows="5" maxlength="500"></textarea>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-2 control-label">Tái khám</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" name="dateworking" class="form-control" id="start" > ngày
-                                    </div>
-                                </div>
-                            </div>
-                            
-                        </form>
-                    </div>
-                    
-                </div>
             </div>
         </div>
     </div>
 </main>
+
+<script src="./modules_staff/checkup/diagnose.js"></script>
