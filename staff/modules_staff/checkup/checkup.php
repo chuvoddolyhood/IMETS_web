@@ -4,18 +4,6 @@
 
     $ID_Appointment = $_GET['ID_Appointment'];
 
-    //Update status for appointment
-    $sql_set_status = "UPDATE `appointment` SET `StatusAppointment`='Nhận bệnh' WHERE `ID_Appointment`=$ID_Appointment";
-    $query_set_status = mysqli_query($conn, $sql_set_status);
-
-    //Create medicalrecord follow its appointment
-    $sql_create_medicalRecord = "INSERT INTO `medicalrecord`(ID_Appointment) VALUES ($ID_Appointment)";
-    $query_create_medicalRecord = mysqli_query($conn, $sql_create_medicalRecord);
-
-    //Create prescription follow its appointment
-    $sql_create_prescription = "INSERT INTO presciption(ID_Appointment) VALUES ($ID_Appointment)";
-    $query_create_prescription = mysqli_query($conn, $sql_create_prescription);
-
     $sql = "SELECT * FROM appointment 
             JOIN patient ON appointment.ID_Patient=patient.ID_Patient 
             JOIN schedule ON schedule.ID_schedule=appointment.Date_Checkup";

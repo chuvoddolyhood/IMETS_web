@@ -46,8 +46,8 @@
                                     <td><?php echo $rows["ID_BHYT"] ?></td>
                                     <td><?php echo $rows["StatusAppointment"] ?></td>
                                     <td>
-                                        <a  onclick="return confirm_Del('<?php echo $rows['Name'] ?>')"
-                                        href="./index.php?page_layout=checkup&ID_Appointment=<?php echo $rows["ID_Appointment"] ?>"
+                                        <a  onclick="return confirm_checkup('<?php echo $rows['ID_Appointment'] ?>','<?php echo $rows['Name'] ?>')"
+                                        href="#"
                                         style="background-color: green;color: white;padding: 8px 15px;text-align: center;text-decoration: none;display: inline-block;border-radius: 5px;">
                                             Thực hiện
                                         </a>
@@ -64,7 +64,33 @@
 </main>
 
 <script>
-    function confirm_Del(name){
-        return confirm("Bạn nhận bệnh từ "+ name + " không ?");
+    function confirm_checkup(id,name){
+        if(confirm("Bạn nhận bệnh từ "+name+" không ?")){
+            // alert('1');
+
+            //call ajax
+            var ajax = new XMLHttpRequest();
+            var method = "GET";
+            var url = "./modules_staff/checkup/createDocumentCheckup.php?ID_Appointment="+id;
+            var asynchronous = true;
+            ajax.open(method, url, asynchronous);
+
+            //send
+            ajax.send();
+
+            //receive
+            ajax.onreadystatechange = function(){
+                if(this.readyState == 4 && this.status == 200){
+                    var response = this.responseText;
+                    if(response=="true"){
+                        // alert('abc');
+                        window.location.href='./index.php?page_layout=checkup&ID_Appointment='+id;
+                    }else{
+                        alert(response);
+                    }
+                }
+            }
+            return false;
+        }
     }
 </script>
