@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 03, 2022 at 06:40 PM
+-- Generation Time: Apr 06, 2022 at 05:47 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -35,7 +35,6 @@ CREATE TABLE `appointment` (
   `Date_Checkup` int(11) NOT NULL,
   `Date_HospitalDischarge` date DEFAULT NULL,
   `Date_ReCheckup` date DEFAULT NULL,
-  `ID_Prescription` int(11) DEFAULT NULL,
   `ID_PaymentMethod` int(11) DEFAULT NULL,
   `StatusAppointment` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -44,8 +43,8 @@ CREATE TABLE `appointment` (
 -- Dumping data for table `appointment`
 --
 
-INSERT INTO `appointment` (`ID_Appointment`, `ID_Staff`, `ID_Patient`, `Date_Booking`, `Date_Checkup`, `Date_HospitalDischarge`, `Date_ReCheckup`, `ID_Prescription`, `ID_PaymentMethod`, `StatusAppointment`) VALUES
-(16, 4, 2, '2022-03-25 20:51:45', 38, NULL, '0000-00-00', NULL, NULL, 'Nhận bệnh');
+INSERT INTO `appointment` (`ID_Appointment`, `ID_Staff`, `ID_Patient`, `Date_Booking`, `Date_Checkup`, `Date_HospitalDischarge`, `Date_ReCheckup`, `ID_PaymentMethod`, `StatusAppointment`) VALUES
+(16, 4, 2, '2022-03-25 20:51:45', 38, NULL, '0000-00-00', NULL, 'Nhận bệnh');
 
 -- --------------------------------------------------------
 
@@ -92,7 +91,8 @@ CREATE TABLE `diagnose` (
 --
 
 INSERT INTO `diagnose` (`ID_Diagnose`, `ID_Disease`, `ID_MedicalRecord`) VALUES
-(8, 1, 2);
+(8, 1, 2),
+(15, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -167,32 +167,6 @@ INSERT INTO `img_staff` (`ID_ImgStaff`, `ID_Staff`, `imgName`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `medical`
---
-
-CREATE TABLE `medical` (
-  `ID_Medicine` int(11) NOT NULL,
-  `TitleMedicine` varchar(255) NOT NULL,
-  `Ingredients` varchar(255) NOT NULL,
-  `MedicineContent` text NOT NULL,
-  `PrescriptionDrug` text NOT NULL,
-  `ContraindicationsDrug` text NOT NULL,
-  `Production` varchar(100) NOT NULL,
-  `UnitPrice` int(11) NOT NULL,
-  `Type` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `medical`
---
-
-INSERT INTO `medical` (`ID_Medicine`, `TitleMedicine`, `Ingredients`, `MedicineContent`, `PrescriptionDrug`, `ContraindicationsDrug`, `Production`, `UnitPrice`, `Type`) VALUES
-(1, 'Natri Clorid', 'Natri Clorid 0.9%', 'NaCl 0,9% được sử dụng để điều trị hoặc ngăn ngừa tình trạng mất muối bởi tình trạng mất nước do tiê', 'Nhỏ mắt người lớn', 'Chống chỉ định', 'Việt Nam', 1320, 'Lọ'),
-(2, 'PARACETAMOL 650MG', 'PARACETAMOL 650MG', 'Hạ nhiệt, giảm đau. Không gây lệ thuộc thuốc, không gây kích ứng đường tiêu hóa.', 'Paracetamol được dùng làm thuốc giảm đau và hạ sốt từ nhẹ đến vừa. \n\nĐiều trị các chứng đau do ngu', 'Quá mẫn cảm với thuốc.\nNgười bệnh suy gan hoặc thận nặng.\nThiếu hụt glucose-6-phosphat dehydrogena', 'Việt Nam', 147, 'Viên');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `medicalrecord`
 --
 
@@ -219,46 +193,51 @@ CREATE TABLE `medicalrecord` (
 
 INSERT INTO `medicalrecord` (`ID_MedicalRecord`, `ID_Appointment`, `ReasonCheckup`, `BodyCheck`, `BodyPartsCheck`, `PulseRate`, `Temp`, `BloodPressure`, `Breathing`, `Height`, `Weight`, `Result`, `TreatmentDirection`, `Advice`) VALUES
 (2, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(76, 16, 'đau họng', 'Bình thường', 'Bình thường', 1, 1, 1, 1, 1, 1, '', '', ''),
-(77, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(78, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(79, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(80, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(81, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(82, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(84, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(85, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(86, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(87, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(88, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(89, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(90, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(91, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(92, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(93, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(94, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(95, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(96, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(97, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(98, 16, 'đau họng', 'Bình thường', 'Bình thường', 0, 0, 0, 0, 0, 0, '', '', ''),
-(99, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(100, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(101, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(102, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(103, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(104, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(105, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(106, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(107, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(108, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(109, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(110, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(111, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(112, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(113, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(114, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(115, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(116, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(241, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(242, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(243, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(244, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(245, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(246, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(247, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(248, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(249, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(250, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(251, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(252, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(253, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(254, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(255, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(256, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(257, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(258, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `medicine`
+--
+
+CREATE TABLE `medicine` (
+  `ID_Medicine` int(11) NOT NULL,
+  `TitleMedicine` varchar(255) NOT NULL,
+  `Ingredients` varchar(255) NOT NULL,
+  `MedicineContent` text NOT NULL,
+  `PrescriptionDrug` text NOT NULL,
+  `ContraindicationsDrug` text NOT NULL,
+  `Production` varchar(100) NOT NULL,
+  `UnitPrice` int(11) NOT NULL,
+  `Type` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `medicine`
+--
+
+INSERT INTO `medicine` (`ID_Medicine`, `TitleMedicine`, `Ingredients`, `MedicineContent`, `PrescriptionDrug`, `ContraindicationsDrug`, `Production`, `UnitPrice`, `Type`) VALUES
+(1, 'Natri Clorid', 'Natri Clorid 0.9%', 'NaCl 0,9% được sử dụng để điều trị hoặc ngăn ngừa tình trạng mất muối bởi tình trạng mất nước do tiê', 'Nhỏ mắt người lớn', 'Chống chỉ định', 'Việt Nam', 1320, 'Lọ'),
+(2, 'PARACETAMOL 650MG', 'PARACETAMOL 650MG', 'Hạ nhiệt, giảm đau. Không gây lệ thuộc thuốc, không gây kích ứng đường tiêu hóa.', 'Paracetamol được dùng làm thuốc giảm đau và hạ sốt từ nhẹ đến vừa. \n\nĐiều trị các chứng đau do ngu', 'Quá mẫn cảm với thuốc.\nNgười bệnh suy gan hoặc thận nặng.\nThiếu hụt glucose-6-phosphat dehydrogena', 'Việt Nam', 147, 'Viên'),
+(3, 'Augbidil', 'Amoxicilin 875mg + Axit clavulanic 125mg', 'điều trị các trường hợp nhiễm khuẩn nặng đường tiết niệu – sinh dục gây ra do các chủng E.coli, Klebsiella và Enterobacter (viêm bàng quang, viêm bể thận, viêm niệu đạo), bệnh nhiễm khuẩn da và mô mềm (áp xe, mụn nhọt, vết thương nhiễm khuẩn), áp xe khi mổ răng, viêm tủy xương.', 'Điều trị trong thời gian ngắn các trường hợp nhiễm khuẩn đường hô hấp trên nặng như viêm xoang, viêm amidan, viêm tai giữa đã điều trị bằng các loại thuốc kháng sinh thông thường nhưng không cải thiện.\r\nĐiều trị nhiễm khuẩn đường hô hấp dưới do các chủng vi khuẩn H. influenzae và Branhamella catarrhalis sản sinh beta – lactamase như viêm phế quản cấp và mạn, viêm phổi.\r\nThuốc Augbidil còn được sử dụng để điều trị nhiễm khuẩn đường tiết niệu – sinh dục nặng do các chủng vi khuẩn E.coli, Klebsiella và Enterobacter sản sinh như viêm bàng quang, viêm niệu đạo, viêm bể thận.\r\nĐiều trị nhiễm khuẩn da và mô mềm như mụn nhọt, áp xe, nhiễm khuẩn vết thương.\r\nĐiều trị viêm tủy xương, áp xe ổ răng.', 'dị ứng với  amoxicillin, axit clavulanic, penicillin, cephalosporin hoặc bất kỳ thành phần nào của thuốc', 'Việt Nam', 100, 'Viên');
 
 -- --------------------------------------------------------
 
@@ -271,8 +250,22 @@ CREATE TABLE `medicinesfortreatment` (
   `ID_Medicine` int(11) NOT NULL,
   `Amount` int(11) NOT NULL,
   `TotalMoney` int(11) NOT NULL,
-  `DescriptionTreatment` varchar(100) NOT NULL
+  `DescriptionTreatment` varchar(100) NOT NULL,
+  `Morning` tinyint(1) DEFAULT NULL,
+  `Afternoon` tinyint(1) DEFAULT NULL,
+  `Evening` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `medicinesfortreatment`
+--
+
+INSERT INTO `medicinesfortreatment` (`ID_Prescription`, `ID_Medicine`, `Amount`, `TotalMoney`, `DescriptionTreatment`, `Morning`, `Afternoon`, `Evening`) VALUES
+(1, 1, 0, 0, '', 0, 0, 0),
+(7, 1, 2, 0, 'Nhỏ rửa mắt, ngày 2 lần, mỗi lần 2-3 giọt', 0, 0, 0),
+(7, 1, 2, 2640, 'Nhỏ rửa mắt, ngày 2 lần, mỗi lần 2-3 giọt', 0, 0, 0),
+(7, 1, 5, 6600, 'Nhỏ rửa mắt, ngày 2 lần, mỗi lần 2-3 giọt', 1, 1, 1),
+(7, 3, 2, 200, 'Uống sau khi ăn', 1, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -320,12 +313,32 @@ CREATE TABLE `paymentmethod` (
 
 CREATE TABLE `presciption` (
   `ID_Prescription` int(11) NOT NULL,
-  `Description` text NOT NULL,
-  `TotalAmount` int(11) NOT NULL,
-  `assuranceHealth` float NOT NULL,
-  `PatientPays` int(11) NOT NULL,
-  `expDate` date NOT NULL
+  `ID_Appointment` int(11) NOT NULL,
+  `Description` text DEFAULT NULL,
+  `TotalAmount` int(11) DEFAULT NULL,
+  `assuranceHealth` float DEFAULT NULL,
+  `PatientPays` int(11) DEFAULT NULL,
+  `expDate` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `presciption`
+--
+
+INSERT INTO `presciption` (`ID_Prescription`, `ID_Appointment`, `Description`, `TotalAmount`, `assuranceHealth`, `PatientPays`, `expDate`) VALUES
+(7, 16, NULL, NULL, NULL, NULL, NULL),
+(12, 16, NULL, NULL, NULL, NULL, NULL),
+(13, 16, NULL, NULL, NULL, NULL, NULL),
+(14, 16, NULL, NULL, NULL, NULL, NULL),
+(15, 16, NULL, NULL, NULL, NULL, NULL),
+(16, 16, NULL, NULL, NULL, NULL, NULL),
+(17, 16, NULL, NULL, NULL, NULL, NULL),
+(18, 16, NULL, NULL, NULL, NULL, NULL),
+(19, 16, NULL, NULL, NULL, NULL, NULL),
+(20, 16, NULL, NULL, NULL, NULL, NULL),
+(21, 16, NULL, NULL, NULL, NULL, NULL),
+(22, 16, NULL, NULL, NULL, NULL, NULL),
+(23, 16, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -454,8 +467,7 @@ ALTER TABLE `appointment`
   ADD KEY `ID_Patient` (`ID_Patient`),
   ADD KEY `ID_PaymentMethod` (`ID_PaymentMethod`),
   ADD KEY `ID_Staff` (`ID_Staff`),
-  ADD KEY `Date_Checkup` (`Date_Checkup`),
-  ADD KEY `ID_Prescription` (`ID_Prescription`);
+  ADD KEY `Date_Checkup` (`Date_Checkup`);
 
 --
 -- Indexes for table `dept`
@@ -492,17 +504,17 @@ ALTER TABLE `img_staff`
   ADD KEY `img_staff_ibfk_1` (`ID_Staff`);
 
 --
--- Indexes for table `medical`
---
-ALTER TABLE `medical`
-  ADD PRIMARY KEY (`ID_Medicine`);
-
---
 -- Indexes for table `medicalrecord`
 --
 ALTER TABLE `medicalrecord`
   ADD PRIMARY KEY (`ID_MedicalRecord`),
   ADD KEY `ID_Appointment` (`ID_Appointment`);
+
+--
+-- Indexes for table `medicine`
+--
+ALTER TABLE `medicine`
+  ADD PRIMARY KEY (`ID_Medicine`);
 
 --
 -- Indexes for table `medicinesfortreatment`
@@ -527,7 +539,8 @@ ALTER TABLE `paymentmethod`
 -- Indexes for table `presciption`
 --
 ALTER TABLE `presciption`
-  ADD PRIMARY KEY (`ID_Prescription`);
+  ADD PRIMARY KEY (`ID_Prescription`),
+  ADD KEY `ID_Appointment` (`ID_Appointment`);
 
 --
 -- Indexes for table `room`
@@ -571,7 +584,7 @@ ALTER TABLE `dept`
 -- AUTO_INCREMENT for table `diagnose`
 --
 ALTER TABLE `diagnose`
-  MODIFY `ID_Diagnose` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `ID_Diagnose` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `disease`
@@ -592,16 +605,16 @@ ALTER TABLE `img_staff`
   MODIFY `ID_ImgStaff` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
--- AUTO_INCREMENT for table `medical`
---
-ALTER TABLE `medical`
-  MODIFY `ID_Medicine` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
 -- AUTO_INCREMENT for table `medicalrecord`
 --
 ALTER TABLE `medicalrecord`
-  MODIFY `ID_MedicalRecord` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=117;
+  MODIFY `ID_MedicalRecord` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=259;
+
+--
+-- AUTO_INCREMENT for table `medicine`
+--
+ALTER TABLE `medicine`
+  MODIFY `ID_Medicine` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `patient`
@@ -619,7 +632,7 @@ ALTER TABLE `paymentmethod`
 -- AUTO_INCREMENT for table `presciption`
 --
 ALTER TABLE `presciption`
-  MODIFY `ID_Prescription` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_Prescription` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `schedule`
@@ -644,8 +657,7 @@ ALTER TABLE `appointment`
   ADD CONSTRAINT `appointment_ibfk_1` FOREIGN KEY (`ID_Patient`) REFERENCES `patient` (`ID_Patient`),
   ADD CONSTRAINT `appointment_ibfk_2` FOREIGN KEY (`ID_PaymentMethod`) REFERENCES `paymentmethod` (`ID_PaymentMethod`),
   ADD CONSTRAINT `appointment_ibfk_3` FOREIGN KEY (`ID_Staff`) REFERENCES `staff` (`ID_Staff`),
-  ADD CONSTRAINT `appointment_ibfk_4` FOREIGN KEY (`Date_Checkup`) REFERENCES `schedule` (`ID_schedule`),
-  ADD CONSTRAINT `appointment_ibfk_5` FOREIGN KEY (`ID_Prescription`) REFERENCES `presciption` (`ID_Prescription`);
+  ADD CONSTRAINT `appointment_ibfk_4` FOREIGN KEY (`Date_Checkup`) REFERENCES `schedule` (`ID_schedule`);
 
 --
 -- Constraints for table `diagnose`
@@ -676,8 +688,14 @@ ALTER TABLE `medicalrecord`
 -- Constraints for table `medicinesfortreatment`
 --
 ALTER TABLE `medicinesfortreatment`
-  ADD CONSTRAINT `medicinesfortreatment_ibfk_1` FOREIGN KEY (`ID_Medicine`) REFERENCES `medical` (`ID_Medicine`),
+  ADD CONSTRAINT `medicinesfortreatment_ibfk_1` FOREIGN KEY (`ID_Medicine`) REFERENCES `medicine` (`ID_Medicine`),
   ADD CONSTRAINT `medicinesfortreatment_ibfk_2` FOREIGN KEY (`ID_Prescription`) REFERENCES `presciption` (`ID_Prescription`);
+
+--
+-- Constraints for table `presciption`
+--
+ALTER TABLE `presciption`
+  ADD CONSTRAINT `presciption_ibfk_1` FOREIGN KEY (`ID_Appointment`) REFERENCES `appointment` (`ID_Appointment`);
 
 --
 -- Constraints for table `room`
