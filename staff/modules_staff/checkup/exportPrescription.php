@@ -44,12 +44,16 @@
     }
     // echo $PatientPays;
 
-
+    $Date_HospitalDischarge = date('Y-m-d H:i:s');
+    // echo $Darte_HospitalDischarge;
 
     $sql_add_prescription = "UPDATE presciption SET TotalAmount=$TotalMoney,assuranceHealth=$assuranceHealth,PatientPays=$PatientPays,expDate='$expDate' WHERE ID_Appointment=$ID_Appointment";
     $query_add_prescription = mysqli_query($conn, $sql_add_prescription);
 
-    if($query_add_prescription){
+    $sql_update_appointment = "UPDATE appointment SET Date_HospitalDischarge='$Date_HospitalDischarge', StatusAppointment='Đã khám' WHERE ID_Appointment=$ID_Appointment";
+    $query_update_appointment = mysqli_query($conn, $sql_update_appointment);
+
+    if($query_add_prescription && $query_update_appointment){
         echo 'Đã xuất hóa đơn';
     } else {
         echo 'Error';

@@ -45,13 +45,19 @@
                                     <td><?php echo $rows["CMND"] ?></td>
                                     <td><?php echo $rows["ID_BHYT"] ?></td>
                                     <td><?php echo $rows["StatusAppointment"] ?></td>
+                                    <?php 
+                                    // if($rows["StatusAppointment"]=='Chưa khám'){ 
+                                        ?>
                                     <td>
                                         <a  onclick="return confirm_checkup('<?php echo $rows['ID_Appointment'] ?>','<?php echo $rows['Name'] ?>')"
                                         href="#"
-                                        style="background-color: green;color: white;padding: 8px 15px;text-align: center;text-decoration: none;display: inline-block;border-radius: 5px;">
+                                        style="background-color: green;color: white;padding: 8px 10px;text-align: center;text-decoration: none;display: inline-block;border-radius: 5px;">
                                             Thực hiện
                                         </a>
                                     </td>
+                                    <?php 
+                                        // } 
+                                    ?>
                                 </tr>
                             <?php } ?>
                         </tr>
