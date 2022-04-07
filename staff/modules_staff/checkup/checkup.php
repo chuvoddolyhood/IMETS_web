@@ -163,7 +163,7 @@
                                                         <td><?php echo $rows["TitleDisease"] ?></td>
                                                         <td>
                                                             <a  onclick="return confirm_Del('<?php echo $rows['TitleDisease'] ?>')"
-                                                                href="./modules_staff/checkup/diagnose_delete_disease.php?ID_Diagnose=<?php echo $rows["ID_Diagnose"] ?>&"
+                                                                href="./modules_staff/checkup/diagnose_delete_disease.php?ID_Diagnose=<?php echo $rows["ID_Diagnose"] ?>"
                                                                 style="background-color: red;color: white;padding: 5px 10px;text-align: center;text-decoration: none;display: inline-block;border-radius: 5px;">
                                                                     xóa
                                                             </a>
@@ -218,7 +218,7 @@
                                         <td>
                                             <select name="medicine_choose">
                                                 <?php
-                                                    $sql_get_medicine = "SELECT * FROM medicine";
+                                                    $sql_get_medicine = "SELECT * FROM medicine ORDER BY TitleMedicine ASC";
                                                     $query_get_medicine = mysqli_query($conn, $sql_get_medicine);
                                                     while($rows_get_medicine = mysqli_fetch_array($query_get_medicine)){
                                                 ?>
@@ -240,6 +240,10 @@
                                             <input type="checkbox" name="medicine_use_evening" value="1"> Tối<br><br>
                                         </td>                                        
                                     </tr>
+                                    <tr>
+                                        <th>Thời gian dùng toa</th>
+                                        <td><input type="number" name="medicine_time" id="medicine_time">ngày</td>
+                                    </tr>
                                 </table>
                                 <div>
                                     <input type="submit" name="btn_medicine_prescription" value="Thêm">
@@ -260,6 +264,7 @@
                                             <th>Số lượng</th>
                                             <th>Đơn giá</th>
                                             <th>Tổng tiền</th>
+                                            <th>Xóa</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -270,6 +275,7 @@
                                                 WHERE presciption.ID_Appointment=$ID_Appointment";
                                             $query_get_medicineChoose = mysqli_query($conn, $sql_get_medicineChoose);
                                             $stt=0;
+                                            $sumMoney=0;
                                             while($rows_get_medicineChoose = mysqli_fetch_array($query_get_medicineChoose)){
                                         ?>
                                         <tr>
@@ -278,7 +284,17 @@
                                             <td><?php echo $rows_get_medicineChoose['Type'] ?></td>
                                             <td><?php echo $rows_get_medicineChoose['Amount'] ?></td>
                                             <td><?php echo $rows_get_medicineChoose['UnitPrice'] ?></td>
-                                            <td><?php echo $rows_get_medicineChoose['TotalMoney'] ?></td>
+                                            <td><?php 
+                                                echo $rows_get_medicineChoose['TotalMoney'];
+                                                $sumMoney=$sumMoney+$rows_get_medicineChoose['TotalMoney'];
+                                            ?></td>
+                                            <td>
+                                                <a  onclick="return confirm_Del_Prescription('<?php echo $rows_get_medicineChoose['TitleMedicine'] ?>')"
+                                                    href="./modules_staff/checkup/prescription_delete.php?ID_Medicine=<?php echo $rows_get_medicineChoose["ID_Medicine"] ?>&ID_Appointment=<?php echo $ID_Appointment ?>"
+                                                    style="background-color: red;color: white;padding: 5px 10px;text-align: center;text-decoration: none;display: inline-block;border-radius: 5px;">
+                                                    Xóa
+                                                </a>
+                                            </td>
                                         </tr>
                                         <?php } ?>
                                     </thead>
@@ -288,10 +304,12 @@
                         
                         <div>
                             <h4>Tổng tiền</h4>
-                            <p>10000</p>
+                            <p id="TotalMoney"><?php echo $sumMoney ?></p>
                         </div>
                         <div>
-                            <button>Xuất toa thuốc</button>
+                            <button onclick="exportPrescription()"> Xuất toa thuốc
+                                <span><i class="fas fa-plus"></i></span>
+                            </button>
                         </div>
                     </div>
                 </div>

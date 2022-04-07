@@ -2,6 +2,10 @@ function confirm_Del(name){
     return confirm("Xóa bệnh "+ name + " ?");
 }
 
+function confirm_Del_Prescription(name){
+    return confirm("Xóa thuốc "+ name + " ?");
+}
+
 $(document).ready(function(){
     $('#search').keyup(function(){
         var name = $(this).val();
@@ -58,6 +62,34 @@ function add_diagnose(){
     var url = "./modules_staff/checkup/diagnose.php?reasoncheckup="+reasoncheckup+"&bodycheck="+bodycheck+"&bodypartscheck="+bodypartscheck+"&pulserate="+pulserate+"&temp="+temp+"&bloodpressure="+bloodpressure+"&breathing="+breathing+"&height="+height+"&weight="+weight+"&result="+result+"&dicection="+dicection+"&advice="+advice+"&dateRecheckup="+dateRecheckup+"&ID_Appointment="+ID_Appointment;
     var asynchronous = true;
         ajax.open(method, url, asynchronous);
+
+    //send
+    ajax.send();
+        
+    //receive
+    ajax.onreadystatechange = function(){
+        if(this.readyState == 4 && this.status == 200){
+            var response = this.responseText;
+            alert(response);
+            // window.location.href='./index.php?page_layout=cart';
+        }
+    }
+        
+}
+
+function exportPrescription(){
+    var TotalMoney = document.getElementById('TotalMoney').innerHTML;
+    var ID_Appointment = document.getElementById('ID_Appointment').value;
+    var medicine_time = document.getElementById('medicine_time').value;
+    // alert(ID_Appointment);
+
+
+    // call ajax
+    var ajax = new XMLHttpRequest();
+    var method = "GET";
+    var url = "./modules_staff/checkup/exportPrescription.php?TotalMoney="+TotalMoney+"&ID_Appointment="+ID_Appointment+"&medicine_time="+medicine_time;
+    var asynchronous = true;
+    ajax.open(method, url, asynchronous);
 
     //send
     ajax.send();
