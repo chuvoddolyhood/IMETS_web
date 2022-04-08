@@ -15,6 +15,10 @@
     $sql_create_prescription = "INSERT INTO presciption(ID_Appointment) VALUES ($ID_Appointment)";
     $query_create_prescription = mysqli_query($conn, $sql_create_prescription);
 
+    //Create Evaluation follow its appointment
+    $sql_create_evaluation = "INSERT INTO evaluation(ID_Appointment) VALUES ($ID_Appointment)";
+    $query_create_evaluation = mysqli_query($conn, $sql_create_evaluation);
+
     if($query_set_status && $query_create_medicalRecord && $query_create_prescription){
         echo "true";
         // header("location: ./../../index.php?page_layout=checkup&ID_Appointment=$ID_Appointment");

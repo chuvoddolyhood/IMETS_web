@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 06, 2022 at 05:47 PM
+-- Generation Time: Apr 08, 2022 at 04:06 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -33,7 +33,7 @@ CREATE TABLE `appointment` (
   `ID_Patient` int(11) NOT NULL,
   `Date_Booking` datetime NOT NULL,
   `Date_Checkup` int(11) NOT NULL,
-  `Date_HospitalDischarge` date DEFAULT NULL,
+  `Date_HospitalDischarge` datetime DEFAULT NULL,
   `Date_ReCheckup` date DEFAULT NULL,
   `ID_PaymentMethod` int(11) DEFAULT NULL,
   `StatusAppointment` varchar(100) DEFAULT NULL
@@ -44,7 +44,7 @@ CREATE TABLE `appointment` (
 --
 
 INSERT INTO `appointment` (`ID_Appointment`, `ID_Staff`, `ID_Patient`, `Date_Booking`, `Date_Checkup`, `Date_HospitalDischarge`, `Date_ReCheckup`, `ID_PaymentMethod`, `StatusAppointment`) VALUES
-(16, 4, 2, '2022-03-25 20:51:45', 38, NULL, '0000-00-00', NULL, 'Nhận bệnh');
+(16, 4, 2, '2022-03-25 20:51:45', 38, '2022-04-08 21:04:44', '0000-00-00', NULL, 'Đã khám');
 
 -- --------------------------------------------------------
 
@@ -91,8 +91,7 @@ CREATE TABLE `diagnose` (
 --
 
 INSERT INTO `diagnose` (`ID_Diagnose`, `ID_Disease`, `ID_MedicalRecord`) VALUES
-(8, 1, 2),
-(15, 2, 2);
+(18, 1, 294);
 
 -- --------------------------------------------------------
 
@@ -123,12 +122,19 @@ INSERT INTO `disease` (`ID_Disease`, `TitleDisease`, `ContentDisease`, `Symptom`
 
 CREATE TABLE `evaluation` (
   `ID_Evaluation` int(11) NOT NULL,
-  `PatientStart` float NOT NULL,
-  `DoctorStar` float NOT NULL,
-  `PatientComment` text NOT NULL,
-  `DoctorComment` text NOT NULL,
+  `PatientStart` int(11) DEFAULT NULL,
+  `DoctorComment` text DEFAULT NULL,
+  `DoctorStar` int(11) DEFAULT NULL,
+  `PatientComment` text DEFAULT NULL,
   `ID_Appointment` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `evaluation`
+--
+
+INSERT INTO `evaluation` (`ID_Evaluation`, `PatientStart`, `DoctorComment`, `DoctorStar`, `PatientComment`, `ID_Appointment`) VALUES
+(11, 5, 'Bệnh nhân tiếp nhận điều trị với thái độ tích cực', NULL, NULL, 16);
 
 -- --------------------------------------------------------
 
@@ -178,7 +184,7 @@ CREATE TABLE `medicalrecord` (
   `BodyPartsCheck` varchar(50) DEFAULT NULL,
   `PulseRate` int(11) DEFAULT NULL,
   `Temp` float DEFAULT NULL,
-  `BloodPressure` int(11) DEFAULT NULL,
+  `BloodPressure` varchar(10) DEFAULT NULL,
   `Breathing` int(11) DEFAULT NULL,
   `Height` float DEFAULT NULL,
   `Weight` float DEFAULT NULL,
@@ -192,25 +198,7 @@ CREATE TABLE `medicalrecord` (
 --
 
 INSERT INTO `medicalrecord` (`ID_MedicalRecord`, `ID_Appointment`, `ReasonCheckup`, `BodyCheck`, `BodyPartsCheck`, `PulseRate`, `Temp`, `BloodPressure`, `Breathing`, `Height`, `Weight`, `Result`, `TreatmentDirection`, `Advice`) VALUES
-(2, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(241, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(242, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(243, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(244, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(245, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(246, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(247, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(248, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(249, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(250, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(251, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(252, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(253, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(254, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(255, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(256, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(257, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(258, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(294, 16, 'đau họng', 'Bình thường', 'Bình thường', 100, 37, '130/70', 80, 1.73, 67, 'Viêm họng', '', '');
 
 -- --------------------------------------------------------
 
@@ -261,11 +249,7 @@ CREATE TABLE `medicinesfortreatment` (
 --
 
 INSERT INTO `medicinesfortreatment` (`ID_Prescription`, `ID_Medicine`, `Amount`, `TotalMoney`, `DescriptionTreatment`, `Morning`, `Afternoon`, `Evening`) VALUES
-(1, 1, 0, 0, '', 0, 0, 0),
-(7, 1, 2, 0, 'Nhỏ rửa mắt, ngày 2 lần, mỗi lần 2-3 giọt', 0, 0, 0),
-(7, 1, 2, 2640, 'Nhỏ rửa mắt, ngày 2 lần, mỗi lần 2-3 giọt', 0, 0, 0),
-(7, 1, 5, 6600, 'Nhỏ rửa mắt, ngày 2 lần, mỗi lần 2-3 giọt', 1, 1, 1),
-(7, 3, 2, 200, 'Uống sau khi ăn', 1, 1, 0);
+(54, 2, 14, 2058, 'Uống sau khi ăn', 1, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -292,7 +276,7 @@ CREATE TABLE `patient` (
 
 INSERT INTO `patient` (`ID_Patient`, `Name`, `DOB`, `Sex`, `Address`, `CMND`, `PhoneNumber`, `ID_BHYT`, `UserName`, `Password`) VALUES
 (1, 'nghia', '2012-12-12', 'nam', '40', 'xxx', '123', '9222590774', 'tran', '345453'),
-(2, 'Trần Nhân Nghĩa', '2000-01-24', 'Nam', NULL, NULL, '0939635755', NULL, 'trannhannghia@gmail.com', '593992d613b77c065055acd511edab67');
+(2, 'Trần Nhân Nghĩa', '2000-01-24', 'Nam', NULL, NULL, '0939635755', 'GD4929222590774', 'trannhannghia@gmail.com', '593992d613b77c065055acd511edab67');
 
 -- --------------------------------------------------------
 
@@ -314,7 +298,6 @@ CREATE TABLE `paymentmethod` (
 CREATE TABLE `presciption` (
   `ID_Prescription` int(11) NOT NULL,
   `ID_Appointment` int(11) NOT NULL,
-  `Description` text DEFAULT NULL,
   `TotalAmount` int(11) DEFAULT NULL,
   `assuranceHealth` float DEFAULT NULL,
   `PatientPays` int(11) DEFAULT NULL,
@@ -325,20 +308,8 @@ CREATE TABLE `presciption` (
 -- Dumping data for table `presciption`
 --
 
-INSERT INTO `presciption` (`ID_Prescription`, `ID_Appointment`, `Description`, `TotalAmount`, `assuranceHealth`, `PatientPays`, `expDate`) VALUES
-(7, 16, NULL, NULL, NULL, NULL, NULL),
-(12, 16, NULL, NULL, NULL, NULL, NULL),
-(13, 16, NULL, NULL, NULL, NULL, NULL),
-(14, 16, NULL, NULL, NULL, NULL, NULL),
-(15, 16, NULL, NULL, NULL, NULL, NULL),
-(16, 16, NULL, NULL, NULL, NULL, NULL),
-(17, 16, NULL, NULL, NULL, NULL, NULL),
-(18, 16, NULL, NULL, NULL, NULL, NULL),
-(19, 16, NULL, NULL, NULL, NULL, NULL),
-(20, 16, NULL, NULL, NULL, NULL, NULL),
-(21, 16, NULL, NULL, NULL, NULL, NULL),
-(22, 16, NULL, NULL, NULL, NULL, NULL),
-(23, 16, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `presciption` (`ID_Prescription`, `ID_Appointment`, `TotalAmount`, `assuranceHealth`, `PatientPays`, `expDate`) VALUES
+(54, 16, 2058, 0.8, 0, '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -520,8 +491,7 @@ ALTER TABLE `medicine`
 -- Indexes for table `medicinesfortreatment`
 --
 ALTER TABLE `medicinesfortreatment`
-  ADD KEY `ID_Medicine` (`ID_Medicine`),
-  ADD KEY `ID_Prescription` (`ID_Prescription`);
+  ADD PRIMARY KEY (`ID_Prescription`,`ID_Medicine`);
 
 --
 -- Indexes for table `patient`
@@ -584,7 +554,7 @@ ALTER TABLE `dept`
 -- AUTO_INCREMENT for table `diagnose`
 --
 ALTER TABLE `diagnose`
-  MODIFY `ID_Diagnose` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `ID_Diagnose` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `disease`
@@ -596,7 +566,7 @@ ALTER TABLE `disease`
 -- AUTO_INCREMENT for table `evaluation`
 --
 ALTER TABLE `evaluation`
-  MODIFY `ID_Evaluation` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_Evaluation` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `img_staff`
@@ -608,7 +578,7 @@ ALTER TABLE `img_staff`
 -- AUTO_INCREMENT for table `medicalrecord`
 --
 ALTER TABLE `medicalrecord`
-  MODIFY `ID_MedicalRecord` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=259;
+  MODIFY `ID_MedicalRecord` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=295;
 
 --
 -- AUTO_INCREMENT for table `medicine`
@@ -632,7 +602,7 @@ ALTER TABLE `paymentmethod`
 -- AUTO_INCREMENT for table `presciption`
 --
 ALTER TABLE `presciption`
-  MODIFY `ID_Prescription` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `ID_Prescription` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `schedule`

@@ -9,6 +9,9 @@
             JOIN schedule ON schedule.ID_schedule=appointment.Date_Checkup";
     $query = mysqli_query($conn, $sql);
     $rows = mysqli_fetch_array($query);
+
+    $namePatient = $rows['Name'];
+    // echo $namePatient;
 ?>
 
 <main>
@@ -314,6 +317,9 @@
                             <button onclick="exportPrescription()"> Xuất toa thuốc
                                 <span><i class="fas fa-plus"></i></span>
                             </button>
+                            <button class="modal-btn-evaluation"> Kết thúc điều trị
+                                <span><i class="fas fa-plus"></i></span>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -323,3 +329,43 @@
 </main>
 
 <script src="./modules_staff/checkup/diagnose.js"></script>
+
+
+<!-- =========== modal evaluation =============-->
+<div class="modal-bg-evaluation">
+    <div class="modal-evaluation">
+        <div class="container-evaluation">
+            <div class="post">
+                <div class="text">Thanks</div>
+            </div>
+            <div class="star-widget">
+                <input type="radio" name="rate" id="rate-5">
+                <label for="rate-5" class="fas fa-star"></label>
+                <input type="radio" name="rate" id="rate-4">
+                <label for="rate-4" class="fas fa-star"></label>
+                <input type="radio" name="rate" id="rate-3">
+                <label for="rate-3" class="fas fa-star"></label>
+                <input type="radio" name="rate" id="rate-2">
+                <label for="rate-2" class="fas fa-star"></label>
+                <input type="radio" name="rate" id="rate-1">
+                <label for="rate-1" class="fas fa-star"></label>
+
+                <form action="./modules_staff/checkup/evaluation.php" method="POST">
+                    <header></header>
+                    <div class="textarea">
+                        <textarea id="myTextarea" name="myTextarea" cols="30" rows="10" placeholder="Đánh giá của bạn về bệnh nhân..."></textarea>
+                        <input type="hidden" name="votingRate" id="votingRate">
+                        <input type="hidden" name="ID_Appointment" id="ID_Appointment" value="<?php echo $ID_Appointment ?>">
+                    </div>
+                    <div class="btn-evaluation">
+                        <button type="submit" name="evaluation_btn">Đánh giá</button>
+                        <!-- <button name="evaluation_btn" class="modal-close-evaluation">Hủy bỏ</button> -->
+                    </div>
+                </form>
+            </div>
+        </div>
+        <span class="modal-close-evaluation">X</spsan>
+    </div>
+</div>
+
+<script src="./modules_staff/checkup/evaluation.js"></script>

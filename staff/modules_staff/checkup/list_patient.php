@@ -30,7 +30,8 @@
                                 include './../config.php';
                                 $sql = "SELECT * FROM appointment 
                                 JOIN patient ON appointment.ID_Patient=patient.ID_Patient 
-                                JOIN schedule ON schedule.ID_schedule=appointment.Date_Checkup";
+                                JOIN schedule ON schedule.ID_schedule=appointment.Date_Checkup
+                                WHERE appointment.StatusAppointment='Chờ khám'";
                                 $count_order=0;
                                 $query = mysqli_query($conn, $sql);
                                 while($rows = mysqli_fetch_array($query)){ ?>
@@ -45,9 +46,6 @@
                                     <td><?php echo $rows["CMND"] ?></td>
                                     <td><?php echo $rows["ID_BHYT"] ?></td>
                                     <td><?php echo $rows["StatusAppointment"] ?></td>
-                                    <?php 
-                                    // if($rows["StatusAppointment"]=='Chưa khám'){ 
-                                        ?>
                                     <td>
                                         <a  onclick="return confirm_checkup('<?php echo $rows['ID_Appointment'] ?>','<?php echo $rows['Name'] ?>')"
                                         href="#"
@@ -55,9 +53,6 @@
                                             Thực hiện
                                         </a>
                                     </td>
-                                    <?php 
-                                        // } 
-                                    ?>
                                 </tr>
                             <?php } ?>
                         </tr>

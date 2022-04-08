@@ -1,5 +1,6 @@
 <?php
     include './../../../config.php';
+    date_default_timezone_set('Asia/Ho_Chi_Minh');
 
     $TotalMoney = $_GET['TotalMoney'];
     $ID_Appointment = $_GET['ID_Appointment'];
@@ -7,7 +8,6 @@
 
     //Create ExDate
     if($medicine_time!=''){
-        date_default_timezone_set('Asia/Ho_Chi_Minh');
         $time = date('Y-m-d');
         $time_stamp = strtotime($time);
         $new = $time_stamp + $medicine_time*24*60*60;
