@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 08, 2022 at 04:06 PM
+-- Generation Time: Apr 11, 2022 at 06:19 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -35,6 +35,7 @@ CREATE TABLE `appointment` (
   `Date_Checkup` int(11) NOT NULL,
   `Date_HospitalDischarge` datetime DEFAULT NULL,
   `Date_ReCheckup` date DEFAULT NULL,
+  `BHYT_Checkin` tinyint(1) NOT NULL,
   `ID_PaymentMethod` int(11) DEFAULT NULL,
   `StatusAppointment` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -43,8 +44,8 @@ CREATE TABLE `appointment` (
 -- Dumping data for table `appointment`
 --
 
-INSERT INTO `appointment` (`ID_Appointment`, `ID_Staff`, `ID_Patient`, `Date_Booking`, `Date_Checkup`, `Date_HospitalDischarge`, `Date_ReCheckup`, `ID_PaymentMethod`, `StatusAppointment`) VALUES
-(16, 4, 2, '2022-03-25 20:51:45', 38, '2022-04-08 21:04:44', '0000-00-00', NULL, 'Đã khám');
+INSERT INTO `appointment` (`ID_Appointment`, `ID_Staff`, `ID_Patient`, `Date_Booking`, `Date_Checkup`, `Date_HospitalDischarge`, `Date_ReCheckup`, `BHYT_Checkin`, `ID_PaymentMethod`, `StatusAppointment`) VALUES
+(16, 4, 2, '2022-03-25 20:51:45', 38, '2022-04-09 21:11:49', NULL, 1, NULL, 'Đã khám');
 
 -- --------------------------------------------------------
 
@@ -91,7 +92,7 @@ CREATE TABLE `diagnose` (
 --
 
 INSERT INTO `diagnose` (`ID_Diagnose`, `ID_Disease`, `ID_MedicalRecord`) VALUES
-(18, 1, 294);
+(19, 1, 295);
 
 -- --------------------------------------------------------
 
@@ -134,7 +135,8 @@ CREATE TABLE `evaluation` (
 --
 
 INSERT INTO `evaluation` (`ID_Evaluation`, `PatientStart`, `DoctorComment`, `DoctorStar`, `PatientComment`, `ID_Appointment`) VALUES
-(11, 5, 'Bệnh nhân tiếp nhận điều trị với thái độ tích cực', NULL, NULL, 16);
+(12, 5, 'Bệnh nhân vui vẻ hòa đồng', NULL, NULL, 16),
+(13, 5, 'Bệnh nhân vui vẻ hòa đồng', NULL, NULL, 16);
 
 -- --------------------------------------------------------
 
@@ -198,7 +200,7 @@ CREATE TABLE `medicalrecord` (
 --
 
 INSERT INTO `medicalrecord` (`ID_MedicalRecord`, `ID_Appointment`, `ReasonCheckup`, `BodyCheck`, `BodyPartsCheck`, `PulseRate`, `Temp`, `BloodPressure`, `Breathing`, `Height`, `Weight`, `Result`, `TreatmentDirection`, `Advice`) VALUES
-(294, 16, 'đau họng', 'Bình thường', 'Bình thường', 100, 37, '130/70', 80, 1.73, 67, 'Viêm họng', '', '');
+(295, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -249,7 +251,7 @@ CREATE TABLE `medicinesfortreatment` (
 --
 
 INSERT INTO `medicinesfortreatment` (`ID_Prescription`, `ID_Medicine`, `Amount`, `TotalMoney`, `DescriptionTreatment`, `Morning`, `Afternoon`, `Evening`) VALUES
-(54, 2, 14, 2058, 'Uống sau khi ăn', 1, 1, 0);
+(55, 2, 12, 1764, '', 1, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -276,7 +278,7 @@ CREATE TABLE `patient` (
 
 INSERT INTO `patient` (`ID_Patient`, `Name`, `DOB`, `Sex`, `Address`, `CMND`, `PhoneNumber`, `ID_BHYT`, `UserName`, `Password`) VALUES
 (1, 'nghia', '2012-12-12', 'nam', '40', 'xxx', '123', '9222590774', 'tran', '345453'),
-(2, 'Trần Nhân Nghĩa', '2000-01-24', 'Nam', NULL, NULL, '0939635755', 'GD4929222590774', 'trannhannghia@gmail.com', '593992d613b77c065055acd511edab67');
+(2, 'Trần Nhân Nghĩa', '2000-01-24', 'Nam', 'Số 40, đường số 3, KDC Thới Nhựt 2, phường An Khánh, quận Ninh Kiều, TP Cần Thơ', NULL, '0939635755', 'GD4929222590774', 'trannhannghia@gmail.com', '593992d613b77c065055acd511edab67');
 
 -- --------------------------------------------------------
 
@@ -309,7 +311,7 @@ CREATE TABLE `presciption` (
 --
 
 INSERT INTO `presciption` (`ID_Prescription`, `ID_Appointment`, `TotalAmount`, `assuranceHealth`, `PatientPays`, `expDate`) VALUES
-(54, 16, 2058, 0.8, 0, '0000-00-00');
+(55, 16, 1764, 0.8, 0, '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -390,7 +392,31 @@ INSERT INTO `schedule` (`ID_schedule`, `title`, `DateWorking`, `TimeStart`, `Ses
 (64, 'Khám ngoại', NULL, NULL, 'Chiều', 4, 72, '2022-04-03 08:40:38', '2022-04-03 15:00:00', '2022-04-03 19:00:00'),
 (65, 'Khám ngoại', NULL, NULL, 'Chiều', 4, 72, '2022-04-03 08:40:38', '2022-04-03 15:30:00', '2022-04-03 19:30:00'),
 (66, 'Khám ngoại', NULL, NULL, 'Chiều', 4, 72, '2022-04-03 08:40:38', '2022-04-03 16:00:00', '2022-04-03 20:00:00'),
-(67, 'Khám ngoại', NULL, NULL, 'Chiều', 4, 72, '2022-04-03 08:40:38', '2022-04-03 16:30:00', '2022-04-03 20:30:00');
+(67, 'Khám ngoại', NULL, NULL, 'Chiều', 4, 72, '2022-04-03 08:40:38', '2022-04-03 16:30:00', '2022-04-03 20:30:00'),
+(68, 'Khám ngoại', NULL, NULL, 'Sáng', 4, 72, '2022-04-08 14:10:32', '2022-04-08 07:30:00', '2022-04-08 08:00:00'),
+(69, 'Khám ngoại', NULL, NULL, 'Sáng', 4, 72, '2022-04-08 14:10:32', '2022-04-08 08:00:00', '2022-04-08 08:30:00'),
+(70, 'Khám ngoại', NULL, NULL, 'Sáng', 4, 72, '2022-04-08 14:10:32', '2022-04-08 08:30:00', '2022-04-08 09:00:00'),
+(71, 'Khám ngoại', NULL, NULL, 'Sáng', 4, 72, '2022-04-08 14:10:32', '2022-04-08 09:00:00', '2022-04-08 09:30:00'),
+(72, 'Khám ngoại', NULL, NULL, 'Sáng', 4, 72, '2022-04-08 14:10:32', '2022-04-08 09:30:00', '2022-04-08 10:00:00'),
+(73, 'Khám ngoại', NULL, NULL, 'Sáng', 4, 72, '2022-04-08 14:10:32', '2022-04-08 10:00:00', '2022-04-08 10:30:00'),
+(74, 'Khám ngoại', NULL, NULL, 'Sáng', 4, 72, '2022-04-08 14:10:32', '2022-04-08 10:30:00', '2022-04-08 11:00:00'),
+(75, 'Khám ngoại', NULL, NULL, 'Sáng', 4, 72, '2022-04-08 14:10:32', '2022-04-08 11:00:00', '2022-04-08 11:30:00'),
+(76, 'Khám ngoại', NULL, NULL, 'Chiều', 4, 72, '2022-04-08 14:10:47', '2022-04-08 13:00:00', '2022-04-08 17:00:00'),
+(77, 'Khám ngoại', NULL, NULL, 'Chiều', 4, 72, '2022-04-08 14:10:47', '2022-04-08 13:30:00', '2022-04-08 17:30:00'),
+(78, 'Khám ngoại', NULL, NULL, 'Chiều', 4, 72, '2022-04-08 14:10:47', '2022-04-08 14:00:00', '2022-04-08 18:00:00'),
+(79, 'Khám ngoại', NULL, NULL, 'Chiều', 4, 72, '2022-04-08 14:10:47', '2022-04-08 14:30:00', '2022-04-08 18:30:00'),
+(80, 'Khám ngoại', NULL, NULL, 'Chiều', 4, 72, '2022-04-08 14:10:47', '2022-04-08 15:00:00', '2022-04-08 19:00:00'),
+(81, 'Khám ngoại', NULL, NULL, 'Chiều', 4, 72, '2022-04-08 14:10:47', '2022-04-08 15:30:00', '2022-04-08 19:30:00'),
+(82, 'Khám ngoại', NULL, NULL, 'Chiều', 4, 72, '2022-04-08 14:10:47', '2022-04-08 16:00:00', '2022-04-08 20:00:00'),
+(83, 'Khám ngoại', NULL, NULL, 'Chiều', 4, 72, '2022-04-08 14:10:47', '2022-04-08 16:30:00', '2022-04-08 20:30:00'),
+(84, 'Khám ngoại', NULL, NULL, 'Sáng', 4, 71, '2022-04-09 01:43:56', '2022-04-09 07:30:00', '2022-04-09 08:00:00'),
+(85, 'Khám ngoại', NULL, NULL, 'Sáng', 4, 71, '2022-04-09 01:43:56', '2022-04-09 08:00:00', '2022-04-09 08:30:00'),
+(86, 'Khám ngoại', NULL, NULL, 'Sáng', 4, 71, '2022-04-09 01:43:56', '2022-04-09 08:30:00', '2022-04-09 09:00:00'),
+(87, 'Khám ngoại', NULL, NULL, 'Sáng', 4, 71, '2022-04-09 01:43:56', '2022-04-09 09:00:00', '2022-04-09 09:30:00'),
+(88, 'Khám ngoại', NULL, NULL, 'Sáng', 4, 71, '2022-04-09 01:43:56', '2022-04-09 09:30:00', '2022-04-09 10:00:00'),
+(89, 'Khám ngoại', NULL, NULL, 'Sáng', 4, 71, '2022-04-09 01:43:56', '2022-04-09 10:00:00', '2022-04-09 10:30:00'),
+(90, 'Khám ngoại', NULL, NULL, 'Sáng', 4, 71, '2022-04-09 01:43:56', '2022-04-09 10:30:00', '2022-04-09 11:00:00'),
+(91, 'Khám ngoại', NULL, NULL, 'Sáng', 4, 71, '2022-04-09 01:43:56', '2022-04-09 11:00:00', '2022-04-09 11:30:00');
 
 -- --------------------------------------------------------
 
@@ -400,12 +426,12 @@ INSERT INTO `schedule` (`ID_schedule`, `title`, `DateWorking`, `TimeStart`, `Ses
 
 CREATE TABLE `staff` (
   `ID_Staff` int(11) NOT NULL,
-  `Name` varchar(100) NOT NULL,
-  `DOB` date NOT NULL,
-  `Sex` varchar(10) NOT NULL,
-  `Address` varchar(200) NOT NULL,
-  `CMND` varchar(15) NOT NULL,
-  `PhoneNumber` varchar(25) NOT NULL,
+  `Name_Staff` varchar(100) NOT NULL,
+  `DOB_Staff` date NOT NULL,
+  `Sex_Staff` varchar(10) NOT NULL,
+  `Address_Staff` varchar(200) NOT NULL,
+  `CMND_Staff` varchar(15) NOT NULL,
+  `PhoneNumber_Staff` varchar(25) NOT NULL,
   `Position` varchar(50) NOT NULL,
   `ID_Dept` int(11) NOT NULL,
   `DateStartWork` date NOT NULL,
@@ -418,7 +444,7 @@ CREATE TABLE `staff` (
 -- Dumping data for table `staff`
 --
 
-INSERT INTO `staff` (`ID_Staff`, `Name`, `DOB`, `Sex`, `Address`, `CMND`, `PhoneNumber`, `Position`, `ID_Dept`, `DateStartWork`, `VoteRate`, `UserName`, `Password`) VALUES
+INSERT INTO `staff` (`ID_Staff`, `Name_Staff`, `DOB_Staff`, `Sex_Staff`, `Address_Staff`, `CMND_Staff`, `PhoneNumber_Staff`, `Position`, `ID_Dept`, `DateStartWork`, `VoteRate`, `UserName`, `Password`) VALUES
 (1, 'Trần Nhân Nghĩa', '2000-01-24', 'Nam', 'An Khánh', '092200000280', '0939635755', 'Admin', 0, '2020-01-24', 0, 'admin', '19513b313f52755a0956c2be7f48d86f'),
 (4, 'Chae Song-hwa', '1982-08-04', 'Nữ', 'Nguyễn Đệ, Bình Thủy, Cần Thơ', '312328285', '0939017069', 'Bác sĩ', 7, '2010-07-10', 4.4, 'chae', '40a0a40b8110608cf0866037654e3f74'),
 (6, 'Lee Ik-jun', '1980-12-26', 'Nam', 'Nguyễn Đệ, Bình Thủy, Cần Thơ', '09220000123', '0989123456', 'Bác sĩ', 1, '2000-10-19', 4.9, 'lee', 'b0f8b49f22c718e9924f5b1165111a67'),
@@ -554,7 +580,7 @@ ALTER TABLE `dept`
 -- AUTO_INCREMENT for table `diagnose`
 --
 ALTER TABLE `diagnose`
-  MODIFY `ID_Diagnose` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `ID_Diagnose` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `disease`
@@ -566,7 +592,7 @@ ALTER TABLE `disease`
 -- AUTO_INCREMENT for table `evaluation`
 --
 ALTER TABLE `evaluation`
-  MODIFY `ID_Evaluation` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `ID_Evaluation` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `img_staff`
@@ -578,7 +604,7 @@ ALTER TABLE `img_staff`
 -- AUTO_INCREMENT for table `medicalrecord`
 --
 ALTER TABLE `medicalrecord`
-  MODIFY `ID_MedicalRecord` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=295;
+  MODIFY `ID_MedicalRecord` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=297;
 
 --
 -- AUTO_INCREMENT for table `medicine`
@@ -602,13 +628,13 @@ ALTER TABLE `paymentmethod`
 -- AUTO_INCREMENT for table `presciption`
 --
 ALTER TABLE `presciption`
-  MODIFY `ID_Prescription` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `ID_Prescription` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT for table `schedule`
 --
 ALTER TABLE `schedule`
-  MODIFY `ID_schedule` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+  MODIFY `ID_schedule` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
 
 --
 -- AUTO_INCREMENT for table `staff`

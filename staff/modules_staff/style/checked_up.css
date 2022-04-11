@@ -1,0 +1,51 @@
+.personalInfoTable {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+.personalInfoTable  th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #c5c5c5;
+    border-top: 1px solid #ffffff;
+    border-right: 1px solid #ffffff;
+    border-left: 1px solid #ffffff;
+}
+.personalInfoTable  th{
+    width: 13%;
+}
+
+.record{
+    display: flex;
+}
+
+.summary{
+    /* background-color: antiquewhite; */
+    width: 35%;
+    height: 100vh;
+}
+
+.detail_record{
+    /* background-color: rgb(230, 136, 15); */
+    width: 65%;
+    height: 100vh;
+    margin-top: 3vh;
+    padding-left: 3vw;
+}
+
+.recordTable th{
+    background-color: #469cac;
+    border: 1px solid #469cac;
+    color: #ffffff;
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+.recordTable td{
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+.summary-content{
+    margin-top: 3vh;
+}

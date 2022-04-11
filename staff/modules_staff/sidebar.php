@@ -19,21 +19,21 @@
         </div>
         <h2>Quản lý bệnh</h2>
         <div class="sidebar__link">
-            <i class="fa fa-user-secret" aria-hidden="true"></i>
+            <i class="fa fa-heartbeat" aria-hidden="true"></i>
             <a href="./index.php?page_layout=list_patient">Danh sách chờ khám</a>
         </div>
         <div class="sidebar__link">
-            <i class="fa fa-user-secret" aria-hidden="true"></i>
-            <a href="./index.php?page_layout=list_patient">Lịch sử bệnh nhân</a>
+            <i class="fa fa-heartbeat" aria-hidden="true"></i>
+            <a href="./index.php?page_layout=list_checked_up">Bệnh nhân đã khám</a>
         </div>
-        <h2>Bệnh án điện tử</h2>
+        <h2>Quản lý bệnh án</h2>
         <div class="sidebar__link">
-            <i class="fa fa-question"></i>
-            <a href="#">Ghi nhận bệnh án</a>
+            <i class="fa fa-clipboard"></i>
+            <a href="./index.php?page_layout=medicalRecord">Bệnh án điện tử</a>
         </div>
         <h2>Quản lý lịch công tác</h2>
         <div class="sidebar__link">
-            <i class="fa fa-money"></i>
+            <i class="fa fa-stethoscope"></i>
             <a href="./index.php?page_layout=bookingSche">Lịch công tác</a>
         </div>
     </div>
