@@ -143,7 +143,7 @@
             <div class="card-image"> 
                 <img src="./img/staff/<?php echo $rows["imgName"] ?>">
             </div>
-            <h2><?php echo $rows["Name"] ?></h2>
+            <h2><?php echo $rows["Name_Staff"] ?></h2>
             <h3><?php echo $rows["Position"] ?></h3>
             <h3><?php echo $rows["Name_Dept"] ?></h3>
             <!-- <h3><?php echo $rows["VoteRate"] ?></h3> -->

@@ -17,7 +17,6 @@
         WHERE p.UserName='$username'
         ORDER BY ID_Appointment DESC";
     $query_appointment = mysqli_query($conn, $sql_appointment);
-    $rows_appointment = mysqli_fetch_array($query_appointment);
 ?>
 
 
@@ -51,11 +50,11 @@
                         <td> <?php echo $rows_appointment['Name_Room'] ?> </td>
                         <td> <?php echo $rows_appointment['Name_Dept'] ?> </td>
                         <td> <?php echo $rows_appointment['Date_Booking'] ?> </td>
-                        <td> <?php echo $rows_appointment['DateWorking'].' '.$rows_appointment['TimeStart'] ?> </td>
+                        <td> <?php echo $rows_appointment['start'] ?> </td>
                         <td> <?php echo $rows_appointment['Date_ReCheckup'] ?> </td>
                         <td> # </td>
                         <td> # </td>
-                        <td> # </td>
+                        <td> <?php echo $rows_appointment['StatusAppointment'] ?> </td>
                         <td>
                             <a class="button_edit_product" href="#">Xem</a>
                         </td>

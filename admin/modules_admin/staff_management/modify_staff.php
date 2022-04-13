@@ -29,7 +29,7 @@
         // echo $ID_Dept;
         // echo $DateStartWork;
 
-        $sql_modify_staff = "UPDATE staff SET Name='$Name',DOB='$DOB',Sex='$Sex',Address='$Address',CMND='$CMND',PhoneNumber='$PhoneNumber',Position='$Position',ID_Dept=$ID_Dept,DateStartWork='$DateStartWork' WHERE `ID_Staff`=$ID_Staff";
+        $sql_modify_staff = "UPDATE staff SET Name_Staff='$Name',DOB_Staff='$DOB',Sex_Staff='$Sex',Address_Staff='$Address',CMND_Staff='$CMND',PhoneNumber_Staff='$PhoneNumber',Position='$Position',ID_Dept=$ID_Dept,DateStartWork='$DateStartWork' WHERE `ID_Staff`=$ID_Staff";
         $query_modify_staff = mysqli_query($conn, $sql_modify_staff);
 
         header("location: ./index.php?page_layout=staff_detail&id=$ID_Staff");
@@ -59,14 +59,14 @@
         <form id="form" class="form" action="" enctype="multipart/form-data" method="POST">
             <div class="form-control">
                 <label for="username">Họ tên</label>
-                <input type="text" placeholder="Nhập họ tên" id="name" name="Name_demo" value="<?php echo $rows['Name'] ?>"/>
+                <input type="text" placeholder="Nhập họ tên" id="name" name="Name_demo" value="<?php echo $rows['Name_Staff'] ?>"/>
                 <i class="fas fa-check-circle"></i>
                 <i class="fas fa-exclamation-circle"></i>
                 <small>Error message</small>
             </div>
             <div class="form-control">
                 <label for="username">Ngày sinh</label>
-                <input type="date" placeholder="Nhập ngày sinh" id="name" name="DOB" value="<?php echo $rows['DOB'] ?>"/>
+                <input type="date" placeholder="Nhập ngày sinh" id="name" name="DOB" value="<?php echo $rows['DOB_Staff'] ?>"/>
                 <i class="fas fa-check-circle"></i>
                 <i class="fas fa-exclamation-circle"></i>
                 <small>Error message</small>
@@ -75,9 +75,9 @@
                 <label for="username">Giới tính</label>
                 <select class="form-control" name="Sex" id="Sex">
                     <option selected>-- Giới tính --</option>
-                    <option <?php if($rows['Sex']=="Nam"){echo 'selected="selected"';} ?> value = "Nam" >Nam</option>
-                    <option <?php if($rows['Sex']=="Nữ"){echo 'selected="selected"';} ?> value = "Nữ" >Nữ</option>
-                    <option <?php if($rows['Sex']=="Khác"){echo 'selected="selected"';} ?> value = "Khác" >Khác</option>
+                    <option <?php if($rows['Sex_Staff']=="Nam"){echo 'selected="selected"';} ?> value = "Nam" >Nam</option>
+                    <option <?php if($rows['Sex_Staff']=="Nữ"){echo 'selected="selected"';} ?> value = "Nữ" >Nữ</option>
+                    <option <?php if($rows['Sex_Staff']=="Khác"){echo 'selected="selected"';} ?> value = "Khác" >Khác</option>
                 </select>
                 <i class="fas fa-check-circle"></i>
                 <i class="fas fa-exclamation-circle"></i>
@@ -85,21 +85,21 @@
             </div>
             <div class="form-control">
                 <label for="username">Địa chỉ</label>
-                <input type="text" placeholder="Nhập địa chỉ" id="address" name="Address" value="<?php echo $rows['Address'] ?>"/>
+                <input type="text" placeholder="Nhập địa chỉ" id="address" name="Address" value="<?php echo $rows['Address_Staff'] ?>"/>
                 <i class="fas fa-check-circle"></i>
                 <i class="fas fa-exclamation-circle"></i>
                 <small>Error message</small>
             </div>
             <div class="form-control">
                 <label for="username">Chứng minh nhân dân</label>
-                <input type="number" placeholder="Nhập chứng minh nhân dân" id="CMND" name="CMND" value="<?php echo $rows['CMND'] ?>"/>
+                <input type="number" placeholder="Nhập chứng minh nhân dân" id="CMND" name="CMND" value="<?php echo $rows['CMND_Staff'] ?>"/>
                 <i class="fas fa-check-circle"></i>
                 <i class="fas fa-exclamation-circle"></i>
                 <small>Error message</small>
             </div>
             <div class="form-control">
                 <label for="username">Số điện thoại</label>
-                <input type="number" placeholder="Nhập số điện thoại" id="PhoneNumber" name="PhoneNumber" value="<?php echo $rows['PhoneNumber'] ?>"/>
+                <input type="number" placeholder="Nhập số điện thoại" id="PhoneNumber" name="PhoneNumber" value="<?php echo $rows['PhoneNumber_Staff'] ?>"/>
                 <i class="fas fa-check-circle"></i>
                 <i class="fas fa-exclamation-circle"></i>
                 <small>Error message</small>

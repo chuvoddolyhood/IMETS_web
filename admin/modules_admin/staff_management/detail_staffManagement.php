@@ -28,20 +28,20 @@
     <div id="content-wrapper">
 		
 		<div class="title_doc">
-			<h1><?php echo $rows["Name"]; ?></h1>
+			<h1><?php echo $rows["Name_Staff"]; ?></h1>
 			<hr>
 			<h3><?php echo $rows["Position"]; ?></h3>
 			<h4><?php echo $rows["Name_Dept"]; ?></h4>
-			<p>Giới tính: <?php echo $rows["Sex"]; ?></p>
+			<p>Giới tính: <?php echo $rows["Sex_Staff"]; ?></p>
 			<p>Ngày sinh: 
 				<?php 
-					$DOB =$rows["DOB"];
+					$DOB =$rows["DOB_Staff"];
 					echo date('d/m/Y', strtotime($DOB));
 				?> 
 			</p>
-			<p>Số điện thoại: <?php echo $rows["PhoneNumber"]; ?></p>
-			<p>Địa chỉ: <?php echo $rows["Address"]; ?></p>
-			<p>CMND: <?php echo $rows["CMND"]; ?></p>
+			<p>Số điện thoại: <?php echo $rows["PhoneNumber_Staff"]; ?></p>
+			<p>Địa chỉ: <?php echo $rows["Address_Staff"]; ?></p>
+			<p>CMND: <?php echo $rows["CMND_Staff"]; ?></p>
 			<p>Ngày vào làm: 
 				<?php
 				  	$date = getdate();

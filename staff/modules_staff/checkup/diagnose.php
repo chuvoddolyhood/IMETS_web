@@ -23,16 +23,16 @@
 
         // echo $reasoncheckup;
 
-        //Medical Record
-        $sql_add_medicalrecord = "INSERT INTO medicalrecord (ID_Appointment, ReasonCheckup, BodyCheck, BodyPartsCheck, PulseRate, Temp, BloodPressure, Breathing, Height, Weight, Result, TreatmentDirection, Advice) VALUES ('$ID_Appointment','$reasoncheckup','$bodycheck','$bodypartscheck','$pulserate','$temp','$bloodpressure','$breathing','$height','$weight','$result','$dicection','$advice')";
-        $query_add_medicalrecord = mysqli_query($conn, $sql_add_medicalrecord);
+        //update Medical Record
+        $sql_update_medicalrecord = "UPDATE medicalrecord SET ReasonCheckup='$reasoncheckup', BodyCheck='$bodycheck', BodyPartsCheck='$bodypartscheck', PulseRate='$pulserate', Temp='$temp', BloodPressure='$bloodpressure', Breathing='$breathing', Height='$height', Weight='$weight', Result='$result', TreatmentDirection='$dicection', Advice='$advice' WHERE ID_Appointment=$ID_Appointment";
+        $query_update_medicalrecord = mysqli_query($conn, $sql_update_medicalrecord);
 
         //update dateRecheckup
         $sql_set_dateRecheckup = "UPDATE `appointment` SET `Date_ReCheckup`='$dateRecheckup' WHERE `ID_Appointment`=$ID_Appointment";
         $query_set_dateRecheckup = mysqli_query($conn, $sql_set_dateRecheckup);
 
-        if($query_add_medicalrecord && $query_set_dateRecheckup){
-            echo 'Saved';
+        if($query_update_medicalrecord && $query_set_dateRecheckup){
+            echo 'Đã lưu';
         } else{
             echo 'Error';
         }

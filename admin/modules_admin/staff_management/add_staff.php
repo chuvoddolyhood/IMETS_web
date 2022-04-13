@@ -26,12 +26,12 @@
         // echo $Password;
 
         //Them thong tin vao staff
-        $sql_add_staff = "INSERT INTO staff(Name, DOB, Sex, Address, CMND, PhoneNumber, Position, ID_Dept, DateStartWork, UserName, Password) 
+        $sql_add_staff = "INSERT INTO staff(Name_Staff, DOB_Staff, Sex_Staff, Address_Staff, CMND_Staff, PhoneNumber_Staff, Position, ID_Dept, DateStartWork, UserName, Password) 
         VALUES ('$Name','$DOB','$Sex','$Address','$CMND','$PhoneNumber','$Position','$ID_Dept','$DateStartWork','$Username','$Password')";
         $query_staff = mysqli_query($conn, $sql_add_staff);
 
         //Lay ID_Staff
-        $sql_get_IDStaff = "SELECT ID_Staff FROM staff WHERE CMND='$CMND'";
+        $sql_get_IDStaff = "SELECT ID_Staff FROM staff WHERE CMND_Staff='$CMND'";
         $query_get_IDStaff = mysqli_query($conn, $sql_get_IDStaff);
         $rows_get_IDStaff = mysqli_fetch_array($query_get_IDStaff);
         $ID_Staff = $rows_get_IDStaff['ID_Staff']; 

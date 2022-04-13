@@ -25,7 +25,8 @@
                         <tr>
                             <?php 
                                 include './../config.php';
-                                $sql = "SELECT * FROM appointment 
+                                $sql = "SELECT DISTINCT patient.ID_Patient,patient.Name,patient.DOB,patient.Address,patient.PhoneNumber,patient.CMND, patient.ID_BHYT
+                                FROM appointment 
                                 JOIN patient ON appointment.ID_Patient=patient.ID_Patient 
                                 WHERE appointment.StatusAppointment='Đã khám'";
                                 $count_order=0;

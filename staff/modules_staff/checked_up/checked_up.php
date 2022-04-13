@@ -4,18 +4,6 @@
     $ID_Patient = $_GET['ID_Patient'];
     $login_staff = $_SESSION['login_staff'];
 
-    $sql = "SELECT * FROM appointment 
-            JOIN patient ON appointment.ID_Patient=patient.ID_Patient 
-            JOIN schedule ON schedule.ID_schedule=appointment.Date_Checkup
-            JOIN staff ON staff.ID_Staff=appointment.ID_Staff
-            JOIN medicalrecord ON medicalrecord.ID_Appointment=appointment.ID_Appointment
-            JOIN diagnose ON diagnose.ID_MedicalRecord=medicalrecord.ID_MedicalRecord
-            JOIN disease ON disease.ID_Disease=diagnose.ID_Disease
-            WHERE staff.UserName='$login_staff'";
-    $query = mysqli_query($conn, $sql);
-    $rows = mysqli_fetch_array($query);
-
-    // $login_staff = $_SESSION['login_staff'];
     // echo $login_staff;
 ?>
 
@@ -30,6 +18,11 @@
                 <h2>Hồ sơ bệnh nhân</h2>
             </div>
             <div class="personalInfo">
+                <?php 
+                    $sql = "SELECT * FROM appointment JOIN patient ON appointment.ID_Patient=patient.ID_Patient";
+                    $query = mysqli_query($conn, $sql);
+                    $rows = mysqli_fetch_array($query);
+                ?>
                 <table class="personalInfoTable">
                     <tr>
                         <th>Mã bệnh nhân: </th>
@@ -75,13 +68,28 @@
                                 <th>Đối tượng</th>
                                 <th>Xem</th>
                             </tr>
+                            <?php
+                                    $sql_appointment = "SELECT * FROM appointment 
+                                    JOIN schedule ON schedule.ID_schedule=appointment.Date_Checkup
+                                    JOIN staff ON staff.ID_Staff=appointment.ID_Staff
+                                    JOIN medicalrecord ON medicalrecord.ID_Appointment=appointment.ID_Appointment
+                                    JOIN diagnose ON diagnose.ID_MedicalRecord=medicalrecord.ID_MedicalRecord
+                                    JOIN disease ON disease.ID_Disease=diagnose.ID_Disease
+                                    WHERE staff.UserName='$login_staff'
+                                    ORDER BY appointment.ID_Appointment DESC";
+                                    $query_appointment = mysqli_query($conn, $sql_appointment);
+                                    while($rows_appointment = mysqli_fetch_array($query_appointment)){
+                                ?>
                             <tr>
-                                <td><?php echo $rows['ID_Appointment'] ?></td>
-                                <td><?php echo $rows['start'] ?></td>
-                                <td><?php echo $rows['Date_HospitalDischarge'] ?></td>
-                                <td><?php if($rows['BHYT_Checkin']==1) echo 'BHYT';?></td>
-                                <td><a href="./index.php?page_layout=checked_up&ID_Patient=<?php echo $ID_Patient ?>&ID_Appointment=<?php echo $rows['ID_Appointment'] ?>">Xem</a></td>
+                                <td><?php echo $rows_appointment['ID_Appointment'] ?></td>
+                                <td><?php echo $rows_appointment['start'] ?></td>
+                                <td><?php echo $rows_appointment['Date_HospitalDischarge'] ?></td>
+                                <td><?php if($rows_appointment['BHYT_Checkin']==1) echo 'BHYT';?></td>
+                                <td><a href="./index.php?page_layout=checked_up&ID_Patient=<?php echo $ID_Patient ?>&ID_Appointment=<?php echo $rows_appointment['ID_Appointment'] ?>">Xem</a></td>
                             </tr>
+                            <?php 
+                                }
+                            ?>
                         </table>
                     </div>
                     <br>

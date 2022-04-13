@@ -19,20 +19,20 @@
     <div id="content-wrapper">
 		
 		<div class="title_doc">
-			<h1><?php echo $rows["Name"]; ?></h1>
+			<h1><?php echo $rows["Name_Staff"]; ?></h1>
 			<hr>
 			<h3><?php echo $rows["Position"]; ?></h3>
 			<h4><?php echo $rows["Name_Dept"]; ?></h4>
-			<p>Giới tính: <?php echo $rows["Sex"]; ?></p>
+			<p>Giới tính: <?php echo $rows["Sex_Staff"]; ?></p>
 			<p>Ngày sinh: 
 				<?php 
-					$DOB =$rows["DOB"];
+					$DOB =$rows["DOB_Staff"];
 					echo date('d/m/Y', strtotime($DOB));
 				?> 
 			</p>
-			<p>Số điện thoại: <?php echo $rows["PhoneNumber"]; ?></p>
-			<p>Địa chỉ: <?php echo $rows["Address"]; ?></p>
-			<p>CMND: <?php echo $rows["CMND"]; ?></p>
+			<p>Số điện thoại: <?php echo $rows["PhoneNumber_Staff"]; ?></p>
+			<p>Địa chỉ: <?php echo $rows["Address_Staff"]; ?></p>
+			<p>CMND: <?php echo $rows["CMND_Staff"]; ?></p>
 			<p>Ngày vào làm: 
 				<?php
 				  	$date = getdate();
@@ -92,10 +92,10 @@
 
 	<div class="doctorList">
 		<?php
-			$sql_get_schedule = "SELECT DISTINCT st.Name,s.DateWorking,d.Name_Dept
+			$sql_get_schedule = "SELECT DISTINCT st.Name_Staff,DATE(s.start) AS start,d.Name_Dept
 			FROM schedule s JOIN staff st ON s.ID_Staff=st.ID_Staff
 				JOIN dept d ON d.ID_Dept=st.ID_Dept
-			WHERE st.ID_Staff=$ID_Staff";
+			WHERE st.ID_Staff=$ID_Staff AND s.start>=NOW()";
 			$query_get_schedule = mysqli_query($conn, $sql_get_schedule);
 		?>
 
@@ -109,10 +109,10 @@
 					<div class="card-image">
 						<img src="./img/images/img1.jpg">
 					</div>
-					<h2><?php echo date('d-m-Y', strtotime($rows_get_schedule['DateWorking'])); ?></h2>
+					<h2><?php echo date('d-m-Y', strtotime($rows_get_schedule['start'])); ?></h2>
 					<h3><?php echo $rows_get_schedule['Name_Dept']; ?></h3>
 					<a href="./index.php?page_layout=clipboard&
-						ID_Staff=<?php echo $ID_Staff ?>&date=<?php echo $rows_get_schedule['DateWorking'] ?>"
+						ID_Staff=<?php echo $ID_Staff ?>&date=<?php echo $rows_get_schedule['start'] ?>"
 						onclick="return confirm_Booking()">
 						Đặt lịch</a>
 				</div>
@@ -143,7 +143,7 @@
 					<div class="card-image">
 						<img src="./img/staff/<?php echo $rows_get_anotherDoctor["imgName"] ?>">
 					</div>
-					<h2><?php echo $rows_get_anotherDoctor["Name"] ?></h2>
+					<h2><?php echo $rows_get_anotherDoctor["Name_Staff"] ?></h2>
 					<h3><?php echo $rows_get_anotherDoctor["Position"] ?></h3>
 					<h3><?php echo $rows_get_anotherDoctor["Name_Dept"] ?></h3>
 					<!-- <h3><?php echo $rows_get_anotherDoctor["VoteRate"] ?></h3> -->

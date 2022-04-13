@@ -37,12 +37,12 @@
                             <tr>
                                 <td><?php echo $rows["ID_Staff"] ?></td>
                                 <td><img src="./../img/staff/<?php echo $rows["imgName"] ?>" style="width: 30%"></td>
-                                <td><?php echo $rows["Name"] ?></td>
-                                <td><?php echo $rows["DOB"] ?></td>
-                                <td><?php echo $rows["Sex"] ?></td>
-                                <td><?php echo $rows["Address"] ?></td>
-                                <td><?php echo $rows["CMND"] ?></td>
-                                <td><?php echo $rows["PhoneNumber"] ?></td>
+                                <td><?php echo $rows["Name_Staff"] ?></td>
+                                <td><?php echo $rows["DOB_Staff"] ?></td>
+                                <td><?php echo $rows["Sex_Staff"] ?></td>
+                                <td><?php echo $rows["Address_Staff"] ?></td>
+                                <td><?php echo $rows["CMND_Staff"] ?></td>
+                                <td><?php echo $rows["PhoneNumber_Staff"] ?></td>
                                 <td><?php echo $rows["Position"] ?></td>
                                 <?php $count_nhanvien++ ?>
                                 <td>

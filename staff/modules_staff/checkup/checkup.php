@@ -6,7 +6,8 @@
 
     $sql = "SELECT * FROM appointment 
             JOIN patient ON appointment.ID_Patient=patient.ID_Patient 
-            JOIN schedule ON schedule.ID_schedule=appointment.Date_Checkup";
+            JOIN schedule ON schedule.ID_schedule=appointment.Date_Checkup
+            WHERE appointment.ID_Appointment=$ID_Appointment";
     $query = mysqli_query($conn, $sql);
     $rows = mysqli_fetch_array($query);
 
@@ -156,6 +157,8 @@
                                                     include './../config.php';
                                                     $sql = "SELECT ID_Diagnose,disease.ID_Disease, disease.TitleDisease
                                                             FROM diagnose JOIN disease ON diagnose.ID_Disease=disease.ID_Disease
+                                                            JOIN medicalrecord ON medicalrecord.ID_MedicalRecord=diagnose.ID_MedicalRecord
+                                                            WHERE medicalrecord.ID_Appointment=$ID_Appointment
                                                             ORDER BY ID_Diagnose ASC";
                                                     $query = mysqli_query($conn, $sql);
                                                     $count=0;
@@ -247,10 +250,6 @@
                                             <input type="checkbox" name="medicine_use_evening" value="1"> Tối<br>
                                         </td>                                        
                                     </tr>
-                                    <tr>
-                                        <th>Thời gian dùng toa</th>
-                                        <td><input type="number" class="input-form-title" name="medicine_time" id="medicine_time" min="1"> ngày</td>
-                                    </tr>
                                 </table>
                                 <div class="button-function">
                                     <input type="submit" name="btn_medicine_prescription" value="Thêm">
@@ -308,7 +307,10 @@
                                 </table>
                             </div>
                         </div>
-                        
+                        <div>
+                            <h5>Thời gian dùng toa</h5>
+                            <input type="number" class="input-form-title" name="medicine_time" id="medicine_time" min="1"> ngày
+                        </div>
                         <div class="totalMoney">
                             <h4>Tổng tiền:</h4>
                             <p id="TotalMoney"><?php echo $sumMoney ?></p>
