@@ -1,0 +1,177 @@
+
+/* modal */
+
+.modal-bg-evaluation{
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s;
+    z-index: 100;
+}
+  
+.bg-evaluation-active{
+    visibility: visible;
+    opacity: 1;
+}
+  
+.modal-evaluation{
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+  
+.modal-close-evaluation{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+.container-evaluation{
+    background-color: rgb(240, 240, 240);
+    padding: 20px 30px;
+    border: 1px solid rgb(206, 206, 206);
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.container-evaluation .text{
+    font-size: 25px;
+    color: #666;
+    font-weight: 500;
+}
+
+.container-evaluation .post{
+    display: none;
+}
+
+.container-evaluation .star-widget input{
+    display: none;
+}
+
+.container-evaluation label{
+    font-size: 40px;
+    color: #c5e4f5;
+    padding: 10px;
+    float: right;
+    transition: all 0.2s ease;
+}
+
+input:not(:checked) ~ label:hover,
+input:not(:checked) ~ label:hover ~ label{
+    color: #69abce;
+    cursor: pointer;
+}
+
+input:checked ~ label{
+    color: #69abce;
+}
+
+input#rate-5:checked ~ label{
+    color: #69abce;
+    text-shadow: 1px 2px 5px #3dace7;
+}
+
+input#rate-1:checked ~ #evaluation-form header::before{
+    content: "Không hài lòng";
+}
+
+input#rate-2:checked ~ #evaluation-form header::before{
+    content: "Cũng tạm";
+}
+
+input#rate-3:checked ~ #evaluation-form header::before{
+    content: "Bình thường";
+}
+
+input#rate-4:checked ~ #evaluation-form header::before{
+    content: "Rất Tốt";
+}
+
+input#rate-5:checked ~ #evaluation-form header::before{
+    content: "Xuất sắc";
+}
+
+.container-evaluation #evaluation-form{
+    display: none;
+}
+
+input:checked ~ #evaluation-form{
+    display: block;
+}
+
+#evaluation-form header{
+    width: 100%;
+    font-size: 25px;
+    color: #69abce;
+    font-weight: 500;
+    margin: 5px 0 20px 0;
+    text-align: center;
+    transition: all 0.2s ease;
+}
+
+.textarea{
+    height: 100px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.textarea textarea{
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: 1px solid #333;
+    background-color: #ffffff;
+    color: #176c99;
+    padding: 10px;
+    font-size: 17px;
+    resize: none;
+}
+
+#evaluation-form .btn-evaluation{
+    height: 45px;
+    width: 100%;
+    margin: 15px 0;
+    /* display: flex; */
+}
+
+#evaluation-form .btn-evaluation button{
+    height: 100%;
+    width: 100%;
+    border: 1px solid #176c99;
+    outline: none;
+    background-color: #69abce;
+    color: #ffffff;
+    font-size: 17px;
+    font-weight: 500;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#evaluation-form .btn-evaluation button:hover{
+    background-color: #176c99;
+}
+
+#evaluation-form{
+    overflow: visible;
+}

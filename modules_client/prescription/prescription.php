@@ -51,5 +51,47 @@
                 <p>BHYT chi trả: <?php echo $rows_prescriptionSummary['BHYT_Pay'] ?></p>
                 <p>Bệnh nhân chi trả: <?php echo $rows_prescriptionSummary['Patient_Pay'] ?></p>
             </div>
+            <button class="modal-btn-evaluation"> Đánh giá Bác sĩ
+                <span><i class="fas fa-plus"></i></span>
+            </button>
         </div>
 </section>
+
+<!-- =========== modal evaluation =============-->
+<div class="modal-bg-evaluation">
+    <div class="modal-evaluation">
+        <div class="container-evaluation">
+            <div class="post">
+                <div class="text">Thanks</div>
+            </div>
+            <div class="star-widget">
+                <input type="radio" name="rate" id="rate-5">
+                <label for="rate-5" class="fas fa-star"></label>
+                <input type="radio" name="rate" id="rate-4">
+                <label for="rate-4" class="fas fa-star"></label>
+                <input type="radio" name="rate" id="rate-3">
+                <label for="rate-3" class="fas fa-star"></label>
+                <input type="radio" name="rate" id="rate-2">
+                <label for="rate-2" class="fas fa-star"></label>
+                <input type="radio" name="rate" id="rate-1">
+                <label for="rate-1" class="fas fa-star"></label>
+
+                <form id="evaluation-form" action="./modules_client/prescription/evaluation.php" method="POST">
+                    <header></header>
+                    <div class="textarea">
+                        <textarea id="myTextarea" name="myTextarea" cols="30" rows="10" placeholder="Đánh giá của bạn về bệnh nhân..."></textarea>
+                        <input type="hidden" name="votingRate" id="votingRate">
+                        <input type="hidden" name="ID_Appointment" id="ID_Appointment" value="<?php echo $ID_Appointment ?>">
+                    </div>
+                    <div class="btn-evaluation">
+                        <button type="submit" name="evaluation_btn">Đánh giá</button>
+                        <!-- <button name="evaluation_btn" class="modal-close-evaluation">Hủy bỏ</button> -->
+                    </div>
+                </form>
+            </div>
+        </div>
+        <span class="modal-close-evaluation">X</spsan>
+    </div>
+</div>
+
+<script src="./modules_client/prescription/evaluation.js"></script>
