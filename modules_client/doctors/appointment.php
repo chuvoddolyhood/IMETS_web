@@ -30,7 +30,19 @@
 
     //Xu ly hinh thuc kham benh
     if($type=='Khám theo BHYT'){
-        $BHYT_Checkin=1;
+        $sql_get_idBHYT = "SELECT `ID_BHYT` FROM `patient` WHERE UserName='$session_client'";
+        $query_get_idBHYT = mysqli_query($conn, $sql_get_idBHYT);
+        $rows_get_idBHYT = mysqli_fetch_array($query_get_idBHYT);
+        $BHYT_type=substr($rows_get_idBHYT["ID_BHYT"],2,1);
+
+        if($BHYT_type==1 && $BHYT_type==2){
+            $BHYT_Checkin = 1;
+        } elseif($BHYT_type==3){
+            $BHYT_Checkin = 0.95;
+        }elseif($BHYT_type==4){
+            $BHYT_Checkin = 0.8;
+        }
+        // echo $BHYT_Checkin;
     } elseif($type=='Khám dịch vụ'){
         $BHYT_Checkin=0;
     }

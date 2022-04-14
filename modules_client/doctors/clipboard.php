@@ -153,8 +153,8 @@
         <tr>
             <td>
                 <select name="" id="typeMedicalCheck">
-                    <option value="1">Khám theo BHYT</option>
-                    <option value="0">Khám dịch vụ</option>
+                    <option>Khám theo BHYT</option>
+                    <option>Khám dịch vụ</option>
                 </select>
             </td>    
         </tr>

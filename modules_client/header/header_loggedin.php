@@ -33,7 +33,7 @@
     <h1>Client</h1>
     <h4><?php echo $_SESSION['login_client'] ?></h4>
     <a href="./index.php?page_layout=profile">Hồ sơ của tôi</a>
-    <a href="#">Đăng ký lịch khám bệnh</a>
+    <a href="./index.php?page_layout=medicalBook">Sổ khám chữa bệnh</a>
     <div class="sidebar__logout">
       <i class="fa fa-power-off"></i>
       <a href="./index.php?logout=logoutclient">Đăng Xuất</a>
