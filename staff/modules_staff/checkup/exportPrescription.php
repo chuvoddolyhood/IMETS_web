@@ -40,7 +40,14 @@
     $Date_HospitalDischarge = date('Y-m-d H:i:s');
     // echo $Darte_HospitalDischarge;
 
-    $sql_add_prescription = "UPDATE presciption SET TotalAmount=$TotalMoney,BHYT_Pay=$BHYT_Pay,Patient_Pay=$Patient_Pay,expDate='$expDate' WHERE ID_Appointment=$ID_Appointment";
+    //Set Status_Pay
+    if($Patient_Pay==0){
+        $Status_Pay = 'Đã thanh toán';
+    } else {
+        $Status_Pay = 'Chưa thanh toán';
+    }
+
+    $sql_add_prescription = "UPDATE presciption SET TotalAmount=$TotalMoney,BHYT_Pay=$BHYT_Pay,Patient_Pay=$Patient_Pay,expDate='$expDate', Status_Pay='$Status_Pay' WHERE ID_Appointment=$ID_Appointment";
     $query_add_prescription = mysqli_query($conn, $sql_add_prescription);
 
     $sql_update_appointment = "UPDATE appointment SET Date_HospitalDischarge='$Date_HospitalDischarge', StatusAppointment='Đã khám' WHERE ID_Appointment=$ID_Appointment";

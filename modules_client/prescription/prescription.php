@@ -14,12 +14,56 @@
                     $sql_prescription = "SELECT * FROM medicinesfortreatment 
                     JOIN presciption ON medicinesfortreatment.ID_Prescription=presciption.ID_Prescription
                     JOIN medicine ON medicine.ID_Medicine=medicinesfortreatment.ID_Medicine
-                    JOIN appointment ON appointment.ID_Appointment=presciption.ID_Appointment
                     WHERE presciption.ID_Appointment=$ID_Appointment";
                     $query_prescription = mysqli_query($conn, $sql_prescription);
                 ?>
                 <h3>Toa thuốc</h3>
                 <table>
+                    <tr>
+                        <th>STT</th>
+                        <th>Tên thuốc</th>
+                        <th>Số lượng</th>
+                        <th>Đơn vị</th>
+                        <th>Cách dùng</th>
+                        <th>Sáng</th>
+                        <th>Chiều</th>
+                        <th>Tối</th>
+                    </tr>
+                    <?php
+                        $count=0;
+                        while($rows_prescription = mysqli_fetch_array($query_prescription)){
+                    ?>
+                    <tr>
+                        <td> <?php echo ++$count ?> </td>
+                        <td> <?php echo $rows_prescription['TitleMedicine'] ?> </td>
+                        <td> <?php echo $rows_prescription['Amount'] ?> </td>
+                        <td> <?php echo $rows_prescription['Type'] ?> </td>
+                        <td> <?php echo $rows_prescription['DescriptionTreatment'] ?> </td>
+                        <td> <?php if($rows_prescription['Morning'] == 1){ ?> 
+                            <i class="fas fa-pills"><?php } ?>
+                        </td>
+                        <td> <?php if($rows_prescription['Afternoon'] == 1){ ?> 
+                            <i class="fas fa-pills"><?php } ?>
+                        </td>
+                        <td> <?php if($rows_prescription['Evening'] == 1){ ?> 
+                            <i class="fas fa-pills"><?php } ?>
+                        </td>
+                    </tr>
+                    <?php
+                        }
+                    ?>
+                </table>
+
+                <h3>Bảng chi phí</h3>
+                <table>
+                    <?php
+                        $sql_invoice = "SELECT * FROM medicinesfortreatment 
+                        JOIN presciption ON medicinesfortreatment.ID_Prescription=presciption.ID_Prescription
+                        JOIN medicine ON medicine.ID_Medicine=medicinesfortreatment.ID_Medicine
+                        JOIN appointment ON appointment.ID_Appointment=presciption.ID_Appointment
+                        WHERE presciption.ID_Appointment=$ID_Appointment";
+                        $query_invoice = mysqli_query($conn, $sql_invoice);
+                    ?>
                     <tr>
                         <th>Tên thuốc</th>
                         <th>Số lượng</th>
@@ -29,20 +73,21 @@
                         <th>Xem thông tin thuốc</th>
                     </tr>
                     <?php
-                        while($rows_prescription = mysqli_fetch_array($query_prescription)){
+                        while($rows_invoice = mysqli_fetch_array($query_invoice)){
                     ?>
                     <tr>
-                        <td> <?php echo $rows_prescription['TitleMedicine'] ?> </td>
-                        <td> <?php echo $rows_prescription['Amount'] ?> </td>
-                        <td> <?php echo $rows_prescription['UnitPrice'] ?> </td>
-                        <td> <?php echo $rows_prescription['TotalMoney'] ?> </td>
-                        <td> <?php echo $rows_prescription['BHYT_Checkin']*100 ?>% </td>
+                        <td> <?php echo $rows_invoice['TitleMedicine'] ?> </td>
+                        <td> <?php echo $rows_invoice['Amount'] ?> </td>
+                        <td> <?php echo $rows_invoice['UnitPrice'] ?> </td>
+                        <td> <?php echo $rows_invoice['TotalMoney'] ?> </td>
+                        <td> <?php echo $rows_invoice['BHYT_Checkin']*100 ?>% </td>
                         <td>Xem</td>
                     </tr>
                     <?php
                         }
                     ?>
                 </table>
+
                 <?php 
                     $query_prescriptionSummary = mysqli_query($conn, $sql_prescription);
                     $rows_prescriptionSummary = mysqli_fetch_array($query_prescriptionSummary);
@@ -50,10 +95,17 @@
                 <p>Tổng chi phí: <?php echo $rows_prescriptionSummary['TotalAmount'] ?></p>
                 <p>BHYT chi trả: <?php echo $rows_prescriptionSummary['BHYT_Pay'] ?></p>
                 <p>Bệnh nhân chi trả: <?php echo $rows_prescriptionSummary['Patient_Pay'] ?></p>
+                <p>Trạng thái thanh toán: <?php echo $rows_prescriptionSummary['Status_Pay'] ?></p>
             </div>
+            
             <button class="modal-btn-evaluation"> Đánh giá Bác sĩ
                 <span><i class="fas fa-plus"></i></span>
             </button>
+            <?php if($rows_prescriptionSummary['Status_Pay'] == 'Chưa thanh toán'){ ?>
+                <button class="modal-btn-pay"> Thanh toán viện phí online
+                    <span><i class="fas fa-donate"></i></span>
+                </button>
+            <?php } ?>
         </div>
 </section>
 
