@@ -102,9 +102,9 @@
                 <span><i class="fas fa-plus"></i></span>
             </button>
             <?php if($rows_prescriptionSummary['Status_Pay'] == 'Chưa thanh toán'){ ?>
-                <button class="modal-btn-pay"> Thanh toán viện phí online
+                <a class="modal-btn-pay" href='./modules_client/vnpay_php/vnpay_main.php?ID_Appointment= <?php echo $ID_Appointment ?>' target="_blank"> Thanh toán viện phí online
                     <span><i class="fas fa-donate"></i></span>
-                </button>
+                </a>
             <?php } ?>
         </div>
 </section>
