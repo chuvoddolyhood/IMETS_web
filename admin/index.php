@@ -3,7 +3,7 @@
 <head>
 	<title>Admin Page</title>
 	<link rel="stylesheet" href="./modules_admin/style/index_admin.css" />
-	<link rel="shortcut icon" type="image/png" href="./../modules_client/photo/logo.jfif" />
+	<link rel="shortcut icon" type="image/png" href="./../img/images/logo.jfif" />
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
