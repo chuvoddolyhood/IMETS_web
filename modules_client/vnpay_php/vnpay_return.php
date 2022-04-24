@@ -49,7 +49,7 @@
                 <div class="form-group">
                     <label >Mã đơn hàng:</label>
 
-                    <label><?php echo $_GET['vnp_TxnRef'] ?></label>
+                    <label><?php echo $_GET['vnp_TxnRef']; $ID_Prescription = $_GET['vnp_TxnRef']; ?></label>
                 </div>    
                 <div class="form-group">
 
@@ -84,8 +84,9 @@
                             if ($_GET['vnp_ResponseCode'] == '00') {
                                 echo "<span style='color:blue'>GD Thanh cong</span>";
 
-                                $sql_update_prescription = "UPDATE `presciption` SET `Status_Pay`='Đã thanh toán' WHERE ID_Prescription = $_GET['vnp_TxnRef']";
-                                $query_prescription = mysqli_query($conn, $sql_prescription);
+                                include './../../config.php';
+                                $sql_update_prescription = "UPDATE presciption SET Status_Pay='Đã thanh toán' WHERE ID_Prescription = $ID_Prescription";
+                                $query_update_prescription = mysqli_query($conn, $sql_update_prescription);
                             } else {
                                 echo "<span style='color:red'>GD Khong thanh cong</span>";
                                 //code sql

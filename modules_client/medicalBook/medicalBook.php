@@ -61,9 +61,11 @@
                         <td> # </td>
                         <td> # </td>
                         <td> <?php echo $rows_appointment['StatusAppointment'] ?> </td>
+                        <?php if($rows_appointment['StatusAppointment'] == 'Đã khám'){ ?>
                         <td>
                             <a class="button_edit_product" href="./index.php?page_layout=prescription&ID_Appointment=<?php echo $rows_appointment['ID_Appointment'] ?>">Xem</a>
                         </td>
+                        <?php } ?>
                     </tr>
                     <?php } ?>
                 </table>
