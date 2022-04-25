@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<title>Staff Page</title>
 	<link rel="stylesheet" href="./modules_staff/style/index_staff.css" />
