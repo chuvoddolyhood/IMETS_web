@@ -15,6 +15,37 @@
             </div>
         </div>
 
+        <button type="button" class="manage-btn btn-left">Xuất file Excel</button>
+        <!-- ############################# Modal Thêm nhân viên ######################################## -->
+        <div class="modal-bg-add">
+            <div class="modal-add">
+            <h2>Xuất báo cáo tạo file Excel</h2>
+            <a href="./modules_admin/statistics_management/exportExcel/staffReport.php">Danh sách thông tin nhân viên</a>
+            <a href="./modules_admin/statistics_management/exportExcel/patientReport.php" >Danh sách thông tin bệnh nhân</a>
+            <a href="./modules_admin/statistics_management/exportExcel/medicineReport.php">Danh sách thuốc điều trị</a>
+            <span class="modal-close-add">X</spsan>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            var modalBtn_add = document.querySelector('.manage-btn'); //sua ten
+            var modalBg_add = document.querySelector('.modal-bg-add');
+            var modalClose_add = document.querySelector('.modal-close-add');
+            var btn_Close_add = document.querySelector('.modal-close-add-btn');
+
+            modalBtn_add.addEventListener('click', function(){
+            modalBg_add.classList.add('bg-active-add');
+            });
+            
+            modalClose_add.addEventListener('click', function(){
+            modalBg_add.classList.remove('bg-active-add');
+            });
+
+            btn_Close_add.addEventListener('click', function(){
+            modalBg_add.classList.remove('bg-active-add');
+            });
+        </script>
+
         <!-- MAIN TITLE ENDS HERE -->
 
         <!-- CHARTS STARTS HERE -->
