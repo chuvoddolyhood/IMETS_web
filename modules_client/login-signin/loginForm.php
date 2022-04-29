@@ -19,13 +19,14 @@
           <h2 class="title">Đăng nhập</h2>
           <div class="input-field">
             <i class="fas fa-user"></i>
-            <input type="text" name="username_client_login" placeholder="Email hoặc Số điện thoại" required/>
+            <input type="text" name="username_client_login" placeholder="Email" required/>
           </div>
           <div class="input-field">
             <i class="fas fa-key"></i>
             <input type="password" name="password_client_login" placeholder="Mật khẩu" required/>
           </div>
           <input type="submit" value="Đăng nhập" class="btn solid" name="btn_login" />
+          <a class="modal-btn" href="#">Quên mật khẩu?</a>
           <!-- <input type="button" class="btn" value="Đăng nhập" onclick="check_Login()"/> -->
           <p class="social-text">Đăng nhập bằng phương thức khác</p>
           <div class="social-media">
@@ -138,3 +139,62 @@
 </body>
 
 </html>
+
+
+<div class="modal-bg">
+  <div class="modal">
+    <h1>Quên mật khẩu</h1>
+    <form action="" method="post">
+      <label for="">Email</label>
+      <input type="text" id="email-forgot" placeholder="Vui lòng nhập Email">
+      <button onclick="forgotPassword()">ok</button>
+    </form>    
+    <span class="modal-close">X</spsan>
+  </div>
+</div>
+
+<script type="text/javascript">
+  var modalBtn = document.querySelector('.modal-btn'); //sua ten
+  var modalBg = document.querySelector('.modal-bg');
+  var modalClose = document.querySelector('.modal-close');
+
+  modalBtn.addEventListener('click', function(){
+    modalBg.classList.add('bg-active');
+  });
+  
+  modalClose.addEventListener('click', function(){
+    modalBg.classList.remove('bg-active');
+  });
+
+
+  function forgotPassword() {
+    //Gọi các hàm đã viết
+    var email = document.getElementById("email-forgot").value;
+
+    // alert(email);
+
+    //call AJAX
+    var ajax = new XMLHttpRequest();
+    var method = "GET";
+    var url = "./forgotPass.php?email="+email;
+    var asynchronous = true;
+    ajax.open(method, url, asynchronous);
+
+    //send
+    ajax.send();
+        
+    //receive
+    ajax.onreadystatechange = function(){
+      if(this.readyState == 4 && this.status == 200){
+        var response = this.responseText;
+        alert(response);
+        // if(response == "True"){
+        //   alert('Đăng ký thành công');
+        //   window.location.href="./loginForm.php";
+        // } else {
+        //   alert('Không thể đăng ký do tài khoản tồn tại. Vui Lòng thử lại');
+        // }  
+      }
+    }
+  }
+</script>

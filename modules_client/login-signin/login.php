@@ -7,7 +7,7 @@
         // echo $username_client_login;
         // echo $password_client_login;
 
-        $sql_get_password = "SELECT password FROM patient WHERE UserName='$username_client_login' OR PhoneNumber='$username_client_login'";
+        $sql_get_password = "SELECT password FROM patient WHERE UserName='$username_client_login'";
         $query_get_password = mysqli_query($conn, $sql_get_password);
         $rows_get_password = mysqli_fetch_array($query_get_password);
 
