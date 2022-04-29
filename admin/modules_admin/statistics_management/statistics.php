@@ -51,14 +51,14 @@
         <!-- CHARTS STARTS HERE -->
         <div class="charts">
             <div class="charts__left">
-              <div class="charts__left__title">
-                <div>
-                    <h1>Biểu đồ doanh số theo tháng</h1>
-                    <p>IMETS</p>
+                <div class="charts__left__title">
+                    <div>
+                        <h1>Biểu đồ doanh số theo tháng</h1>
+                        <p>IMETS</p>
+                    </div>
+                    <i class="fa fa-usd" aria-hidden="true"></i>
                 </div>
-                <i class="fa fa-usd" aria-hidden="true"></i>
-              </div>
-              <canvas id="myChart" width="200" height="130"></canvas>
+                <canvas id="myChart" width="200" height="130"></canvas>
             </div>
 
             <div class="charts__right">
