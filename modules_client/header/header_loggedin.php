@@ -11,6 +11,16 @@
 
     <a href="./index.php" class="logo">IMETS<sup>&reg;</sup></a>
 
+    <form id="labnol">
+      <input type="text" id="transcript">
+      <a href="#" onclick="startDictation()">
+        <i class="fas fa-microphone-alt" aria-hidden="true"></i>
+      </a>
+      <a onclick="searching()">
+        <i class="fa fa-search" aria-hidden="true"></i>
+      </a>
+    </form>
+
     <nav class="navbar">
         <a href="./index.php">Trang chủ</a>
         <a href="./index.php?page_layout=doctors">Bác sĩ</a>
@@ -54,4 +64,32 @@
   modalClose.addEventListener('click', function(){
     modalBg.classList.remove('bg-active');
   });
+
+  function startDictation() {
+    if (window.hasOwnProperty('webkitSpeechRecognition')) {
+      var recognition = new webkitSpeechRecognition();
+
+      recognition.continuous = false;
+      recognition.interimResults = false;
+
+      recognition.lang = 'vi-VN';
+      recognition.start();
+
+      recognition.onresult = function (e) {
+        document.getElementById('transcript').value = e.results[0][0].transcript;
+        recognition.stop();
+        document.getElementById('labnol').submit();
+      };
+
+      recognition.onerror = function (e) {
+        recognition.stop();      
+      };
+    }
+  }
+
+  function searching() {
+    var searchBox = document.getElementById('transcript').value;
+    window.location.href="./index.php?page_layout=search&q="+searchBox;
+  }
+
 </script>

@@ -23,7 +23,10 @@
             case 'profile':
                 include './modules_client/profile/profile.php';
                 break;
-            
+
+            case 'search':
+                include './modules_client/search/search.php';
+                break;
         }
     }else {
         include './modules_client/main/homepage.php';

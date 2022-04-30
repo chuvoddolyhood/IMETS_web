@@ -15,6 +15,13 @@
         <a class="active_link" href="#">Admin</a>
     </div>
     <div class="navbar__right">
+      <form id="labnol">
+        <input type="text" id="transcript">
+        <a href="#" onclick="startDictation()">
+          <i class="fas fa-microphone-alt" aria-hidden="true"></i>
+        </a>
+      </form>
+      
         <a href="#">
             <i class="fa fa-search" aria-hidden="true"></i>
         </a>
@@ -27,10 +34,6 @@
             <i class="fa fa-user-secret" aria-hidden="true"></i>
         </a>
 
-        <form id="labnol">
-          <input type="text" id="transcript">
-          <i class="fa fa-search" aria-hidden="true" onclick="startDictation()"></i>
-        </form>
     </div>
 </nav>
 
