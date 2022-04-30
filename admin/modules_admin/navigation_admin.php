@@ -26,6 +26,11 @@
             <!-- <img width="30" src="./modules_staff/photo/avatar.svg" alt="" /> -->
             <i class="fa fa-user-secret" aria-hidden="true"></i>
         </a>
+
+        <form id="labnol">
+          <input type="text" id="transcript">
+          <i class="fa fa-search" aria-hidden="true" onclick="startDictation()"></i>
+        </form>
     </div>
 </nav>
 
@@ -54,4 +59,27 @@
   modalClose.addEventListener('click', function(){
     modalBg.classList.remove('bg-active');
   });
+
+
+  function startDictation() {
+    if (window.hasOwnProperty('webkitSpeechRecognition')) {
+      var recognition = new webkitSpeechRecognition();
+
+      recognition.continuous = false;
+      recognition.interimResults = false;
+
+      recognition.lang = 'vi-VN';
+      recognition.start();
+
+      recognition.onresult = function (e) {
+        document.getElementById('transcript').value = e.results[0][0].transcript;
+        recognition.stop();
+        document.getElementById('labnol').submit();
+      };
+
+      recognition.onerror = function (e) {
+        recognition.stop();      
+      };
+    }
+  }
 </script>

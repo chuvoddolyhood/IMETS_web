@@ -30,12 +30,8 @@
             <a href="./index.php?page_layout=staff_management">Quản lý thông tin nhân viên</a>
         </div>
         <div class="sidebar__link">
-            <i class="fas fa-user-md"></i>
-            <a href="#">Điều phối bác sĩ</a>
-        </div>
-        <div class="sidebar__link">
             <i class="fas fa-hospital"></i>
-            <a href="#">Quản lý phòng làm việc</a>
+            <a href="./index.php?page_layout=room_management">Quản lý phòng làm việc</a>
         </div>
         <h2>Quản lý bệnh</h2>
         <div class="sidebar__link">

@@ -25,6 +25,10 @@
                 include './modules_admin/patient_management/list_patientManagement.php';
                 break;
 
+            case 'room_management':
+                include './modules_admin/room_management/list_room.php';
+                break;
+
             }
     }else {
         include './modules_admin/dashboard_admin/dashboard_admin.php';
