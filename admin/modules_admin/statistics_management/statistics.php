@@ -164,12 +164,12 @@
             <div class="charts__right">
                 <div class="charts__right__title">
                     <div>
-                        <h1>Số lương nhân viên y tế</h1>
-                        <p>Theo các khoa</p>
+                        <h1>Thuốc được dùng nhiều nhất</h1>
+                        <p>IMETS</p>
                     </div>
                     <i class="fa fa-usd" aria-hidden="true"></i>
                 </div>
-                <canvas id="staff_Chart"></canvas>
+                <canvas id="medicine_Chart" width="200" height="100"></canvas>
                 
             </div>
         </div>
@@ -271,10 +271,28 @@
     $starVoting = trim($starVoting,",");
     $nameOfStaff = trim($nameOfStaff,",");
 
+    //Thuốc được dùng nhiều nhất
+    $TitleMedicine = '';
+    $numberOfMedicine = '';
+
+    $sql_numberOfMedicine = "SELECT medicine.TitleMedicine, SUM(Amount) AS soluong
+        FROM medicinesfortreatment JOIN medicine ON medicinesfortreatment.ID_Medicine=medicine.ID_Medicine
+        GROUP BY (medicine.TitleMedicine) ORDER BY SUM(Amount) DESC LIMIT 10";
+    $query_numberOfMedicine = mysqli_query($conn, $sql_numberOfMedicine);
+
+    while($rows_numberOfMedicine = mysqli_fetch_array($query_numberOfMedicine)){
+        $TitleMedicine = $TitleMedicine . '"' . $rows_numberOfMedicine['TitleMedicine']. '",';
+        $numberOfMedicine = $numberOfMedicine . '"' . $rows_numberOfMedicine['soluong']. '",';
+    }
+
+    $TitleMedicine = trim($TitleMedicine,",");
+    $numberOfMedicine = trim($numberOfMedicine,",");
+
 ?>
 
 
 <script>
+    //Biểu đồ doanh số theo tháng
     const ctx = document.getElementById('myChart').getContext('2d');
     const myChart = new Chart(ctx, {
         type: 'bar',
@@ -322,6 +340,7 @@
     });
 
 
+    //Lượt bệnh nhân khám
     const checkin = document.getElementById('typeCheck_Chart').getContext('2d');
     const typeCheck_Chart = new Chart(checkin, {
         type: 'bar',
@@ -359,6 +378,7 @@
         },
     });
 
+    //Số lương nhân viên y tế
     const numberOfStaff = document.getElementById('staff_Chart').getContext('2d');
     const staff_Chart = new Chart(numberOfStaff, {
         type: 'doughnut',
@@ -377,6 +397,7 @@
         },
     });
 
+    //Bác sĩ ưu tú
     const proStaff = document.getElementById('proStaff_Chart').getContext('2d');
     const proStaff_Chart = new Chart(proStaff, {
         data: {
@@ -397,7 +418,7 @@
             {
                 label: 'Độ tín nhiệm',
                 data: [<?php echo $starVoting; ?>],
-                type: 'line',
+                type: 'bar',
                 backgroundColor: [
                     'rgba(54, 162, 235, 0.2)',
                 ],
@@ -409,6 +430,28 @@
                 order: 1
             }],
             labels: [<?php echo $nameOfStaff ?>]
+        },
+    });
+
+    //Thuốc được dùng nhiều nhất
+    const medicineIMETS = document.getElementById('medicine_Chart').getContext('2d');
+    const medicine_Chart = new Chart(medicineIMETS, {
+        data: {
+            datasets: [{
+                label: 'Đơn vị',
+                type: 'bar',
+                data: [<?php echo $numberOfMedicine; ?>],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                ],
+                borderWidth: 1,
+                // this dataset is drawn below
+                order: 2
+            }],
+            labels: [<?php echo $TitleMedicine ?>]
         },
     });
 </script>
