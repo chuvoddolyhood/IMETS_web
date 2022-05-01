@@ -73,8 +73,6 @@
                                     JOIN schedule ON schedule.ID_schedule=appointment.Date_Checkup
                                     JOIN staff ON staff.ID_Staff=appointment.ID_Staff
                                     JOIN medicalrecord ON medicalrecord.ID_Appointment=appointment.ID_Appointment
-                                    JOIN diagnose ON diagnose.ID_MedicalRecord=medicalrecord.ID_MedicalRecord
-                                    JOIN disease ON disease.ID_Disease=diagnose.ID_Disease
                                     WHERE staff.UserName='$login_staff'
                                     ORDER BY appointment.ID_Appointment DESC";
                                     $query_appointment = mysqli_query($conn, $sql_appointment);
