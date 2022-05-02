@@ -1,6 +1,6 @@
 <div class="detail-prescription">
     <h1 class="heading-main">Chi tiết thuốc - vật tư</h1>
-    <a href="index.php?page_layout=checkup&ID_Appointment=40">sua</a>
+    <a href="index.php?page_layout=checkup&ID_Appointment=<?php echo $ID_Appointment?>">sua</a>
     <div class="detail-prescription-table">
         <div class="card-body">
             <table class="table">
