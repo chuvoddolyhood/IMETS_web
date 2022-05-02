@@ -35,19 +35,19 @@
             </tr>
             <tr>
                 <th>Hồ sơ</th>
-                <td><a href="./index.php?page_layout=checked_up&ID_Patient=<?php echo $ID_Patient ?>&ID_Appointment=<?php echo $ID_Appointment?>&record=diagnose">Chẩn đoán</a></td>
-                <td><a href="./index.php?page_layout=checked_up&ID_Patient=<?php echo $ID_Patient ?>&ID_Appointment=<?php echo $ID_Appointment?>&record=prescription">Đơn thuốc</a></td>
-                <td><a href="./index.php?page_layout=checked_up&ID_Patient=<?php echo $ID_Patient ?>&ID_Appointment=<?php echo $ID_Appointment?>&record=recheckup">Giấy hẹn</a></td>
+                <td><a href="./index.php?page_layout=patient_management&ID_Patient=<?php echo $ID_Patient ?>&ID_Appointment=<?php echo $ID_Appointment?>&record=diagnose">Chẩn đoán</a></td>
+                <td><a href="./index.php?page_layout=patient_management&ID_Patient=<?php echo $ID_Patient ?>&ID_Appointment=<?php echo $ID_Appointment?>&record=prescription">Đơn thuốc</a></td>
+                <td><a href="./index.php?page_layout=patient_management&ID_Patient=<?php echo $ID_Patient ?>&ID_Appointment=<?php echo $ID_Appointment?>&record=recheckup">Giấy hẹn</a></td>
             </tr>
             <tr>
                 <th>Tổng hợp chi phí</th>
-                <td><a href="./index.php?page_layout=checked_up&ID_Patient=<?php echo $ID_Patient ?>&ID_Appointment=<?php echo $ID_Appointment?>&record=payment">Hóa đơn</a></td>
+                <td><a href="./index.php?page_layout=patient_management&ID_Patient=<?php echo $ID_Patient ?>&ID_Appointment=<?php echo $ID_Appointment?>&record=payment">Hóa đơn</a></td>
                 <td></td>
                 <td></td>
                 <td></td>
             </tr>
         </table>
-        <?php include './modules_staff/checked_up/mainRecord.php'; ?>
+        <?php include './modules_admin/patient_management/mainRecord.php'; ?>
         </div>
         <?php }else {?>
     <div class="detail_record">

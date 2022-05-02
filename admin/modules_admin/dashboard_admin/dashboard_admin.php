@@ -182,7 +182,7 @@
             {
                 label: 'Độ tín nhiệm',
                 data: [<?php echo $starVoting; ?>],
-                type: 'line',
+                type: 'bar',
                 backgroundColor: [
                     'rgba(54, 162, 235, 0.2)',
                 ],

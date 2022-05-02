@@ -36,7 +36,7 @@
         <h2>Quản lý bệnh</h2>
         <div class="sidebar__link">
             <i class="fas fa-address-book"></i>
-            <a href="./index.php?page_layout=patient_management">Quản lý thông tin bệnh nhân</a>
+            <a href="./index.php?page_layout=list_patientManagement">Quản lý bệnh nhân</a>
         </div>
         <h2>Thống kê</h2>
         <div class="sidebar__link">

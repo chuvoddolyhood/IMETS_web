@@ -12,7 +12,10 @@
             case 'recheckup':
                 include './modules_staff/checked_up/recheckupPaper.php';
                 break;
-            
+
+            case 'payment':
+                include './modules_staff/checked_up/payment.php';
+                break;
             }
     }else {
         include './modules_staff/checked_up/diagnoseRecord.php';

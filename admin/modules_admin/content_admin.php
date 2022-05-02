@@ -21,8 +21,12 @@
                 include './modules_admin/statistics_management/statistics.php';
                 break;
 
-            case 'patient_management':
+            case 'list_patientManagement':
                 include './modules_admin/patient_management/list_patientManagement.php';
+                break;
+            
+            case 'patient_management':
+                include './modules_admin/patient_management/patientManagement.php';
                 break;
 
             case 'room_management':
