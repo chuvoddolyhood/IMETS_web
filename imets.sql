@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 29, 2022 at 05:56 AM
+-- Generation Time: May 02, 2022 at 03:21 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -54,7 +54,23 @@ INSERT INTO `appointment` (`ID_Appointment`, `ID_Staff`, `ID_Patient`, `Date_Boo
 (37, 4, 2, '2022-04-14 23:14:15', 114, '2022-04-14 23:15:42', '0000-00-00', 0.8, NULL, 'Đã khám'),
 (38, 4, 2, '2022-04-24 07:48:55', 123, '2022-04-24 07:54:52', NULL, 0.8, NULL, 'Đã khám'),
 (39, 4, 2, '2022-04-24 08:07:23', 125, '2022-04-24 08:12:06', NULL, 0.8, NULL, 'Đã khám'),
-(40, 4, 1, '2022-04-24 08:15:30', 127, '2022-04-24 08:16:01', NULL, 0.8, NULL, 'Đã khám');
+(40, 4, 1, '2022-04-24 08:15:30', 127, '2022-05-01 10:01:17', '0000-00-00', 0.8, NULL, 'Đã khám');
+
+--
+-- Triggers `appointment`
+--
+DELIMITER $$
+CREATE TRIGGER `changeInfo_DELETE` AFTER DELETE ON `appointment` FOR EACH ROW INSERT INTO `medicalrecord_log`(`ID_Appointment`, `AtTable`, `Operation`, `UpdateAt`) VALUES (OLD.ID_Appointment,'appointment','DELETE',NOW())
+$$
+DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `changeInfo_INSERT` AFTER INSERT ON `appointment` FOR EACH ROW INSERT INTO `medicalrecord_log`(`ID_Appointment`, `AtTable`, `Operation`, `UpdateAt`) VALUES (NEW.ID_Appointment,'appointment','INSERT',NOW())
+$$
+DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `changeInfo_UPDATE` AFTER UPDATE ON `appointment` FOR EACH ROW INSERT INTO `medicalrecord_log`(`ID_Appointment`, `AtTable`, `Operation`, `UpdateAt`) VALUES (NEW.ID_Appointment,'appointment','UPDATE',NOW())
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -106,7 +122,8 @@ INSERT INTO `diagnose` (`ID_Diagnose`, `ID_Disease`, `ID_MedicalRecord`) VALUES
 (26, 2, 306),
 (27, 2, 307),
 (28, 1, 308),
-(29, 1, 309);
+(29, 1, 309),
+(30, 2, 309);
 
 -- --------------------------------------------------------
 
@@ -137,7 +154,7 @@ INSERT INTO `disease` (`ID_Disease`, `TitleDisease`, `ContentDisease`, `Symptom`
 
 CREATE TABLE `evaluation` (
   `ID_Evaluation` int(11) NOT NULL,
-  `PatientStart` int(11) DEFAULT NULL,
+  `PatientStar` int(11) DEFAULT NULL,
   `DoctorComment` text DEFAULT NULL,
   `DoctorStar` int(11) DEFAULT NULL,
   `PatientComment` text DEFAULT NULL,
@@ -148,13 +165,13 @@ CREATE TABLE `evaluation` (
 -- Dumping data for table `evaluation`
 --
 
-INSERT INTO `evaluation` (`ID_Evaluation`, `PatientStart`, `DoctorComment`, `DoctorStar`, `PatientComment`, `ID_Appointment`) VALUES
-(13, 5, 'Bệnh nhân vui vẻ hòa đồng', NULL, NULL, 16),
-(19, 5, 'ok', NULL, NULL, 33),
+INSERT INTO `evaluation` (`ID_Evaluation`, `PatientStar`, `DoctorComment`, `DoctorStar`, `PatientComment`, `ID_Appointment`) VALUES
+(13, 1, '111', NULL, NULL, 16),
+(19, 5, 'ok', 5, '5', 33),
 (21, 3, 'tốt', 3, 'tuyệt', 37),
-(22, 4, 'ok', NULL, NULL, 38),
-(23, 3, 'dfffff', NULL, NULL, 39),
-(24, 4, 'sdfa', NULL, NULL, 40);
+(22, 5, 'qua tot', 1, 'ohhh', 38),
+(23, 3, 'dfffff', 5, 'good', 39),
+(24, 1, 'nope', NULL, NULL, 40);
 
 -- --------------------------------------------------------
 
@@ -222,8 +239,54 @@ INSERT INTO `medicalrecord` (`ID_MedicalRecord`, `ID_Appointment`, `ReasonChecku
 (304, 33, 'đau bụng', 'Bình thường', 'Bình thường', 0, 0, '', 0, 0, 0, 'av', '', ''),
 (306, 37, 'đau họng', 'Bình thường', 'Bình thường', 0, 0, '', 0, 0, 0, '', '', ''),
 (307, 38, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(308, 39, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(309, 40, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(308, 39, NULL, NULL, 'ok', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(309, 40, '', 'ok', 'ok', 0, 0, '', 0, 0, 0, '', '', '');
+
+--
+-- Triggers `medicalrecord`
+--
+DELIMITER $$
+CREATE TRIGGER `changeInfo_DELETE_medicalrecord` AFTER DELETE ON `medicalrecord` FOR EACH ROW INSERT INTO `medicalrecord_log`(`ID_Appointment`, `AtTable`, `Operation`, `UpdateAt`) VALUES (OLD.ID_Appointment,'medicalrecord','DELETE',NOW())
+$$
+DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `changeInfo_INSERT_medicalrecord` AFTER INSERT ON `medicalrecord` FOR EACH ROW INSERT INTO `medicalrecord_log`(`ID_Appointment`, `AtTable`, `Operation`, `UpdateAt`) VALUES (NEW.ID_Appointment,'medicalrecord','INSERT',NOW())
+$$
+DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `changeInfo_UPDATE_medicalrecord` AFTER UPDATE ON `medicalrecord` FOR EACH ROW INSERT INTO `medicalrecord_log`(`ID_Appointment`, `AtTable`, `Operation`, `UpdateAt`) VALUES (NEW.ID_Appointment,'medicalrecord','UPDATE',NOW())
+$$
+DELIMITER ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `medicalrecord_log`
+--
+
+CREATE TABLE `medicalrecord_log` (
+  `ID_Log` int(11) NOT NULL,
+  `ID_Appointment` int(11) NOT NULL,
+  `AtTable` varchar(50) NOT NULL,
+  `Operation` varchar(50) NOT NULL,
+  `UpdateAt` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `medicalrecord_log`
+--
+
+INSERT INTO `medicalrecord_log` (`ID_Log`, `ID_Appointment`, `AtTable`, `Operation`, `UpdateAt`) VALUES
+(1, 40, 'appointment', 'UPDATE', '2022-05-02 10:54:18'),
+(2, 40, 'appointment', 'UPDATE', '2022-05-02 10:54:21'),
+(3, 40, 'appointment', 'UPDATE', '2022-05-02 10:54:27'),
+(4, 40, 'appointment', 'UPDATE', '2022-05-02 11:01:07'),
+(5, 40, 'appointment', 'UPDATE', '2022-05-02 11:01:21'),
+(6, 42, 'appointment', 'INSERT', '2022-05-02 11:06:08'),
+(7, 42, 'appointment', 'UPDATE', '2022-05-02 11:06:57'),
+(9, 42, 'appointment', 'DELETE', '2022-05-02 11:15:57'),
+(10, 40, 'medicalrecord', 'UPDATE', '2022-05-02 11:18:44'),
+(11, 39, 'medicalrecord', 'UPDATE', '2022-05-02 11:18:58');
 
 -- --------------------------------------------------------
 
@@ -274,6 +337,7 @@ CREATE TABLE `medicinesfortreatment` (
 --
 
 INSERT INTO `medicinesfortreatment` (`ID_Prescription`, `ID_Medicine`, `Amount`, `TotalMoney`, `DescriptionTreatment`, `Morning`, `Afternoon`, `Evening`) VALUES
+(55, 1, 1, 1320, 'Uống sau khi ăn', 0, 0, 0),
 (55, 2, 12, 1764, '', 1, 1, 0),
 (62, 2, 12, 1764, 'Uống sau khi ăn', 1, 1, 0),
 (64, 1, 5, 6600, 'Nhỏ rửa mắt, ngày 2 lần, mỗi lần 2-3 giọt', 0, 0, 0),
@@ -283,7 +347,8 @@ INSERT INTO `medicinesfortreatment` (`ID_Prescription`, `ID_Medicine`, `Amount`,
 (65, 2, 1222, 179634, 'Uống sau khi ăn', 1, 0, 0),
 (65, 3, 100, 10000, 'Uống sau khi ăn', 1, 1, 0),
 (66, 3, 10000, 1000000, 'Nhỏ rửa mắt, ngày 2 lần, mỗi lần 2-3 giọt', 1, 1, 0),
-(67, 3, 11111, 1111100, 'Uống sau khi ăn', 1, 1, 0);
+(67, 1, 2, 2640, 'Nhỏ rửa mắt, ngày 2 lần, mỗi lần 2-3 giọt', 0, 0, 0),
+(67, 3, 3, 300, 'Uống sau khi ăn', 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -300,6 +365,7 @@ CREATE TABLE `patient` (
   `CMND` varchar(15) DEFAULT NULL,
   `PhoneNumber` varchar(25) NOT NULL,
   `ID_BHYT` varchar(20) DEFAULT NULL,
+  `VoteRate` double NOT NULL,
   `UserName` varchar(100) NOT NULL,
   `Password` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -308,9 +374,9 @@ CREATE TABLE `patient` (
 -- Dumping data for table `patient`
 --
 
-INSERT INTO `patient` (`ID_Patient`, `Name`, `DOB`, `Sex`, `Address`, `CMND`, `PhoneNumber`, `ID_BHYT`, `UserName`, `Password`) VALUES
-(1, 'nghia', '2012-12-12', 'nam', '40', 'xxx', '123', '9222590774', 'tran', '345453'),
-(2, 'Trần Nhân Nghĩa', '2000-01-24', 'Nam', 'Số 40, đường số 3, KDC Thới Nhựt 2, phường An Khánh, quận Ninh Kiều, TP Cần Thơ', NULL, '0939635755', 'GD4929222590774', 'trannhannghia@gmail.com', '593992d613b77c065055acd511edab67');
+INSERT INTO `patient` (`ID_Patient`, `Name`, `DOB`, `Sex`, `Address`, `CMND`, `PhoneNumber`, `ID_BHYT`, `VoteRate`, `UserName`, `Password`) VALUES
+(1, 'nghia', '2012-12-12', 'nam', '40', 'xxx', '123', '9222590774', 1, 'tran', '345453'),
+(2, 'Trần Nhân Nghĩa', '2000-01-24', 'Nam', 'Số 40, đường số 3, KDC Thới Nhựt 2, phường An Khánh, quận Ninh Kiều, TP Cần Thơ', NULL, '0939635755', 'GD4929222590774', 3.4, 'trannhannghia.24012000@gmail.com', 'f11c45382b1c4e09e25f5cf67d62f959');
 
 -- --------------------------------------------------------
 
@@ -352,7 +418,23 @@ INSERT INTO `presciption` (`ID_Prescription`, `ID_Appointment`, `TotalAmount`, `
 (64, 37, 10540, 10540, 0, '2022-04-24', 'Chưa thanh toán'),
 (65, 38, 495874, 396699, 99175, '2028-09-24', 'Chưa thanh toán'),
 (66, 39, 1000000, 800000, 200000, '2022-05-04', 'Chưa thanh toán'),
-(67, 40, 1111100, 888880, 222220, '2022-05-06', 'Đã thanh toán');
+(67, 40, 18931904, 15145523, 3786381, '0000-00-00', 'Chưa thanh toán');
+
+--
+-- Triggers `presciption`
+--
+DELIMITER $$
+CREATE TRIGGER `changeInfo_DELETE_prescription` AFTER DELETE ON `presciption` FOR EACH ROW INSERT INTO `medicalrecord_log`(`ID_Appointment`, `AtTable`, `Operation`, `UpdateAt`) VALUES (OLD.ID_Appointment,'prescription','DELETE',NOW())
+$$
+DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `changeInfo_INSERT_prescription` AFTER INSERT ON `presciption` FOR EACH ROW INSERT INTO `medicalrecord_log`(`ID_Appointment`, `AtTable`, `Operation`, `UpdateAt`) VALUES (NEW.ID_Appointment,'prescription','INSERT',NOW())
+$$
+DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `changeInfo_UPDATE_prescription` AFTER UPDATE ON `presciption` FOR EACH ROW INSERT INTO `medicalrecord_log`(`ID_Appointment`, `AtTable`, `Operation`, `UpdateAt`) VALUES (NEW.ID_Appointment,'prescription','UPDATE',NOW())
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -503,7 +585,59 @@ INSERT INTO `schedule` (`ID_schedule`, `title`, `Session`, `start`, `end`, `ID_S
 (142, 'Khám ngoại', 'Sáng', '2022-04-29 09:30:00', '2022-04-29 10:00:00', 4, 72, '2022-04-29 03:19:44'),
 (143, 'Khám ngoại', 'Sáng', '2022-04-29 10:00:00', '2022-04-29 10:30:00', 4, 72, '2022-04-29 03:19:44'),
 (144, 'Khám ngoại', 'Sáng', '2022-04-29 10:30:00', '2022-04-29 11:00:00', 4, 72, '2022-04-29 03:19:44'),
-(145, 'Khám ngoại', 'Sáng', '2022-04-29 11:00:00', '2022-04-29 11:30:00', 4, 72, '2022-04-29 03:19:44');
+(145, 'Khám ngoại', 'Sáng', '2022-04-29 11:00:00', '2022-04-29 11:30:00', 4, 72, '2022-04-29 03:19:44'),
+(146, 'Khám ngoại', 'Chiều', '2022-04-25 13:00:00', '2022-04-25 17:00:00', 4, 71, '2022-04-30 02:36:34'),
+(147, 'Khám ngoại', 'Chiều', '2022-04-25 13:30:00', '2022-04-25 17:30:00', 4, 71, '2022-04-30 02:36:34'),
+(148, 'Khám ngoại', 'Chiều', '2022-04-25 14:00:00', '2022-04-25 18:00:00', 4, 71, '2022-04-30 02:36:34'),
+(149, 'Khám ngoại', 'Chiều', '2022-04-25 14:30:00', '2022-04-25 18:30:00', 4, 71, '2022-04-30 02:36:34'),
+(150, 'Khám ngoại', 'Chiều', '2022-04-25 15:00:00', '2022-04-25 19:00:00', 4, 71, '2022-04-30 02:36:34'),
+(151, 'Khám ngoại', 'Chiều', '2022-04-25 15:30:00', '2022-04-25 19:30:00', 4, 71, '2022-04-30 02:36:34'),
+(152, 'Khám ngoại', 'Chiều', '2022-04-25 16:00:00', '2022-04-25 20:00:00', 4, 71, '2022-04-30 02:36:34'),
+(153, 'Khám ngoại', 'Chiều', '2022-04-25 16:30:00', '2022-04-25 20:30:00', 4, 71, '2022-04-30 02:36:34'),
+(154, 'Khám ngoại', 'Ngoài giờ', '2022-04-26 18:30:00', '2022-04-26 21:30:00', 4, 71, '2022-04-30 02:36:47'),
+(155, 'Khám ngoại', 'Ngoài giờ', '2022-04-26 19:00:00', '2022-04-26 22:00:00', 4, 71, '2022-04-30 02:36:47'),
+(156, 'Khám ngoại', 'Ngoài giờ', '2022-04-26 19:30:00', '2022-04-26 22:30:00', 4, 71, '2022-04-30 02:36:47'),
+(157, 'Khám ngoại', 'Ngoài giờ', '2022-04-26 20:00:00', '2022-04-26 23:00:00', 4, 71, '2022-04-30 02:36:47'),
+(158, 'Khám ngoại', 'Ngoài giờ', '2022-04-26 20:30:00', '2022-04-26 23:30:00', 4, 71, '2022-04-30 02:36:47'),
+(159, 'Khám ngoại', 'Ngoài giờ', '2022-04-26 21:00:00', '2022-04-27 00:00:00', 4, 71, '2022-04-30 02:36:47'),
+(160, 'Khám ngoại', 'Chiều', '2022-04-27 13:00:00', '2022-04-27 17:00:00', 4, 72, '2022-04-30 02:36:59'),
+(161, 'Khám ngoại', 'Chiều', '2022-04-27 13:30:00', '2022-04-27 17:30:00', 4, 72, '2022-04-30 02:36:59'),
+(162, 'Khám ngoại', 'Chiều', '2022-04-27 14:00:00', '2022-04-27 18:00:00', 4, 72, '2022-04-30 02:36:59'),
+(163, 'Khám ngoại', 'Chiều', '2022-04-27 14:30:00', '2022-04-27 18:30:00', 4, 72, '2022-04-30 02:36:59'),
+(164, 'Khám ngoại', 'Chiều', '2022-04-27 15:00:00', '2022-04-27 19:00:00', 4, 72, '2022-04-30 02:36:59'),
+(165, 'Khám ngoại', 'Chiều', '2022-04-27 15:30:00', '2022-04-27 19:30:00', 4, 72, '2022-04-30 02:36:59'),
+(166, 'Khám ngoại', 'Chiều', '2022-04-27 16:00:00', '2022-04-27 20:00:00', 4, 72, '2022-04-30 02:36:59'),
+(167, 'Khám ngoại', 'Chiều', '2022-04-27 16:30:00', '2022-04-27 20:30:00', 4, 72, '2022-04-30 02:36:59'),
+(168, 'Khám ngoại', 'Chiều', '2022-04-30 13:00:00', '2022-04-30 17:00:00', 4, 71, '2022-04-30 02:37:08'),
+(169, 'Khám ngoại', 'Chiều', '2022-04-30 13:30:00', '2022-04-30 17:30:00', 4, 71, '2022-04-30 02:37:08'),
+(170, 'Khám ngoại', 'Chiều', '2022-04-30 14:00:00', '2022-04-30 18:00:00', 4, 71, '2022-04-30 02:37:08'),
+(171, 'Khám ngoại', 'Chiều', '2022-04-30 14:30:00', '2022-04-30 18:30:00', 4, 71, '2022-04-30 02:37:08'),
+(172, 'Khám ngoại', 'Chiều', '2022-04-30 15:00:00', '2022-04-30 19:00:00', 4, 71, '2022-04-30 02:37:08'),
+(173, 'Khám ngoại', 'Chiều', '2022-04-30 15:30:00', '2022-04-30 19:30:00', 4, 71, '2022-04-30 02:37:08'),
+(174, 'Khám ngoại', 'Chiều', '2022-04-30 16:00:00', '2022-04-30 20:00:00', 4, 71, '2022-04-30 02:37:08'),
+(175, 'Khám ngoại', 'Chiều', '2022-04-30 16:30:00', '2022-04-30 20:30:00', 4, 71, '2022-04-30 02:37:08'),
+(176, 'Khám ngoại', 'Sáng', '2022-04-28 07:30:00', '2022-04-28 08:00:00', 4, 72, '2022-04-30 02:37:17'),
+(177, 'Khám ngoại', 'Sáng', '2022-04-28 08:00:00', '2022-04-28 08:30:00', 4, 72, '2022-04-30 02:37:17'),
+(178, 'Khám ngoại', 'Sáng', '2022-04-28 08:30:00', '2022-04-28 09:00:00', 4, 72, '2022-04-30 02:37:17'),
+(179, 'Khám ngoại', 'Sáng', '2022-04-28 09:00:00', '2022-04-28 09:30:00', 4, 72, '2022-04-30 02:37:17'),
+(180, 'Khám ngoại', 'Sáng', '2022-04-28 09:30:00', '2022-04-28 10:00:00', 4, 72, '2022-04-30 02:37:17'),
+(181, 'Khám ngoại', 'Sáng', '2022-04-28 10:00:00', '2022-04-28 10:30:00', 4, 72, '2022-04-30 02:37:17'),
+(182, 'Khám ngoại', 'Sáng', '2022-04-28 10:30:00', '2022-04-28 11:00:00', 4, 72, '2022-04-30 02:37:17'),
+(183, 'Khám ngoại', 'Sáng', '2022-04-28 11:00:00', '2022-04-28 11:30:00', 4, 72, '2022-04-30 02:37:17'),
+(184, 'Khám ngoại', 'Ngoài giờ', '2022-05-01 18:30:00', '2022-05-01 21:30:00', 4, 72, '2022-04-30 02:37:33'),
+(185, 'Khám ngoại', 'Ngoài giờ', '2022-05-01 19:00:00', '2022-05-01 22:00:00', 4, 72, '2022-04-30 02:37:33'),
+(186, 'Khám ngoại', 'Ngoài giờ', '2022-05-01 19:30:00', '2022-05-01 22:30:00', 4, 72, '2022-04-30 02:37:33'),
+(187, 'Khám ngoại', 'Ngoài giờ', '2022-05-01 20:00:00', '2022-05-01 23:00:00', 4, 72, '2022-04-30 02:37:33'),
+(188, 'Khám ngoại', 'Ngoài giờ', '2022-05-01 20:30:00', '2022-05-01 23:30:00', 4, 72, '2022-04-30 02:37:33'),
+(189, 'Khám ngoại', 'Ngoài giờ', '2022-05-01 21:00:00', '2022-05-02 00:00:00', 4, 72, '2022-04-30 02:37:33'),
+(190, 'Khám ngoại', 'Sáng', '2022-05-02 07:30:00', '2022-05-02 08:00:00', 4, 71, '2022-05-02 03:17:44'),
+(191, 'Khám ngoại', 'Sáng', '2022-05-02 08:00:00', '2022-05-02 08:30:00', 4, 71, '2022-05-02 03:17:44'),
+(192, 'Khám ngoại', 'Sáng', '2022-05-02 08:30:00', '2022-05-02 09:00:00', 4, 71, '2022-05-02 03:17:44'),
+(193, 'Khám ngoại', 'Sáng', '2022-05-02 09:00:00', '2022-05-02 09:30:00', 4, 71, '2022-05-02 03:17:44'),
+(194, 'Khám ngoại', 'Sáng', '2022-05-02 09:30:00', '2022-05-02 10:00:00', 4, 71, '2022-05-02 03:17:44'),
+(195, 'Khám ngoại', 'Sáng', '2022-05-02 10:00:00', '2022-05-02 10:30:00', 4, 71, '2022-05-02 03:17:44'),
+(196, 'Khám ngoại', 'Sáng', '2022-05-02 10:30:00', '2022-05-02 11:00:00', 4, 71, '2022-05-02 03:17:44'),
+(197, 'Khám ngoại', 'Sáng', '2022-05-02 11:00:00', '2022-05-02 11:30:00', 4, 71, '2022-05-02 03:17:44');
 
 -- --------------------------------------------------------
 
@@ -533,7 +667,7 @@ CREATE TABLE `staff` (
 
 INSERT INTO `staff` (`ID_Staff`, `Name_Staff`, `DOB_Staff`, `Sex_Staff`, `Address_Staff`, `CMND_Staff`, `PhoneNumber_Staff`, `Position`, `ID_Dept`, `DateStartWork`, `VoteRate`, `UserName`, `Password`) VALUES
 (1, 'Trần Nhân Nghĩa', '2000-01-24', 'Nam', 'An Khánh', '092200000280', '0939635755', 'Admin', 0, '2020-01-24', 0, 'admin', '19513b313f52755a0956c2be7f48d86f'),
-(4, 'Chae Song-hwa', '1982-08-04', 'Nữ', 'Nguyễn Đệ, Bình Thủy, Cần Thơ', '312328285', '0939017069', 'Bác sĩ', 7, '2010-07-10', 4.4, 'chae', '40a0a40b8110608cf0866037654e3f74'),
+(4, 'Chae Song-hwa', '1982-08-04', 'Nữ', 'Nguyễn Đệ, Bình Thủy, Cần Thơ', '312328285', '0939017069', 'Bác sĩ', 7, '2010-07-10', 3.5, 'chae', '40a0a40b8110608cf0866037654e3f74'),
 (6, 'Lee Ik-jun', '1980-12-26', 'Nam', 'Nguyễn Đệ, Bình Thủy, Cần Thơ', '09220000123', '0989123456', 'Bác sĩ', 1, '2000-10-19', 4.9, 'lee', 'b0f8b49f22c718e9924f5b1165111a67'),
 (7, 'Lê Doãn Khánh', '2000-04-17', 'Nam', 'Bình Thủy, Cần Thơ', '092200000154', '01234567', 'Bác sĩ', 5, '2020-06-30', 3.4, 'ledoankhanh', 'bbee2e7c540fde597ad1a708bc30b51c'),
 (8, 'Yoo Yeon-seok', '1984-04-11', 'Nam', 'Cần Thơ', '09220000555', '09897887665', 'Bác sĩ', 3, '2003-10-22', 2.1, 'yoo', 'a95b429d7a93263081a83b9bf7c9f7e3'),
@@ -592,6 +726,13 @@ ALTER TABLE `img_staff`
 --
 ALTER TABLE `medicalrecord`
   ADD PRIMARY KEY (`ID_MedicalRecord`),
+  ADD KEY `ID_Appointment` (`ID_Appointment`);
+
+--
+-- Indexes for table `medicalrecord_log`
+--
+ALTER TABLE `medicalrecord_log`
+  ADD PRIMARY KEY (`ID_Log`),
   ADD KEY `ID_Appointment` (`ID_Appointment`);
 
 --
@@ -655,7 +796,7 @@ ALTER TABLE `staff`
 -- AUTO_INCREMENT for table `appointment`
 --
 ALTER TABLE `appointment`
-  MODIFY `ID_Appointment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `ID_Appointment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `dept`
@@ -667,7 +808,7 @@ ALTER TABLE `dept`
 -- AUTO_INCREMENT for table `diagnose`
 --
 ALTER TABLE `diagnose`
-  MODIFY `ID_Diagnose` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `ID_Diagnose` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `disease`
@@ -679,7 +820,7 @@ ALTER TABLE `disease`
 -- AUTO_INCREMENT for table `evaluation`
 --
 ALTER TABLE `evaluation`
-  MODIFY `ID_Evaluation` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `ID_Evaluation` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `img_staff`
@@ -691,7 +832,13 @@ ALTER TABLE `img_staff`
 -- AUTO_INCREMENT for table `medicalrecord`
 --
 ALTER TABLE `medicalrecord`
-  MODIFY `ID_MedicalRecord` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=310;
+  MODIFY `ID_MedicalRecord` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=313;
+
+--
+-- AUTO_INCREMENT for table `medicalrecord_log`
+--
+ALTER TABLE `medicalrecord_log`
+  MODIFY `ID_Log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `medicine`
@@ -715,13 +862,13 @@ ALTER TABLE `paymentmethod`
 -- AUTO_INCREMENT for table `presciption`
 --
 ALTER TABLE `presciption`
-  MODIFY `ID_Prescription` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+  MODIFY `ID_Prescription` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 
 --
 -- AUTO_INCREMENT for table `schedule`
 --
 ALTER TABLE `schedule`
-  MODIFY `ID_schedule` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=146;
+  MODIFY `ID_schedule` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=198;
 
 --
 -- AUTO_INCREMENT for table `staff`
