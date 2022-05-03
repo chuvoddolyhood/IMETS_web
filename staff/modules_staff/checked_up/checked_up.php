@@ -4,7 +4,7 @@
     $ID_Patient = $_GET['ID_Patient'];
     $login_staff = $_SESSION['login_staff'];
 
-    // echo $login_staff;
+    // echo $ID_Patient;
 ?>
 
 <main>
@@ -19,7 +19,7 @@
             </div>
             <div class="personalInfo">
                 <?php 
-                    $sql = "SELECT * FROM appointment JOIN patient ON appointment.ID_Patient=patient.ID_Patient";
+                    $sql = "SELECT * FROM appointment JOIN patient ON appointment.ID_Patient=patient.ID_Patient WHERE patient.ID_Patient=$ID_Patient";
                     $query = mysqli_query($conn, $sql);
                     $rows = mysqli_fetch_array($query);
                 ?>
@@ -82,7 +82,13 @@
                                 <td><?php echo $rows_appointment['ID_Appointment'] ?></td>
                                 <td><?php echo $rows_appointment['start'] ?></td>
                                 <td><?php echo $rows_appointment['Date_HospitalDischarge'] ?></td>
-                                <td><?php if($rows_appointment['BHYT_Checkin']==1) echo 'BHYT';?></td>
+                                <td><?php 
+                                    if($rows_appointment['BHYT_Checkin']>0){
+                                        echo 'BHYT';
+                                    } else {
+                                        echo 'Dịch vụ';
+                                    }
+                                ?></td>
                                 <td><a href="./index.php?page_layout=checked_up&ID_Patient=<?php echo $ID_Patient ?>&ID_Appointment=<?php echo $rows_appointment['ID_Appointment'] ?>">Xem</a></td>
                             </tr>
                             <?php 

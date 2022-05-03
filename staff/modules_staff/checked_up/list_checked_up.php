@@ -11,7 +11,7 @@
                 <table class="table">
                     <thead class="thead-dark">
                         <tr>
-                            <th>STT</th>
+                            <th>MSBN</th>
                             <th>Tên bệnh nhân</th>
                             <th>Năm sinh</th>
                             <th>Địa chỉ</th>
@@ -28,12 +28,13 @@
                                 $sql = "SELECT DISTINCT patient.ID_Patient,patient.Name,patient.DOB,patient.Address,patient.PhoneNumber,patient.CMND, patient.ID_BHYT
                                 FROM appointment 
                                 JOIN patient ON appointment.ID_Patient=patient.ID_Patient 
-                                WHERE appointment.StatusAppointment='Đã khám'";
+                                WHERE appointment.StatusAppointment='Đã khám'
+                                ORDER BY ID_Patient ASC";
                                 $count_order=0;
                                 $query = mysqli_query($conn, $sql);
                                 while($rows = mysqli_fetch_array($query)){ ?>
                                 <tr>
-                                    <td><?php echo ++$count_order ?></td>
+                                    <td><?php echo $rows["ID_Patient"] ?></td>
                                     <td><?php echo $rows["Name"] ?></td>
                                     <td><?php echo $rows["DOB"] ?></td>
                                     <td><?php echo $rows["Address"] ?></td>

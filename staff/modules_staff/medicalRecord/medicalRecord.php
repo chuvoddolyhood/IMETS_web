@@ -1,4 +1,4 @@
-<!-- <main>
+<main>
     <div class="container-fluid">
         <div class="card-container">
             <div class="link-nav-pages">
@@ -8,11 +8,12 @@
                 <h2>Hồ sơ bệnh nhân</h2>
             </div>
             <div class="radio-options">
-                <input type="text" name="search" id="search" placeholder="Nhập mã bệnh nhân/mã bệnh án">
+                <input type="number" name="search" id="search" placeholder="Nhập mã bệnh nhân">
                 <button onclick="search()">Tìm kiếm</button>
-                
             </div>
-            <?php include './modules_staff/medicalRecord/record.php'; ?>
+
+            <?php include './modules_staff/medicalRecord/checked_up.php';?>
+            
         </div>
     </div>
 </main>
@@ -22,11 +23,10 @@
         var search = document.getElementById('search').value;
         // alert(search);
 
-
         // call ajax
         var ajax = new XMLHttpRequest();
         var method = "GET";
-        var url = "index.php?page_layout=medicalRecord&search="+search;
+        var url = "./modules_staff/medicalRecord/searchRecord.php?search="+search;
         var asynchronous = true;
         ajax.open(method, url, asynchronous);
 
@@ -37,10 +37,13 @@
         ajax.onreadystatechange = function(){
             if(this.readyState == 4 && this.status == 200){
                 var response = this.responseText;
-                // alert(response);
-                // window.location.href='./index.php?page_layout=cart';
+                if(response==='true'){
+                    window.location.href='./index.php?page_layout=medicalRecord&ID_Patient='+search;
+                }else{
+                    alert('Không tìm thấy!');
+                }
+                
             }
         }
-            
     }
-</script> -->
+</script>

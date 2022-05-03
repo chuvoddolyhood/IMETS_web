@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 02, 2022 at 03:21 PM
+-- Generation Time: May 03, 2022 at 03:12 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -45,12 +45,8 @@ CREATE TABLE `appointment` (
 --
 
 INSERT INTO `appointment` (`ID_Appointment`, `ID_Staff`, `ID_Patient`, `Date_Booking`, `Date_Checkup`, `Date_HospitalDischarge`, `Date_ReCheckup`, `BHYT_Checkin`, `ID_PaymentMethod`, `StatusAppointment`) VALUES
-(1, 9, 2, '2022-01-24 15:03:46', 38, '2022-01-24 16:03:46', NULL, 0.8, NULL, NULL),
-(2, 6, 2, '2022-02-15 15:03:46', 93, '2022-02-15 17:03:46', NULL, 0.8, NULL, NULL),
-(3, 7, 2, '2022-03-07 15:07:34', 100, '2022-03-07 15:59:33', NULL, 0, NULL, NULL),
 (16, 4, 2, '2022-03-25 20:51:45', 38, '2022-04-09 21:11:49', NULL, 0.8, NULL, 'Đã khám'),
 (33, 4, 2, '2022-04-13 22:09:24', 100, '2022-04-13 22:11:07', '0000-00-00', 0.8, NULL, 'Đã khám'),
-(36, 4, 2, '2022-04-14 10:17:35', 104, '2022-04-14 10:47:14', '0000-00-00', 0.8, NULL, 'Đã khám'),
 (37, 4, 2, '2022-04-14 23:14:15', 114, '2022-04-14 23:15:42', '0000-00-00', 0.8, NULL, 'Đã khám'),
 (38, 4, 2, '2022-04-24 07:48:55', 123, '2022-04-24 07:54:52', NULL, 0.8, NULL, 'Đã khám'),
 (39, 4, 2, '2022-04-24 08:07:23', 125, '2022-04-24 08:12:06', NULL, 0.8, NULL, 'Đã khám'),
@@ -286,7 +282,14 @@ INSERT INTO `medicalrecord_log` (`ID_Log`, `ID_Appointment`, `AtTable`, `Operati
 (7, 42, 'appointment', 'UPDATE', '2022-05-02 11:06:57'),
 (9, 42, 'appointment', 'DELETE', '2022-05-02 11:15:57'),
 (10, 40, 'medicalrecord', 'UPDATE', '2022-05-02 11:18:44'),
-(11, 39, 'medicalrecord', 'UPDATE', '2022-05-02 11:18:58');
+(11, 39, 'medicalrecord', 'UPDATE', '2022-05-02 11:18:58'),
+(12, 36, 'appointment', 'DELETE', '2022-05-03 20:04:35'),
+(13, 1, 'prescription', 'DELETE', '2022-05-03 20:05:53'),
+(14, 2, 'prescription', 'DELETE', '2022-05-03 20:05:53'),
+(15, 3, 'prescription', 'DELETE', '2022-05-03 20:05:53'),
+(16, 1, 'appointment', 'DELETE', '2022-05-03 20:06:02'),
+(17, 2, 'appointment', 'DELETE', '2022-05-03 20:06:02'),
+(18, 3, 'appointment', 'DELETE', '2022-05-03 20:06:02');
 
 -- --------------------------------------------------------
 
@@ -410,9 +413,6 @@ CREATE TABLE `presciption` (
 --
 
 INSERT INTO `presciption` (`ID_Prescription`, `ID_Appointment`, `TotalAmount`, `BHYT_Pay`, `Patient_Pay`, `expDate`, `Status_Pay`) VALUES
-(1, 1, 12000, 120000, 0, NULL, 'Đã thanh toán'),
-(2, 2, 50000, 50000, 0, NULL, 'Đã thanh toán'),
-(3, 3, 200000, 200000, 0, NULL, 'Đã thanh toán'),
 (55, 16, 1764, 1764, 100000, '0000-00-00', 'Chưa thanh toán'),
 (62, 33, 1764, 1764, 0, '2022-04-22', 'Chưa thanh toán'),
 (64, 37, 10540, 10540, 0, '2022-04-24', 'Chưa thanh toán'),
@@ -838,7 +838,7 @@ ALTER TABLE `medicalrecord`
 -- AUTO_INCREMENT for table `medicalrecord_log`
 --
 ALTER TABLE `medicalrecord_log`
-  MODIFY `ID_Log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `ID_Log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `medicine`
