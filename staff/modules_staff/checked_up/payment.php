@@ -10,6 +10,7 @@
 
 <div class="detail-prescription">
     <h1 class="heading-main">Hóa đơn</h1>
+    <a href="./modules_staff/paper/invoice.php" target="_blank">In</a>
     <div class="detail-prescription-table">
         <div class="card-body">
             <table class="table">
