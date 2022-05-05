@@ -28,10 +28,6 @@
             case 'medicalRecord': //Benh an dien tu
                 include './modules_staff/medicalRecord/medicalRecord.php';
                 break;
-
-            case 'sendMail':
-                include './modules_staff/sendMail/sendForm.php';
-                break;
             }
     }else {
         include './modules_staff/dashboard_staff/dashboard_staff.php';

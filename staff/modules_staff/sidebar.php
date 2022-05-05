@@ -36,9 +36,5 @@
             <i class="fa fa-stethoscope"></i>
             <a href="./index.php?page_layout=bookingSche">Lịch công tác</a>
         </div>
-        <div class="sidebar__link">
-            <i class="fa fa-stethoscope"></i>
-            <a href="./index.php?page_layout=sendMail">Gửi e-mail</a>
-        </div>
     </div>
 </div>

@@ -1,6 +1,7 @@
 <div class="detail-prescription">
     <h1 class="heading-main">Chi tiết thuốc - vật tư</h1>
     <a href="index.php?page_layout=checkup&ID_Appointment=<?php echo $ID_Appointment?>">sua</a>
+    <a href="./modules_staff/paper/prescription.php?ID_Appointment=<?php echo $ID_Appointment?>" target="_blank">Xem</a>
     <div class="detail-prescription-table">
         <div class="card-body">
             <table class="table">
