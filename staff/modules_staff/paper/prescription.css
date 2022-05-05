@@ -32,24 +32,12 @@ body{
     text-align: center;
 }
 
-.row-1{
+.row-flex{
     display: flex;
 }
 
-.row-1 p{
-    margin: 0 1% 0 0;
-}
-
-.row-2 p{
-    margin: 0.2% 0 0;
-}
-
-.row-3 p{
-    margin: 0.2% 0 0;
-}
-
-.row-4 p{
-    margin: 0.2% 0 0;
+.row p{
+    margin: 0.5% 2% 0 0;
 }
 
 table, td, th {

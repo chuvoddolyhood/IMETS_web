@@ -1,18 +1,23 @@
-<div class="detail-prescription">
-    <h1 class="heading-main">Ngày tái khám</h1>
-    <a href="index.php?page_layout=checkup&ID_Appointment=<?php echo $ID_Appointment?>">sua</a>
-    <div class="detail-prescription-table">
-        <div class="card-body">
-            <table class="table">
-                <?php
-                    $sql_prescriptionRecord = "SELECT * FROM appointment 
+<?php
+    $sql_prescriptionRecord = "SELECT * FROM appointment 
                     JOIN medicalrecord ON medicalrecord.ID_Appointment=appointment.ID_Appointment
                     JOIN presciption ON presciption.ID_Appointment=appointment.ID_Appointment
                     WHERE appointment.ID_Appointment=$ID_Appointment";
-                    $query_prescriptionRecord = mysqli_query($conn, $sql_prescriptionRecord);
-                    $rows_prescriptionRecord = mysqli_fetch_array($query_prescriptionRecord);
+    $query_prescriptionRecord = mysqli_query($conn, $sql_prescriptionRecord);
+    $rows_prescriptionRecord = mysqli_fetch_array($query_prescriptionRecord);
 
-                ?>
+?>
+
+<div class="detail-prescription">
+    <h1 class="heading-main">Ngày tái khám</h1>
+    <a href="index.php?page_layout=checkup&ID_Appointment=<?php echo $ID_Appointment?>">sua</a>
+    <?php 
+        if($rows_prescriptionRecord['Date_ReCheckup']!=''){?>
+        <a href="./modules_staff/paper/recheckup.php?ID_Appointment=<?php echo $ID_Appointment?>" target="_blank">In</a>
+    <?php } ?>
+    <div class="detail-prescription-table">
+        <div class="card-body">
+            <table class="table">
                 <thead class="thead-dark">
                     <tr>
                         <th>Ngày tái khám</th>

@@ -8,8 +8,6 @@
         JOIN diagnose ON diagnose.ID_MedicalRecord=medicalrecord.ID_MedicalRecord
         JOIN disease ON disease.ID_Disease=diagnose.ID_Disease
         JOIN presciption ON presciption.ID_Appointment=appointment.ID_Appointment
-        JOIN medicinesfortreatment ON medicinesfortreatment.ID_Prescription=presciption.ID_Prescription
-        JOIN medicine ON medicine.ID_Medicine=medicinesfortreatment.ID_Medicine
         JOIN staff ON staff.ID_Staff=appointment.ID_Staff
         WHERE appointment.ID_Appointment=$ID_Appointment";
     $query_get_prescription = mysqli_query($conn, $sql_get_prescription);
@@ -50,8 +48,9 @@
     <div class="header">
         <h1 class="title-paper">đơn thuốc</h1>
         <div>
-            <div class="row-1">
+            <div class="row row-1 row-flex">
                 <p>Họ và tên: <b><?php echo $rows_get_prescription['Name'] ?></b></p>
+                <p>Mã bệnh nhân: <b><?php echo $rows_get_prescription['ID_Patient'] ?></b></p>
                 <p>Tuổi: <?php 
                     $date = getdate();
                     $year = $date['year'];
@@ -66,13 +65,17 @@
                 ?></p>
                 <p>Giới tính: <?php echo $rows_get_prescription['Sex'] ?></p>
             </div>
-            <div class="row-2">
+            <div class="row row-2">
                 <p>Mã số thẻ bảo hiểm y tế (nếu có): <b><?php echo $rows_get_prescription['ID_BHYT'] ?></b></p>
             </div>
-            <div class="row-3">
+            <div class="row row-3">
                 <p>Địa chỉ: <?php echo $rows_get_prescription['Address'] ?></p>
             </div>
-            <div class="row-4">
+            <div class="row row-4 row-flex">
+                <p>Mã đơn đăng ký khám: <?php echo $rows_get_prescription['ID_Appointment'] ?></p>
+                <p>Mã đơn thuốc: <?php echo $rows_get_prescription['ID_Prescription'] ?></p>
+            </div>
+            <div class="row row-5">
                 <p>Chẩn đoán: <?php echo $diseases ?></p>
             </div>
         </div>
@@ -89,7 +92,12 @@
                 <th>Tối</th>
             </tr>
             <?php
-                $query_getPrescriptionList = mysqli_query($conn, $sql_get_prescription);
+                $sql_get_prescriptionList = "SELECT * FROM appointment
+                JOIN presciption ON presciption.ID_Appointment=appointment.ID_Appointment
+                JOIN medicinesfortreatment ON medicinesfortreatment.ID_Prescription=presciption.ID_Prescription
+                JOIN medicine ON medicine.ID_Medicine=medicinesfortreatment.ID_Medicine
+                WHERE appointment.ID_Appointment=$ID_Appointment";
+                $query_getPrescriptionList = mysqli_query($conn, $sql_get_prescriptionList);
                 $count=0;
                 while($rows_getPrescriptionList = mysqli_fetch_array($query_getPrescriptionList)){
             ?>
@@ -129,10 +137,10 @@
             <div>
                 <p>Thời gian dùng toa tới ngày: <?php if($rows_get_prescription['expDate']==''){
                     echo '';
-                }else{echo $rows_get_prescription['expDate'];} ?></p>
+                }else{echo date('d/m/Y', strtotime($rows_get_prescription["expDate"]));} ?></p>
                 <p>Ngày tái khám: <?php if($rows_get_prescription['Date_ReCheckup']==''){
                     echo '';
-                }else{echo $rows_get_prescription['Date_ReCheckup'];} ?></p>
+                }else{echo date('d/m/Y', strtotime($rows_get_prescription["Date_ReCheckup"]));} ?></p>
             </div>
         </div>
         <div class="signature">
