@@ -32,7 +32,10 @@
             case 'room_management':
                 include './modules_admin/room_management/list_room.php';
                 break;
-
+            
+            case 'detailDateWorking':
+                include './modules_admin/room_management/detailDateWorking.php';
+                break;
             }
     }else {
         include './modules_admin/dashboard_admin/dashboard_admin.php';
