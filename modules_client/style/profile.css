@@ -1,0 +1,45 @@
+.content-profile{
+    display: flex;
+}
+
+.container-category{
+    width: 20%;
+    background-color: aqua;
+    display: block;
+}
+
+.container-profile{
+    width: 80%;
+    background-color: rgb(63, 156, 156);
+}
+
+.category-items{
+    margin: 10% 30%;
+}
+
+.profile-form{
+    padding: 2%;
+    font-size: 1.5rem;
+}
+
+.profile-form table{
+    border: none;
+    border: none;
+    /* background-color: blueviolet; */
+}
+
+.profile-form table tr th{
+    width: 20%;
+    border: none;
+    text-align: right;
+}
+
+.profile-form table tr td{
+    border: none;
+    padding: 0 2%;
+    background-color: aqua;
+}
+
+.profile-form table tr td input{
+    width: 100%;
+}
