@@ -15,12 +15,12 @@
         <a class="active_link" href="#">Admin</a>
     </div>
     <div class="navbar__right">
-      <form id="labnol">
+      <!-- <form id="labnol">
         <input type="text" id="transcript">
         <a href="#" onclick="startDictation()">
           <i class="fas fa-microphone-alt" aria-hidden="true"></i>
         </a>
-      </form>
+      </form> -->
       
         <a href="#">
             <i class="fa fa-search" aria-hidden="true"></i>

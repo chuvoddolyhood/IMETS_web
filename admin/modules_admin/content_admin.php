@@ -36,6 +36,10 @@
             case 'detailDateWorking':
                 include './modules_admin/room_management/detailDateWorking.php';
                 break;
+
+            case 'recordLog':
+                include './modules_admin/recordLog/recordLog.php';
+                break;
             }
     }else {
         include './modules_admin/dashboard_admin/dashboard_admin.php';

@@ -27,7 +27,7 @@
         <h2>Quản lý bệnh viện</h2>
         <div class="sidebar__link">
             <i class="fas fa-address-card" aria-hidden="true"></i>
-            <a href="./index.php?page_layout=staff_management">Quản lý thông tin nhân viên</a>
+            <a href="./index.php?page_layout=staff_management">Quản lý nhân viên</a>
         </div>
         <div class="sidebar__link">
             <i class="fas fa-hospital"></i>
@@ -37,6 +37,10 @@
         <div class="sidebar__link">
             <i class="fas fa-address-book"></i>
             <a href="./index.php?page_layout=list_patientManagement">Quản lý bệnh nhân</a>
+        </div>
+        <div class="sidebar__link">
+            <i class="fas fa-chart-pie"></i>
+            <a href="./index.php?page_layout=recordLog">Kiểm tra sự thay đổi bệnh án</a>
         </div>
         <h2>Thống kê</h2>
         <div class="sidebar__link">
