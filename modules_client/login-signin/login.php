@@ -1,9 +1,8 @@
 <?php
     include './../../config.php';
     session_start();
-    if(isset($_POST['btn_login'])){
-        $username_client_login = $_POST['username_client_login'];
-        $password_client_login = $_POST['password_client_login'];
+        $username_client_login = $_GET['username_client_login'];
+        $password_client_login = $_GET['password_client_login'];
         // echo $username_client_login;
         // echo $password_client_login;
 
@@ -13,10 +12,9 @@
 
         if($rows_get_password['password'] == md5($password_client_login)){
             $_SESSION['login_client']=$username_client_login;
-            header('location: ./../../index.php');
+            echo 'true';
         } else {
-            echo '<script>alert("Sai tài khoản hay mật khẩu")</script>';
-            header('location: loginForm.php');
+            echo 'false';
         }        
-    }
+    
 ?>

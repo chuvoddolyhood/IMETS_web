@@ -15,20 +15,20 @@
     <div class="forms-container">
       <div class="signin-signup">
         <!-- Đăng nhập -->
-        <form action="./login.php" class="sign-in-form" method="POST">
+        <form class="sign-in-form">
           <h2 class="title">Đăng nhập</h2>
           <div class="input-field">
             <i class="fas fa-user"></i>
-            <input type="text" name="username_client_login" placeholder="Email" required/>
+            <input type="text" name="username_client_login" id="username_client_login" placeholder="Email" required/>
           </div>
           <div class="input-field">
             <i class="fas fa-key"></i>
-            <input type="password" name="password_client_login" placeholder="Mật khẩu" required/>
+            <input type="password" name="password_client_login" id="password_client_login" placeholder="Mật khẩu" required/>
           </div>
-          <input type="submit" value="Đăng nhập" class="btn solid" name="btn_login" />
+          <input type="button" value="Đăng nhập" class="btn solid" name="btn_login" onclick="check_Login()" />
           <a class="modal-btn" href="#">Quên mật khẩu?</a>
           <!-- <input type="button" class="btn" value="Đăng nhập" onclick="check_Login()"/> -->
-          <p class="social-text">Đăng nhập bằng phương thức khác</p>
+          <!-- <p class="social-text">Đăng nhập bằng phương thức khác</p>
           <div class="social-media">
             <a href="#" class="social-icon">
               <i class="fab fa-facebook-f"></i>
@@ -42,7 +42,7 @@
             <a href="#" class="social-icon">
               <i class="fab fa-linkedin-in"></i>
             </a>
-          </div>
+          </div> -->
         </form>
 
         <!-- Đăng ký -->
@@ -81,7 +81,7 @@
             <input type="password" id="passwordAgain_client" placeholder="Nhập lại mật khẩu" required/>
           </div>
           <input type="button" class="btn" value="Đăng ký" onclick="check_Signin()"/>
-          <p class="social-text">Đăng ký bằng phương thức khác</p>
+          <!-- <p class="social-text">Đăng ký bằng phương thức khác</p>
           <div class="social-media">
             <a href="#" class="social-icon">
               <i class="fab fa-facebook-f"></i>
@@ -95,7 +95,7 @@
             <a href="#" class="social-icon">
               <i class="fab fa-linkedin-in"></i>
             </a>
-          </div>
+          </div> -->
         </form>
       </div>
     </div>
