@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 09, 2022 at 03:37 AM
+-- Generation Time: May 15, 2022 at 03:51 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -50,7 +50,8 @@ INSERT INTO `appointment` (`ID_Appointment`, `ID_Staff`, `ID_Patient`, `Date_Boo
 (37, 4, 2, '2022-04-14 23:14:15', 114, '2022-04-14 23:15:42', '2022-06-09', 0.8, NULL, 'Đã khám'),
 (38, 4, 2, '2022-04-24 07:48:55', 123, '2022-04-24 07:54:52', NULL, 0.8, NULL, 'Đã khám'),
 (39, 4, 2, '2022-04-24 08:07:23', 125, '2022-04-24 08:12:06', NULL, 0.8, NULL, 'Đã khám'),
-(40, 4, 1, '2022-04-24 08:15:30', 127, '2022-05-01 10:01:17', '0000-00-00', 0.8, NULL, 'Đã khám');
+(40, 4, 1, '2022-04-24 08:15:30', 127, '2022-05-01 10:01:17', '0000-00-00', 0.8, NULL, 'Đã khám'),
+(43, 4, 2, '2022-05-12 21:04:31', 224, NULL, NULL, 0.8, NULL, 'Chờ khám');
 
 --
 -- Triggers `appointment`
@@ -291,7 +292,8 @@ INSERT INTO `medicalrecord_log` (`ID_Log`, `ID_Appointment`, `AtTable`, `Operati
 (17, 2, 'appointment', 'DELETE', '2022-05-03 20:06:02'),
 (18, 3, 'appointment', 'DELETE', '2022-05-03 20:06:02'),
 (19, 39, 'medicalrecord', 'UPDATE', '2022-05-05 15:48:54'),
-(20, 37, 'appointment', 'UPDATE', '2022-05-05 19:45:41');
+(20, 37, 'appointment', 'UPDATE', '2022-05-05 19:45:41'),
+(21, 43, 'appointment', 'INSERT', '2022-05-12 21:04:31');
 
 -- --------------------------------------------------------
 
@@ -381,7 +383,9 @@ CREATE TABLE `patient` (
 
 INSERT INTO `patient` (`ID_Patient`, `Name`, `DOB`, `Sex`, `Address`, `CMND`, `PhoneNumber`, `ID_BHYT`, `VoteRate`, `UserName`, `Password`) VALUES
 (1, 'nghia', '2012-12-12', 'nam', '40', 'xxx', '123', '9222590774', 1, 'tran', '345453'),
-(2, 'Trần Nhân Nghĩa', '2000-01-24', 'Nam', 'Số 40, đường số 3, KDC Thới Nhựt 2, phường An Khánh, quận Ninh Kiều, TP Cần Thơ', '1900', '0939635755', 'GD4929222590774', 3.4, 'trannhannghia.24012000@gmail.com', 'f03bbf95e3e6dd1725ea9aa87ea5b7f1');
+(2, 'Trần Nhân Nghĩa', '2000-01-24', 'Nam', 'Số 40, đường số 3, KDC Thới Nhựt 2, phường An Khánh, quận Ninh Kiều, TP Cần Thơ', '1900', '0939635755', 'GD4929222590774', 3.4, 'trannhannghia.24012000@gmail.com', 'c60c26ee5074844bdfc6d249180eb88f'),
+(6, 'abc', '2022-05-18', 'Nam', NULL, NULL, '2', NULL, 0, 'trannhannghia@gmail.com', 'c81e728d9d4c2f636f067f89cc14862c'),
+(7, 'abc', '2022-05-06', 'Nam', NULL, NULL, '12', NULL, 0, 'nghia@gmail.com', 'c20ad4d76fe97759aa27a0c99bff6710');
 
 -- --------------------------------------------------------
 
@@ -655,7 +659,23 @@ INSERT INTO `schedule` (`ID_schedule`, `title`, `Session`, `start`, `end`, `ID_S
 (210, 'Khám ngoại', 'Chiều', '2022-04-12 15:00:00', '2022-04-12 19:00:00', 4, 72, '2022-05-06 02:34:01'),
 (211, 'Khám ngoại', 'Chiều', '2022-04-12 15:30:00', '2022-04-12 19:30:00', 4, 72, '2022-05-06 02:34:01'),
 (212, 'Khám ngoại', 'Chiều', '2022-04-12 16:00:00', '2022-04-12 20:00:00', 4, 72, '2022-05-06 02:34:01'),
-(213, 'Khám ngoại', 'Chiều', '2022-04-12 16:30:00', '2022-04-12 20:30:00', 4, 72, '2022-05-06 02:34:01');
+(213, 'Khám ngoại', 'Chiều', '2022-04-12 16:30:00', '2022-04-12 20:30:00', 4, 72, '2022-05-06 02:34:01'),
+(214, 'Khám ngoại', 'Sáng', '2022-05-12 07:30:00', '2022-05-12 08:00:00', 4, 71, '2022-05-12 07:34:04'),
+(215, 'Khám ngoại', 'Sáng', '2022-05-12 08:00:00', '2022-05-12 08:30:00', 4, 71, '2022-05-12 07:34:04'),
+(216, 'Khám ngoại', 'Sáng', '2022-05-12 08:30:00', '2022-05-12 09:00:00', 4, 71, '2022-05-12 07:34:04'),
+(217, 'Khám ngoại', 'Sáng', '2022-05-12 09:00:00', '2022-05-12 09:30:00', 4, 71, '2022-05-12 07:34:04'),
+(218, 'Khám ngoại', 'Sáng', '2022-05-12 09:30:00', '2022-05-12 10:00:00', 4, 71, '2022-05-12 07:34:04'),
+(219, 'Khám ngoại', 'Sáng', '2022-05-12 10:00:00', '2022-05-12 10:30:00', 4, 71, '2022-05-12 07:34:04'),
+(220, 'Khám ngoại', 'Sáng', '2022-05-12 10:30:00', '2022-05-12 11:00:00', 4, 71, '2022-05-12 07:34:04'),
+(221, 'Khám ngoại', 'Sáng', '2022-05-12 11:00:00', '2022-05-12 11:30:00', 4, 71, '2022-05-12 07:34:04'),
+(222, 'Khám ngoại', 'Chiều', '2022-05-13 13:00:00', '2022-05-13 17:00:00', 4, 71, '2022-05-12 07:34:25'),
+(223, 'Khám ngoại', 'Chiều', '2022-05-13 13:30:00', '2022-05-13 17:30:00', 4, 71, '2022-05-12 07:34:25'),
+(224, 'Khám ngoại', 'Chiều', '2022-05-13 14:00:00', '2022-05-13 18:00:00', 4, 71, '2022-05-12 07:34:25'),
+(225, 'Khám ngoại', 'Chiều', '2022-05-13 14:30:00', '2022-05-13 18:30:00', 4, 71, '2022-05-12 07:34:25'),
+(226, 'Khám ngoại', 'Chiều', '2022-05-13 15:00:00', '2022-05-13 19:00:00', 4, 71, '2022-05-12 07:34:25'),
+(227, 'Khám ngoại', 'Chiều', '2022-05-13 15:30:00', '2022-05-13 19:30:00', 4, 71, '2022-05-12 07:34:25'),
+(228, 'Khám ngoại', 'Chiều', '2022-05-13 16:00:00', '2022-05-13 20:00:00', 4, 71, '2022-05-12 07:34:25'),
+(229, 'Khám ngoại', 'Chiều', '2022-05-13 16:30:00', '2022-05-13 20:30:00', 4, 71, '2022-05-12 07:34:25');
 
 -- --------------------------------------------------------
 
@@ -814,7 +834,7 @@ ALTER TABLE `staff`
 -- AUTO_INCREMENT for table `appointment`
 --
 ALTER TABLE `appointment`
-  MODIFY `ID_Appointment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `ID_Appointment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `dept`
@@ -856,7 +876,7 @@ ALTER TABLE `medicalrecord`
 -- AUTO_INCREMENT for table `medicalrecord_log`
 --
 ALTER TABLE `medicalrecord_log`
-  MODIFY `ID_Log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `ID_Log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `medicine`
@@ -868,7 +888,7 @@ ALTER TABLE `medicine`
 -- AUTO_INCREMENT for table `patient`
 --
 ALTER TABLE `patient`
-  MODIFY `ID_Patient` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID_Patient` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `paymentmethod`
@@ -886,7 +906,7 @@ ALTER TABLE `presciption`
 -- AUTO_INCREMENT for table `schedule`
 --
 ALTER TABLE `schedule`
-  MODIFY `ID_schedule` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=214;
+  MODIFY `ID_schedule` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=230;
 
 --
 -- AUTO_INCREMENT for table `staff`

@@ -26,7 +26,7 @@
             <input type="password" name="password_client_login" id="password_client_login" placeholder="Mật khẩu" required/>
           </div>
           <input type="button" value="Đăng nhập" class="btn solid" name="btn_login" onclick="check_Login()" />
-          <a class="modal-btn" href="#">Quên mật khẩu?</a>
+          <a class="modal-btn" href="#" id="forgotPassword">Quên mật khẩu?</a>
           <!-- <input type="button" class="btn" value="Đăng nhập" onclick="check_Login()"/> -->
           <!-- <p class="social-text">Đăng nhập bằng phương thức khác</p>
           <div class="social-media">
@@ -143,12 +143,14 @@
 
 <div class="modal-bg">
   <div class="modal">
-    <h1>Quên mật khẩu</h1>
-    <form action="" method="post">
-      <label for="">Email</label>
-      <input type="text" id="email-forgot" placeholder="Vui lòng nhập Email">
-      <button onclick="forgotPassword()">ok</button>
-    </form>    
+    <h2>Quên mật khẩu</h2>
+    <div id="formModal">
+      <div class="input-field">
+        <i class="fas fa-at"></i>
+        <input type="text" id="email-forgot" placeholder="Vui lòng nhập Email" required/>
+      </div>
+      <input type="button" class="btn" value="Gửi" onclick="forgotPassword()"/>
+    </div>    
     <span class="modal-close">X</spsan>
   </div>
 </div>

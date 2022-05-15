@@ -30,7 +30,7 @@
 
 <div class="counter-container">
     <i class="fas fa-user"></i>
-    <div class="counter" data-target="12000"></div>
+    <div class="counter" data-target="2000"></div>
     <span>Bệnh nhân đến khám mỗi năm</span>
 </div>
 
@@ -230,7 +230,7 @@
     </div>
 </section>
 
-<section>
+<section id="mail">
     <div class="container-mailbox">
         <h4 class="sent-notification"></h4>
         <form id="myForm">
@@ -253,7 +253,7 @@
 
             <div class="form-group-mailbox">
                 <label for="massage">Lời góp ý</label>
-                <textarea id="bodytext" cols="30" rows="10" placeholder="Gõ..."></textarea>
+                <textarea id="bodytext" cols="30" rows="10" placeholder="Bạn có lời góp ý gì xin nhập vào đây..."></textarea>
             </div>
 
             <button type="submit" onclick="sendEmail()">Gửi</button>

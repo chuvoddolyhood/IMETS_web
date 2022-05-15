@@ -45,7 +45,7 @@
 
         <div class="box">
             <img src="./modules_client/photo/apple-goole.png" style="width:40%;height:40%;">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62860.63915043812!2d105.72246489988055!3d10.034185104817096!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31a0629f6de3edb7%3A0x527f09dbfb20b659!2zQ-G6p24gVGjGoSwgTmluaCBLaeG7gXUsIEPhuqduIFRoxqEsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1646318189984!5m2!1svi!2s" width="300" height="200" style="border:0; margin-top: 2rem;" allowfullscreen="" loading="lazy"></iframe>  
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62860.63915043812!2d105.72246489988055!3d10.034185104817096!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31a0629f6de3edb7%3A0x527f09dbfb20b659!2zQ-G6p24gVGjGoSwgTmluaCBLaeG7gXUsIEPhuqduIFRoxqEsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1646318189984!5m2!1svi!2s" width="100%" height="80%" style="border:0; margin-top: 2rem;" allowfullscreen="" loading="lazy"></iframe>  
         </div>
 
     </div>

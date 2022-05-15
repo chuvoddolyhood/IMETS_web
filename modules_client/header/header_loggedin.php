@@ -9,38 +9,39 @@
 
 <header class="header">
 
-    <a href="./index.php" class="logo">IMETS<sup>&reg;</sup></a>
+  <a href="./index.php" class="logo">IMETS<sup>&reg;</sup></a>
 
-    <form id="labnol">
-      <input type="text" id="transcript">
-      <a href="#" onclick="startDictation()">
-        <i class="fas fa-microphone-alt" aria-hidden="true"></i>
-      </a>
-      <a onclick="searching()">
-        <i class="fa fa-search" aria-hidden="true"></i>
-      </a>
-    </form>
+  <form id="labnol">
+    <input type="text" id="transcript">
+    <a href="#" onclick="startDictation()">
+      <i class="fas fa-microphone-alt" aria-hidden="true"></i>
+    </a>
+    <a onclick="searching()">
+      <i class="fa fa-search" aria-hidden="true"></i>
+    </a>
+  </form>
 
-    <nav class="navbar">
-        <a href="./index.php">Trang chủ</a>
-        <a href="./index.php?page_layout=doctors">Bác sĩ</a>
-        <a href="./index.php?page_layout=booking">Đặt lịch</a>
-        <a href="#footer">Liên hệ</a>
-        <a class="modal-btn" href="#" title="<?php echo $_SESSION['login_client']; ?>">
-            <img width="30" src="./staff/modules_staff/photo/avatar.svg"/>
-        </a>
-    </nav>
+  <nav class="navbar">
+    <a href="./index.php">Trang chủ</a>
+    <a href="./index.php?page_layout=doctors">Bác sĩ</a>
+    <a href="./index.php?page_layout=booking">Đặt lịch</a>
+    <a href="#mail">Thư góp ý</a>
+    <a href="#footer">Liên hệ</a>
+    <a class="modal-btn" href="#" title="<?php echo $_SESSION['login_client']; ?>">
+      <img width="30" src="./staff/modules_staff/photo/avatar.svg"/>
+    </a>
+  </nav>
 
-    <div id="menu-btn" class="fas fa-bars"></div>
+  <div id="menu-btn" class="fas fa-bars"></div>
 
 </header>
 
-<!-- <script src="./modules_client/header/header.js"></script> -->
+<script src="./modules_client/header/header.js"></script>
 
 <!-- header section ends -->
 <div class="modal-bg">
   <div class="modal">
-    <h1>Client</h1>
+    <h1>Khách hàng</h1>
     <h4><?php echo $_SESSION['login_client'] ?></h4>
     <a href="./index.php?page_layout=profile">Hồ sơ của tôi</a>
     <a href="./index.php?page_layout=medicalBook">Sổ khám chữa bệnh</a>
@@ -64,32 +65,5 @@
   modalClose.addEventListener('click', function(){
     modalBg.classList.remove('bg-active');
   });
-
-  function startDictation() {
-    if (window.hasOwnProperty('webkitSpeechRecognition')) {
-      var recognition = new webkitSpeechRecognition();
-
-      recognition.continuous = false;
-      recognition.interimResults = false;
-
-      recognition.lang = 'vi-VN';
-      recognition.start();
-
-      recognition.onresult = function (e) {
-        document.getElementById('transcript').value = e.results[0][0].transcript;
-        recognition.stop();
-        document.getElementById('labnol').submit();
-      };
-
-      recognition.onerror = function (e) {
-        recognition.stop();      
-      };
-    }
-  }
-
-  function searching() {
-    var searchBox = document.getElementById('transcript').value;
-    window.location.href="./index.php?page_layout=search&q="+searchBox;
-  }
 
 </script>

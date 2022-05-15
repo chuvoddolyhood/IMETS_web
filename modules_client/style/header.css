@@ -61,21 +61,68 @@
     opacity: 1;
   }
   
-  .modal{
-    position: relative;
-    background-color: white;
-    width: 30%;
-    height: 30%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-direction: column;
-  }
+.modal{
+  position: relative;
+  background-color: white;
+  width: 20%;
+  height: 20%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 30px;
+  padding: 3%;
+}
   
-  .modal-close{
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-weight: bold;
-    cursor: pointer;
-  }
+.modal-close{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.modal h4{
+  margin-bottom: 20%;
+}
+
+.modal a{
+  font-size: 1.5rem;
+}
+
+.modal i{
+  font-size: 1.5rem;
+}
+
+#labnol{
+  background-color: var(--lightblue);
+  width: 20vw;
+  padding: 0.1% 1%;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: stretch;
+  align-content: stretch;
+}
+
+#labnol input{
+  background-color: var(--lightblue);
+  width: 15vw;
+  font-size: 1.5rem;
+  padding: 2.5%;
+}
+
+#labnol a{
+  border-radius: 35px;
+  width: 35px;
+  height: 35px;
+  text-align: center;
+  line-height: 35px;
+  cursor: pointer;
+}
+
+#labnol a i{
+  font-size: 1.4rem;
+}

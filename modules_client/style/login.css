@@ -411,7 +411,12 @@ form.sign-in-form {
   }
 }
 
-
+#forgotPassword{
+  color: #063e86;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.8rem;
+}
 
 .modal-bg{
   position: fixed;
@@ -438,11 +443,30 @@ form.sign-in-form {
   position: relative;
   background-color: white;
   width: 30%;
-  height: 30%;
-  display: flex;
+  /* height: 30%; */
+  /* display: flex;
   justify-content: space-around;
   align-items: center;
-  flex-direction: column;
+  flex-direction: column; */
+  border-radius: 30px;
+  padding: 3%;
+}
+
+.modal h2{
+  margin-bottom: 10%;
+  text-align: center;
+}
+
+#formModal{
+  padding: 0;
+}
+
+#formModal input{
+  width: 100%;
+}
+
+#formModal button{
+  width: 100%;
 }
 
 .modal-close{
