@@ -49,8 +49,12 @@
             <th>Chứng minh nhân dân</th>
             <td><input type="text" id="CMND_profile" value="<?php echo $rows_get_patient['CMND'] ?>"></td>
         </tr>
+        <tr>
+            <th></th>
+            <td><button onclick="save()" id="save-profile">Lưu</button></td>
+        </tr>
     </table>
-    <button onclick="save()">Lưu</button>
+    
 </div>
 
 

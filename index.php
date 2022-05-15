@@ -8,16 +8,11 @@
     <link rel="shortcut icon" type="image/png" href="./img/images/logo.jfif" />
     <!-- font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <!-- <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script> -->
     <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
 
     <!-- custom css file link  -->
     <link rel="stylesheet" href="./modules_client/style/index.css">
-    <!-- <link rel="stylesheet" href="./modules_client/style/style.css"> -->
-    <!-- <script src="https://kit.fontawesome.com/dbed6b6114.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" 
-        integrity="sha384-tKLJeE1ALTUwtXlaGjJYM3sejfssWdAaWR2s97axw4xkiAdMzQjtOjgcyw0Y50KU" 
-        crossorigin="anonymous"> -->
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 
      <!-- Link Swiper's CSS -->
      <link

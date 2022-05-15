@@ -105,7 +105,7 @@
               
               <div class="charts__right__cards">
                 <div class="schedule">
-                    <ul class="a">
+                    <ul>
                         <?php
                             $sql_schedule = "SELECT schedule.title,TIME(schedule.start) AS start,TIME(schedule.end) AS end
                             FROM `schedule` JOIN staff ON schedule.ID_Staff=staff.ID_Staff
