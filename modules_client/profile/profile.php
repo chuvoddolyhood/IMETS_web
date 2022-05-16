@@ -17,11 +17,11 @@
     <div class="content-profile">
         <div class="container-category">
             <div class="category-items">
-                <i class='fas fa-user-circle'></i>
+                <i class='fas fa-user-circle' id="profile-icon"></i>
                 <a href="index.php?page_layout=profile&category=personalInfo">Thông tin cá nhân</a>
             </div>
             <div class="category-items">
-                <i class='fas fa-lock'></i>
+                <i class='fas fa-lock' id="profile-icon"></i>
                 <a href="index.php?page_layout=profile&category=password">Đổi mật khẩu</a>
             </div>
         </div>

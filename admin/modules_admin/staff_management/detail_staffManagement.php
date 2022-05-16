@@ -8,6 +8,7 @@
 			WHERE staff.ID_Staff=$ID_Staff";
     $query = mysqli_query($conn, $sql);
 	$rows = mysqli_fetch_array($query);
+	$name_staff = $rows["Name_Staff"];
 	// echo $rows["Name"];
 ?>
 
@@ -20,7 +21,7 @@
 		<div class="tool">
 			<a href="./index.php?page_layout=modifyStaff&id= <?php echo $rows["ID_Staff"] ?>" 
                     style="background-color: rgb(255, 187, 0);color: white;padding: 8px 15px;text-align: center;text-decoration: none;display: inline-block;border-radius: 5px;">Sửa</a>
-			<a onclick="return confirm_Del('<?php echo $rows['Name'] ?>')" 
+			<a onclick="confirm_Del('<?php echo $name_staff ?>')" 
                 href="./modules_admin/staff_management/delete_staff.php?id=<?php echo $ID_Staff ?>" class="btn_delete">Xóa</a>
 		</div>
 	</div>
@@ -107,7 +108,7 @@
 		})
 
 		function confirm_Del(name){
-        	return confirm("Bạn có chắc muốn xóa mặt hàng "+ name + "?");
+        	return confirm("Bạn có chắc muốn xóa nhân viên "+ name + "?");
     	}
 
 	</script>

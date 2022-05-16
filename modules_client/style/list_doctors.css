@@ -212,6 +212,49 @@
 .home-text p span.text-out{
     animation: textOut .5s ease;
 }
+
+.comment{
+    margin: 0 10%;
+    padding: 2%;
+    background-color: var(--lightblue);
+    height:100vh;
+    overflow-x:hidden;
+    overflow-y:auto;
+}
+
+.comment h2{
+    font-size: 3rem;
+}
+
+.comment p{
+    font-size: 2rem;
+}
+
+.comment-patient{
+    display: flex;
+    margin: 2% 0;
+}
+
+.comment-patient img{
+    width: 5rem;
+    margin-right: 3%;
+}
+
+.comment-content h5{
+    font-size: 1.5rem;
+}
+
+.rating-slider i{
+    color: #69ABCE;
+    font-size: 1.2rem;
+    margin: 3% 0;
+}
+
+.comment-content p{
+    font-size: 1.5rem;
+}
+
+
     
 @keyframes textIn{
     0%{

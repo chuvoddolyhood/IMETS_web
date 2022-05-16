@@ -9,6 +9,7 @@
     $query = mysqli_query($conn, $sql);
 	$rows = mysqli_fetch_array($query);
 	$dept_name = $rows["Name_Dept"];
+	$VoteRate = $rows["VoteRate"];
 
 	if(!isset($_SESSION['login_client'])){
         header('location: ./modules_client/login-signin/loginForm.php');
@@ -118,6 +119,48 @@
 				</div>
 			<?php } ?>
 		</div>
+	</div>
+
+	<div class="comment">
+		<h2>Đánh giá bác sĩ</h2>
+		<p><?php echo $VoteRate ?> trên 5</p>
+		<?php
+			$sql_comment = "SELECT *
+			FROM evaluation JOIN appointment ON evaluation.ID_Appointment=appointment.ID_Appointment
+			JOIN patient ON patient.ID_Patient=appointment.ID_Patient
+			WHERE appointment.ID_Staff=$ID_Staff";
+			$query_comment = mysqli_query($conn, $sql_comment);
+			while($rows_comment = mysqli_fetch_array($query_comment)){
+		?>
+		<div class="comment-patient">
+			<img src="./staff/modules_staff/photo/avatar.svg"/>
+			<div class="comment-content">
+				<h5><?php echo $rows_comment['Name'] ?></h5>
+				<div class="rating-slider">
+					<?php
+						$numberOfStar = round($rows_comment["DoctorStar"]);
+						// echo 'full:'.$numberOfStar;
+						$fullStart=0;
+						while($fullStart < $numberOfStar){
+							$fullStart++;
+						?>
+							<i class="fas fa-star"></i>
+					<?php } 
+						$numberOfStar_empty = 5-round($rows_comment["DoctorStar"]);
+						// echo 'empty:'.$numberOfStar_empty;
+						$i=0;
+						while($i < $numberOfStar_empty){
+							$i++;
+					?>
+						<i class="far fa-star"></i>
+					<?php } ?>
+				</div>
+				<div>
+					<p><?php echo $rows_comment['PatientComment'] ?></p>
+				</div>
+			</div>
+		</div>
+		<?php } ?>
 	</div>
 
 	

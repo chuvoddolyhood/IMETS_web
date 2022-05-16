@@ -20,7 +20,13 @@
     display: flex;
 }
 
-.category-items a,i{
+.category-items a{
+    font-size: 1.5rem;
+    font-weight: 700;
+    padding: 0 2%;
+}
+
+#profile-icon{
     font-size: 1.5rem;
     font-weight: 700;
     padding: 0 2%;
