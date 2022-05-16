@@ -1,0 +1,35 @@
+.content-appointment h3{
+    font-size: 1.8rem;
+    margin-top: 2%;
+}
+
+.content-appointment table th, td{
+    font-size: 1.3rem;
+}
+
+.content-appointment p{
+    font-size: 1.3rem;
+    margin-top: 1%;
+}
+
+.button-prescription{
+    width: 100%;
+    /* background-color: aqua; */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: stretch;
+    align-content: stretch;
+    margin-top: 2%;
+}
+
+.button-prescription a{
+    padding: 1%;
+    background-color: var(--lightblue);
+    cursor: pointer;
+    font-size: 1.3rem;
+    border-radius: 20px;
+    font-weight: 500;
+    box-shadow: 1px 2px 3px #585858;
+}

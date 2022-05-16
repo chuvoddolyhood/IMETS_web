@@ -66,7 +66,7 @@
                 <i class="fa fa-star fa-2x text-yellow" aria-hidden="true"></i>
                 <div class="card_inner">
                     <p class="text-primary-p">Tỉ lệ tín nhiệm</p>
-                    <span class="font-bold text-title"><?php echo $rows_starVoting['VoteRate'] ?></span>
+                    <span class="font-bold text-title"><?php echo round($rows_starVoting['VoteRate']) ?></span>
                 </div>
             </div>
 

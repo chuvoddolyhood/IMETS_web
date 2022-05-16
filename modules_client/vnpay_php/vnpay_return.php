@@ -87,6 +87,16 @@
                                 include './../../config.php';
                                 $sql_update_prescription = "UPDATE presciption SET Status_Pay='Đã thanh toán' WHERE ID_Prescription = $ID_Prescription";
                                 $query_update_prescription = mysqli_query($conn, $sql_update_prescription);
+
+                                //Lay ID_Appointment
+                                $sql_get_ID_Appointment = "SELECT ID_Appointment FROM presciption WHERE ID_Prescription = $ID_Prescription";
+                                $query_get_ID_Appointment = mysqli_query($conn, $sql_get_ID_Appointment);
+                                $rows_get_ID_Appointment = mysqli_fetch_array($query_get_ID_Appointment);
+                                $ID_Appointment = $rows_get_ID_Appointment['ID_Appointment'];
+
+                                //Cap nhat payment method
+                                $sql_update_appointment = "UPDATE `appointment` SET `ID_PaymentMethod`=2 WHERE `ID_Appointment`=$ID_Appointment";
+                                $query_update_appointment = mysqli_query($conn, $sql_update_appointment);
                             } else {
                                 echo "<span style='color:red'>GD Khong thanh cong</span>";
                                 //code sql

@@ -7,13 +7,15 @@
 
 
 <section class="doctorList">
-    <h1> Thông tin khám bệnh </h1>
+        <h1> Thông tin khám bệnh </h1>
         <div class="container-appointment">
             <div class="content-appointment">
                 <?php
                     $sql_prescription = "SELECT * FROM medicinesfortreatment 
                     JOIN presciption ON medicinesfortreatment.ID_Prescription=presciption.ID_Prescription
                     JOIN medicine ON medicine.ID_Medicine=medicinesfortreatment.ID_Medicine
+                    JOIN appointment ON appointment.ID_Appointment=presciption.ID_Appointment
+                    JOIN evaluation ON evaluation.ID_Appointment=appointment.ID_Appointment
                     WHERE presciption.ID_Appointment=$ID_Appointment";
                     $query_prescription = mysqli_query($conn, $sql_prescription);
                 ?>
@@ -78,8 +80,8 @@
                     <tr>
                         <td> <?php echo $rows_invoice['TitleMedicine'] ?> </td>
                         <td> <?php echo $rows_invoice['Amount'] ?> </td>
-                        <td> <?php echo $rows_invoice['UnitPrice'] ?> </td>
-                        <td> <?php echo $rows_invoice['TotalMoney'] ?> </td>
+                        <td> <?php echo number_format($rows_invoice['UnitPrice']) ?> </td>
+                        <td> <?php echo number_format($rows_invoice['TotalMoney']) ?> </td>
                         <td> <?php echo $rows_invoice['BHYT_Checkin']*100 ?>% </td>
                         <td>Xem</td>
                     </tr>
@@ -92,20 +94,25 @@
                     $query_prescriptionSummary = mysqli_query($conn, $sql_prescription);
                     $rows_prescriptionSummary = mysqli_fetch_array($query_prescriptionSummary);
                 ?>
-                <p>Tổng chi phí: <?php echo $rows_prescriptionSummary['TotalAmount'] ?></p>
-                <p>BHYT chi trả: <?php echo $rows_prescriptionSummary['BHYT_Pay'] ?></p>
-                <p>Bệnh nhân chi trả: <?php echo $rows_prescriptionSummary['Patient_Pay'] ?></p>
+                <p>Tổng chi phí: <?php echo number_format($rows_prescriptionSummary['TotalAmount']) ?>₫</p>
+                <p>BHYT chi trả: <?php echo number_format($rows_prescriptionSummary['BHYT_Pay']) ?>₫</p>
+                <p>Bệnh nhân chi trả: <?php echo number_format($rows_prescriptionSummary['Patient_Pay']) ?>₫</p>
                 <p>Trạng thái thanh toán: <?php echo $rows_prescriptionSummary['Status_Pay'] ?></p>
+
+                <div class="button-prescription">
+                    <?php if($rows_prescriptionSummary['DoctorStar'] == ''){ ?>
+                        <a class="modal-btn-evaluation"> Đánh giá Bác sĩ
+                            <span><i class="fas fa-plus"></i></span>
+                        </a>
+                    <?php } ?>
+                    <?php if($rows_prescriptionSummary['Status_Pay'] == 'Chưa thanh toán'){ ?>
+                        <a class="modal-btn-pay" href='./modules_client/vnpay_php/vnpay_main.php?ID_Appointment= <?php echo $ID_Appointment ?>' target="_blank"> Thanh toán viện phí online
+                            <span><i class="fas fa-donate"></i></span>
+                        </a>
+                    <?php } ?>
+                </div>
             </div>
             
-            <button class="modal-btn-evaluation"> Đánh giá Bác sĩ
-                <span><i class="fas fa-plus"></i></span>
-            </button>
-            <?php if($rows_prescriptionSummary['Status_Pay'] == 'Chưa thanh toán'){ ?>
-                <a class="modal-btn-pay" href='./modules_client/vnpay_php/vnpay_main.php?ID_Appointment= <?php echo $ID_Appointment ?>' target="_blank"> Thanh toán viện phí online
-                    <span><i class="fas fa-donate"></i></span>
-                </a>
-            <?php } ?>
         </div>
 </section>
 

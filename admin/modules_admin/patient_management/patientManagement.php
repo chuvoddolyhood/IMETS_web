@@ -3,7 +3,7 @@
 
     $ID_Patient = $_GET['ID_Patient'];
 
-    $sql = "SELECT * FROM appointment JOIN patient ON appointment.ID_Patient=patient.ID_Patient";
+    $sql = "SELECT * FROM appointment JOIN patient ON appointment.ID_Patient=patient.ID_Patient WHERE patient.ID_Patient=$ID_Patient";
     $query = mysqli_query($conn, $sql);
     $rows = mysqli_fetch_array($query);
                 
@@ -67,9 +67,11 @@
                             </tr>
                             <?php
                                     $sql_appointment = "SELECT * FROM appointment 
-                                    JOIN schedule ON schedule.ID_schedule=appointment.Date_Checkup
-                                    JOIN staff ON staff.ID_Staff=appointment.ID_Staff
-                                    JOIN medicalrecord ON medicalrecord.ID_Appointment=appointment.ID_Appointment
+                                    LEFT JOIN schedule ON schedule.ID_schedule=appointment.Date_Checkup
+                                    LEFT JOIN staff ON staff.ID_Staff=appointment.ID_Staff
+                                    LEFT JOIN medicalrecord ON medicalrecord.ID_Appointment=appointment.ID_Appointment
+                                    LEFT JOIN patient ON appointment.ID_Patient=patient.ID_Patient
+                                    WHERE patient.ID_Patient=$ID_Patient
                                     ORDER BY appointment.ID_Appointment DESC";
                                     $query_appointment = mysqli_query($conn, $sql_appointment);
                                     while($rows_appointment = mysqli_fetch_array($query_appointment)){
