@@ -34,6 +34,7 @@
     <h1>Staff</h1>
     <h4><?php echo $_SESSION['login_staff'] ?></h4>
     <!-- <a href="#">Hồ sơ của tôi</a> -->
+    <a href="./index.php?page_layout=profile">Thông tin cá nhân</a>
     <div class="sidebar__logout">
       <i class="fa fa-power-off"></i>
       <a href="./index.php?logout=logoutstaff">Đăng Xuất</a>

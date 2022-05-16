@@ -13,7 +13,7 @@
     <table>
         <tr>
             <th>Email đăng nhập</th>
-            <td><input type="text" id="email_profile" value="<?php echo $UserName?>"></td>
+            <td><input type="text" id="email_profile" value="<?php echo $UserName?>" readonly></td>
         </tr>
         <tr>
             <th>Họ và tên</th>
@@ -51,52 +51,8 @@
         </tr>
         <tr>
             <th></th>
-            <td><button onclick="save()" id="save-profile">Lưu</button></td>
+            <td><button onclick="savePersonalInfor()" id="save-profile">Lưu</button></td>
         </tr>
     </table>
     
 </div>
-
-
-<script>
-    function save(){
-        email_profile = document.getElementById('email_profile').value;
-        name_profile = document.getElementById('name_profile').value;
-        phoneNumber_profile = document.getElementById('phoneNumber_profile').value;
-        date_profile = document.getElementById('date_profile').value;
-        address_profile = document.getElementById('address_profile').value;
-        BHYT_profile = document.getElementById('BHYT_profile').value;
-        CMND_profile = document.getElementById('CMND_profile').value;
-        
-        
-        //Lay gia tri trong select
-        e = document.getElementById("sex_profile");
-        sex_profile = e.options[e.selectedIndex].text;
-
-        // alert(sex_profile);
-
-
-        //call ajax
-        var ajax = new XMLHttpRequest();
-        var method = "GET";
-        var url = "./modules_client/profile/saveInfo.php?email_profile="+email_profile+"&name_profile="+name_profile+"&phoneNumber_profile="+phoneNumber_profile+"&date_profile="+date_profile+"&address_profile="+address_profile+"&BHYT_profile="+BHYT_profile+"&CMND_profile="+CMND_profile+"&sex_profile="+sex_profile;
-        var asynchronous = true;
-        ajax.open(method, url, asynchronous);
-
-        //send
-        ajax.send();
-            
-        //receive
-        ajax.onreadystatechange = function(){
-            if(this.readyState == 4 && this.status == 200){
-                var response = this.responseText;
-                
-                if(response=='true'){
-                    alert('Đã thay đổi thành công.');
-                } else {
-                    alert('Không thể thay đổi. Vui lòng thử lại.');
-                }
-            }
-        }
-    }
-</script>

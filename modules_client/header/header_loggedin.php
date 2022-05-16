@@ -25,7 +25,6 @@
     <a href="./index.php">Trang chủ</a>
     <a href="./index.php?page_layout=doctors">Bác sĩ</a>
     <a href="./index.php?page_layout=booking">Đặt lịch</a>
-    <a href="#mail">Thư góp ý</a>
     <a href="#footer">Liên hệ</a>
     <a class="modal-btn" href="#" title="<?php echo $_SESSION['login_client']; ?>">
       <img width="30" src="./staff/modules_staff/photo/avatar.svg"/>

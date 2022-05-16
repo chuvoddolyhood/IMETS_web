@@ -12,6 +12,7 @@
     width: 73%;
     background-color: var(--lightblue);
     border-radius: 20px;
+    box-shadow: 1px 2px 3px #052a53;
 }
 
 .category-items{
@@ -57,15 +58,16 @@
 
 .profile-form table tr td input,select{
     width: 100%;
-    padding: 0.7%;
+    padding: 0.7% 2%;
     background-color: var(--lightblue);
     outline: 0.1rem solid #03356e;
+    border-radius: 15px;
 }
 
 #save-profile{
     padding: 1% 2%;
     background-color: #09c6f9;
-    border-radius: 5px;
+    border-radius: 15px;
     font-weight: 700;
     color: #fff;
     cursor: pointer;

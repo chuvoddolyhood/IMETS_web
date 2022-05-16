@@ -28,6 +28,9 @@
             case 'medicalRecord': //Benh an dien tu
                 include './modules_staff/medicalRecord/medicalRecord.php';
                 break;
+            case 'profile': //Benh an dien tu
+                include './modules_staff/profile/profile.php';
+                break;
             }
     }else {
         include './modules_staff/dashboard_staff/dashboard_staff.php';

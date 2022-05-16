@@ -19,7 +19,7 @@
         </tr>
         <tr>
             <td></td>
-            <td><button onclick="save()" id="save-profile">Lưu</button></td>
+            <td><button onclick="updatePassword()" id="save-profile">Lưu</button></td>
         </tr>
     </table>
 </div>
