@@ -45,7 +45,7 @@
     <div class="counter" data-target="2000"></div>
     <span>Lượt bình chọn và đánh giá tích cực</span>
 </div>
-<script src="./modules_client/main/homepage.js"></script>
+
 </section>
 
 <!-- icons section ends -->
@@ -259,7 +259,19 @@
             <button type="submit" onclick="sendEmail()">Gửi</button>
         </form>
     </div>
-    <div id="status"></div>
+    <!-- <div id="status"></div> -->
+
+    <div id="chatbot" class="chatbot--closed">	
+		<div id="chatbot-box">
+		    <iframe width="350" height="430" allow="microphone;" src="https://console.dialogflow.com/api-client/demo/embedded/b2bf0f49-fe97-4245-92d8-70f39718bc37"></iframe>
+	    </div>
+	</div>
+
+    <div class="fixed-btn">
+        <div id="btnFixed">
+            <i class='far fa-comment-dots'></i>
+        </div>
+    </div>
 
 
     <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -300,3 +312,4 @@
         }
     </script>
 </section>
+<script src="./modules_client/main/homepage.js"></script>

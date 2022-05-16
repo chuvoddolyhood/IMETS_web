@@ -127,7 +127,7 @@
 
 	<div class="comment">
 		<h2>Đánh giá bác sĩ</h2>
-		<p><?php echo $VoteRate ?> trên 5</p>
+		<p><?php echo round($VoteRate) ?> trên 5</p>
 		<?php
 			$sql_comment = "SELECT *
 			FROM evaluation JOIN appointment ON evaluation.ID_Appointment=appointment.ID_Appointment
@@ -224,22 +224,6 @@
 				</div>
 			<?php } ?>
 		</div>
-	</div>
-
-
-
-
-
-	
-	<div id="chatbot">
-		<div id="chatbot-icon">
-			<i class="fas fa-star chatbot-icon"></i>
-		</div>
-		
-		<div id="chatbot-box">
-		<iframe width="350" height="430" allow="microphone;" src="https://console.dialogflow.com/api-client/demo/embedded/b2bf0f49-fe97-4245-92d8-70f39718bc37"></iframe>
-		</div>
-		
 	</div>
 
 	<!-- ======================Điều chỉnh CSS list_doctor.php====================== -->

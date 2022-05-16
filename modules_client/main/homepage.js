@@ -19,3 +19,27 @@ counters.forEach((counter) => {
 
   updateCounter();
 });
+
+
+//Chatbot
+const chatbotBtn = document.getElementById("btnFixed");
+
+function activeChatBot(){
+  
+  let chatbotForm = document.getElementById("chatbot");
+  let itemClass = chatbotForm.className;
+
+  if(itemClass === "chatbot--closed"){
+    chatbotForm.classList.remove("chatbot--closed");
+    chatbotForm.classList.add("chatbot--open");
+  }else{
+    chatbotForm.classList.remove("chatbot--open");
+    chatbotForm.classList.add("chatbot--closed");
+  }
+}
+
+if(chatbotBtn){
+  chatbotBtn.addEventListener("click", ()=>{
+    activeChatBot();
+  })
+}
