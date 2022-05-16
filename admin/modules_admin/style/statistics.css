@@ -1,0 +1,37 @@
+#downloadfile{
+    padding: 1%;
+    border-radius: 20px;
+    cursor: pointer;
+    background-color: #cfdcf7;
+    margin-top: 2%;
+}
+
+.main__container .modal-add{
+    width: 25vw;
+    height: 20vw;
+    border-radius: 20px;
+    padding: 2%;
+}
+
+.main__container .modal-add h2{
+    margin-bottom: 3rem;
+}
+
+.main__container .modal-add a{
+    text-decoration: none;
+    background-color: #cfdcf7;
+    padding: 2%;
+    border-radius: 20px;
+    margin: 2% 0;
+    width: 20rem;
+    text-align: center;
+    box-shadow: 1px 2px 3px #82a4ec;
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+.main__container .modal-add a:hover{
+    background-color: #82a4ec;
+    font-size: 1.2rem;
+    transition: ease 0.4s;
+}

@@ -15,15 +15,15 @@
             </div>
         </div>
 
-        <button type="button" class="manage-btn btn-left">Xuất file Excel</button>
+        <button type="button" class="manage-btn btn-left" id="downloadfile"><i class='fas fa-file-alt'></i> Xuất file Excel</button>
         <!-- ############################# Modal Thêm nhân viên ######################################## -->
         <div class="modal-bg-add">
             <div class="modal-add">
-            <h2>Xuất báo cáo tạo file Excel</h2>
-            <a href="./modules_admin/statistics_management/exportExcel/staffReport.php">Danh sách thông tin nhân viên</a>
-            <a href="./modules_admin/statistics_management/exportExcel/patientReport.php" >Danh sách thông tin bệnh nhân</a>
-            <a href="./modules_admin/statistics_management/exportExcel/medicineReport.php">Danh sách thuốc điều trị</a>
-            <span class="modal-close-add">X</spsan>
+                <h2>Xuất báo cáo tạo file Excel</h2>
+                <a href="./modules_admin/statistics_management/exportExcel/staffReport.php">Danh sách thông tin nhân viên</a>
+                <a href="./modules_admin/statistics_management/exportExcel/patientReport.php" >Danh sách thông tin bệnh nhân</a>
+                <a href="./modules_admin/statistics_management/exportExcel/medicineReport.php">Danh sách thuốc hiện có</a>
+                <span class="modal-close-add">X</spsan>
             </div>
         </div>
 
