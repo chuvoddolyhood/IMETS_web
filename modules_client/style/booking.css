@@ -45,6 +45,14 @@
     padding: 1vh;
 }
 
+.content-appointment table th{
+    background-color: var(--lightblue);
+}
+
+.content-appointment table tr:hover{
+    background-color: var(--lightblue);
+}
+
 .btn_delete_product{
     color: red;
     cursor: pointer;

@@ -121,6 +121,10 @@
 		</div>
 	</div>
 
+	<?php 
+		if($VoteRate>0){
+	?>
+
 	<div class="comment">
 		<h2>Đánh giá bác sĩ</h2>
 		<p><?php echo $VoteRate ?> trên 5</p>
@@ -162,6 +166,11 @@
 		</div>
 		<?php } ?>
 	</div>
+
+	<?php 
+		}
+	?>
+	
 
 	
 	<div class="doctorList">
