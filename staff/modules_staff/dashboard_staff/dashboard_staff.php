@@ -138,7 +138,7 @@
 
     $sql_appointment = "SELECT MONTH(appointment.Date_HospitalDischarge), COUNT(*) AS soluong
                 FROM appointment JOIN staff ON appointment.ID_Staff=staff.ID_Staff 
-                WHERE staff.UserName='chae' AND appointment.StatusAppointment='Đã khám'
+                WHERE staff.UserName='$UserName' AND appointment.StatusAppointment='Đã khám'
                 GROUP BY MONTH(appointment.Date_HospitalDischarge);";
     $query_appointment = mysqli_query($conn, $sql_appointment);
 

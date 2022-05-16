@@ -61,10 +61,10 @@
                         <td> <?php echo $rows_appointment['Date_HospitalDischarge'] ?> </td>
                         <td> <?php echo $rows_appointment['Date_ReCheckup'] ?> </td>
                         <td> <?php echo $rows_appointment['StatusAppointment'] ?> </td>
-                        <?php if($rows_appointment['StatusAppointment'] == 'Đã khám'){ ?>
                         <td> <?php echo $rows_appointment['Title_PaymentMethod'] ?> </td>
                         <td> <?php echo number_format($rows_appointment['TotalAmount']) ?>₫ </td>
                         <td> <?php echo $rows_appointment['Status_Pay'] ?> </td>
+                        <?php if($rows_appointment['StatusAppointment'] == 'Đã khám'){ ?>
                         <td>
                             <a class="button_edit_product" href="./index.php?page_layout=prescription&ID_Appointment=<?php echo $rows_appointment['ID_Appointment'] ?>">Xem</a>
                         </td>

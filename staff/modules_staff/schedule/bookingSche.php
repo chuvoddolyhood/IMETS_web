@@ -3,7 +3,11 @@
     // require_once('./../config.php');
     date_default_timezone_set("Asia/Ho_Chi_Minh");
 
-    $sql = "SELECT ID_schedule, title, start, end, Session FROM schedule ";
+    $username =  $_SESSION['login_staff'];
+
+    $sql = "SELECT ID_schedule, title, start, end, Session 
+    FROM schedule JOIN staff ON schedule.ID_Staff=staff.ID_Staff
+    WHERE staff.UserName='$username'";
 
     $req = $bdd->prepare($sql);
     $req->execute();
@@ -249,11 +253,19 @@
 
     </script>
 
+    <?php
+        
+        $sql_get_IDStaff = "SELECT `ID_Staff` FROM `staff` WHERE `UserName`='$username'";
+        $query_get_IDStaff = mysqli_query($conn, $sql_get_IDStaff);
+        $rows_get_IDStaff = mysqli_fetch_array($query_get_IDStaff);
+        $ID_Staff=$rows_get_IDStaff['ID_Staff'];
+    ?>
     <div class="modal-bg-work">
         <div class="modal">
             <h1>Thêm công việc</h1>
             <form class="form-horizontal" method="POST" action="./modules_staff/schedule/addEvent.php">
                 <div class="modal-body">
+                    <input type="hidden" name="ID_Staff" value="<?php echo $ID_Staff ?>" >
                     <div class="form-group">
                         <label for="title" class="col-sm-2 control-label">Công việc:</label>
                         <div class="col-sm-10">
@@ -293,8 +305,16 @@
                         <div class="col-sm-10">
                             <select name="room" class="form-control" id="room" required="">
                                 <option value="">Choose</option>
-                                <option value="71">Phòng 71</option>
-                                <option value="72">Phòng 72</option>
+                                <?php 
+                                    $sql_get_room = "SELECT *
+                                    FROM `room` JOIN dept ON room.ID_Dept=dept.ID_Dept
+                                    JOIN staff ON staff.ID_Dept=dept.ID_Dept
+                                    WHERE staff.UserName='$username'";
+                                    $query_get_room = mysqli_query($conn, $sql_get_room);
+                                    while($rows_get_room = mysqli_fetch_array($query_get_room)){
+                                ?>
+                                <option value="<?php echo $rows_get_room['ID_Room'] ?>"><?php echo $rows_get_room['Name_Room'] ?></option>
+                                <?php } ?>
                              </select>
                         </div>
                     </div>

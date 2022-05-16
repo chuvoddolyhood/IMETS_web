@@ -12,6 +12,7 @@
 		$dateworking = $_POST['dateworking'];
 		$session = $_POST['session'];
 		$room = $_POST['room'];
+		$ID_Staff = $_POST['ID_Staff'];
 
 		// echo $title;
 		// echo $dateworking;
@@ -28,7 +29,7 @@
 					
 
 			do{
-				$sql = "INSERT INTO schedule(title,Session, ID_Staff, ID_Room,start, end) VALUES ('$title','$session','4','$room','$start_working','$end_working')";
+				$sql = "INSERT INTO schedule(title,Session, ID_Staff, ID_Room,start, end) VALUES ('$title','$session',$ID_Staff,'$room','$start_working','$end_working')";
 				echo $sql;
 
 				$query = $bdd->prepare( $sql );
@@ -60,7 +61,7 @@
 					
 
 			do{
-				$sql = "INSERT INTO schedule(title, Session, ID_Staff, ID_Room,start, end) VALUES ('$title','$session','4','$room','$start_working','$end_working')";
+				$sql = "INSERT INTO schedule(title, Session, ID_Staff, ID_Room,start, end) VALUES ('$title','$session',$ID_Staff,'$room','$start_working','$end_working')";
 				echo $sql;
 
 				$query = $bdd->prepare( $sql );
@@ -92,7 +93,7 @@
 					
 
 			do{
-				$sql = "INSERT INTO schedule(title, Session, ID_Staff, ID_Room,start, end) VALUES ('$title','$session','4','$room','$start_working','$end_working')";
+				$sql = "INSERT INTO schedule(title, Session, ID_Staff, ID_Room,start, end) VALUES ('$title','$session',$ID_Staff,'$room','$start_working','$end_working')";
 				echo $sql;
 
 				$query = $bdd->prepare( $sql );

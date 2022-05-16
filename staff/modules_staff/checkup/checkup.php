@@ -288,8 +288,8 @@
                                             <td><?php echo ++$stt?></td>
                                             <td><?php echo $rows_get_medicineChoose['TitleMedicine'] ?></td>
                                             <td><?php echo $rows_get_medicineChoose['Type'] ?></td>
-                                            <td><?php echo $rows_get_medicineChoose['Amount'] ?></td>
-                                            <td><?php echo $rows_get_medicineChoose['UnitPrice'] ?></td>
+                                            <td><?php echo number_format($rows_get_medicineChoose['Amount']) ?></td>
+                                            <td><?php echo number_format($rows_get_medicineChoose['UnitPrice']) ?></td>
                                             <td><?php 
                                                 echo $rows_get_medicineChoose['TotalMoney'];
                                                 $sumMoney=$sumMoney+$rows_get_medicineChoose['TotalMoney'];
@@ -313,7 +313,7 @@
                         </div>
                         <div class="totalMoney">
                             <h4>Tổng tiền:</h4>
-                            <p id="TotalMoney"><?php echo $sumMoney ?></p>
+                            <p id="TotalMoney"><?php echo $sumMoney?></p>
                         </div>
                         <div>
                             <button onclick="exportPrescription()"> Xuất toa thuốc

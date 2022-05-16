@@ -218,14 +218,22 @@ form{
 }
 #user{
     /* position: absolute; */
-    margin:0 auto;
-    background-color:red;
+    margin:0 auto; 
     width: 400px;
     padding: 10px;
     border:1px solid silver;
     /* left: calc(50% - 212px); */
     z-index: 100;
 }
-#user a{
+#user ul li a{
     text-decoration:none;
+    color: #ebebeb;
 }
+
+#user ul li {
+    list-style-type: none;
+    background-color:#469cac;
+    padding: 2%;
+    
+}
+

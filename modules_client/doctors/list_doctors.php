@@ -45,7 +45,7 @@
                 <?php } ?>
             </div>
             <a href="./index.php?page_layout=detail_doctors&id= <?php echo $rows['ID_Staff'] ?>">Xem thông tin</a>
-            <a href="">Đặt lịch</a>
+            <!-- <a href="">Đặt lịch</a> -->
         </div>
         <?php
             }

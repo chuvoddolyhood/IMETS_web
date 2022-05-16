@@ -13,7 +13,7 @@
 ?>
 
 <section class="doctorList">
-    <h1> Đặt lịch khám bệnh ngày <?php echo $date ?> </h1>
+    <h1> Đặt lịch khám bệnh ngày <?php echo date('d-m-Y', strtotime($date)); ?> </h1>
     <table>
         <tr>
             <th>Bệnh nhân:</th>
@@ -168,6 +168,7 @@
 <input type="hidden" id="date" value="<?php echo $date ?>">
 <input type="hidden" id="ID_Staff" value="<?php echo $ID_Staff ?>">
 <input type="hidden" id="session_client" value="<?php echo $_SESSION['login_client'] ?>">
+<input type="hidden" id="timedemo" value="null">
 
 <script type="text/javascript">
     //Chon thoi gian
@@ -175,12 +176,18 @@
     function changeTime(){
         times.forEach(time => time.classList.remove('active'));
         this.classList.add('active');
+        checkTime();
     }
     times.forEach(time => time.addEventListener('click', changeTime));
 
+    function checkTime(){
+        time = document.querySelector(".active").innerHTML;
+        document.querySelector("#timedemo").value=time;
+    }
+
 
     function book(){
-        time = document.querySelector(".active").innerHTML;
+        time = document.getElementById('timedemo').value;
         
         //Lay gia tri trong select
         e = document.getElementById("typeMedicalCheck");
@@ -191,23 +198,30 @@
         session_client = document.getElementById('session_client').value;
         // alert(time+date+ID_Staff+session_client+type);
 
-        //call ajax
-        var ajax = new XMLHttpRequest();
-        var method = "GET";
-        var url = "./modules_client/doctors/appointment.php?time="+time+"&date="+date+"&ID_Staff="+ID_Staff+"&session_client="+session_client+"&type="+type;
-        var asynchronous = true;
-        ajax.open(method, url, asynchronous);
 
-        //send
-        ajax.send();
-            
-        //receive
-        ajax.onreadystatechange = function(){
-            if(this.readyState == 4 && this.status == 200){
-                var response = this.responseText;
-                // alert(response);
-                if(response=='true'){
-                    window.location.href='./index.php?page_layout=booking';
+        if(time=='null'){
+            alert('Vui lòng chọn thời gian.');
+        } else {
+            //call ajax
+            var ajax = new XMLHttpRequest();
+            var method = "GET";
+            var url = "./modules_client/doctors/appointment.php?time="+time+"&date="+date+"&ID_Staff="+ID_Staff+"&session_client="+session_client+"&type="+type;
+            var asynchronous = true;
+            ajax.open(method, url, asynchronous);
+
+            //send
+            ajax.send();
+                
+            //receive
+            ajax.onreadystatechange = function(){
+                if(this.readyState == 4 && this.status == 200){
+                    var response = this.responseText;
+                    // alert(response);
+                    if(response=='true'){
+                        window.location.href='./index.php?page_layout=booking';
+                    } else {
+                        alert(response);
+                    }
                 }
             }
         }

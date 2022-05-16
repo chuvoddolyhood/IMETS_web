@@ -1,3 +1,7 @@
+<?php 
+    $UserName = $_SESSION['login_staff'];
+?>
+
 <main>
     <div class="container-fluid">
         <div class="card-container">
@@ -27,8 +31,9 @@
                                 include './../config.php';
                                 $sql = "SELECT DISTINCT patient.ID_Patient,patient.Name,patient.DOB,patient.Address,patient.PhoneNumber,patient.CMND, patient.ID_BHYT
                                 FROM appointment 
-                                JOIN patient ON appointment.ID_Patient=patient.ID_Patient 
-                                WHERE appointment.StatusAppointment='Đã khám'
+                                JOIN patient ON appointment.ID_Patient=patient.ID_Patient
+                                JOIN staff ON staff.ID_Staff=appointment.ID_Staff
+                                WHERE appointment.StatusAppointment='Đã khám' AND staff.UserName='$UserName'
                                 ORDER BY ID_Patient ASC";
                                 $count_order=0;
                                 $query = mysqli_query($conn, $sql);
