@@ -33,6 +33,7 @@
                         <th>Ngày đăng ký</th>
                         <th>Ngày tới khám</th>
                         <th>Trạng thái</th>
+                        <th>Hủy</th>
                     </tr>
                     <?php
                         $STT = 0;
@@ -47,6 +48,7 @@
                         <td> <?php echo $rows_appointment['Date_Booking'] ?> </td>
                         <td> <?php echo $rows_appointment['start'] ?> </td>
                         <td> <?php echo $rows_appointment['StatusAppointment'] ?> </td>
+                        <td> <a onclick="confirm_Del('<?php echo $rows_appointment['ID_Appointment'] ?>')"  href="./modules_client/booking/cancel.php?ID_Appointment=<?php echo $rows_appointment['ID_Appointment'] ?>" id="cancelAppointment">Hủy lịch</a> </td>
                     </tr>
                     <?php } ?>
                 </table>
@@ -56,3 +58,9 @@
         <div><p style="text-align:center"><b >Đặt lịch của bạn hiện đang trống</b></p></div>
     <?php } ?>
 </section>
+
+<script>
+    function confirm_Del(name){
+        	return confirm("Bạn có chắc muốn hủy đặt hẹn "+ name + "?");
+    	}
+</script>

@@ -1,0 +1,38 @@
+.clipboard-button {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: stretch;
+    align-content: stretch;
+    margin-top: 3%;
+}
+
+.clipboard-button a{
+    padding: 1%;
+    background-color: var(--lightblue);
+    cursor: pointer;
+    border-radius: 20px;
+    font-size: 1.5rem;
+    box-shadow: 1px 2px 3px #333333;
+    margin-right: 2%;
+}
+
+.clipboard-button a:hover{
+    background-color: #4363f5;
+}
+
+#typeMedicalCheck{
+    border-radius: 0px;
+    background-color: #ffffff;
+    outline: 0;
+}
+
+#clipboard-table{
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+#clipboard-table tr td{
+    text-align: center;
+}

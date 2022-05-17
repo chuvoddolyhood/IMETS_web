@@ -14,7 +14,7 @@
 
 <section class="doctorList">
     <h1> Đặt lịch khám bệnh ngày <?php echo date('d-m-Y', strtotime($date)); ?> </h1>
-    <table>
+    <table id="clipboard-table">
         <tr>
             <th>Bệnh nhân:</th>
             <td colspan=5><?php echo $rows_get_infoPatient['Name'] ?></td>
@@ -159,9 +159,9 @@
             </td>    
         </tr>
     </table>
-    <div>
-        <button onclick="book()">Đặt lịch</button>
-        <button>Hủy bỏ</button>
+    <div class="clipboard-button">
+        <a onclick="book()">Đặt lịch</a>
+        <a href="index.php?page_layout=doctors">Hủy bỏ</a>
     </div>
 </section>
 
