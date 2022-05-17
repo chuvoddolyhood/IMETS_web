@@ -189,13 +189,13 @@
     ajax.onreadystatechange = function(){
       if(this.readyState == 4 && this.status == 200){
         var response = this.responseText;
-        alert(response);
-        // if(response == "True"){
-        //   alert('Đăng ký thành công');
-        //   window.location.href="./loginForm.php";
-        // } else {
-        //   alert('Không thể đăng ký do tài khoản tồn tại. Vui Lòng thử lại');
-        // }  
+        // alert(response.slice(0,7));
+        if(response.slice(0,7) == "Updated"){
+          alert('Đã gửi mật khẩu mới vào email. Vui lòng kiểm tra!');
+          window.location.href="./loginForm.php";
+        } else {
+          alert('Không thể đăng ký do tài khoản tồn tại. Vui Lòng thử lại');
+        }  
       }
     }
   }

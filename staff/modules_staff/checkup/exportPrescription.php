@@ -28,13 +28,19 @@
     // echo $BHYT_Checkin;
 
     //Calculate PatientPay
-    if($TotalMoney<223000){
-        $BHYT_Pay = $TotalMoney;
-        $Patient_Pay = $TotalMoney - $BHYT_Pay;
+    if($BHYT_Checkin!=0){
+        if($TotalMoney<223000){
+            $BHYT_Pay = $TotalMoney;
+            $Patient_Pay = $TotalMoney - $BHYT_Pay;
+        } else {
+            $BHYT_Pay = $TotalMoney*$BHYT_Checkin;
+            $Patient_Pay = $TotalMoney - $BHYT_Pay;
+        }
     } else {
-        $BHYT_Pay = $TotalMoney*$BHYT_Checkin;
+        $BHYT_Pay = 0;
         $Patient_Pay = $TotalMoney - $BHYT_Pay;
     }
+    
     // echo $BHYT_Pay;
 
     $Date_HospitalDischarge = date('Y-m-d H:i:s');
