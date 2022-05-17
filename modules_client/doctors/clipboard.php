@@ -61,7 +61,7 @@
                 FROM schedule s JOIN staff st ON s.ID_Staff=st.ID_Staff
                     JOIN room r ON r.ID_Room=s.ID_Room
                     JOIN dept d ON d.ID_Dept=r.ID_Dept
-                WHERE st.ID_Staff=$ID_Staff AND s.Session='Sáng' AND DATE(s.start)='$date'";
+                WHERE st.ID_Staff=$ID_Staff AND s.Session='Sáng' AND DATE(s.start)='$date' AND s.status_schedule NOT LIKE 'Có lịch' AND s.start>NOW()";
             $query_get_schedule_sang_1 = mysqli_query($conn, $sql_get_schedule_sang);
             $rows_get_schedule_sang_1 = mysqli_fetch_array($query_get_schedule_sang_1);
             $query_get_schedule_sang = mysqli_query($conn, $sql_get_schedule_sang);
@@ -93,7 +93,7 @@
                 FROM schedule s JOIN staff st ON s.ID_Staff=st.ID_Staff
                     JOIN room r ON r.ID_Room=s.ID_Room
                     JOIN dept d ON d.ID_Dept=r.ID_Dept
-                WHERE st.ID_Staff=$ID_Staff AND s.Session='Chiều' AND DATE(s.start)='$date'";
+                WHERE st.ID_Staff=$ID_Staff AND s.Session='Chiều' AND DATE(s.start)='$date' AND s.status_schedule NOT LIKE 'Có lịch' AND s.start>NOW()";
             $query_get_schedule_chieu_1 = mysqli_query($conn, $sql_get_schedule_chieu);
             $rows_get_schedule_chieu_1 = mysqli_fetch_array($query_get_schedule_chieu_1);
             $query_get_schedule_chieu = mysqli_query($conn, $sql_get_schedule_chieu);
@@ -125,7 +125,7 @@
                 FROM schedule s JOIN staff st ON s.ID_Staff=st.ID_Staff
                     JOIN room r ON r.ID_Room=s.ID_Room
                     JOIN dept d ON d.ID_Dept=r.ID_Dept
-                WHERE st.ID_Staff=$ID_Staff AND s.Session='Ngoài giờ' AND DATE(s.start)='$date'";
+                WHERE st.ID_Staff=$ID_Staff AND s.Session='Ngoài giờ' AND DATE(s.start)='$date' AND s.status_schedule NOT LIKE 'Có lịch' AND s.start>NOW()";
             $query_get_schedule_ngoaigio_1 = mysqli_query($conn, $sql_get_schedule_ngoaigio);
             $rows_get_schedule_ngoaigio_1 = mysqli_fetch_array($query_get_schedule_ngoaigio_1);
             $query_get_schedule_ngoaigio = mysqli_query($conn, $sql_get_schedule_ngoaigio);

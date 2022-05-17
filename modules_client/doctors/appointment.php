@@ -54,7 +54,10 @@
             VALUES ($ID_Staff,$ID_Patient,'$today','$ID_Schedule', $BHYT_Checkin, 'Chờ khám')";
 	    $query_add_appointment = mysqli_query($conn, $sql_add_appointment);
 
-        if($query_add_appointment){
+        $sql_update_statusSchedule = "UPDATE `schedule` SET `status_schedule`='Có lịch' WHERE `ID_schedule`='$ID_Schedule'";
+	    $query_update_statusSchedule = mysqli_query($conn, $sql_update_statusSchedule);
+
+        if($query_add_appointment && $query_update_statusSchedule){
             echo 'true';
         } else {
             echo 'false';
