@@ -64,13 +64,13 @@
 .modal{
   position: relative;
   background-color: white;
-  width: 20%;
-  height: 20%;
+  width: 20vw;
+  height: 20vw;
   display: flex;
   justify-content: space-around;
   align-items: center;
   flex-direction: column;
-  border-radius: 30px;
+  border-radius: 20px;
   padding: 3%;
 }
   
@@ -82,12 +82,32 @@
   cursor: pointer;
 }
 
+.modal h1{
+  font-size: 2.5rem;
+}
+
 .modal h4{
-  margin-bottom: 20%;
+  margin-bottom: 10%;
+  font-size: 1.2rem;
 }
 
 .modal a{
-  font-size: 1.5rem;
+  text-decoration: none;
+  background-color: #cfdcf7;
+  padding: 2%;
+  border-radius: 20px;
+  margin: 2% 0;
+  width: 20rem;
+  text-align: center;
+  box-shadow: 1px 2px 3px #82a4ec;
+  font-weight: 500;
+  font-size: 1.3rem;
+}
+
+.modal a:hover{
+  background-color: #82a4ec;
+  font-size: 1.4rem;
+  transition: ease 0.4s;
 }
 
 .modal i{

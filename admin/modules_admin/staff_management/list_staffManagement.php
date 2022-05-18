@@ -74,81 +74,82 @@
     <h2>Thêm nhân viên</h2>
     <form action="./modules_admin/staff_management/add_staff.php" enctype="multipart/form-data" method="POST"> 
         <div class="modal-body">
-            <div>
-                <label class="form-label">Họ tên</label>
-                <input type="text" class="form-control" name="Name" require>
+            <div class="modal-body-part">
+                <div class="input-field">
+                    <i class="fas fa-user"></i>
+                    <input type="text" name="Name" placeholder="Họ tên" required/>
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-calendar"></i>
+                    <input type="date" name="DOB" placeholder="Ngày sinh" required/>
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-id-card"></i>
+                    <select name="Sex" placeholder="Giới tính" required>
+                        <option value="Nam">Nam</option>
+                        <option value="Nữ">Nữ</option>
+                        <option value="Khác">Khác</option>
+                    </select>
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-user"></i>
+                    <input type="text" name="Address" placeholder="Địa chỉ" required/>
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-user"></i>
+                    <input type="text" name="CMND" placeholder="CMND" required/>
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-phone"></i>
+                    <input type="number" name="PhoneNumber" placeholder="Số điện thoại" required/>
+                </div>
             </div>
-            <div>
-                <label class="form-label">DOB</label>
-                <input type="date" class="form-control" name="DOB" require>
-            </div>
-            <div>
-                <label for="">Giới tính</label>
-                <select class="form-control" name="Sex">
-                    <option selected>Giới tính</option>
-                    <option value = "Nam" >Nam</option>
-                    <option value = "Nữ" >Nữ</option>
-                    <option value = "Khác" >Khác</option>
-                </select>
-            </div>
-            <div>
-                <label class="form-label">Địa chỉ</label>
-                <input type="text" class="form-control" name="Address" require>
-            </div>
-            <div>
-                <label class="form-label">CMND</label>
-                <input type="text" class="form-control" name="CMND" require>
-            </div>
-            <div>
-                <label class="form-label">Số điện thoại</label>
-                <input type="text" class="form-control" name="PhoneNumber" require>
-            </div>
-            <div>
-                <label for="">Vị trí công việc</label>
-                <select class="form-control" name="Position">
-                    <option selected>Chọn vị trí</option>
-                    <option value = "Bác sĩ" >Bác sĩ</option>
-                    <option value = "Điều dưỡng" >Điều dưỡng</option>
-                    <option value = "Dược sĩ" >Dược sĩ</option>
-                </select>
-            </div>
-            <div>
-                <label for="">Khoa/phòng</label>
-                <select class="form-control" name="ID_Dept">
-                    <option selected>Chọn Khoa</option>
-                    <option value = "1" >Khoa Nội tổng hợp</option>
-                    <option value = "2" >Khoa Cấp cứu</option>
-                    <option value = "3" >Khoa Nhi</option>
-                    <option value = "4" >Khoa Mắt</option>
-                    <option value = "5" >Khoa Sản</option>
-                    <option value = "6" >Khoa Da liễu</option>
-                    <option value = "7" >Khoa Thần kinh</option>
-                    <option value = "8" >Khoa Tim mạch</option>
-                    <option value = "9" >Khoa Dược</option>
-                    <option value = "10" >Khoa Nhiễm</option>
-                </select>
-            </div>
-            <div>
-                <label class="form-label">Ngày bắt đầu</label>
-                <input type="date" class="form-control" name="DateStartWork" require>
-            </div>
-            <div>
-                <label class="form-label">Tên đăng nhập</label>
-                <input type="text" class="form-control" name="Username" require>
-            </div>
-            <div>
-                <label class="form-label">Mật khẩu</label>
-                <input type="text" class="form-control" name="Password" require>
-            </div>
-            <div class="form-group">
-                <label for="">Ảnh</label><br />
-                <input type="file" name="fileupload[]" multiple="multiple" required>
+            <div class="modal-body-part">
+                <div class="input-field">
+                    <i class="fas fa-id-card"></i>
+                    <select name="Position" placeholder="Vị trí công việc" required>
+                        <option value = "Bác sĩ" >Bác sĩ</option>
+                        <option value = "Điều dưỡng" >Điều dưỡng</option>
+                        <option value = "Dược sĩ" >Dược sĩ</option>
+                    </select>
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-id-card"></i>
+                    <select name="ID_Dept" placeholder="Khoa/phòng" required>
+                        <option value = "1" >Khoa Nội tổng hợp</option>
+                        <option value = "2" >Khoa Cấp cứu</option>
+                        <option value = "3" >Khoa Nhi</option>
+                        <option value = "4" >Khoa Mắt</option>
+                        <option value = "5" >Khoa Sản</option>
+                        <option value = "6" >Khoa Da liễu</option>
+                        <option value = "7" >Khoa Thần kinh</option>
+                        <option value = "8" >Khoa Tim mạch</option>
+                        <option value = "9" >Khoa Dược</option>
+                        <option value = "10" >Khoa Nhiễm</option>
+                    </select>
+                </div>
+                <div class="input-field">
+                    <title>Ngày làm việc</title>
+                    <i class="fas fa-calendar"></i>
+                    <input type="date" name="DateStartWork" placeholder="Ngày bắt đầu" required/>
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-user"></i>
+                    <input type="email" name="Username" placeholder="Tên đăng nhập" required/>
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" name="Password" placeholder="Mật khẩu" required/>
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-photo"></i>
+                    <input type="file" name="fileupload[]" placeholder="Ảnh" multiple="multiple" required/>
+                </div>
             </div>
         </div>
-      <div class="modal-footer">
-          <button type="button" class="modal-close-add-btn">Đóng</button>
-          <button type="submit" class="btn btn-primary" name="btn_submit">Thêm</button>
-      </div>
+        <div class="modal-footer">
+            <input type="submit" class="btn" name="btn_submit" value="Thêm"/>
+        </div>
     </form>  
     <span class="modal-close-add">X</spsan>
   </div>

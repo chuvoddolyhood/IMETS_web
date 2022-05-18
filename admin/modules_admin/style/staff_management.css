@@ -57,13 +57,88 @@ tbody tr:hover {
   .modal-add{
     position: relative;
     background-color: white;
-    width: 60%;
-    height: 90%;
+    /* width: 50vw; */
+    /* height: 90%; */
+    padding: 2%;
+    border-radius: 20px;
     display: flex;
     /* justify-content: space-around; */
     align-items: center;
     flex-direction: column;
   }
+
+
+.modal-body{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: stretch;
+  align-content: stretch;
+}
+
+.modal-footer{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: stretch;
+  align-content: stretch;
+}
+
+.modal-body-part{
+  margin: 0 5%;
+}
+  
+.input-field {
+  max-width: 380px;
+  width: 100%;
+  background-color: #f0f0f0;
+  margin: 10px 0;
+  height: 45px;
+  border-radius: 55px;
+  display: grid;
+  grid-template-columns: 15% 85%;
+  padding: 0 0.4rem;
+  position: relative;
+}
+
+.input-field i {
+  text-align: center;
+  line-height: 45px;
+  color: #acacac;
+  transition: 0.5s;
+  font-size: 0.9rem;
+}
+
+.input-field input {
+  background: none;
+  outline: none;
+  border: none;
+  line-height: 1;
+  font-weight: 600;
+  font-size: 0.7rem;
+  color: #333;
+}
+
+.input-field input::placeholder {
+  color: #aaa;
+  font-weight: 500;
+  font-size: 0.7rem;
+}
+
+.input-field select {
+  background-color: #f0f0f0;
+  border: none;
+  height: 35px;
+  margin: 5px 5px 0 0;
+  line-height: 1;
+  color: #aaa;
+  font-weight: 500;
+}
+
+
+
   
   .modal-close-add{
     position: absolute;
@@ -72,6 +147,25 @@ tbody tr:hover {
     font-weight: bold;
     cursor: pointer;
     color: #000000;
+  }
+
+  .btn {
+    width: 150px;
+    background-color: #09c6f9;
+    border: none;
+    outline: none;
+    height: 49px;
+    border-radius: 49px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin: 10px 0;
+    cursor: pointer;
+    transition: 0.5s;
+  }
+  
+  .btn:hover {
+    background-color: #045de9;
   }
   
   .btn_add{

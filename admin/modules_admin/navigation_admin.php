@@ -41,11 +41,7 @@
   <div class="modal">
     <h1>Admin</h1>
     <h4><?php echo $_SESSION['login_admin'] ?></h4>
-    <!-- <a href="#">Hồ sơ của tôi</a> -->
-    <div class="sidebar__logout">
-      <i class="fa fa-power-off"></i>
-      <a href="./index.php?logout=logoutadmin">Đăng Xuất</a>
-    </div>
+    <a href="./index.php?logout=logoutadmin"><i class="fa fa-power-off"></i> Đăng Xuất</a>
     <span class="modal-close">X</spsan>
   </div>
 </div>

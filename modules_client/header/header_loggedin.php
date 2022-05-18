@@ -44,10 +44,7 @@
     <h4><?php echo $_SESSION['login_client'] ?></h4>
     <a href="./index.php?page_layout=profile">Hồ sơ của tôi</a>
     <a href="./index.php?page_layout=medicalBook">Sổ sức khỏe điện tử</a>
-    <div class="sidebar__logout">
-      <i class="fa fa-power-off"></i>
-      <a href="./index.php?logout=logoutclient">Đăng Xuất</a>
-    </div>
+    <a href="./index.php?logout=logoutclient"><i class="fa fa-power-off"></i> Đăng Xuất</a>
     <span class="modal-close">X</spsan>
   </div>
 </div>
