@@ -211,22 +211,24 @@
                             </div>                   
                         </div>
                     </div>
-                    <button onclick="add_diagnose()"> Lưu
+                    <div class="btn-medicalrecord-containter">
+                        <button class="btn-medicalrecord btn-prescription" onclick="add_diagnose()"> Lưu
                         <span><i class="fas fa-plus"></i></span>
                     </button>
+                    </div>
                 </div>
 
                 <div class="prescription">
                     <div class="prescription-head">
                         <h1 class="heading-main">Đơn thuốc</h1>
                         <div class="input-prescription">
-                            <form action="./modules_staff/checkup/prescription_add_medicine.php" method="POST">
+                            <form action="./modules_staff/checkup/prescription_add_medicine.php" class="form-prescription" method="POST">
                                 <input type="hidden" name="ID_Appointment" value="<?php echo $ID_Appointment ?>">
                                 <table>
                                     <tr>
                                         <th>Thuốc - vật tư</th>
                                         <td>
-                                            <select name="medicine_choose">
+                                            <select name="medicine_choose" class="input-form">
                                                 <?php
                                                     $sql_get_medicine = "SELECT * FROM medicine ORDER BY TitleMedicine ASC";
                                                     $query_get_medicine = mysqli_query($conn, $sql_get_medicine);
@@ -251,8 +253,8 @@
                                         </td>                                        
                                     </tr>
                                 </table>
-                                <div class="button-function">
-                                    <input type="submit" name="btn_medicine_prescription" value="Thêm">
+                                <div class="btn-medicalrecord-containter">
+                                    <input type="submit" class="btn-medicalrecord btn-prescription" name="btn_medicine_prescription" value="Thêm">
                                 </div>
                             </form>
                         </div>
@@ -314,12 +316,12 @@
                         <div class="totalMoney">
                             <h4>Tổng tiền:</h4>
                             <p id="TotalMoney"><?php echo $sumMoney?></p>
-                        </div>
-                        <div>
-                            <button onclick="exportPrescription()"> Xuất toa thuốc
+                        </div>                      
+                        <div class="btn-medicalrecord-containter">
+                            <button class="btn-medicalrecord btn-prescription" onclick="exportPrescription()"> Xuất toa thuốc
                                 <span><i class="fas fa-plus"></i></span>
                             </button>
-                            <button class="modal-btn-evaluation"> Kết thúc điều trị
+                            <button class="modal-btn-evaluation btn-medicalrecord"> Kết thúc điều trị
                                 <span><i class="fas fa-plus"></i></span>
                             </button>
                         </div>

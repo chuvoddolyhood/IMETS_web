@@ -98,7 +98,7 @@
 .precheckup-container{
     width: 50%;
     margin: 1%;
-    background-color: rgb(221, 221, 221);
+    /* background-color: rgb(221, 221, 221); */
     padding: 1rem;
     border-radius: 10px;
     box-shadow: 1px 1px 2px rgb(124, 124, 124);
@@ -106,15 +106,21 @@
 
 .input-form-title{
     width: 60%;
+    height: 3vh;
+    border-radius: 5px;
+    font-size: 1rem;
 }
 
 .result-checkup{
     padding: 1rem;
-    margin: 1%;
+    margin: 2%;
     width: 90%;
-    background-color: rgb(221, 221, 221);
     border-radius: 10px;
     box-shadow: 1px 1px 2px rgb(124, 124, 124);
+}
+
+.prescription-head{
+    padding: 2% 0;
 }
 
 .prescription-head h1{
@@ -123,6 +129,11 @@
 
 .input-prescription{
     margin-bottom: 2vh;
+}
+
+.input-prescription form{
+    background-color: #f0f0f0;
+    padding: 3% 0;
 }
 
 .input-prescription table{
@@ -140,6 +151,9 @@
 
 .input-form{
     width: 100%;
+    height: 3vh;
+    border-radius: 5px;
+    font-size: 1rem;
 }
 
 .result-diagnose{
@@ -153,6 +167,8 @@
 
 .result-diagnose .form-group textarea{
     width: 100%;
+    resize: none;
+    border-radius: 5px;
 }
 
 .form-group label{
@@ -169,6 +185,7 @@
     height:30vh;
     overflow-x:hidden;
     overflow-y:auto;
+    margin-bottom: 2%;
 }
 
 .heading-main{
@@ -187,11 +204,6 @@
 
 }
 
-form{
-    /* background-color: #469cac; */
-    border-radius: 10px;
-    box-shadow: 1px 1px 2px rgb(124, 124, 124);
-}
 
 .button-function{
     text-align: center;
@@ -199,8 +211,8 @@ form{
 }
 
 #search{
-    width: 400px;
-    padding: 10px;
+    width: 95%;
+    padding: 2%;
     display:block;
     border-radius:3px;
     border:1px solid silver;
@@ -210,7 +222,7 @@ form{
     /* width: 400px;
     padding: 10px;
     border:1px solid silver; */
-    margin:0 auto;
+    margin:0 auto 2%;
     display:none;
 }
 #pic{
@@ -236,4 +248,3 @@ form{
     padding: 2%;
     
 }
-
