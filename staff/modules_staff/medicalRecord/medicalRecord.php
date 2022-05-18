@@ -8,7 +8,7 @@
                 <h2>Hồ sơ bệnh nhân</h2>
             </div>
             <div class="radio-options">
-                <input type="number" name="search" id="search" placeholder="Nhập mã bệnh nhân">
+                <input type="number" name="search" id="search-medicalrecord" min="0" placeholder="Nhập mã bệnh nhân">
                 <button onclick="search()">Tìm kiếm</button>
             </div>
 
@@ -20,7 +20,7 @@
 
 <script>
     function search(){
-        var search = document.getElementById('search').value;
+        var search = document.getElementById('search-medicalrecord').value;
         // alert(search);
 
         // call ajax

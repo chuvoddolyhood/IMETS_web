@@ -13,7 +13,7 @@
         if($rows_prescriptionRecord['Date_ReCheckup']!=''){?>
         <a href="./modules_staff/paper/recheckup.php?ID_Appointment=<?php echo $ID_Appointment?>" target="_blank">Xem</a>
     <?php } ?>
-    <div class="detail-prescription-table">
+    <div class="detail-prescription-table table-custom">
         <div class="card-body">
             <table class="table">
                 

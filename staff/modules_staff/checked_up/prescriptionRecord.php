@@ -1,8 +1,10 @@
 <div class="detail-prescription">
     <h1 class="heading-main">Chi tiết thuốc - vật tư</h1>
-    <a href="index.php?page_layout=checkup&ID_Appointment=<?php echo $ID_Appointment?>">sua</a>
-    <a href="./modules_staff/paper/prescription.php?ID_Appointment=<?php echo $ID_Appointment?>" target="_blank">In</a>
-    <div class="detail-prescription-table">
+    <div class="btn-medicalrecord-containter">
+        <a class="btn-medicalrecord" href="index.php?page_layout=checkup&ID_Appointment=<?php echo $ID_Appointment?>"><i class='fas fa-edit'></i> Chỉnh sửa</a>
+        <a class="btn-medicalrecord" href="./modules_staff/paper/prescription.php?ID_Appointment=<?php echo $ID_Appointment?>" target="_blank"><i class='fas fa-print'></i> In toa thuốc</a>
+    </div>
+    <div class="detail-prescription-table table-custom">
         <div class="card-body">
             <table class="table">
                 <thead class="thead-dark">
@@ -29,8 +31,8 @@
                     <td><?php echo ++$stt?></td>
                     <td><?php echo $rows_get_medicineChoose['TitleMedicine'] ?></td>
                     <td><?php echo $rows_get_medicineChoose['Type'] ?></td>
-                    <td><?php echo $rows_get_medicineChoose['Amount'] ?></td>
-                    <td><?php echo $rows_get_medicineChoose['UnitPrice'] ?></td>
+                    <td><?php echo  $rows_get_medicineChoose['Amount'] ?></td>
+                    <td><?php echo  number_format($rows_get_medicineChoose['UnitPrice']) ?></td>
                         <td><?php 
                             echo $rows_get_medicineChoose['TotalMoney'];
                             $sumMoney=$sumMoney+$rows_get_medicineChoose['TotalMoney'];
@@ -42,7 +44,6 @@
         </div>
     </div>
     <div class="totalMoney">
-        <h4>Tổng tiền:</h4>
-        <p id="TotalMoney"><?php echo $sumMoney ?></p>
+        <h4>Tổng tiền: <?php echo number_format($sumMoney) ?>₫</h4>
     </div>
 </div> 

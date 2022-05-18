@@ -10,8 +10,11 @@
 
 <div class="detail-prescription">
     <h1 class="heading-main">Hóa đơn</h1>
-    <a href="./modules_staff/paper/invoice.php?ID_Appointment=<?php echo $ID_Appointment?>" target="_blank">Xem</a>
-    <div class="detail-prescription-table">
+    <div class="btn-medicalrecord-containter">
+        <a class="btn-medicalrecord" href="./modules_staff/paper/invoice.php?ID_Appointment=<?php echo $ID_Appointment?>" target="_blank"><i class='fas fa-print'></i> In hóa đơn</a>
+    </div>
+    
+    <div class="detail-prescription-table table-custome">
         <div class="card-body">
             <table class="table">
                 <?php
@@ -34,9 +37,9 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td><?php echo $rows_payment['TotalAmount'] ?></td>
-                        <td><?php echo $rows_payment['BHYT_Pay'] ?></td>
-                        <td><?php echo $rows_payment['Patient_Pay'] ?></td>
+                        <td><?php echo  number_format($rows_payment['TotalAmount']) ?>₫</td>
+                        <td><?php echo  number_format($rows_payment['BHYT_Pay']) ?>₫</td>
+                        <td><?php echo  number_format($rows_payment['Patient_Pay']) ?>₫</td>
                         <td><?php echo $rows_payment['Status_Pay'] ?></td>
                         <td><?php echo $rows_payment['Title_PaymentMethod'] ?></td>
                     </tr>

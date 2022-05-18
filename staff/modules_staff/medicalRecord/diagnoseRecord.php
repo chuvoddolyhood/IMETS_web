@@ -1,7 +1,7 @@
 <div class="diagnose-checkedup">
     <div>
         <h1 class="heading-main">Chẩn đoán</h1>
-        <div class="detail-prescription-table">
+        <div class="detail-prescription-table table-custom">
             <div class="card-body">
                 <table class="table">
                     <tbody>

@@ -1,8 +1,11 @@
 <div class="diagnose-checkedup">
     <div>
         <h1 class="heading-main">Chẩn đoán</h1>
-        <a href="index.php?page_layout=checkup&ID_Appointment=<?php echo $ID_Appointment?>">sua</a>
-        <div class="detail-prescription-table">
+        
+        <div class="btn-medicalrecord-containter">
+            <a class="btn-medicalrecord" href="index.php?page_layout=checkup&ID_Appointment=<?php echo $ID_Appointment?>"><i class='fas fa-edit'></i> Chỉnh sửa</a>
+        </div>
+        <div class="detail-prescription-table table-custom">
             <div class="card-body">
                 <table class="table">
                     <tbody>

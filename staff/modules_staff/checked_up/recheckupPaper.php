@@ -10,12 +10,14 @@
 
 <div class="detail-prescription">
     <h1 class="heading-main">Ngày tái khám</h1>
-    <a href="index.php?page_layout=checkup&ID_Appointment=<?php echo $ID_Appointment?>">sua</a>
+    <div class="btn-medicalrecord-containter">
+        <a class="btn-medicalrecord" href="index.php?page_layout=checkup&ID_Appointment=<?php echo $ID_Appointment?>"><i class='fas fa-edit'></i> Chỉnh sửa</a>
+    </div>
     <?php 
         if($rows_prescriptionRecord['Date_ReCheckup']!=''){?>
         <a href="./modules_staff/paper/recheckup.php?ID_Appointment=<?php echo $ID_Appointment?>" target="_blank">In</a>
     <?php } ?>
-    <div class="detail-prescription-table">
+    <div class="detail-prescription-table table-custom">
         <div class="card-body">
             <table class="table">
                 <thead class="thead-dark">
