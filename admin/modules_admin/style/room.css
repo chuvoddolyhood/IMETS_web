@@ -1,0 +1,32 @@
+.table-body-room{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: stretch;
+    align-content: stretch;
+}
+
+.table-body-room input{
+    padding: 0.3%;
+    font-size: 0.8rem;
+    border-radius: 20px;
+    margin-right: 2%;
+    width: 10vw;
+}
+
+.table-body-room button{
+    padding: 0.5%;
+    font-size: 0.8rem;
+    border-radius: 20px;
+    background-color: var(--lightblue);
+    cursor: pointer;
+}
+
+.table-room a{
+    text-decoration: none;
+}
+
+.table-room td{
+    text-align: center;
+}

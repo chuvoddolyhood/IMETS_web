@@ -25,7 +25,7 @@
         
 ?>
 
-<table class="table">
+<table class="table table-room">
     <thead class="thead-dark">
         <tr>
             <th>Tên phòng</th>

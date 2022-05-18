@@ -5,8 +5,10 @@
         </div>
         <div class="table-body">
             <!-- Button trigger modal -->
-            <input type="week" id="week">
-            <button type="button" class="btn_add" onclick="getDate()" >Chọn ngày</button>
+            <div class="table-body-room">
+                <input type="week" id="week">
+                <button type="button" onclick="getDate()" >Chọn ngày</button>
+            </div>
             <?php include './modules_admin/room_management/scheduleRoom.php'; ?>
         </div>
     </div>
