@@ -1,7 +1,7 @@
 <main>
     <div class="container-table">
         <div class="link-nav-pages">
-            <a href="">Bệnh nhân đã khám</a>
+            <a href="">Quản lý bệnh nhân</a>
         </div>
         <div class="table-header">
             <h1>Danh sách thông tin bệnh nhân</h1>

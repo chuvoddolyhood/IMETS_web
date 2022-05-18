@@ -1,3 +1,7 @@
+.header-patient{
+    padding: 2%;
+}
+
 .personalInfoTable {
     border-collapse: collapse;
     width: 100%;
@@ -48,4 +52,28 @@
 
 .summary-content{
     margin-top: 3vh;
+}
+
+.diagnose-checkedup{
+    margin-top: 5%;
+}
+
+.diagnose-checkedup h1{
+    font-size: 1.7rem;
+}
+
+.table-diagnose th{
+    width: 20%;
+}
+
+.detail-prescription{
+    margin-top: 5%;
+}
+
+.detail-prescription h1{
+    font-size: 1.7rem;
+}
+
+.totalMoney{
+    margin-top: 2%;
 }

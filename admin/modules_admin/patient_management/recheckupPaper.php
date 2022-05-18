@@ -2,7 +2,7 @@
     <h1 class="heading-main">Ngày tái khám</h1>
     <div class="detail-prescription-table">
         <div class="card-body">
-            <table class="table">
+            <table class="table recordTable">
                 <?php
                     $sql_prescriptionRecord = "SELECT * FROM appointment 
                     JOIN medicalrecord ON medicalrecord.ID_Appointment=appointment.ID_Appointment

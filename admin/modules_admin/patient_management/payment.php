@@ -12,7 +12,7 @@
     <h1 class="heading-main">Hóa đơn</h1>
     <div class="detail-prescription-table">
         <div class="card-body">
-            <table class="table">
+            <table class="table recordTable">
                 <?php
                     $sql_prescriptionRecord = "SELECT * FROM appointment 
                     JOIN medicalrecord ON medicalrecord.ID_Appointment=appointment.ID_Appointment
@@ -33,9 +33,9 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td><?php echo $rows_payment['TotalAmount'] ?></td>
-                        <td><?php echo $rows_payment['BHYT_Pay'] ?></td>
-                        <td><?php echo $rows_payment['Patient_Pay'] ?></td>
+                        <td><?php echo number_format($rows_payment['TotalAmount']) ?>₫</td>
+                        <td><?php echo number_format($rows_payment['BHYT_Pay']) ?>₫</td>
+                        <td><?php echo number_format($rows_payment['Patient_Pay']) ?>₫</td>
                         <td><?php echo $rows_payment['Status_Pay'] ?></td>
                         <td><?php echo $rows_payment['Title_PaymentMethod'] ?></td>
                     </tr>

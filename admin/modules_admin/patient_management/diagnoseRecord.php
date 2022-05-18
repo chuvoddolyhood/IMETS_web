@@ -3,7 +3,7 @@
         <h1 class="heading-main">Chẩn đoán</h1>
         <div class="detail-prescription-table">
             <div class="card-body">
-                <table class="table">
+                <table class="table table-diagnose recordTable">
                     <tbody>
                         <tr>
                             <th>Lý do khám</th>

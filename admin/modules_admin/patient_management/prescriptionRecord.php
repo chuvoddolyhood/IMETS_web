@@ -2,7 +2,7 @@
     <h1 class="heading-main">Chi tiết thuốc - vật tư</h1>
     <div class="detail-prescription-table">
         <div class="card-body">
-            <table class="table">
+            <table class="table recordTable">
                 <thead class="thead-dark">
                     <tr>
                         <th>STT</th>
@@ -28,9 +28,9 @@
                     <td><?php echo $rows_get_medicineChoose['TitleMedicine'] ?></td>
                     <td><?php echo $rows_get_medicineChoose['Type'] ?></td>
                     <td><?php echo $rows_get_medicineChoose['Amount'] ?></td>
-                    <td><?php echo $rows_get_medicineChoose['UnitPrice'] ?></td>
+                    <td><?php echo number_format($rows_get_medicineChoose['UnitPrice']) ?></td>
                         <td><?php 
-                            echo $rows_get_medicineChoose['TotalMoney'];
+                            echo number_format($rows_get_medicineChoose['TotalMoney']);
                             $sumMoney=$sumMoney+$rows_get_medicineChoose['TotalMoney'];
                         ?></td>
                     </tr>
@@ -40,7 +40,6 @@
         </div>
     </div>
     <div class="totalMoney">
-        <h4>Tổng tiền:</h4>
-        <p id="TotalMoney"><?php echo $sumMoney ?></p>
+        <h4>Tổng tiền: <?php echo number_format($sumMoney) ?>₫</h4>
     </div>
 </div> 

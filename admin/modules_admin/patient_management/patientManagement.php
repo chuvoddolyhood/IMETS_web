@@ -12,10 +12,10 @@
 <main>
     <div class="container-table">
         <div class="link-nav-pages">
-            <a href="./index.php?page_layout=patient_management">Quản lý bệnh nhân</a> / 
+            <a href="./index.php?page_layout=list_patientManagement">Quản lý bệnh nhân</a> / 
             <a href="">Hồ sơ bệnh nhân</a>
         </div>
-        <div class="table-header">
+        <div class="table-header header-patient">
             <h1>Hồ sơ bệnh nhân <?php echo $rows['Name'] ?></h1>
         </div>
         <div class="personalInfo">
@@ -80,7 +80,7 @@
                                 <td><?php echo $rows_appointment['ID_Appointment'] ?></td>
                                 <td><?php echo $rows_appointment['start'] ?></td>
                                 <td><?php echo $rows_appointment['Date_HospitalDischarge'] ?></td>
-                                <td><?php if($rows_appointment['BHYT_Checkin']==1) echo 'BHYT';?></td>
+                                <td><?php if($rows_appointment['BHYT_Checkin']>0){echo 'BHYT';} else {echo 'Dịch vụ';} ;?></td>
                                 <td><a href="./index.php?page_layout=patient_management&ID_Patient=<?php echo $ID_Patient ?>&ID_Appointment=<?php echo $rows_appointment['ID_Appointment'] ?>">Xem</a></td>
                             </tr>
                             <?php 
