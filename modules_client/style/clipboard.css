@@ -23,16 +23,56 @@
 }
 
 #typeMedicalCheck{
-    border-radius: 0px;
-    background-color: #ffffff;
-    outline: 0;
+    border-radius: 20px;
+    background-color: #fdfdfd;
+    outline: 1;
 }
 
-#clipboard-table{
-    font-size: 1.6rem;
-    font-weight: 600;
+.imagebox{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: stretch;
+    align-content: stretch;
 }
 
-#clipboard-table tr td{
-    text-align: center;
+#text-img h1{
+    color: #69ABCE;
+    margin-top: 30vh;
+}
+
+#header-schedule{
+    display: flex;
+}
+
+#header-schedule p{
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-right: 5%;
+}
+
+#time-schedule{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: stretch;
+    align-content: stretch;
+    margin: 2% 0 0;
+}
+
+#time-schedule button{
+    padding: 1%;
+    cursor: pointer;
+    border-radius: 20px;
+    font-size: 1.5rem;
+    box-shadow: 1px 1px 2px #afafaf;
+}
+
+.session{
+    background-color: var(--lightblue);
+    border-radius: 20px;
+    padding: 2%;
+    margin: 1% 0;
 }

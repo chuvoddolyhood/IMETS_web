@@ -7,158 +7,177 @@
 
     $ID_Staff = $_GET['ID_Staff'];
     $date = $_GET['date'];
-    $sql_get_infoStaff = "SELECT * FROM `staff` s JOIN dept d ON s.ID_Dept=d.ID_Dept WHERE ID_Staff=$ID_Staff";
+    $sql_get_infoStaff = "SELECT * FROM `staff` s 
+        JOIN dept d ON s.ID_Dept=d.ID_Dept 
+        JOIN img_staff ON s.ID_Staff=img_staff.ID_Staff
+        WHERE s.ID_Staff=$ID_Staff";
     $query_get_infoStaff = mysqli_query($conn, $sql_get_infoStaff);
 	$rows_get_infoStaff = mysqli_fetch_array($query_get_infoStaff);
 ?>
 
 <section class="doctorList">
     <h1> Đặt lịch khám bệnh ngày <?php echo date('d-m-Y', strtotime($date)); ?> </h1>
-    <table id="clipboard-table">
-        <tr>
-            <th>Bệnh nhân:</th>
-            <td colspan=5><?php echo $rows_get_infoPatient['Name'] ?></td>
-            <th>MSBN</th>
-            <td><?php echo $rows_get_infoPatient['ID_Patient'] ?></td>
-        </tr>
-        <tr>
-            <th>Năm sinh</th>
-            <td><?php echo $rows_get_infoPatient['DOB'] ?></td>
-            <td></td>
-            <th>Giới tính</th>
-            <td><?php echo $rows_get_infoPatient['Sex'] ?></td>
-        </tr>
-        <tr>
-            <th>BHYT</th>
-            <td><?php echo $rows_get_infoPatient['ID_BHYT'] ?></td>
-            <td></td>
-            <th>Số điện thoại</th>
-            <td><?php echo $rows_get_infoPatient['PhoneNumber'] ?></td>
-            <td></td>
-            <th>CMND</th>
-            <td><?php echo $rows_get_infoPatient['CMND'] ?></td>
-        </tr>
-        <tr>
-            <th>Địa chỉ</th>
-            <td colspan=8><?php echo $rows_get_infoPatient['Address'] ?></td>
-        </tr>
-        <tr colspan=9></tr>
-        <tr>
-            <th>Bác sĩ</th>
-            <td colspan=5><?php echo $rows_get_infoStaff['Name_Staff'] ?></td>
-            <th>MSNV</th>
-            <td><?php echo $_GET['ID_Staff'];?></td>
-        </tr>
-        <tr>
-            <th>Chuyên khoa</th>
-            <td colspan=2><?php echo $rows_get_infoStaff['Name_Dept'];?></td>
-        </tr>
-        <tr></tr>
-
-        <!-- Buoi Sang -->
-        <?php
-            $sql_get_schedule_sang="SELECT st.Name_Staff,r.Name_Room,d.Name_Dept, s.start AS start
-                FROM schedule s JOIN staff st ON s.ID_Staff=st.ID_Staff
-                    JOIN room r ON r.ID_Room=s.ID_Room
-                    JOIN dept d ON d.ID_Dept=r.ID_Dept
-                WHERE st.ID_Staff=$ID_Staff AND s.Session='Sáng' AND DATE(s.start)='$date' AND s.status_schedule NOT LIKE 'Có lịch' AND s.start>NOW()";
-            $query_get_schedule_sang_1 = mysqli_query($conn, $sql_get_schedule_sang);
-            $rows_get_schedule_sang_1 = mysqli_fetch_array($query_get_schedule_sang_1);
-            $query_get_schedule_sang = mysqli_query($conn, $sql_get_schedule_sang);
-            if(mysqli_num_rows($query_get_schedule_sang_1)>0){
-        ?>
-        <tr>
-            <th colspan=2>Sáng</th>
-            <th>Phòng</th>
-            <td><?php echo $rows_get_schedule_sang_1['Name_Room'] ?></td>
-            <th>Khoa</th>
-            <td><?php echo $rows_get_schedule_sang_1['Name_Dept'] ?></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
+    <div class="imagebox">
+        <div class="container-card">
+            <div class="card">
+                <div class="card-image"> 
+                    <img src="./staff/modules_staff/photo/avatar.svg">
+                </div>
+                <h2><?php echo $rows_get_infoPatient["Name"] ?></h2>
+                <h3>Bệnh nhân</h3>
+                <h3>MSBN: <?php echo $rows_get_infoPatient["ID_Patient"] ?></h3>
+                <h3>Năm sinh: <?php echo date('d-m-Y', strtotime($rows_get_infoPatient["DOB"]))  ?></h3>
+                <h3>Giới tính: <?php echo $rows_get_infoPatient["Sex"] ?></h3>
+                <h3>BHYT: <?php echo $rows_get_infoPatient["ID_BHYT"] ?></h3>
+                    
+                <div class="rating-slider">
+                    <?php
+                        $numberOfStar = round($rows_get_infoPatient["VoteRate"]);
+                            // echo 'full:'.$numberOfStar;
+                        $fullStart=0;
+                        while($fullStart < $numberOfStar){
+                            $fullStart++;
+                        ?>
+                            <i class="fas fa-star"></i>
+                    <?php } 
+                        $numberOfStar_empty = 5-round($rows_get_infoPatient["VoteRate"]);
+                        // echo 'empty:'.$numberOfStar_empty;
+                        $i=0;
+                        while($i < $numberOfStar_empty){
+                            $i++;
+                    ?>
+                        <i class="far fa-star"></i>
+                    <?php } ?>
+                </div>
+            </div>
+        </div>
+        <div id="text-img">
+            <h1 class="animate__animated animate__jello animate__infinite infinite">Kết nối với bác sĩ ngay...</h1>
+        </div>
+        <div class="container-card">
+            <div class="card">
+                <div class="card-image"> 
+                    <img src="./img/staff/<?php echo $rows_get_infoStaff["imgName"] ?>">
+                </div>
+                <h2><?php echo $rows_get_infoStaff["Name_Staff"] ?></h2>
+                <h3>MSNV: <?php echo $rows_get_infoStaff["ID_Staff"] ?></h3>
+                <h3><?php echo $rows_get_infoStaff["Position"] ?></h3>
+                <h3><?php echo $rows_get_infoStaff["Name_Dept"] ?></h3>
+                    
+                <div class="rating-slider">
+                    <?php
+                        $numberOfStar = round($rows_get_infoStaff["VoteRate"]);
+                            // echo 'full:'.$numberOfStar;
+                        $fullStart=0;
+                        while($fullStart < $numberOfStar){
+                            $fullStart++;
+                        ?>
+                            <i class="fas fa-star"></i>
+                    <?php } 
+                        $numberOfStar_empty = 5-round($rows_get_infoStaff["VoteRate"]);
+                        // echo 'empty:'.$numberOfStar_empty;
+                        $i=0;
+                        while($i < $numberOfStar_empty){
+                            $i++;
+                    ?>
+                        <i class="far fa-star"></i>
+                    <?php } ?>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <h2>Thời gian làm việc</h2>
+    <div class="table-schedule">
+        <div class="session">
+            <!-- Buoi Sang -->
             <?php
-                while($rows_get_schedule_sang = mysqli_fetch_array($query_get_schedule_sang)){
+                $sql_get_schedule_sang="SELECT st.Name_Staff,r.Name_Room,d.Name_Dept, s.start AS start
+                    FROM schedule s JOIN staff st ON s.ID_Staff=st.ID_Staff
+                        JOIN room r ON r.ID_Room=s.ID_Room
+                        JOIN dept d ON d.ID_Dept=r.ID_Dept
+                    WHERE st.ID_Staff=$ID_Staff AND s.Session='Sáng' AND DATE(s.start)='$date' AND s.status_schedule NOT LIKE 'Có lịch' AND s.start>NOW()";
+                $query_get_schedule_sang_1 = mysqli_query($conn, $sql_get_schedule_sang);
+                $rows_get_schedule_sang_1 = mysqli_fetch_array($query_get_schedule_sang_1);
+                $query_get_schedule_sang = mysqli_query($conn, $sql_get_schedule_sang);
+                if(mysqli_num_rows($query_get_schedule_sang_1)>0){
             ?>
-            <td class="time"><?php echo substr($rows_get_schedule_sang['start'],11) ?></td>
-
+            <div id="header-schedule">
+                <p>Sáng</p>
+                <p>Phòng: <?php echo $rows_get_schedule_sang_1['Name_Room'] ?></p>
+                <p>Khoa: <?php echo $rows_get_schedule_sang_1['Name_Dept'] ?></p>
+            </div>
+            <div id="time-schedule">
+                <?php
+                    while($rows_get_schedule_sang = mysqli_fetch_array($query_get_schedule_sang)){
+                ?>
+                <button class="time"><?php echo substr($rows_get_schedule_sang['start'],11) ?></button>
+                <?php } ?>
+            </div>
             <?php } ?>
-        </tr>
-        <?php } ?>
-        <tr></tr>
-
-        <!-- Buoi Chiều -->
-        <?php
-            $sql_get_schedule_chieu="SELECT st.Name_Staff,r.Name_Room,d.Name_Dept, s.start AS start
-                FROM schedule s JOIN staff st ON s.ID_Staff=st.ID_Staff
-                    JOIN room r ON r.ID_Room=s.ID_Room
-                    JOIN dept d ON d.ID_Dept=r.ID_Dept
-                WHERE st.ID_Staff=$ID_Staff AND s.Session='Chiều' AND DATE(s.start)='$date' AND s.status_schedule NOT LIKE 'Có lịch' AND s.start>NOW()";
-            $query_get_schedule_chieu_1 = mysqli_query($conn, $sql_get_schedule_chieu);
-            $rows_get_schedule_chieu_1 = mysqli_fetch_array($query_get_schedule_chieu_1);
-            $query_get_schedule_chieu = mysqli_query($conn, $sql_get_schedule_chieu);
-            if(mysqli_num_rows($query_get_schedule_chieu_1)>0){
-        ?>
-        <tr>
-            <th colspan=2>Chiều</th>
-            <th>Phòng</th>
-            <td><?php echo $rows_get_schedule_chieu_1['Name_Room'] ?></td>
-            <th>Khoa</th>
-            <td><?php echo $rows_get_schedule_chieu_1['Name_Dept'] ?></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
+        </div>
+        <div class="session">
+            <!-- Buoi chieu -->
             <?php
-                while($rows_get_schedule_chieu = mysqli_fetch_array($query_get_schedule_chieu)){
+                $sql_get_schedule_sang="SELECT st.Name_Staff,r.Name_Room,d.Name_Dept, s.start AS start
+                    FROM schedule s JOIN staff st ON s.ID_Staff=st.ID_Staff
+                        JOIN room r ON r.ID_Room=s.ID_Room
+                        JOIN dept d ON d.ID_Dept=r.ID_Dept
+                    WHERE st.ID_Staff=$ID_Staff AND s.Session='Chiều' AND DATE(s.start)='$date' AND s.status_schedule NOT LIKE 'Có lịch' AND s.start>NOW()";
+                $query_get_schedule_sang_1 = mysqli_query($conn, $sql_get_schedule_sang);
+                $rows_get_schedule_sang_1 = mysqli_fetch_array($query_get_schedule_sang_1);
+                $query_get_schedule_sang = mysqli_query($conn, $sql_get_schedule_sang);
+                if(mysqli_num_rows($query_get_schedule_sang_1)>0){
             ?>
-            <td class="time"><?php echo substr($rows_get_schedule_chieu['start'],11) ?></td>
-
+            <div id="header-schedule">
+                <p>Chiều</p>
+                <p>Phòng: <?php echo $rows_get_schedule_sang_1['Name_Room'] ?></p>
+                <p>Khoa: <?php echo $rows_get_schedule_sang_1['Name_Dept'] ?></p>
+            </div>
+            <div id="time-schedule">
+                <?php
+                    while($rows_get_schedule_sang = mysqli_fetch_array($query_get_schedule_sang)){
+                ?>
+                <button class="time"><?php echo substr($rows_get_schedule_sang['start'],11) ?></button>
+                <?php } ?>
+            </div>
             <?php } ?>
-        </tr>
-        <?php } ?>
-        <tr colspan=8></tr>
-
-        <!-- Ngoài giờ -->
-        <?php
-            $sql_get_schedule_ngoaigio="SELECT st.Name_Staff,r.Name_Room,d.Name_Dept, s.start AS start
-                FROM schedule s JOIN staff st ON s.ID_Staff=st.ID_Staff
-                    JOIN room r ON r.ID_Room=s.ID_Room
-                    JOIN dept d ON d.ID_Dept=r.ID_Dept
-                WHERE st.ID_Staff=$ID_Staff AND s.Session='Ngoài giờ' AND DATE(s.start)='$date' AND s.status_schedule NOT LIKE 'Có lịch' AND s.start>NOW()";
-            $query_get_schedule_ngoaigio_1 = mysqli_query($conn, $sql_get_schedule_ngoaigio);
-            $rows_get_schedule_ngoaigio_1 = mysqli_fetch_array($query_get_schedule_ngoaigio_1);
-            $query_get_schedule_ngoaigio = mysqli_query($conn, $sql_get_schedule_ngoaigio);
-            if(mysqli_num_rows($query_get_schedule_ngoaigio_1)>0){
-        ?>
-        <tr>
-            <th colspan=2>Ngoài giờ</th>
-            <th>Phòng</th>
-            <td><?php echo $rows_get_schedule_ngoaigio_1['Name_Room'] ?></td>
-            <th>Khoa</th>
-            <td><?php echo $rows_get_schedule_ngoaigio_1['Name_Dept'] ?></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
+        </div>
+        <div class="session">
+            <!-- Buoi chieu -->
             <?php
-                while($rows_get_schedule_ngoaigio = mysqli_fetch_array($query_get_schedule_ngoaigio)){
+                $sql_get_schedule_sang="SELECT st.Name_Staff,r.Name_Room,d.Name_Dept, s.start AS start
+                    FROM schedule s JOIN staff st ON s.ID_Staff=st.ID_Staff
+                        JOIN room r ON r.ID_Room=s.ID_Room
+                        JOIN dept d ON d.ID_Dept=r.ID_Dept
+                    WHERE st.ID_Staff=$ID_Staff AND s.Session='Ngoài giờ' AND DATE(s.start)='$date' AND s.status_schedule NOT LIKE 'Có lịch' AND s.start>NOW()";
+                $query_get_schedule_sang_1 = mysqli_query($conn, $sql_get_schedule_sang);
+                $rows_get_schedule_sang_1 = mysqli_fetch_array($query_get_schedule_sang_1);
+                $query_get_schedule_sang = mysqli_query($conn, $sql_get_schedule_sang);
+                if(mysqli_num_rows($query_get_schedule_sang_1)>0){
             ?>
-            <td class="time"><?php echo substr($rows_get_schedule_ngoaigio['start'],11) ?></td>
-
+            <div id="header-schedule">
+                <p>Tối</p>
+                <p>Phòng: <?php echo $rows_get_schedule_sang_1['Name_Room'] ?></p>
+                <p>Khoa: <?php echo $rows_get_schedule_sang_1['Name_Dept'] ?></p>
+            </div>
+            <div id="time-schedule">
+                <?php
+                    while($rows_get_schedule_sang = mysqli_fetch_array($query_get_schedule_sang)){
+                ?>
+                <button class="time"><?php echo substr($rows_get_schedule_sang['start'],11) ?></button>
+                <?php } ?>
+            </div>
             <?php } ?>
-        </tr>
-        <?php } ?>
-
-        <tr>
-            <td>
-                <select name="" id="typeMedicalCheck">
-                    <option>Khám theo BHYT</option>
-                    <option>Khám dịch vụ</option>
-                </select>
-            </td>    
-        </tr>
-    </table>
+        </div>
+        <div>
+            <select name="" id="typeMedicalCheck">
+                <option>Khám theo BHYT</option>
+                <option>Khám dịch vụ</option>
+            </select>
+        </div>
+    </div>                 
+    
     <div class="clipboard-button">
         <a onclick="book()">Đặt lịch</a>
         <a href="index.php?page_layout=doctors">Hủy bỏ</a>
