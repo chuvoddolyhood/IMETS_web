@@ -26,7 +26,6 @@
                     <div class="box-body">
                         <div class="row">
                             <button class="modal-btnadd-work">Thêm công việc</button>
-                            <button class="modal-btnmodify-work">Sửa công việc</button>
                             <div class="col-md-12">
                                 <table id="example1" class="table table-bordered table-hover" style="margin-right:-10px">
                                     <div id="calendar" class="col-centered">
@@ -266,45 +265,27 @@
             <form class="form-horizontal" method="POST" action="./modules_staff/schedule/addEvent.php">
                 <div class="modal-body">
                     <input type="hidden" name="ID_Staff" value="<?php echo $ID_Staff ?>" >
-                    <div class="form-group">
-                        <label for="title" class="col-sm-2 control-label">Công việc:</label>
-                        <div class="col-sm-10">
-                            <input type="text" name="title" class="form-control" id="title" placeholder="Activity" autocomplete="off" value="Khám ngoại" required="">
-                            <!-- <textarea rows="4" cols="10" id="title" class="form-control" name="title" maxlength="300" value="Khám ngoại" required></textarea> -->
-                        </div>
+                    <div class="input-field">
+                        <i class="fas fa-calendar"></i>
+                        <input type="text" name="title" value="Khám ngoại" required/>
                     </div>
-
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">Ngày làm việc</label>
-                        <div class="col-sm-10">
-                            <input type="date" name="dateworking" class="form-control" id="start" >
-                        </div>
+                    <div class="input-field">
+                        <i class="fas fa-calendar"></i>
+                        <input type="date" name="dateworking" placeholder="Khám ngoại" required/>
                     </div>
-
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">Chọn lịch làm việc:</label>
-                        <div class="col-sm-10">
-                            <select name="session" class="form-control" id="color" required="">
-                                <option value="">-- Chọn --</option>
-                                <option style="color:#FF0000;" value="Sáng">&#9724; Sáng</option>
-                                <option style="color:#008000;" value="Chiều">&#9724; Chiều</option>
-                                <option style="color:#FF8C00;" value="Ngoài giờ">&#9724; Ngoài giờ</option>
-                             </select>
-                        </div>
+                    <div class="input-field">
+                        <i class="fas fa-id-card"></i>
+                        <select name="session" placeholder="Chọn buổi làm việc" required>
+                            <option value="">-- Chọn --</option>
+                            <option style="color:#FF0000;" value="Sáng">&#9724; Sáng</option>
+                            <option style="color:#008000;" value="Chiều">&#9724; Chiều</option>
+                            <option style="color:#FF8C00;" value="Ngoài giờ">&#9724; Ngoài giờ</option>
+                        </select>
                     </div>
-                    
-                    <!-- <div class="form-group">
-                        <label for="end" class="col-sm-2 control-label">End date</label>
-                        <div class="col-sm-10">
-                            <input type="datetime-local" name="end" class="form-control" id="end">
-                        </div>
-                    </div> -->
-
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">Chọn phòng:</label>
-                        <div class="col-sm-10">
-                            <select name="room" class="form-control" id="room" required="">
-                                <option value="">Choose</option>
+                    <div class="input-field">
+                        <i class="fas fa-id-card"></i>
+                        <select name="room" placeholder="Chọn phòng:" required>
+                            <option value="">-- Chọn --</option>
                                 <?php 
                                     $sql_get_room = "SELECT *
                                     FROM `room` JOIN dept ON room.ID_Dept=dept.ID_Dept
@@ -315,81 +296,17 @@
                                 ?>
                                 <option value="<?php echo $rows_get_room['ID_Room'] ?>"><?php echo $rows_get_room['Name_Room'] ?></option>
                                 <?php } ?>
-                             </select>
-                        </div>
+                        </select>
                     </div>
-
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" name="btnSave_submit" class="btn btn-success">Save changes</button>
+                    <input type="submit" class="btn" name="btnSave_submit" value="Thêm"/>
                 </div>
             </form>
             <span class="modal-close-work">X</spsan>
         </div>
     </div>
 
-    <div class="modal-bg-work-modify">
-        <div class="modal">
-            <h1>Chỉnh sửa công việc</h1>
-            <form class="form-horizontal" method="POST" action="./modules_staff/schedule/editEventTitle.php">
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="title" class="col-sm-2 control-label">Activity</label>
-                        <div class="col-sm-10">
-                            <!-- <input type="text" name="title" class="form-control" id="title" placeholder="Title"> -->
-                            <textarea rows="4" cols="10" id="title" class="form-control" name="title" maxlength="300" value="" required></textarea>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="color" class="col-sm-2 control-label">ACTIVITY COLOR SCHEME</label>
-                        <div class="col-sm-10">
-                            <select name="color" class="form-control" id="color">
-                                <option value="">Choose</option>
-                                <option style="color:#FF0000;" value="#FF0000">&#9724; URGENT MEETING</option>
-                                <option style="color:#008000;" value="#008000">&#9724; PERSONAL SCHEDULE</option>
-                                <option style="color:#FF8C00;" value="#FF8C00">&#9724; Executives Schedule</option>
-						        <option style="color:#0071c5;" value="#0071c5">&#9724;ETC</option>
-							</select>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="start" class="col-sm-2 control-label">Date and Time</label>
-                        <div class="col-sm-10">
-                            <input type="text" name="start" class="form-control" id="start" >
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="end" class="col-sm-2 control-label">End date</label>
-                        <div class="col-sm-10">
-                            <input type="text" name="end" class="form-control" id="end">
-                        </div>
-                    </div>
-
-
-                    <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10">
-                            <div class="checkbox">
-                                <label class="text-danger"><input type="checkbox"  name="delete"> Delete event</label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <input type="hidden" name="id" class="form-control" id="id">
-
-
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-success 	">Save changes</button>
-                </div>
-            </form>
-            <span class="modal-close-work-modify">X</spsan>
-        </div>
-    </div>
 
     <script type="text/javascript">
         //Them
