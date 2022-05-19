@@ -157,7 +157,7 @@
                 if(mysqli_num_rows($query_get_schedule_sang_1)>0){
             ?>
             <div id="header-schedule">
-                <p>Tối</p>
+                <p>Ngoài giờ</p>
                 <p>Phòng: <?php echo $rows_get_schedule_sang_1['Name_Room'] ?></p>
                 <p>Khoa: <?php echo $rows_get_schedule_sang_1['Name_Dept'] ?></p>
             </div>

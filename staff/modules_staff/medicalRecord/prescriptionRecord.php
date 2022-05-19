@@ -1,7 +1,6 @@
 <div class="detail-prescription">
     <h1 class="heading-main">Chi tiết thuốc - vật tư</h1>
     <div class="btn-medicalrecord-containter">
-        <a class="btn-medicalrecord" href="index.php?page_layout=checkup&ID_Appointment=<?php echo $ID_Appointment?>"><i class='fas fa-edit'></i> Chỉnh sửa</a>
         <a class="btn-medicalrecord" href="./modules_staff/paper/prescription.php?ID_Appointment=<?php echo $ID_Appointment?>" target="_blank"><i class='fas fa-print'></i> In toa thuốc</a>
     </div>
     
