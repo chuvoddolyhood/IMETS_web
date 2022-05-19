@@ -263,7 +263,7 @@
 
     <div id="chatbot" class="chatbot--closed">	
 		<div id="chatbot-box">
-		    <iframe width="350" height="430" allow="microphone;" src="https://console.dialogflow.com/api-client/demo/embedded/b2bf0f49-fe97-4245-92d8-70f39718bc37"></iframe>
+            <iframe width="350" height="430" allow="microphone;" src="https://console.dialogflow.com/api-client/demo/embedded/b2bf0f49-fe97-4245-92d8-70f39718bc37"></iframe>
 	    </div>
 	</div>
 

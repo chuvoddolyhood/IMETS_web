@@ -30,7 +30,7 @@
 
 			do{
 				$sql = "INSERT INTO schedule(title,Session, ID_Staff, ID_Room,start, end) VALUES ('$title','$session',$ID_Staff,'$room','$start_working','$end_working')";
-				echo $sql;
+				// echo $sql;
 
 				$query = $bdd->prepare( $sql );
 				if ($query == false) {
@@ -57,12 +57,12 @@
 			$loop=8;
 			$time=0;
 			$start_working = $dateworking.' 13:00:00';
-			$end_working = $dateworking.' 17:00:00';
+			$end_working = $dateworking.' 13:30:00';
 					
 
 			do{
 				$sql = "INSERT INTO schedule(title, Session, ID_Staff, ID_Room,start, end) VALUES ('$title','$session',$ID_Staff,'$room','$start_working','$end_working')";
-				echo $sql;
+				// echo $sql;
 
 				$query = $bdd->prepare( $sql );
 				if ($query == false) {
@@ -89,12 +89,12 @@
 			$loop=6;
 			$time=0;
 			$start_working = $dateworking.' 18:30:00';
-			$end_working = $dateworking.' 21:30:00';
+			$end_working = $dateworking.' 19:00:00';
 					
 
 			do{
-				$sql = "INSERT INTO schedule(title, Session, ID_Staff, ID_Room,start, end) VALUES ('$title','$session',$ID_Staff,'$room','$start_working','$end_working')";
-				echo $sql;
+				$sql = "INSERT INTO schedule(title,Session, ID_Staff, ID_Room,start, end) VALUES ('$title','$session',$ID_Staff,'$room','$start_working','$end_working')";
+				// echo $sql;
 
 				$query = $bdd->prepare( $sql );
 				if ($query == false) {

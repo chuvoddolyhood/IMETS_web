@@ -11,7 +11,7 @@
 <div class="detail-prescription">
     <h1 class="heading-main">Hóa đơn</h1>
     <div class="btn-medicalrecord-containter">
-        <a class="btn-medicalrecord" href="./modules_staff/paper/invoice.php?ID_Appointment=<?php echo $ID_Appointment?>" target="_blank"><i class='fas fa-print'></i> In toa thuốc</a>
+        <a class="btn-medicalrecord" href="./modules_staff/paper/invoice.php?ID_Appointment=<?php echo $ID_Appointment?>" target="_blank"><i class='fas fa-print'></i> In hóa đơn</a>
     </div>
     <div class="detail-prescription-table table-custom">
         <div class="card-body">

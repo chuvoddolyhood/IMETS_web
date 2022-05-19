@@ -140,6 +140,8 @@
                 }else{echo date('d/m/Y', strtotime($rows_get_prescription["expDate"]));} ?></p>
                 <p>Ngày tái khám: <?php if($rows_get_prescription['Date_ReCheckup']==''){
                     echo '';
+                }else if ($rows_get_prescription['Date_ReCheckup']=='0000-00-00'){
+                    echo '';
                 }else{echo date('d/m/Y', strtotime($rows_get_prescription["Date_ReCheckup"]));} ?></p>
             </div>
         </div>

@@ -25,8 +25,8 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td><?php echo $rows_prescriptionRecord['Date_ReCheckup'] ?></td>
-                        <td><?php echo $rows_prescriptionRecord['expDate'] ?></td>
+                        <td><?php echo  date('d-m-Y', strtotime($rows_prescriptionRecord['Date_ReCheckup'])) ?></td>
+                        <td><?php echo  date('d-m-Y', strtotime($rows_prescriptionRecord['expDate'])) ?></td>
                     </tr>
                 </thead>
             </table>

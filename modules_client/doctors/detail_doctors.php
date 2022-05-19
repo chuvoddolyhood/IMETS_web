@@ -96,7 +96,8 @@
 			$sql_get_schedule = "SELECT DISTINCT st.Name_Staff,DATE(s.start) AS start,d.Name_Dept
 			FROM schedule s JOIN staff st ON s.ID_Staff=st.ID_Staff
 				JOIN dept d ON d.ID_Dept=st.ID_Dept
-			WHERE st.ID_Staff=$ID_Staff AND s.start>=NOW()";
+			WHERE st.ID_Staff=$ID_Staff AND s.start>=NOW()
+			ORDER BY DATE(s.start) ASC";
 			$query_get_schedule = mysqli_query($conn, $sql_get_schedule);
 		?>
 
